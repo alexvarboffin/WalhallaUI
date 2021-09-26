@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import com.walhalla.ui.R;
 
 
-public class RotationRatingBar extends BaseRatingBar {
+public class RotationRatingBar extends TBaseRatingBar {
 
     private static Handler sUiHandler = new Handler();
 

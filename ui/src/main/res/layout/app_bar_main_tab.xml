@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true">
 
-            <com.google.android.material.appbar.AppBarLayout
+            <com.com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
+
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:layout_weight="1"
@@ -36,10 +37,18 @@
 
                 </androidx.appcompat.widget.Toolbar>
 
-                <com.google.android.material.tabs.TabLayout
+                <com.com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/colorPrimary"
+                    android:backgroundTint="@android:color/white"
+                    app:tabIndicatorColor="#DCDCDC"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="#434141"
+                    app:tabTextColor="#000000"
+                    tools:targetApi="lollipop">
 
                     <!--<android.support.design.widget.TabItem-->
                     <!--android:id="@+id/tabItem"-->
@@ -60,8 +69,8 @@
                     <!--android:layout_height="wrap_content"-->
                     <!--android:text="@string/tab_text_3" />-->
 
-                </com.google.android.material.tabs.TabLayout>
-            </com.google.android.material.appbar.AppBarLayout>
+                </com.com.google.android.material.tabs.TabLayout>
+            </com.com.google.android.material.appbar.AppBarLayout>
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/container"

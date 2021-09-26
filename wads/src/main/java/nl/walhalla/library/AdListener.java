@@ -3,9 +3,13 @@ package nl.walhalla.library;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.walhalla.library.BuildConfig;
 
 import static android.accounts.AccountManager.PACKAGE_NAME_KEY_LEGACY_VISIBLE;
@@ -35,18 +39,21 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
                 Log.d(TAG, "onAdClosed: " + interstitialAd.getAdUnitId());
 
                 // Load the next interstitial.
-                interstitialAd.loadAd(AdMobCase.buildAdRequest());
+                //interstitialAd.loadAd(AdMobCase.buildAdRequest());
+                //interstitialAd = new InterstitialAd(a);
             }
         }
     }
 
+
+
     @Override
-    public void onAdFailedToLoad(int errorCode) {
+    public void onAdFailedToLoad(@NonNull LoadAdError errorCode) {
         super.onAdFailedToLoad(errorCode);
         if (DEBUG) {
 
             String errorReason = "";
-            switch(errorCode) {
+            switch(errorCode.getCode()) {
                 case AdRequest.ERROR_CODE_INTERNAL_ERROR:
                     errorReason = "Internal error";
                     break;
@@ -71,7 +78,7 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
             if (mObject instanceof AdView) {
                 Log.d(TAG, String.format("Ad %s failed to load with error %s.", ((AdView) mObject).getAdUnitId(), errorReason));
 
-                if (errorCode == AdRequest.ERROR_CODE_NETWORK_ERROR) {
+                if (errorCode.getCode() == AdRequest.ERROR_CODE_NETWORK_ERROR) {
                     if (((AdView) mObject).getVisibility() == View.VISIBLE) {
                         ((AdView) mObject).setVisibility(View.GONE);
                     }
@@ -94,9 +101,8 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
     }
 
 
-    @Override
     public void onAdLeftApplication() {
-        super.onAdLeftApplication();
+        //super.onAdLeftApplication();
         if (mObject instanceof AdView) {
             Log.d(TAG, "onAdLeftApplication: " + ((AdView) mObject).getAdUnitId());
         } else if (mObject instanceof InterstitialAd) {

@@ -5,9 +5,7 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.DrawableRes;
 
 
-/**
- * Created by willy on 2017/5/10.
- */
+
 interface SimpleRatingBar {
 
     void setNumStars(int numStars);

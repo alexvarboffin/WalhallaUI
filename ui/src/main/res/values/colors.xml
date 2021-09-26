@@ -13,7 +13,7 @@
 
 
     <color name="nv_background">@color/colorPrimaryDark</color>
-    <color name="splash">@android:color/black</color>
+
 
     <color name="colorButtonNormal">#00BFA5</color>
 </resources>

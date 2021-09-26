@@ -1,4 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <string name="rateme__dialog_first_button_rate">Rate our app in the Play Store</string>
+    <string name="rateme__dialog_first_thanks">Thanks for the rating!</string>
+    <string name="rateme__dialog_feedback_message">Would you mind sharing your feedback?</string>
+    <string name="rateme__email_subject" translatable="false">Feedback for %1$s</string>
+    <string name="rateme__icon_content_description" translatable="false">Icon</string>
+
     <string name="app_name" translatable="false">[App_Name]</string>
     <string name="navigation_drawer_open" translatable="false">navigation_drawer_open</string>
     <string name="navigation_drawer_close" translatable="false">navigation_drawer_close</string>
@@ -17,7 +25,6 @@
     <string name="action_exit">Exit</string>
 
     <string name="msg_no_notes">data is empty</string>
-    <string name="play_google_pub" translatable="false">Walhalla Dynamics</string>
 
     <!--menu-->
     <!--<string name="action_how_to_use_app">How to Use the App?</string>-->
@@ -27,17 +34,18 @@
 
     <string name="action_update">Update</string>
     <string name="action_privacy_policy">Privacy Policy</string>
-
+    <string name="about_version">Version</string>
     <!-- app rate-->
-    <string name="rate_title">Please rate this app!</string>
-    <string name="rate_text">   If you enjoy using "%1$s", please take a moment to rate it.\nThanks for your support!</string>
-    <string name="market_rate_url" translatable="false">market://details?id=%1$s</string>
+    <!--    <string name="rateme__dialog_first_title">Please rate this app!</string>-->
+    <string name="rateme__dialog_first_title">Rate your experience</string>
+    <string name="rateme__dialog_first_message">   If you enjoy using "%1$s", please take a moment to rate it.\nThanks for your support!</string>
+
 
     <string name="agreement_text" translatable="false">[Agreement]</string>
-    <string name="privacy_policy_url" translatable="false" />
+    <!--    <string name="privacy_policy_url" translatable="false" />-->
 
 
-    <string name="about_version">Version</string>
+
 
     <string name="press_again_to_exit">Press again to exit</string>
 
@@ -50,12 +58,24 @@
 
     <!--Exit dialog-->
     <string name="exit_dialog_title">Leaving this App?</string>
-    <string name="exit_dialog_message">Are you sure you want to close this coreApp?</string>
+    <string name="exit_dialog_message">Are you sure you want to close this QApp?</string>
 
-    <string name="def_location">en</string>
+    <string name="default_location">en</string>
 
+    <!--    menu-->
+    <string name="action_refresh" translatable="false">@null</string>
 
+    <string name="action_more_app_01" translatable="false">Downloader For TikTok/Musically</string>
+    <string name="action_more_app_02" translatable="false">More app, VIBE Droid</string>
 
+    <string name="p_more_app_01" translatable="false">com.walhalla.ttloader</string>
+    <string name="p_more_app_02" translatable="false">com.walhalla.vibro</string>
 
-    <string name="url_privacy_policy" translatable="false" />
+    <!--    <string name="file_provider" translatable="false">com.walhalla.luckypunch.provider</string>-->
+
+    <string name="share_default_text" translatable="false">
+                    My EPQ
+                    \nEysenck Personality Questionnaire
+                    \n#EPI #EPQ
+    </string>
 </resources>

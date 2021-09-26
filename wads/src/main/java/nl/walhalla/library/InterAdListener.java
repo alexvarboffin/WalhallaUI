@@ -2,7 +2,10 @@ package nl.walhalla.library;
 
 import android.util.Log;
 
-import com.google.android.gms.ads.InterstitialAd;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.walhalla.library.BuildConfig;
 //import static android.accounts.AccountManager.VISIBILITY_UNDEFINED;
 
@@ -24,15 +27,15 @@ public class InterAdListener extends com.google.android.gms.ads.AdListener {
         Log.d(TAG, "onAdClosed: " + interstitialAd.getAdUnitId());
     }
 
+
     @Override
-    public void onAdFailedToLoad(int errorCode) {
-        super.onAdFailedToLoad(errorCode);
+    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+        super.onAdFailedToLoad(loadAdError);
         if (DEBUG) {
             Log.d(TAG, String.format("Ad %s failed to load with error %d.",
-                    interstitialAd.getAdUnitId(), errorCode));
+                    interstitialAd.getAdUnitId(), loadAdError.getCode()));
         }
     }
-
 
     @Override
     public void onAdOpened() {
@@ -41,17 +44,17 @@ public class InterAdListener extends com.google.android.gms.ads.AdListener {
     }
 
 
-    @Override
-    public void onAdLeftApplication() {
-        super.onAdLeftApplication();
-        Log.d(TAG, "onAdLeftApplication: " + interstitialAd.getAdUnitId());
-    }
+//    @Override
+//    public void onAdLeftApplication() {
+//        super.onAdLeftApplication();
+//        Log.d(TAG, "onAdLeftApplication: " + interstitialAd.getAdUnitId());
+//    }
 
     @Override
     public void onAdLoaded() {
         super.onAdLoaded();
         Log.d(TAG, "onAdLoaded: " + interstitialAd.getAdUnitId());
-        interstitialAd.show();
+        //interstitialAd.show();
     }
 
     @Override

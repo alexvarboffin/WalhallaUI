@@ -1,4 +1,15 @@
 <resources>
+
+<!--    <string name="rateme__dialog_first_button_rate">Оцените наше приложение в Play Store</string>-->
+<!--    <string name="rateme__dialog_first_thanks">Спасибо за оценку!</string>-->
+<!--    <string name="rateme__dialog_feedback_message">Написать разработчику?</string>-->
+<!--    <string name="rateme__dialog_first_title">Оцените это приложение!</string>-->
+
+    <string name="rateme__dialog_first_button_rate">Rate our app in the Play Store</string>
+    <string name="rateme__dialog_first_thanks">Thanks for the rating!</string>
+    <string name="rateme__dialog_feedback_message">Would you mind sharing your feedback?</string>
+    <string name="rateme__dialog_first_title">Rate your experience</string>
+
     <string name="orientation" translatable="false">lang</string>
 
     <string name="tab_text_1">Applications</string>
@@ -15,8 +26,6 @@
     <string name="action_exit">Exit</string>
 
     <string name="msg_no_notes">data is empty</string>
-    <string name="play_google_pub" translatable="false">Walhalla Dynamics</string>
-
 
     <!--menu-->
     <!--<string name="action_how_to_use_app">How to Use the App?</string>-->
@@ -29,10 +38,11 @@
     <string name="action_privacy_policy">Privacy Policy</string>
 
     <!-- app rate-->
-    <string name="rate_title">Please rate this app!</string>
-    <string name="rate_text">   If you enjoy using "%1$s", please take a moment to rate it.\nThanks for your support!</string>
-    <string name="market_rate_url" translatable="false">market://details?id=%1$s</string>
-    <string name="privacy_policy_url" translatable="false" />
+    <!--    <string name="rateme__dialog_first_title">Please rate this app!</string>-->
+
+    <string name="rateme__dialog_first_message">   If you enjoy using "%1$s", please take a moment to rate it.\nThanks for your support!</string>
+
+<!--    <string name="privacy_policy_url" translatable="false" />-->
 
 
     <string name="about_version">Version</string>
@@ -48,6 +58,6 @@
 
     <!--Exit dialog-->
     <string name="exit_dialog_title">Leaving this App?</string>
-    <string name="exit_dialog_message">Are you sure you want to close this coreApp?</string>
-    <string name="def_location">en</string>
+    <string name="exit_dialog_message">Are you sure you want to close this QApp?</string>
+    <string name="default_location">en</string>
 </resources>

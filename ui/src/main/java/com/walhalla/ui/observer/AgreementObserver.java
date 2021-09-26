@@ -1,24 +1,16 @@
 package com.walhalla.ui.observer;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.content.SharedPreferences;
 
-
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.preference.PreferenceManager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-
 import com.walhalla.ui.R;
 
-
-/**
- * Created by ponch on 14.03.17.
- */
 
 public class AgreementObserver extends AlertDialog.Builder
         implements LifecycleObserver {
@@ -27,13 +19,13 @@ public class AgreementObserver extends AlertDialog.Builder
     private final SharedPreferences mSharedPreferences;
 
 
-    public AgreementObserver(final Activity activity, String url) {
+    public AgreementObserver(final AppCompatActivity activity, String url) {
         super(activity);
 
         this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
 
         setTitle(activity.getString(R.string.app_name));
-        setIcon(R.mipmap.ic_launcher_round);
+        //setIcon(R.mipmap.ic_launcher_round);
         // Set dialog share_message
         setMessage(activity.getString(R.string.agreement_text)).setCancelable(false)
                 .setPositiveButton(activity.getString(android.R.string.yes),

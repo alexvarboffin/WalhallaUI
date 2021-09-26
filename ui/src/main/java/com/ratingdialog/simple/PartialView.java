@@ -8,9 +8,7 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-/**
- * Created by willy on 2017/6/3.
- */
+
 public class PartialView extends RelativeLayout {
 
     private ImageView mFilledView;

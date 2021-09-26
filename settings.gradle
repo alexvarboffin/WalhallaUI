@@ -1,3 +1,3 @@
 include ':app', ':wads', ':ui'
 include ':threader'
-project(':threader').projectDir = new File('D:\\walhalla\\sdk\\android\\multithreader\\threader\\')
+project(':threader').projectDir = new File('../multithreader\\threader\\')

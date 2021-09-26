@@ -11,11 +11,9 @@ import androidx.annotation.Nullable;
 
 import com.walhalla.ui.R;
 
-/**
- * Created by willy on 2017/5/5.
- */
 
-public class ScaleRatingBar extends BaseRatingBar {
+
+public class ScaleRatingBar extends TBaseRatingBar {
 
     private static Handler sUiHandler = new Handler();
 
@@ -39,12 +37,7 @@ public class ScaleRatingBar extends BaseRatingBar {
 
         int delay = 0;
         for (final PartialView view : mPartialViews) {
-            sUiHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    view.setEmpty();
-                }
-            }, delay += 5);
+            sUiHandler.postDelayed(view::setEmpty, delay += 5);
         }
     }
 
@@ -64,23 +57,20 @@ public class ScaleRatingBar extends BaseRatingBar {
                 continue;
             }
 
-            sUiHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (ratingViewId == maxIntOfRating) {
-                        partialView.setPartialFilled(rating);
-                    } else {
-                        partialView.setFilled();
-                    }
-
-                    if (ratingViewId == rating) {
-                        Animation scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
-                        Animation scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
-                        partialView.startAnimation(scaleUp);
-                        partialView.startAnimation(scaleDown);
-                    }
-
+            sUiHandler.postDelayed(() -> {
+                if (ratingViewId == maxIntOfRating) {
+                    partialView.setPartialFilled(rating);
+                } else {
+                    partialView.setFilled();
                 }
+
+                if (ratingViewId == rating) {
+                    Animation scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
+                    Animation scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
+                    partialView.startAnimation(scaleUp);
+                    partialView.startAnimation(scaleDown);
+                }
+
             }, delay += 15);
         }
     }

@@ -23,9 +23,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor;
 import com.walhalla.threader.BuildConfig;
@@ -76,7 +79,7 @@ public class AdvertAdmobRepository
      * ads
      */
     private HashMap<Integer, AdView> mAdViewHashMap;
-    private HashMap<Integer, RewardedVideoAd> mRewardedVideoAdHashMap;
+    //private HashMap<Integer, RewardedVideoAd> mRewardedVideoAdHashMap;
 
     private List<InterstitialAd> mInterstitialAdList;
 
@@ -117,7 +120,12 @@ public class AdvertAdmobRepository
 
 
     public void initialize(@NonNull Activity context) {
-        MobileAds.initialize(context, config.application_id());
+        MobileAds.initialize(context, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+                //config.application_id()
+            }
+        });
         position = -1;
     }
 
@@ -151,11 +159,11 @@ public class AdvertAdmobRepository
             if (mAdViewHashMap.isEmpty() || mAdViewHashMap.get(key) == null) {
 
                 //Create new banner
-                if (position > config.banner_ad_unit_id().size()) {
+                if (position > config.banner_ad_unit_id.size()) {
                     position = 0;
                 }
-                int mapKey = config.banner_ad_unit_id().keyAt(position);
-                String banner_ad_unit_id = config.banner_ad_unit_id().get(mapKey);
+                int mapKey = config.banner_ad_unit_id.keyAt(position);
+                String banner_ad_unit_id = config.banner_ad_unit_id.get(mapKey);
                 adView = AdMobCase.createBanner(viewGroup.getContext(), banner_ad_unit_id);
                 mAdViewHashMap.put(key, adView);
 

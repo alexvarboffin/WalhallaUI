@@ -2,22 +2,18 @@ package nl.walhalla.library;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
-import android.util.Log;
 import android.widget.RelativeLayout;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 import java.util.UUID;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class AdMobCase {
-
-
-    private static final String TAG = "@@@";
 
     public static RelativeLayout.LayoutParams attachToTop(int id) {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
@@ -41,12 +37,12 @@ public class AdMobCase {
     }
 
 
-    public static AdView createBanner(Context context, String banner_ad_unit_id) {
+    public static AdView createBanner(Context context, String var0) {
         int id = UUID.randomUUID().hashCode();
         AdView mAdView = new AdView(context);
         //mAdView.setVisibility(View.GONE);
         mAdView.setAdSize(AdSize.BANNER);
-        mAdView.setAdUnitId(banner_ad_unit_id);
+        mAdView.setAdUnitId(var0);
         mAdView.setId(id);
         return mAdView;
     }
@@ -61,21 +57,21 @@ public class AdMobCase {
         mAdView.loadAd(buildAdRequest());
     }
 
-    public static void interstitialBannerRequest(@NonNull InterstitialAd interstitialAd) {
-        Log.i(TAG, "interstitialBannerRequest: ");
-        // Start loading the ad in the background.
-        interstitialAd.setAdListener(new AdListener(interstitialAd));
-        interstitialAd.loadAd(AdMobCase.buildAdRequest());
-    }
+//    public static void interstitialBannerRequest(@NonNull InterstitialAd interstitialAd) {
+//        //Log.i(TAG, "interstitialBannerRequest: ");
+//        // Start loading the ad in the background.
+//        interstitialAd.setAdListener(new AdListener(interstitialAd));
+//        interstitialAd.loadAd(AdMobCase.buildAdRequest());
+//    }
 
     public static AdRequest buildAdRequest() {
         AdRequest.Builder adRequest = new AdRequest.Builder();
         String[] arr = Const.testDevices();
-        if (arr != null) {
-            for (String device : arr) {
-                adRequest.addTestDevice(device);
-            }
-        }
+//        if (arr != null) {
+//            for (String device : arr) {
+//                adRequest.addTestDevice(device);
+//            }
+//        }
         return adRequest.build();
     }
 

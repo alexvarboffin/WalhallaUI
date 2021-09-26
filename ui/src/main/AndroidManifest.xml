@@ -1,2 +1,13 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.walhalla.ui" />
+<manifest package="com.walhalla.ui"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <application>-->
+<!--        <activity android:name=".MoreAppsActivity"-->
+<!--            android:theme="@style/AppTheme.NoActionBar"/>-->
+<!--    </application>-->
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
+</manifest>

@@ -6,10 +6,10 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#ffffff</item>
         <!--        <item name="android:background">@drawable/submit_bg</item>-->
-        <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-smallcaps</item>
+        <item name="fontFamily" tools:ignore="NewApi">sans-serif-smallcaps</item>
 
-        <item name="android:colorButtonNormal">@color/colorButtonNormal</item>
-        <item name="android:colorControlHighlight">@color/colorControlHighlight</item>
+        <item name="colorButtonNormal">@color/colorButtonNormal</item>
+        <item name="colorControlHighlight">@color/colorControlHighlight</item>
 
 <!--        <item name="colorButtonNormal">@drawable/submit_bg</item>-->
 <!--        <item name="colorControlHighlight">@color/colorControlHighlight</item>-->

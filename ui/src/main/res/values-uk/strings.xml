@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <string name="rateme__dialog_first_button_rate">Оцініть наш додаток в Play Store</string>
+    <string name="rateme__dialog_first_thanks">Дякуємо вам за оцінку!</string>
+    <string name="rateme__dialog_feedback_message">Написати розробнику?</string>
+
     <string name="action_exit">Вихід</string>
     <string name="tab_text_1">Додатки</string>
     <string name="action_settings">Налаштування</string>
@@ -16,8 +21,8 @@
 
     <string name="msg_no_notes">data is empty</string>
     <!-- app rate-->
-    <string name="rate_title">Оцініть це додаток!</string>
-    <string name="rate_text">Якщо вам подобається додаток "%1$s", будь ласка, знайдіть хвилинку, щоб оцінити його. \nДякуємо за підтримку!</string>
+    <string name="rateme__dialog_first_title">Оцініть це додаток!</string>
+    <string name="rateme__dialog_first_message">Якщо вам подобається додаток "%1$s", будь ласка, знайдіть хвилинку, щоб оцінити його. \nДякуємо за підтримку!</string>
 
     <string name="action_update">Перевірка оновлень</string>
     <string name="action_privacy_policy">Політика конфіденційності</string>
@@ -38,5 +43,5 @@
     <!--Exit dialog-->
     <string name="exit_dialog_title">Залишити цей додаток?</string>
     <string name="exit_dialog_message">Дійсно закрити цю програму?</string>
-    <string name="def_location">uk</string>
+    <string name="default_location">uk</string>
 </resources>

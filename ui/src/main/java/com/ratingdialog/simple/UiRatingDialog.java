@@ -39,11 +39,13 @@ public class UiRatingDialog {
         dialog.setContentView(R.layout.dialog_rate_ex);
         if (dialog.getWindow() != null) {
             dialog.getWindow()
-                    .setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    .setBackgroundDrawable(new ColorDrawable(
+                            0 //Color.TRANSPARENT
+                    ));
         }
 
         final TextView text = dialog.findViewById(R.id.rate_text);
-        text.setText(context.getString(R.string.rate_text, context.getString(R.string.app_name)));
+        text.setText(context.getString(R.string.rateme__dialog_first_message, context.getString(R.string.app_name)));
 
         ImageView btnCancel = dialog.findViewById(R.id.btnCacncel);
         ratingFace = dialog.findViewById(R.id.ratingFace);

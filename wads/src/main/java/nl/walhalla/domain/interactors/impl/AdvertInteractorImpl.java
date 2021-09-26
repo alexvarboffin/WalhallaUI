@@ -20,9 +20,6 @@ import nl.walhalla.library.AdMobCase;
 public class AdvertInteractorImpl extends AbstractInteractor
         implements AdvertInteractor {
 
-
-    private static final String TAG = "@@@";
-
     private AdvertRepository mAdvertRepository;
 
     public AdvertInteractorImpl(

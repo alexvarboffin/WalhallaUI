@@ -9,22 +9,11 @@
 
     <!--android:layout_above="@+id/webview"-->
 
-    <android.support.recyclerview.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
-
-    <TextView
-        android:id="@+id/empty_notes_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_top_no_notes"
-        app:fontFamily="sans-serif-light"
-        android:text="@string/msg_no_notes"
-        android:textColor="@color/msg_no_notes"
-        android:textSize="@dimen/msg_no_notes" />
 
     <!--<WebView-->
     <!--android:id="@+id/webview"-->
