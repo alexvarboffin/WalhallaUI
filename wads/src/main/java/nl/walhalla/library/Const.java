@@ -10,9 +10,10 @@ public class Const {
     public static String TEST_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712";
     public static String TEST_REWARDED_VIDEO_ID = "ca-app-pub-3940256099942544/5224354917";
 
+
     public static String[] testDevices() {
-            return new String[]{
-                    AdRequest.DEVICE_ID_EMULATOR,
-            };
+        return new String[]{
+                AdRequest.DEVICE_ID_EMULATOR,
+        };
     }
 }

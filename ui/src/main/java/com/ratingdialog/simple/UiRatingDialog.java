@@ -19,13 +19,16 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 public class UiRatingDialog {
-    private Context context;
 
-    private Dialog dialog;
-    private RelativeLayout main;
-    private ImageView ratingFace;
-    private RotationRatingBar rotationratingbar_main;
-    private SharedPreferences preferences;
+    private static final String KEY_ENB = "key_enb";
+
+    private final Context context;
+    private final Dialog dialog;
+    private final RelativeLayout main;
+    private final ImageView ratingFace;
+    private final RotationRatingBar rotationratingbar_main;
+    private final SharedPreferences preferences;
+
     private int defRating = 0;
     private RatingDialogInterFace mRatingDialogListener;
 
@@ -49,7 +52,7 @@ public class UiRatingDialog {
 
         ImageView btnCancel = dialog.findViewById(R.id.btnCacncel);
         ratingFace = dialog.findViewById(R.id.ratingFace);
-        main = dialog.findViewById(R.id.main);
+        main = dialog.findViewById(R.id.mainContainer);
         rotationratingbar_main = dialog.findViewById(R.id.rotationratingbar_main);
         TextView btnSubmit = dialog.findViewById(R.id.ok);
         dialog.setOnDismissListener(dialogInterface -> {
@@ -106,7 +109,7 @@ public class UiRatingDialog {
     }
 
     public void showDialog() {
-        boolean isEnable = preferences.getBoolean("enb", true);
+        boolean isEnable = preferences.getBoolean(KEY_ENB, true);
         if (isEnable) {
             dialog.show();
             rotationratingbar_main.clearAnimation();
@@ -140,11 +143,11 @@ public class UiRatingDialog {
 
 
     public void setEnable(boolean isEnable) {
-        preferences.edit().putBoolean("enb", isEnable).apply();
+        preferences.edit().putBoolean(KEY_ENB, isEnable).apply();
     }
 
     public boolean getEnable() {
-        return preferences.getBoolean("enb", true);
+        return preferences.getBoolean(KEY_ENB, true);
     }
 
     private void setRatingFace(boolean isTrue) {

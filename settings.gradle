@@ -1,3 +1,4 @@
-include ':app', ':wads', ':ui'
-include ':threader'
-project(':threader').projectDir = new File('../multithreader\\threader\\')
+include ':app', ':ui'
+//, ':wads'
+//include ':threader'
+//project(':threader').projectDir = new File('../multithreader\\threader\\')

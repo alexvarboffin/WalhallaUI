@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/walhalla/sdk/android/ui/app/src/main/res/drawable/ic_bg.xml" value="0.1" />
         <entry key="..\:/walhalla/sdk/android/ui/app/src/main/res/drawable/ic_share_black_24dp.xml" value="0.1" />
+        <entry key="..\:/walhalla/sdk/android/ui/app/src/main/res/layout/activity_scrolling.xml" value="0.1" />
+        <entry key="..\:/walhalla/sdk/android/ui/app/src/main/res/layout/content_scrolling.xml" value="0.1" />
         <entry key="..\:/walhalla/sdk/android/ui/app/src/main/res/menu/main.xml" value="0.1" />
       </map>
     </option>

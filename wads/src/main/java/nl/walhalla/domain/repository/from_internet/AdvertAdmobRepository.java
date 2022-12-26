@@ -84,7 +84,7 @@ public class AdvertAdmobRepository
     private List<InterstitialAd> mInterstitialAdList;
 
 
-    private static final String TAG = "@@@";
+    private static final String TAG = "@@@@";
 
     private volatile static int position = -1;
 

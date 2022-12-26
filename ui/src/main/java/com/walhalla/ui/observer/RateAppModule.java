@@ -1,21 +1,28 @@
 package com.walhalla.ui.observer;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.preference.PreferenceManager;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 
 import com.androidsx.rateme.RateMeDialog;
 
 
 import com.ratingdialog.simple.UiRatingDialog;
+import com.walhalla.core.SharedPref;
 import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.Module_U;
@@ -24,7 +31,7 @@ import com.walhalla.ui.R;
 
 
 public class RateAppModule implements SimpleModule,
-        LifecycleObserver {
+        DefaultLifecycleObserver {
 
     private static final boolean DEBUG = BuildConfig.DEBUG;
     private static final String _DIALOG_TAG = "plain-dialog";
@@ -44,9 +51,8 @@ public class RateAppModule implements SimpleModule,
         }
     };
 
-    private static final String KEY_RATED = "rate_not_show_again_a";
-    private static final String KEY_RELOADED = "rate_launch_count_a";
-    private static final String KEY_RATE_TIMEOUT = "rate_rate_timeout_a";
+
+    private static final String KEY_RATE_TIMEOUT = "rate_rate_timeout";
 
     private static final double DAYS_UNTIL_PROMPT = 1;
 
@@ -57,12 +63,12 @@ public class RateAppModule implements SimpleModule,
     private static final Long LEVEL_3 = ONE_MINUTE * 180;
 
     private final AppCompatActivity compatActivity;
-    private final SharedPreferences mSharedPreferences;
+    private final SharedPref var1;
 
     private int launch_count;
     private final int LAUNCHES_UNTIL_PROMPT = 0;
 
-    private static final String DATE_FIRST_LAUNCH = "DATE_FIRST_LAUNCH_";
+
     private boolean isRun;
 
     private boolean new_rate_module = true;
@@ -71,8 +77,8 @@ public class RateAppModule implements SimpleModule,
     //(LEVEL_1/*DAYS_UNTIL_PROMPT * 24 * 60 */)
     public RateAppModule(AppCompatActivity context) {
         compatActivity = context;
-        this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        this.launch_count = appReloadedCount();
+        this.var1 = new SharedPref(context);
+        this.launch_count = this.var1.appResumeCount();
     }
 
 
@@ -84,48 +90,47 @@ public class RateAppModule implements SimpleModule,
 //    }
 
 
-    //UPDATED 09.09.21
+    //UPDATED 06.08.22
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    private void onStop() {
+    @Override
+    public void onStop(@NonNull LifecycleOwner owner) {
 
         //if (dialog != null) { dialog.dismiss(); dialog = null; }
-        Fragment prev = compatActivity.getSupportFragmentManager().findFragmentByTag(_DIALOG_TAG);
-        if (prev != null) {
-            DialogFragment df = (DialogFragment) prev;
-            df.dismiss();
-            DLog.d("@@@@@@@@@@@@@@");
+        if (compatActivity != null) {
+            Fragment prev = compatActivity.getSupportFragmentManager().findFragmentByTag(_DIALOG_TAG);
+            if (prev != null) {
+                DialogFragment df = (DialogFragment) prev;
+                df.dismiss();
+            }
         }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    private void onPause() {
+    @Override
+    public void onPause(@NonNull LifecycleOwner owner) {
         handler.removeCallbacks(runnable);
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    private void onResume() {
+    @Override
+    public void onResume(@NonNull LifecycleOwner owner) {
+        makeOnResume();
+    }
 
-        if ((!appRated()) && (launch_count >= LAUNCHES_UNTIL_PROMPT)) {
-
-            if (DEBUG) {
-                DLog.d("Rated? - " + appRated()
-                        + " " + launch_count + "/" + LAUNCHES_UNTIL_PROMPT
-                        + " " + mSharedPreferences.getLong(DATE_FIRST_LAUNCH, 0));
-            }
+    private void makeOnResume() {
+        DLog.d("@@@");
+        if ((!var1.appRated()) && (launch_count >= LAUNCHES_UNTIL_PROMPT)) {
 
             // Get date of first launch
-            long date_firstLaunch = mSharedPreferences.getLong(DATE_FIRST_LAUNCH, 0);
+            long date_firstLaunch = var1.date_firstLaunch();
 
             //Set delay level
 
 
             if (date_firstLaunch == 0) {
                 date_firstLaunch = System.currentTimeMillis();
-                mSharedPreferences.edit().putLong(DATE_FIRST_LAUNCH, date_firstLaunch).apply();
+                var1.date_firstLaunch(date_firstLaunch);
             }
-
-            if (validate(date_firstLaunch, rateLevelTimeout(mSharedPreferences))) {
+            SharedPreferences var0 = PreferenceManager.getDefaultSharedPreferences(compatActivity);
+            if (validate(date_firstLaunch, rateLevelTimeout(var1, var0))) {
 //                AlertDialog dialog = new RateMeDialog(activity, this).create();
 //                dialog.show();
                 if (!isRun) {
@@ -137,7 +142,6 @@ public class RateAppModule implements SimpleModule,
 
         //testLaunch();
     }
-
 
     private boolean validate(Long date_firstLaunch, Long delay) {
 //        if (DEBUG) {
@@ -155,7 +159,7 @@ public class RateAppModule implements SimpleModule,
     public void launchIfNotRated() {
         launch_count = LAUNCHES_UNTIL_PROMPT;
         //appRated(false);
-        onResume();
+        makeOnResume();
     }
 
     public void testLaunch() {
@@ -194,7 +198,7 @@ public class RateAppModule implements SimpleModule,
 //                            Task<Void> flow = manager.launchReviewFlow(compatActivity, reviewInfo);
 //                            flow.addOnCompleteListener(task0 -> {
 //                                if(task0.isSuccessful()){
-//                                    DLog.d("@@@@@@@@@@@");
+//                                    DLog.d("@@@");
 //                                }
 //                            });
 //                        } else {
@@ -217,37 +221,22 @@ public class RateAppModule implements SimpleModule,
         dialog.showDialog();
     }
 
-    /**
-     * Getter and setter
-     *
-     * @param appReloaded
-     */
-    private void appReloadedCount(int appReloaded) {
-        mSharedPreferences.edit().putInt(KEY_RELOADED, appReloaded).apply();
-    }
-
-    private int appReloadedCount() {
-        return mSharedPreferences.getInt(KEY_RELOADED, 0);
-    }
-
 
     public static void appRated(Context context, boolean setOrReset) {
-        SharedPreferences var0 = PreferenceManager.getDefaultSharedPreferences(context);
-        var0.edit().putBoolean(KEY_RATED, setOrReset).apply();
+        SharedPreferences var1 = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPref var0 = new SharedPref(context);
+        var0.appRated(setOrReset);
         if (!setOrReset) {
             //New time
-            var0
+            var0.date_firstLaunch(System.currentTimeMillis());
+            var1
                     .edit()
-                    .putLong(DATE_FIRST_LAUNCH, System.currentTimeMillis())
-                    .apply();
-            var0
-                    .edit()
-                    .putLong(KEY_RATE_TIMEOUT, rateLevelTimeout(var0))
+                    .putLong(KEY_RATE_TIMEOUT, rateLevelTimeout(var0, var1))
                     .apply();
         }
     }
 
-    private static Long rateLevelTimeout(SharedPreferences var0) {
+    private static Long rateLevelTimeout(SharedPref var1, SharedPreferences var0) {
         long RATE_TIMEOUT = var0.getLong(KEY_RATE_TIMEOUT, 0);
         if (RATE_TIMEOUT == 0) {
             return LEVEL_1;
@@ -256,27 +245,24 @@ public class RateAppModule implements SimpleModule,
         } else if (RATE_TIMEOUT == LEVEL_2) {
             return LEVEL_3;
         } else {
-            var0.edit().putBoolean(KEY_RATED, true).apply();
+            var1.appRated(true);
             return LEVEL_3;
         }
     }
 
-    private boolean appRated() {
-        return mSharedPreferences.getBoolean(KEY_RATED, false);
-    }
 
     public void appReloadedHandler() {
         if (launch_count < LAUNCHES_UNTIL_PROMPT + 1) { // Save reloads num
             ++launch_count;
-            appReloadedCount(launch_count);
+            var1.appResumeCount(launch_count);
         }
     }
 
+    //reset all
     public void launchNow() {
-        mSharedPreferences.edit()
-                .putBoolean(KEY_RATED, false)
-                .putLong(DATE_FIRST_LAUNCH, -999).apply();
+        var1.appRated(false);
+        var1.date_firstLaunch(-999);
         launch_count = 99999;
-        onResume();
+        makeOnResume();
     }
 }

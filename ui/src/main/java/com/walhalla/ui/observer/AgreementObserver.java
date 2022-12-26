@@ -2,27 +2,30 @@ package com.walhalla.ui.observer;
 
 import android.content.SharedPreferences;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.preference.PreferenceManager;
 
+import com.walhalla.core.SharedPref;
 import com.walhalla.ui.R;
 
 
 public class AgreementObserver extends AlertDialog.Builder
-        implements LifecycleObserver {
+        implements DefaultLifecycleObserver {
 
-    private static final String KEY_AGREE = "license_ok";
-    private final SharedPreferences mSharedPreferences;
 
+    private final SharedPref var1;
 
     public AgreementObserver(final AppCompatActivity activity, String url) {
         super(activity);
 
-        this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+       var1=new SharedPref(activity);
 
         setTitle(activity.getString(R.string.app_name));
         //setIcon(R.mipmap.ic_launcher_round);
@@ -30,7 +33,7 @@ public class AgreementObserver extends AlertDialog.Builder
         setMessage(activity.getString(R.string.agreement_text)).setCancelable(false)
                 .setPositiveButton(activity.getString(android.R.string.yes),
                         (dialog, id) -> {
-                            licenseAgree(true);
+                            var1.licenseAgree(true);
                             dialog.cancel();
                         })
 
@@ -47,18 +50,9 @@ public class AgreementObserver extends AlertDialog.Builder
         this.create();
     }
 
-    public boolean licenseAgree() {
-        return mSharedPreferences.getBoolean(KEY_AGREE, false);
-    }
-
-
-    public void licenseAgree(boolean b) {
-        mSharedPreferences.edit().putBoolean(KEY_AGREE, b).apply();
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    private void onCreate() {
-        if (!licenseAgree()) {
+    @Override
+    public void onCreate(@NonNull LifecycleOwner owner) {
+        if (!var1.licenseAgree()) {
             this.show();
         }
     }

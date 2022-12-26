@@ -1,6 +1,4 @@
 package nl.walhalla.library;
-
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -11,13 +9,14 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.walhalla.library.BuildConfig;
+import com.walhalla.ui.DLog;
 
 import static android.accounts.AccountManager.PACKAGE_NAME_KEY_LEGACY_VISIBLE;
 
 
 public class AdListener extends com.google.android.gms.ads.AdListener {
 
-    private static final String TAG = "@@@";
+
     private static final boolean DEBUG = BuildConfig.DEBUG;
     private final Object mObject;
 
@@ -33,10 +32,10 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
 
         if (DEBUG) {
             if (mObject instanceof AdView) {
-                Log.d(TAG, "onAdClosed: " + ((AdView) mObject).getAdUnitId());
+                DLog.d("onAdClosed: " + ((AdView) mObject).getAdUnitId());
             } else if (mObject instanceof InterstitialAd) {
                 InterstitialAd interstitialAd = (InterstitialAd) mObject;
-                Log.d(TAG, "onAdClosed: " + interstitialAd.getAdUnitId());
+                DLog.d("onAdClosed: " + interstitialAd.getAdUnitId());
 
                 // Load the next interstitial.
                 //interstitialAd.loadAd(AdMobCase.buildAdRequest());
@@ -46,14 +45,13 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
     }
 
 
-
     @Override
     public void onAdFailedToLoad(@NonNull LoadAdError errorCode) {
         super.onAdFailedToLoad(errorCode);
         if (DEBUG) {
 
             String errorReason = "";
-            switch(errorCode.getCode()) {
+            switch (errorCode.getCode()) {
                 case AdRequest.ERROR_CODE_INTERNAL_ERROR:
                     errorReason = "Internal error";
                     break;
@@ -63,9 +61,9 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
                 case AdRequest.ERROR_CODE_NETWORK_ERROR:
                     errorReason = "Network Error";
                     break;
-                    /*
-                    * The ad request was successful, but no ad was returned due to lack of ad inventory.
-                    * */
+                /*
+                 * The ad request was successful, but no ad was returned due to lack of ad inventory.
+                 * */
                 case AdRequest.ERROR_CODE_NO_FILL:
                     errorReason = "No fill";
 
@@ -76,7 +74,7 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
             }
 
             if (mObject instanceof AdView) {
-                Log.d(TAG, String.format("Ad %s failed to load with error %s.", ((AdView) mObject).getAdUnitId(), errorReason));
+                DLog.d(String.format("Ad %s failed to load with error %s.", ((AdView) mObject).getAdUnitId(), errorReason));
 
                 if (errorCode.getCode() == AdRequest.ERROR_CODE_NETWORK_ERROR) {
                     if (((AdView) mObject).getVisibility() == View.VISIBLE) {
@@ -84,7 +82,9 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
                     }
                 }
             } else if (mObject instanceof InterstitialAd) {
-                Log.d(TAG, String.format("Ad %s failed to load with error %s.", ((InterstitialAd) mObject).getAdUnitId(), errorReason));
+                if (DEBUG) {
+                    DLog.d(String.format("Ad %s failed to load with error %s.", ((InterstitialAd) mObject).getAdUnitId(), errorReason));
+                }
             }
         }
     }
@@ -94,9 +94,9 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
     public void onAdOpened() {
         super.onAdOpened();
         if (mObject instanceof AdView) {
-            Log.d(TAG, "onAdOpened: " + ((AdView) mObject).getAdUnitId());
+            DLog.d("onAdOpened: " + ((AdView) mObject).getAdUnitId());
         } else if (mObject instanceof InterstitialAd) {
-            Log.d(TAG, "onAdOpened: " + ((InterstitialAd) mObject).getAdUnitId());
+            DLog.d("onAdOpened: " + ((InterstitialAd) mObject).getAdUnitId());
         }
     }
 
@@ -104,9 +104,9 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
     public void onAdLeftApplication() {
         //super.onAdLeftApplication();
         if (mObject instanceof AdView) {
-            Log.d(TAG, "onAdLeftApplication: " + ((AdView) mObject).getAdUnitId());
+            DLog.d("onAdLeftApplication: " + ((AdView) mObject).getAdUnitId());
         } else if (mObject instanceof InterstitialAd) {
-            Log.d(TAG, "onAdLeftApplication: " + ((InterstitialAd) mObject).getAdUnitId());
+            DLog.d("onAdLeftApplication: " + ((InterstitialAd) mObject).getAdUnitId());
         }
     }
 
@@ -115,12 +115,14 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
         super.onAdLoaded();
 
         if (mObject instanceof AdView) {
-            Log.d(TAG, "onAdLoaded: " + ((AdView) mObject).getAdUnitId());
+            DLog.d("onAdLoaded: " + ((AdView) mObject).getAdUnitId());
             if (((AdView) mObject).getVisibility() == View.GONE) {
                 ((AdView) mObject).setVisibility(View.VISIBLE);
             }
         } else if (mObject instanceof InterstitialAd) {
-            Log.d(TAG, "onAdLoaded: " + ((InterstitialAd) mObject).getAdUnitId());
+            if (DEBUG) {
+                DLog.d("onAdLoaded: " + ((InterstitialAd) mObject).getAdUnitId());
+            }
         }
     }
 
@@ -128,10 +130,12 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
     public void onAdClicked() {
         super.onAdClicked();
 
-        if (mObject instanceof AdView) {
-            Log.d(TAG, "onAdClicked: " + ((AdView) mObject).getAdUnitId());
-        } else if (mObject instanceof InterstitialAd) {
-            Log.d(TAG, "onAdClicked: " + ((InterstitialAd) mObject).getAdUnitId());
+        if (DEBUG) {
+            if (mObject instanceof AdView) {
+                DLog.d("onAdClicked: " + ((AdView) mObject).getAdUnitId());
+            } else if (mObject instanceof InterstitialAd) {
+                DLog.d("onAdClicked: " + ((InterstitialAd) mObject).getAdUnitId());
+            }
         }
     }
 
@@ -139,10 +143,12 @@ public class AdListener extends com.google.android.gms.ads.AdListener {
     public void onAdImpression() {
         super.onAdImpression();
 
-        if (mObject instanceof AdView) {
-            Log.d(TAG, "onAdImpression: " + ((AdView) mObject).getAdUnitId());
-        } else if (mObject instanceof InterstitialAd) {
-            Log.d(TAG, "onAdImpression: " + ((InterstitialAd) mObject).getAdUnitId());
+        if (DEBUG) {
+            if (mObject instanceof AdView) {
+                DLog.d("onAdImpression: " + ((AdView) mObject).getAdUnitId());
+            } else if (mObject instanceof InterstitialAd) {
+                DLog.d("onAdImpression: " + ((InterstitialAd) mObject).getAdUnitId());
+            }
         }
     }
 }

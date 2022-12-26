@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="Base.V19.Theme.WalhallaDynamics" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Base.Theme.WalhallaDynamics" parent="Base.V19.Theme.WalhallaDynamics" />
+
+    <style name="AppTheme" parent="Base.Theme.WalhallaDynamics">
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">
+            @color/colorControlNormal
+        </item>
+    </style>
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorControlNormal">@color/colorControlNormal</item>
-        <item name="colorControlNormal" tools:targetApi="lollipop">@color/colorControlNormal</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">
+            @color/colorControlNormal
+        </item>
     </style>
 
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -23,15 +41,6 @@
         <item name="colorControlHighlight">@color/colorControlHighlight</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="colorControlNormal">@color/colorControlNormal</item>
-        <item name="colorControlNormal" tools:targetApi="lollipop">@color/colorControlNormal</item>
-    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
