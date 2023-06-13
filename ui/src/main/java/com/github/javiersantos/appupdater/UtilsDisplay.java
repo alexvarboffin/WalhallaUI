@@ -81,7 +81,7 @@ public class UtilsDisplay {
 //
 //        PendingIntent intent = PendingIntent.getActivity(context,
 //                0, context.getPackageManager()
-//                        .getLaunchIntentForPackage(UtilsLibrary
+//                        .getLaunchIntentForPackage_DEPRECATED(UtilsLibrary
 //                                .getAppPackageName(context)), PendingIntent.FLAG-CANCEL-CURRENT);
 //        PendingIntent pendingIntentUpdate = PendingIntent.getActivity(context, 0, UtilsLibrary.intentToUpdate(context, updateFrom, apk), PendingIntent.FLAG-CANCEL-CURRENT);
 //
@@ -98,7 +98,7 @@ public class UtilsDisplay {
 //        PendingIntent contentIntent = PendingIntent.getActivity(
 //                context, 0,
 //                context.getPackageManager()
-//                        .getLaunchIntentForPackage(UtilsLibrary.getAppPackageName(context)), PendingIntent.FLAG-CANCEL-CURRENT);
+//                        .getLaunchIntentForPackage_DEPRECATED(UtilsLibrary.getAppPackageName(context)), PendingIntent.FLAG-CANCEL-CURRENT);
 //
 //        NotificationCompat.Builder builder = getBaseNotification(context, contentIntent, title, content, smallIconResourceId)
 //                .setAutoCancel(true);

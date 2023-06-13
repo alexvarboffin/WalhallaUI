@@ -12,10 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import com.UUtils;
+import com.walhalla.core.PackageUtils;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.R;
 
@@ -82,6 +83,7 @@ public class FeedbackDialog extends DialogFragment {
         // Empty constructor, required for exo_controls_pause/resume
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -132,7 +134,7 @@ public class FeedbackDialog extends DialogFragment {
         final String subject = getResources().getString(R.string.rateme__email_subject, appName);
 
         try {
-            if (UUtils.isPackageInstalled(getContext(), GMAIL_PACKAGE_NAME)) {
+            if (PackageUtils.isPackageInstalled(getContext(), GMAIL_PACKAGE_NAME)) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("plain/text");
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getArguments().getString(EXTRA_EMAIL)});

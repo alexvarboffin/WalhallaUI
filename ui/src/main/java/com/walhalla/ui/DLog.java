@@ -66,7 +66,7 @@ public class DLog {
         //    sb.append("#");
         //}
 
-        return "█ " +
+        return "\uD83D\uDE80 " +
                 ste.getFileName().replace(".java", "") +
                 "::" +
                 ste.getMethodName() +
@@ -124,6 +124,7 @@ public class DLog {
 //            IllegalStateException e1 = (IllegalStateException) e;
 //        }
         if (DEBUG) {
+            //Log.d(TAG, e.getClass().getSimpleName());
             Log.d(TAG, buildLogMsg(e.getClass().getSimpleName()
                     + " @@@ " + (e.getMessage() == null ? "NULL" :
                     (

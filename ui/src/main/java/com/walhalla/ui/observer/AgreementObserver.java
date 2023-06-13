@@ -6,18 +6,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.Lifecycle;
+
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.OnLifecycleEvent;
+
 import androidx.preference.PreferenceManager;
 
 import com.walhalla.core.SharedPref;
 import com.walhalla.ui.R;
 
 
-public class AgreementObserver extends AlertDialog.Builder
-        implements DefaultLifecycleObserver {
+public class AgreementObserver extends AlertDialog.Builder implements DefaultLifecycleObserver {
 
 
     private final SharedPref var1;

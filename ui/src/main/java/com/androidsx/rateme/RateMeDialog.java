@@ -16,19 +16,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
-import com.UConst;
+import com.walhalla.core.UConst;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.R;
+import com.walhalla.ui.observer.DefaultOnRatingListener;
 import com.walhalla.ui.observer.RateAppModule;
 
-import static com.UConst.MARKET_CONSTANT;
+import static com.walhalla.core.UConst.MARKET_CONSTANT;
 
 
 public class RateMeDialog extends DialogFragment {
@@ -36,6 +37,7 @@ public class RateMeDialog extends DialogFragment {
     private final static String RESOURCE_NAME = "titleDivider";
     private final static String DEFAULT_TYPE_RESOURCE = "id";
     private final static String DEFAULT_PACKAGE = "android";
+    private static final double RATING_LIMIT = 5.0;
 
     // Views
     private View mView;
@@ -70,6 +72,7 @@ public class RateMeDialog extends DialogFragment {
 
     private boolean new_rate_module = true;
     private Activity activity;
+
 
     public RateMeDialog() {
         // Empty constructor, required for exo_controls_pause/resume
@@ -128,7 +131,8 @@ public class RateMeDialog extends DialogFragment {
 
         stars.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
         ratingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
-            if (rating >= 4.0) {
+            //DLog.d("@@@" + rating + " " + fromUser);
+            if (rating >= RATING_LIMIT) {
                 rateMe.setVisibility(View.VISIBLE);
                 noThanks.setVisibility(View.GONE);
             } else if (rating > 0.0) {
@@ -167,7 +171,7 @@ public class RateMeDialog extends DialogFragment {
 
             });
         } catch (Exception e) {
-            DLog.d("Error showing share button " + e);
+            DLog.handleException(e);
             dismiss();
         }
 
@@ -310,10 +314,6 @@ public class RateMeDialog extends DialogFragment {
 //            } else {
 //                rateApp0();
 //            }
-            rateApp0();
-
-            DLog.d("Yes: open the Google Play Store");
-            RateMeDialogTimer.setOptOut(getActivity(), true);
             onRatingListener.onRating(OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY, ratingBar.getRating());
             dismiss();
         });
@@ -345,17 +345,6 @@ public class RateMeDialog extends DialogFragment {
             }
             RateMeDialogTimer.setOptOut(getActivity(), true);
         });
-    }
-
-    //not attached to Activity
-    private void rateApp0() {
-        try {
-            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MARKET_CONSTANT + appPackageName)));
-        } catch (android.content.ActivityNotFoundException anfe) {
-            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(UConst.GOOGLE_PLAY_CONSTANT + appPackageName)));
-        } catch (Exception e) {
-            DLog.handleException(e);
-        }
     }
 
     private Intent shareApp(String appPackageName) {

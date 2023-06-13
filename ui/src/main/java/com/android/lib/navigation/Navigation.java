@@ -9,7 +9,7 @@ import com.walhalla.ui.DLog;
 import com.walhalla.ui.R;
 
 public class Navigation {
-    
+
     private final AppCompatActivity activity;
     private static final String F_HOME = "home";
 
@@ -17,14 +17,40 @@ public class Navigation {
         this.activity = activity;
     }
 
-//    public void replaceFragment(Fragment fragment) {
+    //    public void replaceFragment(Fragment fragment) {
 //        FragmentManager fragmentManager = activity.getSupportFragmentManager();
 //        fragmentManager.beginTransaction()
 //                .add(org.apache.cordova.R.id.container, fragment)
 //                .commit();
 //    }
 
-    public void replaceFragment(Fragment fragment) {
+//    public void replaceFragment(Fragment fragment, int container) {
+//        replaceFragment(fragment, R.id.container);
+//    }
+
+    /**
+     *
+     *          CLEAR STACK
+     */
+    public void replaceWebFragment(Fragment fragment, int container) {
+        //Clear back stack
+        FragmentManager fm = activity.getSupportFragmentManager();
+        //final int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (!fm.isDestroyed()) {
+            fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            FragmentTransaction fr = fm.beginTransaction();
+            fr.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+            fr.replace(container, fragment, fragment.getClass().getSimpleName());
+            fr.commitAllowingStateLoss();
+        }
+    }
+
+
+    /**
+     *
+     *          NOT CLEAR STACK
+     */
+    public void replaceFragment(Fragment fragment, int container) {
         FragmentManager fm = activity.getSupportFragmentManager();
         try {
             String fragmentTag = fragment.getClass().getName();
@@ -39,7 +65,7 @@ public class Navigation {
 //                ftx.setCustomAnimations(R.anim.slide_in_right,
 //                        R.anim.slide_out_left, R.anim.slide_in_left,
 //                        R.anim.slide_out_right);
-                ftx.replace(R.id.viewPager2, fragment);
+                ftx.replace(container, fragment);
                 ftx.commit();
             }
         } catch (IllegalStateException e) {

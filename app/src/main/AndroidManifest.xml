@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.walhalla.pcleaner">
+    package="kgbook.ru">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
-        android:name=".App"
+        android:name="kgbook.ru.pcleaner.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +28,7 @@
         <!--            android:label="@string/title_activity_scrolling"-->
         <!--            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
-            android:name=".activity.Main"
+            android:name="kgbook.ru.pcleaner.qiblacompass.main.QiblaCompassActivity"
             android:exported="true"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar">
@@ -29,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Main2Activity"
+            android:name="kgbook.ru.activity.Main2Activity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Launcher"
@@ -40,6 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="kgbook.ru.activity.inAppReview.InAppReview"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true"
+            android:label="@string/app_name"
+            tools:ignore="RedundantLabel" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

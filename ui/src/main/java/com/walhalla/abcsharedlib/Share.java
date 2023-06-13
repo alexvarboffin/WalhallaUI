@@ -5,12 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
 
 import androidx.core.content.FileProvider;
 
-import com.UConst;
+import com.walhalla.core.UConst;
 import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.R;
@@ -22,6 +20,8 @@ public class Share {
 
     public static final String KEY_FILE_PROVIDER = ".fileprovider";
     public static final String email = BuildConfig.DEBUG ? "alexvarboffin.abba11@blogger.com" : "";
+
+    //@@@@@@@@@@ ПРИ ШАРЕ ФАЙЛА С СД_КАРД, ПИНТЕРЕСТ НЕ ПИШЕТ ДЕСКРИПТИОН
 
     public static void shareFile(Context context, String packageName0, String description, File file) {
 

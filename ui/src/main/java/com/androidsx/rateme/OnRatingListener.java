@@ -45,33 +45,3 @@ public interface OnRatingListener extends Parcelable {
      */
     void onRating(RatingAction action, float rating);
 }
-
-class DefaultOnRatingListener implements OnRatingListener {
-    public static final String TAG = DefaultOnRatingListener.class.getSimpleName();
-
-    @Override
-    public void onRating(RatingAction action, float rating) {
-        Log.d(TAG, "Rating " + rating + ", after " + action);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        // Nothing to write
-    }
-
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public DefaultOnRatingListener createFromParcel(Parcel in) {
-            //return new DefaultOnRatingListener(in);
-            return new DefaultOnRatingListener();
-        }
-
-        public DefaultOnRatingListener[] newArray(int size) {
-            return new DefaultOnRatingListener[size];
-        }
-    };
-}

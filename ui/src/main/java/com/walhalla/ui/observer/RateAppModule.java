@@ -1,28 +1,37 @@
 package com.walhalla.ui.observer;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
+
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.OnLifecycleEvent;
+
 import androidx.preference.PreferenceManager;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
+import android.net.Uri;
 import android.os.Handler;
+import android.widget.Toast;
 
+import com.androidsx.rateme.OnRatingListener;
 import com.androidsx.rateme.RateMeDialog;
 
 
+import com.androidsx.rateme.RateMeDialogTimer;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.OnFailureListener;
+import com.google.android.play.core.tasks.OnSuccessListener;
+import com.google.android.play.core.tasks.Task;
 import com.ratingdialog.simple.UiRatingDialog;
 import com.walhalla.core.SharedPref;
+import com.walhalla.core.UConst;
 import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.Module_U;
@@ -45,12 +54,21 @@ public class RateAppModule implements SimpleModule,
                 DialogFragment builder = new RateMeDialog.Builder(
                         compatActivity.getPackageName(), compatActivity.getString(R.string.app_name))
                         .enableFeedbackByEmail(compatActivity.getString(R.string.publisher_feedback_email))
+                        //.showAppIcon(R.mipmap.ic_launcher)
+                        .setOnRatingListener(new DefaultOnRatingListener() {
+                            @Override
+                            public void onRating(RatingAction action, float rating) {
+                                super.onRating(action, rating);
+                                if (OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY == action) {
+                                    rateApp00();
+                                }
+                            }
+                        })
                         .build();
                 builder.show(compatActivity.getSupportFragmentManager(), _DIALOG_TAG);
             }
         }
     };
-
 
     private static final String KEY_RATE_TIMEOUT = "rate_rate_timeout";
 
@@ -58,9 +76,9 @@ public class RateAppModule implements SimpleModule,
 
     private static final Long ONE_MINUTE = 60 * 1000L;
 
-    private static final Long LEVEL_1 = ONE_MINUTE * 35;
-    private static final Long LEVEL_2 = ONE_MINUTE * 65;
-    private static final Long LEVEL_3 = ONE_MINUTE * 180;
+    private static final Long LEVEL_1 = ONE_MINUTE * 45;
+    private static final Long LEVEL_2 = ONE_MINUTE * 80;
+    private static final Long LEVEL_3 = ONE_MINUTE * 210;
 
     private final AppCompatActivity compatActivity;
     private final SharedPref var1;
@@ -72,15 +90,15 @@ public class RateAppModule implements SimpleModule,
     private boolean isRun;
 
     private boolean new_rate_module = true;
-
+    private ReviewManager reviewManager;
 
     //(LEVEL_1/*DAYS_UNTIL_PROMPT * 24 * 60 */)
     public RateAppModule(AppCompatActivity context) {
         compatActivity = context;
         this.var1 = new SharedPref(context);
         this.launch_count = this.var1.appResumeCount();
+        this.reviewManager = ReviewManagerFactory.create(context);// Инициализируем ReviewManager
     }
-
 
 //    public RateAppModule(Context context, int lap,) {
 //        LAUNCHES_UNTIL_PROMPT = lap
@@ -116,9 +134,9 @@ public class RateAppModule implements SimpleModule,
     }
 
     private void makeOnResume() {
-        DLog.d("@@@");
-        if ((!var1.appRated()) && (launch_count >= LAUNCHES_UNTIL_PROMPT)) {
 
+        if ((!var1.appRated()) && (launch_count >= LAUNCHES_UNTIL_PROMPT)) {
+            DLog.d("@@@" + var1.appRated() + " " + launch_count + " " + LAUNCHES_UNTIL_PROMPT);
             // Get date of first launch
             long date_firstLaunch = var1.date_firstLaunch();
 
@@ -264,5 +282,73 @@ public class RateAppModule implements SimpleModule,
         var1.date_firstLaunch(-999);
         launch_count = 99999;
         makeOnResume();
+    }
+
+
+    private void openRateDefault() {
+        try {
+            Uri uri = Uri.parse(UConst.MARKET_CONSTANT + compatActivity.getPackageName());
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            compatActivity.getApplicationContext().startActivity(intent);
+            RateMeDialogTimer.setOptOut(compatActivity, true);
+        } catch (android.content.ActivityNotFoundException ignored) {
+        }
+    }
+
+    private void rateApp00() {
+        try {
+            requestAppReview();
+        } catch (Exception e) {
+            DLog.handleException(e);
+        }
+    }
+
+    private void requestAppReview() {
+        Task<ReviewInfo> request = reviewManager.requestReviewFlow();
+        request.addOnCompleteListener(new OnCompleteListener<ReviewInfo>() {
+            @Override
+            public void onComplete(@NonNull Task<ReviewInfo> task) {
+                if (task.isSuccessful()) {
+                    // Получаем ReviewInfo
+                    ReviewInfo reviewInfo = task.getResult();
+                    if(reviewInfo.toString().contains("isNoOp=true")){
+                        openRateDefault();
+                    }else {
+                        //isNoOp=false
+                        // Запускаем диалоговое окно оценки
+                        Task<Void> flow = reviewManager.launchReviewFlow(compatActivity, reviewInfo);
+                        flow.addOnCompleteListener(reviewFlowTask -> {
+                            // Обработка завершения процесса оценки
+                            if (reviewFlowTask.isSuccessful()) {
+                                //null = reviewFlowTask.getResult()
+                                DLog.d("Оценка была успешно поставлена: " + reviewFlowTask.getResult());
+                                RateMeDialogTimer.setOptOut(compatActivity, true);
+                            } else {
+                                // Оценка не была поставлена
+                                //Toast.makeText(compatActivity, "Не удалось поставить оценку", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                } else {
+                    // Обработка ошибки при запросе оценки
+                    //Exception exception = task.getException();
+                    openRateDefault();
+                }
+            }
+        });
+//        request.addOnSuccessListener(new OnSuccessListener<ReviewInfo>() {
+//            @Override
+//            public void onSuccess(ReviewInfo reviewInfo) {
+//                DLog.d("<success>" + reviewInfo);
+//            }
+//        });
+//        request.addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(Exception e) {
+//                DLog.d("<failure>" + e.getLocalizedMessage());
+//            }
+//        });
+
     }
 }

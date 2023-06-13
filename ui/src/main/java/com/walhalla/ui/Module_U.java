@@ -15,14 +15,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.UConst;
+import com.walhalla.core.UConst;
 import com.github.javiersantos.appupdater.AppUpdater;
 
 import java.io.ByteArrayInputStream;
 import java.security.cert.CertificateException;
-import java.security.cert.CertificateExpiredException;
 import java.security.cert.CertificateFactory;
-import java.security.cert.CertificateNotYetValidException;
 import java.security.cert.X509Certificate;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,7 +28,7 @@ import java.util.Map;
 
 public class Module_U {
 
-    private static final String PKG_NAME_VENDING = "com.android.vending";
+    public static final String PKG_NAME_VENDING = "com.android.vending";
 
 
     //Show me the magik...
@@ -151,7 +149,9 @@ public class Module_U {
     public static void openMarket(Context context, String packageName) {
         try {
             Uri uri = Uri.parse(UConst.MARKET_CONSTANT + packageName);
-            context.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.getApplicationContext().startActivity(intent);
         } catch (android.content.ActivityNotFoundException anfe) {
             openBrowser(context, UConst.GOOGLE_PLAY_CONSTANT + packageName);
         }
@@ -162,9 +162,9 @@ public class Module_U {
         openMarket(context, packageName);
     }
 
-    public static void openBrowser(Context context, String data) {
+    public static void openBrowser(Context context, String url) {
         try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
@@ -210,13 +210,30 @@ public class Module_U {
         }
     }
 
-    public static void shareText(Context context, String shareBody) {
-        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+    /**
+     * Open in Other app or Cope to buffer
+     *
+     * @param context
+     * @param extra
+     */
+    public static void shareText(Context context, String extra, String chooserTitle) {
+        DLog.d("{share} " + extra);
+        if (chooserTitle == null) {
+            chooserTitle = context.getResources().getString(R.string.app_name);
+        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, extra);
         intent.setType("text/plain");
+
+
+        //intent.putExtra(Intent.EXTRA_EMAIL, "alexvarboffin@gmail.com");//Work only with intent.setType("*/*");
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
-        intent.putExtra("com.pinterest.EXTRA_DESCRIPTION", shareBody);
-        context.startActivity(Intent.createChooser(intent, context.getResources().getString(R.string.app_name)));
+        //intent.setType("*/*");
+
+
+        intent.putExtra("com.pinterest.EXTRA_DESCRIPTION", extra);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(Intent.createChooser(intent, chooserTitle));
     }
 
     public static void shareThisApp(Context context) {

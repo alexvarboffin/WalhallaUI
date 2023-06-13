@@ -185,7 +185,7 @@ public class UtilsLibrary {
     }
 
     private static Update getLatestAppVersionHttp(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        Boolean isAvailable = false;
+        boolean isAvailable = false;
         String source = "";
         OkHttpClient client = new OkHttpClient();
         URL url = getUpdateURL(context, updateFrom, gitHub);
