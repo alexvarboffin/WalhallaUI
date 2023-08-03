@@ -31,12 +31,12 @@ dependencies {
 //        exclude group: 'com.android.support'
 //    }
 
-
 //    implementation "com.google.android.gms:play-services-ads:18.1.1"
-    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+    implementation 'com.google.android.gms:play-services-ads:22.2.0'
+    implementation 'com.google.firebase:firebase-ads:22.2.0'
+
 //        exclude group: 'com.android.support'
 //    }
-    implementation 'com.google.firebase:firebase-ads:22.0.0'
 //+ Native ads
 //    implementation('com.google.firebase:firebase-ads:15.0.1') {
 //        exclude group: 'com.android.support'
@@ -48,6 +48,4 @@ dependencies {
     //    }
     implementation project(':threader')
     implementation project(':ui')
-
-
 }

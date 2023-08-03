@@ -112,7 +112,8 @@ dependencies {
     //implementation 'com.facebook.android:facebook-login:14.1.0'
 
     implementation project(':ui')
-//    implementation project(':wads')
+    implementation project(':promo')
+    //implementation project(':wads')
 
     implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
@@ -125,6 +126,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21"
     implementation 'androidx.multidex:multidex:2.0.1'
+
 
 }
 static def versionCodeDate() {

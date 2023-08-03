@@ -1,0 +1,204 @@
+[
+  {
+    "_q": "ai.meccamedinatv.mekkalive.online",
+    "name": "Makkah Madinalive",
+    "project": "realmakkahmadinalive",
+    "features": "GDPR, onesignal"
+  },
+  {
+    "_q": "ai.qibla.getqibla.muslimhelper.qibladirection.qiblacompas.android",
+    "name": "Quran Companion",
+    "project": "qibla-getqibla-muslimhelper",
+    "features": "GDPR"
+  },
+  {
+    "_q": "com.walhalla.islamicquotes",
+    "name": "Islamic Quotes",
+    "project": "islamicquotes-820d9",
+    "features": "@@"
+  },
+  {
+    "_q": "ai.free.vpn.tweeqoldvpn.getvpn",
+    "name": "vpntweeqold",
+    "project": "vpntweeqold",
+    "features": ""
+  },
+  {
+    "_q": "telegramstickers",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "eysencktemperament",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "ttloader",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "rainbowholes",
+    "project": "",
+    "features": "",
+    "color": "#FB2121"
+  },
+  {
+    "_q": "com.rainbowholes.soytweeqold",
+    "name": "Tweeqold 2",
+    "project": "rainbowholessoytweeqold",
+    "features": "GDPR",
+    "color": "#FB2121"
+  },
+  {
+    "_q": "pillfindel",
+    "name": "Pillfinder",
+    "project": "pillidentifier-dfb05",
+    "features": "GDPR"
+  },
+  {
+    "_q": "whatismyipaddress",
+    "name": "whatismyipaddress",
+    "project": "whatismyipaddress-e16fb",
+    "features": "GDPR"
+  },
+  {
+    "_q": "fwdumper",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "jokebox",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "eysenck_iq_test",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "routerdefaultpasswords",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "fifteenpuzzle",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "appextractor",
+    "project": "",
+    "features": "**GDPR",
+    "privacy_policy": "https://appextractor-540b3.web.app/privacy_policy.html"
+  },
+  {
+    "_q": "smsregclient",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "horoscope",
+    "name": "horoscope",
+    "project": "horoscope-ed30d",
+    "features": ""
+  },
+  {
+    "_q": "ai.horo.astrolife.free.gethoroscope.horoscope",
+    "name": "AstroLife: Гороскопы",
+    "project": "horoscopeastrolife",
+    "features": "***@@@@@@"
+  },
+  {
+    "_q": "audioskazki",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "hdwallpapers",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "mtprotolist",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "pillidentification",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "vibro",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "meccamedina",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "pocketinstructor",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "kidsup",
+    "project": "",
+    "features": ""
+  },
+  {
+    "_q": "qrcode",
+    "project": "",
+    "features": ""
+  },
+  {
+    "name": "Inspire_Faith",
+    "_q": "com.christianquotes.inspirefaith",
+    "project": "inspirefaith-d938e",
+    "color": "#200222",
+    "features": "GDPR"
+  },
+  {
+    "_q": "christianquotes",
+    "project": "",
+    "features": "",
+    "color": "#2962FF"
+  },
+  {
+    "_q": "motivatingquotes",
+    "project": "",
+    "features": "",
+    "color": "#2962FF"
+  },
+  {
+    "_q": "statuses",
+    "project": "",
+    "features": "",
+    "color": "#2962FF"
+  },
+  {
+    "_q": "flirtynotes",
+    "project": "datingphrases",
+    "color": "#2962FF"
+  },
+  {
+    "_q": "toasts",
+    "project": "",
+    "features": "",
+    "color": "#2962FF"
+  },
+  {
+    "_q": "dreambook",
+    "project": "dreambook-39d65"
+  },
+  {
+    "_q": "dreambookinterpretation",
+    "project": "",
+    "features": ""
+  }
+]

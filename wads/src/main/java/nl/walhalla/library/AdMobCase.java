@@ -37,20 +37,20 @@ public class AdMobCase {
     }
 
 
-    public static AdView createBanner(Context context, String var0) {
+    public static AdView createBanner(Context context, String banner_ad_unit_id) {
         int id = UUID.randomUUID().hashCode();
         AdView mAdView = new AdView(context);
         //mAdView.setVisibility(View.GONE);
         mAdView.setAdSize(AdSize.BANNER);
-        mAdView.setAdUnitId(var0);
+        mAdView.setAdUnitId(banner_ad_unit_id);
         mAdView.setId(id);
         return mAdView;
     }
 
 
-    //#########################################################
+    //#########
     //admob
-    //########################################################
+    //########
     public static void interstitialBannerRequest(AdView mAdView) {
         // Start loading the ad in the background.
         mAdView.setAdListener(new AdListener(mAdView));

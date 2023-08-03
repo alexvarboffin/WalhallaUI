@@ -73,11 +73,16 @@
 
     <!--    <string name="file_provider" translatable="false">com.walhalla.luckypunch.provider</string>-->
 
-    <string name="share_default_text" translatable="false">
-                    My EPQ
-                    \nEysenck Personality Questionnaire
-                    \n#EPI #EPQ
-    </string>
+<!--    <string name="share_default_text" translatable="false">-->
+<!--                    My EPQ-->
+<!--                    \nEysenck Personality Questionnaire-->
+<!--                    \n#EPI #EPQ-->
+<!--    </string>-->
+
+      <string name="share_text_default">Hey my friend check out this app</string>
+
+
+
     <string name="appupdater_update_available">New update available!</string>
     <string name="appupdater_update_available_description_dialog">Update %1$s is available to download. By downloading the latest update you will get the latest features, improvements and bug fixes for %2$s.</string>
     <string name="appupdater_update_available_description_dialog_before_release_notes">Update %1$s is available to download.\n\nYou can get these new features:\n%2$s</string>

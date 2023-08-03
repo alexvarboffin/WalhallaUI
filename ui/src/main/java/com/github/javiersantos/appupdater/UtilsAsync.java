@@ -7,6 +7,7 @@ import com.github.javiersantos.appupdater.enums.AppUpdaterError;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.github.javiersantos.appupdater.objects.GitHub;
 import com.github.javiersantos.appupdater.objects.Update;
+import com.walhalla.ui.Module_U;
 
 import java.lang.ref.WeakReference;
 
@@ -38,7 +39,7 @@ class UtilsAsync {
             Context context = contextRef.get();
             if (context == null || listener == null) {
                 cancel(true);
-            } else if (UtilsLibrary.isNetworkAvailable0(context)) {
+            } else if (Module_U.isNetworkAvailable(context)) {
                 if (!fromUtils && !libraryPreferences.getAppUpdaterShow()) {
                     cancel(true);
                 } else {

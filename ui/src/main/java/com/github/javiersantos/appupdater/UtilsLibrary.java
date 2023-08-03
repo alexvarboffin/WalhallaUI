@@ -316,18 +316,4 @@ public class UtilsLibrary {
     static Boolean isAbleToShow(Integer successfulChecks, Integer showEvery) {
         return successfulChecks % showEvery == 0;
     }
-
-    public static boolean isNetworkAvailable0(Context context) {
-        boolean res = false;
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm != null) {
-            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-            if (networkInfo != null) {
-                res = networkInfo.isConnected();
-            }
-        }
-
-        return res;
-    }
-
 }

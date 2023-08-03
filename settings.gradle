@@ -1,4 +1,6 @@
-include ':app', ':ui'
-//, ':wads'
-//include ':threader'
-//project(':threader').projectDir = new File('../multithreader\\threader\\')
+include ':app', ':ui', ':FreeStuffAndCoupons', ':wads'
+include ':phonenumber'
+include ':promo'
+
+include ':threader'
+project(':threader').projectDir = new File('../multithreader\\threader\\')

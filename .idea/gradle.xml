@@ -8,12 +8,17 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="C:/android/gradle/gradle-7.0.2" />
-        <option name="gradleJvm" value="Embedded JDK" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../multithreader/threader" />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/FreeStuffAndCoupons" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/phonenumber" />
+            <option value="$PROJECT_DIR$/promo" />
             <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/wads" />
           </set>
         </option>
       </GradleProjectSettings>

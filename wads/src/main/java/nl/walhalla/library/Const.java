@@ -13,7 +13,7 @@ public class Const {
 
     public static String[] testDevices() {
         return new String[]{
-                AdRequest.DEVICE_ID_EMULATOR,
+                AdRequest.DEVICE_ID_EMULATOR,"169F25005B1A084E22E3FE83105E9D81"
         };
     }
 }

@@ -37,7 +37,7 @@ public class FeedbackDialog extends DialogFragment {
     private static final String EXTRA_RATING_BAR = "get-rating";
     private static final String EXTRA_ON_ACTION_LISTENER = "on-action-listener";
 
-    private static final String GMAIL_PACKAGE_NAME = "com.com.google.android.gm";
+    private static final String GMAIL_PACKAGE_NAME = "com.google.android.gm";
 
     // Views
     private View confirmDialogTitleView;
@@ -155,7 +155,7 @@ public class FeedbackDialog extends DialogFragment {
                     intent.setClassName(GMAIL_PACKAGE_NAME, className);
                 }else {
                     //Ok, try this Activity
-                    intent.setClassName(GMAIL_PACKAGE_NAME, "com.com.google.android.gm.ComposeActivityGmail");
+                    intent.setClassName(GMAIL_PACKAGE_NAME, "com.google.android.gm.ComposeActivityGmail");
                 }
                 startActivity(Intent.createChooser(intent, ""));
             } else {

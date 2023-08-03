@@ -23,7 +23,7 @@ public class DLog {
      **/
     public static void e(String message) {
         if (DEBUG) {
-            Log.d(TAG, buildLogMsg(message));
+            Log.e(TAG, buildLogMsg(message));
         }
     }
 
@@ -88,17 +88,18 @@ public class DLog {
 // + versionName + " (build " + versionCode + ")"
 
     public static String getAppVersion(Context context) {
+        String tmp = null;
         try {
 
 //            versionCode = context.getPackageManager()
 //                    .getPackageInfo(context.getPackageName(),
 //                            0).versionCode;
-
-            return context.getPackageManager()
-                    .getPackageInfo(context.getPackageName(), 0).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            return "Unknown";
+            tmp = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException ignore) {}
+        if (tmp == null) {
+            tmp = "Unknown";
         }
+        return tmp;
     }
 
     public static String timeStamp(@NonNull Context context) {

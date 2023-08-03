@@ -28,7 +28,7 @@ public class Share {
 //        File file1 = new File("/storage/emulated/0/");
 //        File[] aa = file1.listFiles();
 //        for (File file2 : aa) {
-//            DLog.d("#############" + file2);
+//            DLog.d("#" + file2);
 //        }
         //File file = new File(Environment.//@@@@@().getAbsolutePath(), filename);
         try {
@@ -149,7 +149,7 @@ public class Share {
 ////        File file1 = new File("/storage/emulated/0/");
 ////        File[] aa = file1.listFiles();
 ////        for (File file2 : aa) {
-////            DLog.d("#############" + file2);
+////            DLog.d("#" + file2);
 ////        }
 //        try {
 //            file.createNewFile();

@@ -2,10 +2,13 @@ package com.walhalla.ui;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.walhalla.core.UConst;
@@ -41,7 +45,7 @@ public class Module_U {
             // Definitely not from Google Play
             return false;
         } else return PKG_NAME_VENDING.equals(name)
-                || "com.com.google.android.feedback".equals(name);
+                || "com.google.android.feedback".equals(name);
     }
 
     private static boolean isFromGooglePlay(Context context) {
@@ -49,7 +53,6 @@ public class Module_U {
     }
 
     public static void aboutDialog(Context context) {
-
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         //&#169; - html
@@ -60,7 +63,10 @@ public class Module_U {
                 .setTitle(null)
                 .setCancelable(true)
                 .setIcon(null)
-                //.setPositiveButton(button, null)
+
+                .setNegativeButton(R.string.action_discover_more_app, (dialog1, which) -> moreApp(context))
+                .setPositiveButton(android.R.string.ok, null)
+
                 .setView(mView)
                 .create();
         mView.setOnClickListener(v -> dialog.dismiss());
@@ -77,6 +83,7 @@ public class Module_U {
             _c.setText(_o);
             return false;
         });
+        //dialog.setButton();
         dialog.show();
     }
 
@@ -133,7 +140,7 @@ public class Module_U {
     }
 
     /**
-     * more_apps_link = "https://play.google.com/store/apps/dev?id=5700313618786177705"
+     * more_apps_link = "<a href="https://play.google.com/store/apps/dev?id=5700313618786177705">...</a>"
      */
     public static void moreApp(Context context) {
         final String pub = context.getString(R.string.play_google_pub);
@@ -146,20 +153,24 @@ public class Module_U {
         }
     }
 
-    public static void openMarket(Context context, String packageName) {
+    public static void openMarketApp(Context context, final String packageName) {
         try {
             Uri uri = Uri.parse(UConst.MARKET_CONSTANT + packageName);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.getApplicationContext().startActivity(intent);
         } catch (android.content.ActivityNotFoundException anfe) {
-            openBrowser(context, UConst.GOOGLE_PLAY_CONSTANT + packageName);
+            try {
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
+            } catch (ActivityNotFoundException a) {
+                openBrowser(context, UConst.GOOGLE_PLAY_CONSTANT + packageName);
+            }
         }
     }
 
     public static void rateUs(Context context) {
         String packageName = context.getPackageName();
-        openMarket(context, packageName);
+        openMarketApp(context, packageName);
     }
 
     public static void openBrowser(Context context, String url) {
@@ -236,17 +247,28 @@ public class Module_U {
         context.startActivity(Intent.createChooser(intent, chooserTitle));
     }
 
-    public static void shareThisApp(Context context) {
+    public static void shareThisApp(Context context, @Nullable String message) {
+
+        if (message == null) {
+            message = context.getString(R.string.share_text_default)
+                    + (char) 10 + UConst.GOOGLE_PLAY_CONSTANT
+                    + context.getPackageName() + (char) 10;
+        }
+
+
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-        intent.putExtra(Intent.EXTRA_TEXT,
-                "Hey my friend check out this app"
-                        + (char) 10 + UConst.GOOGLE_PLAY_CONSTANT
-                        + context.getPackageName() + (char) 10
-        );
+        intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+
+        //v1
         context.startActivity(intent);
+
+        //v2
+        //Intent sender = Intent.createChooser(intent, "Share " + context.getString(R.string.app_name));
+        //context.startActivity(sender);
     }
 
 
@@ -260,5 +282,31 @@ public class Module_U {
                 .setTitleOnUpdateNotAvailable(R.string.update_not_available)
                 .setContentOnUpdateNotAvailable(R.string.update_check_later);
         appUpdater.start();
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (cm != null) {
+
+//            NetworkInfo info0 = cm.getActiveNetworkInfo();
+//            boolean c1 = info0 != null && info0.isAvailable() && info0.isConnected();
+
+                NetworkInfo[] info = cm.getAllNetworkInfo();
+                for (NetworkInfo networkInfo : info) {
+                    boolean c0 = networkInfo.getState() == NetworkInfo.State.CONNECTED || networkInfo.isConnected();
+                    if (c0) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            DLog.handleException(e);
+        }
+        return false;
+    }
+
+    public static void shareThisApp(Context context) {
+        shareThisApp(context, null);
     }
 }

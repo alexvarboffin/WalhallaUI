@@ -20,5 +20,5 @@
 -keep public class * extends java.lang.Exception  # Optional: Keep custom exceptions.
 
 
-#-keepclassmembers class com.com.google.samples.apps.iosched.model.** { <fields>; }
+#-keepclassmembers class com.google.samples.apps.iosched.model.** { <fields>; }
 #-repackageclasses 'c'

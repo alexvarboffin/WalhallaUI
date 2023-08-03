@@ -11,9 +11,7 @@ public class MainPresenter {
 
     private boolean doubleBackToExitPressedOnce;
 
-    public MainPresenter(AppCompatActivity main) {
-
-    }
+    public MainPresenter(AppCompatActivity main) {}
 
 
     public boolean onBackPressedRequest(@NonNull AppCompatActivity var0) {

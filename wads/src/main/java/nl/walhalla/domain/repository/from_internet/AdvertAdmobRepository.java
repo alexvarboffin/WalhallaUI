@@ -324,14 +324,11 @@ public class AdvertAdmobRepository
 //
 //                        });
 
-                    mainHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (mAdView.getParent() != null) {
-                                ((ViewGroup) mAdView.getParent()).removeView(mAdView); // <- fix
-                            }
-                            viewGroup.addView(mAdView);
+                    mainHandler.post(() -> {
+                        if (mAdView.getParent() != null) {
+                            ((ViewGroup) mAdView.getParent()).removeView(mAdView); // <- fix
                         }
+                        viewGroup.addView(mAdView);
                     });
                 }
 
