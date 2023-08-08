@@ -3,25 +3,29 @@
     "_q": "ai.meccamedinatv.mekkalive.online",
     "name": "Makkah Madinalive",
     "project": "realmakkahmadinalive",
-    "features": "GDPR, onesignal"
+    "features": "GDPR, onesignal",
+    "app_id": "4975522553729309999"
   },
   {
     "_q": "ai.qibla.getqibla.muslimhelper.qibladirection.qiblacompas.android",
     "name": "Quran Companion",
     "project": "qibla-getqibla-muslimhelper",
-    "features": "GDPR"
+    "features": "GDPR",
+    "app_id": "4975849096726098365"
   },
   {
     "_q": "com.walhalla.islamicquotes",
     "name": "Islamic Quotes",
     "project": "islamicquotes-820d9",
-    "features": "@@"
+    "features": "@GDPR@",
+    "app_id": "4972820345600077262"
   },
   {
     "_q": "ai.free.vpn.tweeqoldvpn.getvpn",
     "name": "vpntweeqold",
     "project": "vpntweeqold",
-    "features": ""
+    "features": "",
+    "app_id": "4975255995985899216"
   },
   {
     "_q": "telegramstickers",
@@ -61,7 +65,8 @@
     "_q": "whatismyipaddress",
     "name": "whatismyipaddress",
     "project": "whatismyipaddress-e16fb",
-    "features": "GDPR"
+    "features": "GDPR",
+    "app_id": "4974016125881605958"
   },
   {
     "_q": "fwdumper",
@@ -194,7 +199,8 @@
   },
   {
     "_q": "dreambook",
-    "project": "dreambook-39d65"
+    "project": "dreambook-39d65",
+    "app_id": "4975665220087808960"
   },
   {
     "_q": "dreambookinterpretation",

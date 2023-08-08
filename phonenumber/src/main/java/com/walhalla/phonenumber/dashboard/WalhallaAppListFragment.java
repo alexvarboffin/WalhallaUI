@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.walhalla.phonenumber.R;
 import com.walhalla.phonenumber.Utils;
 import com.walhalla.phonenumber.apps.adapter.AppAdapter;
+import com.walhalla.utils.AppUtils;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -84,7 +85,7 @@ public class WalhallaAppListFragment extends Fragment implements SortedListAdapt
                     mm = topic.q;
                 }
 
-                boolean isInstalled = Utils.isAppInstalled(getContext(), mm);
+                boolean isInstalled = AppUtils.isAppInstalled(getContext(), mm);
                 topic.isInstalled = isInstalled;
                 //DLog.d("@" + mm+" "+topic.isInstalled);
                 mModels.add(topic);

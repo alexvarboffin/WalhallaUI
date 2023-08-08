@@ -24,11 +24,26 @@
         android:orderInCategory="101"
         android:title="Open Privacy Policy"
         tools:ignore="HardcodedText" />
+
     <item
         android:id="@+id/action_open_google"
         android:icon="@drawable/ic_add_white_24dp"
         android:orderInCategory="101"
         android:title="Google Search"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/action_user_feedback"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:orderInCategory="101"
+        android:title="Отзывы"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/action_dataprivacysecurity"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:orderInCategory="101"
+        android:title="Безопасность данных"
         tools:ignore="HardcodedText" />
 
     <item

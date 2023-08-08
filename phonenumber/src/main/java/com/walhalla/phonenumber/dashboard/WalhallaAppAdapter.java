@@ -165,6 +165,22 @@ public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
                     Module_U.openBrowser(context, replace1);
                     return true;
 
+                case R.id.action_user_feedback:
+                    if (topic.app_id != null) {
+                        String m0 = "https://play.google.com/console/developers/7076844630778011299/app/@/user-feedback/reviews";
+                        String replace2 = m0.replace("@", topic.app_id);
+                        Module_U.openBrowser(context, replace2);
+                    }
+                    return true;
+
+                case R.id.action_dataprivacysecurity:
+                    if (topic.app_id != null) {
+                        String security = "https://play.google.com/console/developers/7076844630778011299/app/@/app-content/data-privacy-security";
+                        String replace21 = security.replace("@", topic.app_id);
+                        Module_U.openBrowser(context, replace21);
+                    }
+                    return true;
+
 //                case R.id.action_share_image:
 //                    popup.dismiss();
 //                    showWatermark(tv_quotes_watermark);

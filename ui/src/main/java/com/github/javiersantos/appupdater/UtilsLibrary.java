@@ -19,6 +19,9 @@ import com.github.javiersantos.appupdater.objects.Version;
 
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -35,6 +38,8 @@ import okhttp3.ResponseBody;
 
 
 public class UtilsLibrary {
+
+    private static final String TAG = "@@@";
 
     static String getAppName(Context context) {
         ApplicationInfo applicationInfo = context.getApplicationInfo();
@@ -75,13 +80,11 @@ public class UtilsLibrary {
             return latestVersion.getLatestVersionCode() > installedVersion.getLatestVersionCode();
         } else {
             if (!TextUtils.equals(installedVersion.getLatestVersion(), "0.0.0.0") && !TextUtils.equals(latestVersion.getLatestVersion(), "0.0.0.0")) {
-                try
-                {
+                try {
                     final Version installed = new Version(installedVersion.getLatestVersion());
                     final Version latest = new Version(latestVersion.getLatestVersion());
                     return installed.compareTo(latest) < 0;
-                } catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                     return false;
                 }
@@ -98,7 +101,8 @@ public class UtilsLibrary {
         try {
             new URL(s);
             res = true;
-        } catch (MalformedURLException ignored) {}
+        } catch (MalformedURLException ignored) {
+        }
 
         return res;
     }
@@ -157,31 +161,51 @@ public class UtilsLibrary {
         URL updateURL = getUpdateURL(context, UpdateFrom.GOOGLE_PLAY, null);
 
         try {
-            version = getJsoupString(updateURL.toString(), ".hAyfc .htlgb", 7);
+
+            //walhalla
+            version = getJsoupString(updateURL.toString(), ".hAyfc", 7);
+
+            //version = getJsoupString(updateURL.toString(), ".hAyfc .htlgb", 7);
 
             //TODO: Release Notes for Google Play is not working
             //recentChanges = getJsoupString(updateURL.toString(), ".W4P4ne .DWPxHb", 1);
 
             if (TextUtils.isEmpty(version)) {
-                Log.e("AppUpdater", "Cannot retrieve latest version. Is it configured properly?");
+                Log.e(TAG, "Cannot retrieve latest version. Is it configured properly?");
             }
         } catch (Exception e) {
-            Log.e("AppUpdater", "App wasn't found in the provided source. Is it published?");
+            Log.e(TAG, "==" + updateURL + "==");
+            Log.e(TAG, "@@App wasn't found in the provided source. Is it published?");
         }
 
-        Log.e("Update", version);
+        Log.e(TAG, "version "+version);
 
         return new Update(version, recentChanges, updateURL);
     }
 
+    //    private static String getJsoupString(String url, String css, int position) throws Exception {
+//        return Jsoup.connect(url)
+//                .timeout(30000)
+//                .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+//                .get()
+//                .select(css)
+//                .get(position)
+//                .ownText();
+//    }
     private static String getJsoupString(String url, String css, int position) throws Exception {
-        return Jsoup.connect(url)
-                .timeout(30000)
-                .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
-                .get()
-                .select(css)
-                .get(position)
-                .ownText();
+        final Document document = Jsoup.connect(url).timeout(30000).userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0").get();
+        final Elements elements = document.select(css);
+        String version = "";
+        for (Element element : elements) {
+            if (element.childNodeSize() == 2) {
+                final String title = element.child(0).ownText();
+                final String value = element.child(1).child(0).child(0).ownText();
+                if ("Current Version".equalsIgnoreCase(title)) {
+                    version = value;
+                }
+            }
+        }
+        return version;
     }
 
     private static Update getLatestAppVersionHttp(Context context, UpdateFrom updateFrom, GitHub gitHub) {
@@ -224,13 +248,13 @@ public class UtilsLibrary {
             }
 
             if (str.length() == 0) {
-                Log.e("AppUpdater", "Cannot retrieve latest version. Is it configured properly?");
+                Log.e(TAG, "Cannot retrieve latest version. Is it configured properly?");
             }
 
             response.body().close();
             source = str.toString();
         } catch (FileNotFoundException e) {
-            Log.e("AppUpdater", "App wasn't found in the provided source. Is it published?");
+            Log.e(TAG, "App wasn't found in the provided source. Is it published?");
         } catch (IOException ignore) {
 
         } finally {
@@ -254,8 +278,7 @@ public class UtilsLibrary {
                     if (splitGitHub.length > 1) {
                         splitGitHub = splitGitHub[1].split("(\")");
                         version = splitGitHub[0].trim();
-                        if (version.startsWith("v"))
-                        { // Some repo uses vX.X.X
+                        if (version.startsWith("v")) { // Some repo uses vX.X.X
                             splitGitHub = version.split("(v)", 2);
                             version = splitGitHub[1].trim();
                         }
@@ -277,7 +300,7 @@ public class UtilsLibrary {
     }
 
     static Update getLatestAppVersion(UpdateFrom updateFrom, String url) {
-        if (updateFrom == UpdateFrom.XML){
+        if (updateFrom == UpdateFrom.XML) {
             ParserXML parser = new ParserXML(url);
             return parser.parse();
         } else {

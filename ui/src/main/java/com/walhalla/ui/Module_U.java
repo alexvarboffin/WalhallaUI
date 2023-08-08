@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.walhalla.core.UConst;
 import com.github.javiersantos.appupdater.AppUpdater;
@@ -33,6 +34,7 @@ import java.util.Map;
 public class Module_U {
 
     public static final String PKG_NAME_VENDING = "com.android.vending";
+    //public static final int REQUEST_CODE_SHARE_APP = 1878;
 
 
     //Show me the magik...
@@ -272,17 +274,17 @@ public class Module_U {
     }
 
 
-    public static void checkUpdate(Context context) {
-        AppUpdater appUpdater = new AppUpdater(context)
-                .setContentOnUpdateAvailable(R.string.update_available)
-                .setCancelable(false)
-                .setButtonDoNotShowAgain("")
-                .setButtonUpdate(R.string.update_now)
-                .setButtonDismiss(R.string.update_later)
-                .setTitleOnUpdateNotAvailable(R.string.update_not_available)
-                .setContentOnUpdateNotAvailable(R.string.update_check_later);
-        appUpdater.start();
-    }
+//    public static void checkUpdate(Context context) {
+//        AppUpdater updater = new AppUpdater(context)
+//                .setContentOnUpdateAvailable(R.string.update_available)
+//                .setCancelable(false)
+//                .setButtonDoNotShowAgain("")
+//                .setButtonUpdate(R.string.update_now)
+//                .setButtonDismiss(R.string.update_later)
+//                .setTitleOnUpdateNotAvailable(R.string.update_not_available)
+//                .setContentOnUpdateNotAvailable(R.string.update_check_later);
+//        updater.start();
+//    }
 
     public static boolean isNetworkAvailable(Context context) {
         try {

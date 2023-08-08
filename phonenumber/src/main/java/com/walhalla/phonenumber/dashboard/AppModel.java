@@ -25,6 +25,8 @@ public class AppModel extends WordModel {
     @SerializedName("name")
     @Expose
     public String name;
+    public String app_id;
+
     @Override
     public <T> boolean isSameModelAs(@NonNull T model) {
         return false;
