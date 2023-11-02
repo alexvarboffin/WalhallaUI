@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+}
+static def isEmpty(String a) {
+    return a == null || a.isEmpty()
+}
+android {
+    namespace 'com.walhalla.stubinjector'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk rootProject.minSdkVersion
+        targetSdk rootProject.targetSdkVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation project(':ui')
+
+    if (isEmpty(APPSFLYER_DEV_KEY)) {
+        implementation project(':stub_appsflyer')
+    } else {
+        implementation 'com.appsflyer:af-android-sdk:6.9.2'
+    }
+    if (!FACEBOOK_SDK) {
+        implementation project(':stub_facebook')
+    } else {
+        implementation 'com.facebook.android:facebook-android-sdk:14.1.0'
+    }
+    if (isEmpty(MYTRACKER_KEY)) {
+        implementation project(':stub_mtracker')
+    } else {
+        implementation 'com.my.tracker:mytracker-sdk:3.0.+'
+    }
+    if (isEmpty(APP_METRICA)) {
+        implementation project(':stub_appmetrica')
+    } else {
+        implementation 'com.yandex.android:mobmetricalib:3.10.2'
+    }
+    if (isEmpty(ONESIGNAL_APP_ID)) {
+        implementation project(':stub_onesignal')
+    } else {
+        implementation 'com.onesignal:OneSignal:4.8.6'
+    }
+}

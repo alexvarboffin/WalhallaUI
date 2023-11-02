@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.walhalla.phonenumber.dashboard.WalhallaAppAdapter.Listener" />
+
+        <variable
+            name="model"
+            type="com.walhalla.phonenumber.dashboard.WordModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <RelativeLayout
+                android:id="@+id/color"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="#FFAB00">
+
+                <ImageView
+                    android:id="@+id/installedIcon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:scaleType="fitEnd"
+                    android:src="@mipmap/ic_launcher"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/fill_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/overflow_menu"
+            android:background="@null"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:contentDescription="@+id/overflow_menu"
+                android:paddingBottom="10dp"
+                android:scaleType="fitEnd"
+                android:textColor="#304FFE"
+                android:textStyle="bold"
+                app:tint="#304FFE"
+                tools:ignore="ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/crashlytics"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+
+                android:background="@null"
+                android:contentDescription="@+id/overflow_menu"
+                android:paddingBottom="10dp"
+                android:scaleType="fitEnd"
+                app:srcCompat="@drawable/baseline_bug_report_24"
+                app:tint="#000000"
+                tools:ignore="ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/privacy_policy"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+
+                android:background="@null"
+                android:contentDescription="@+id/overflow_menu"
+                android:paddingBottom="10dp"
+                android:scaleType="fitEnd"
+                app:srcCompat="@drawable/baseline_info_24"
+                app:tint="#000000"
+                tools:ignore="ImageContrastCheck" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/overflow_menu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+
+            android:background="@null"
+            android:contentDescription="@+id/overflow_menu"
+            android:paddingBottom="10dp"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/ic_dots"
+            app:tint="#000000"
+            tools:ignore="ImageContrastCheck" />
+
+    </RelativeLayout>
+</layout>

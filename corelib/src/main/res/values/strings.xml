@@ -1,0 +1,9 @@
+<resources>
+
+
+    <string name="app_name" translatable="false">core_lib</string>
+    <string name="press_again_to_exit">Press again to exit</string>
+    <string name="fragment_main_downloading">Downloading…</string>
+    <!--    <string name="api_key" translatable="false">123</string>-->
+
+</resources>
