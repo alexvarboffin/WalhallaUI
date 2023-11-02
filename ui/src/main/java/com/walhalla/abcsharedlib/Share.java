@@ -9,7 +9,7 @@ import android.net.Uri;
 import androidx.core.content.FileProvider;
 
 import com.walhalla.core.UConst;
-import com.walhalla.ui.BuildConfig;
+
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.R;
 
@@ -19,7 +19,9 @@ import java.util.List;
 public class Share {
 
     public static final String KEY_FILE_PROVIDER = ".fileprovider";
-    public static final String email = BuildConfig.DEBUG ? "alexvarboffin.abba11@blogger.com" : "";
+
+    private static final boolean DEBUG = false;
+    public static final String email = DEBUG ? "alexvarboffin.abba11@blogger.com" : "";
 
     //@@@@@@@@@@ ПРИ ШАРЕ ФАЙЛА С СД_КАРД, ПИНТЕРЕСТ НЕ ПИШЕТ ДЕСКРИПТИОН
 
@@ -66,7 +68,7 @@ public class Share {
                 String type = context.getContentResolver().getType(path);
                 DLog.d("::TYPE:: " + type+" "+path);
 
-                if (BuildConfig.DEBUG) {
+                if (DEBUG) {
                     //intent.putExtra(Intent.EXTRA_EMAIL, aa);
                     intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
                 }
@@ -136,13 +138,12 @@ public class Share {
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_TEXT, content);
         intent.putExtra("com.pinterest.EXTRA_DESCRIPTION", content);
-        if (BuildConfig.DEBUG) {
+        if (DEBUG) {
             //intent.putExtra(Intent.EXTRA_EMAIL, email);
             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
         }
         return intent;
     }
-
 
 //    private static void shareFile(Context context, String message, File file) {
 //

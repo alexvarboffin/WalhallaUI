@@ -3,21 +3,24 @@ package com.walhalla.phonenumber.dashboard;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
+import com.walhalla.phonenumber.databinding.ItemAppBinding;
 import com.walhalla.ui.Module_U;
 
 
 public class AppViewHolder extends SortedListAdapter.ViewHolder<AppModel> {
 
-    public final com.walhalla.phonenumber.databinding.ItemAppBinding mBinding;
+    public final ItemAppBinding mBinding;
 
-    public AppViewHolder(com.walhalla.phonenumber.databinding.ItemAppBinding binding, WalhallaAppAdapter.Listener listener) {
+    public AppViewHolder(ItemAppBinding binding, WalhallaAppAdapter.Listener listener) {
         super(binding.getRoot());
         binding.setListener(listener);
         mBinding = binding;
+
     }
 
     @Override
@@ -68,6 +71,11 @@ public class AppViewHolder extends SortedListAdapter.ViewHolder<AppModel> {
         } else {
             //mBinding.crashlytics.setVisibility(View.GONE);
         }
+
+        itemView.setOnLongClickListener(v -> {
+            Toast.makeText(v.getContext(), "@", Toast.LENGTH_SHORT).show();
+            return false;
+        });
     }
 
 }

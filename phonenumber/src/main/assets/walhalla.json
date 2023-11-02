@@ -29,8 +29,8 @@
   },
   {
     "_q": "telegramstickers",
-    "project": "",
-    "features": ""
+    "project": "tgstickers-dbce8",
+    "features": "GDPR,lottie,"
   },
   {
     "_q": "eysencktemperament",
@@ -74,10 +74,19 @@
     "features": ""
   },
   {
+    "_q": "com.walhalla.gachisoundboard",
+    "name": "Gachisoundboard",
+    "project": "gachisoundboard",
+    "features": ""
+  },
+
+  {
     "_q": "jokebox",
     "project": "",
     "features": ""
   },
+
+
   {
     "_q": "eysenck_iq_test",
     "project": "",

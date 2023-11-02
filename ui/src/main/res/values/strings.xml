@@ -73,11 +73,7 @@
 
     <!--    <string name="file_provider" translatable="false">com.walhalla.luckypunch.provider</string>-->
 
-<!--    <string name="share_default_text" translatable="false">-->
-<!--                    My EPQ-->
-<!--                    \nEysenck Personality Questionnaire-->
-<!--                    \n#EPI #EPQ-->
-<!--    </string>-->
+
 
       <string name="share_text_default">Hey my friend check out this app</string>
 

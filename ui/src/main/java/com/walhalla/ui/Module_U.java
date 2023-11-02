@@ -50,7 +50,7 @@ public class Module_U {
                 || "com.google.android.feedback".equals(name);
     }
 
-    private static boolean isFromGooglePlay(Context context) {
+    public static boolean isFromGooglePlay(Context context) {
         return isFromGooglePlay(context, context.getPackageName());
     }
 

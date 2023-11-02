@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.walhalla.ui.DLog;
-import com.walhalla.ui.R;
 
 public class Navigation {
 

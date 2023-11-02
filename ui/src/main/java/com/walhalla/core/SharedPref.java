@@ -1,7 +1,5 @@
 package com.walhalla.core;
 
-import static com.walhalla.ui.BuildConfig.DEBUG;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -45,7 +43,7 @@ public class SharedPref {
 
     public boolean appRated() {
         boolean flg = mSharedPreferences.getBoolean(KEY_RATED, false);
-//        if (DEBUG) {
+//        if (BuildConfig.DEBUG) {
 //            DLog.d("[?] Rated -> " + flg
 //                    + " " + appReloadedCount() + "/" + LAUNCHES_UNTIL_PROMPT
 //                    + " " + date_firstLaunch());

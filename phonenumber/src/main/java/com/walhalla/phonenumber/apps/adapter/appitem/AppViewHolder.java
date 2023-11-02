@@ -3,6 +3,7 @@ package com.walhalla.phonenumber.apps.adapter.appitem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +18,13 @@ public class AppViewHolder extends RecyclerView.ViewHolder {
     public TextView rateTextView;
     public TextView countTextView;
 
-    public AppViewHolder(@NonNull View itemView) {
-        super(itemView);
-        titleTextView = itemView.findViewById(R.id.text_title);
-        rateTextView = itemView.findViewById(R.id.text_rate);
-        countTextView = itemView.findViewById(R.id.text_count);
-        installedIcon = itemView.findViewById(R.id.icon);
+    public AppViewHolder(@NonNull View view) {
+        super(view);
+        titleTextView = view.findViewById(R.id.text_title);
+        rateTextView = view.findViewById(R.id.text_rate);
+        countTextView = view.findViewById(R.id.text_count);
+        installedIcon = view.findViewById(R.id.icon);
+
 
     }
 }

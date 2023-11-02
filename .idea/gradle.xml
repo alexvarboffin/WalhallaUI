@@ -15,8 +15,16 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/FreeStuffAndCoupons" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/corelib" />
+            <option value="$PROJECT_DIR$/landing" />
             <option value="$PROJECT_DIR$/phonenumber" />
             <option value="$PROJECT_DIR$/promo" />
+            <option value="$PROJECT_DIR$/stubInjector" />
+            <option value="$PROJECT_DIR$/stub_appmetrica" />
+            <option value="$PROJECT_DIR$/stub_appsflyer" />
+            <option value="$PROJECT_DIR$/stub_facebook" />
+            <option value="$PROJECT_DIR$/stub_mtracker" />
+            <option value="$PROJECT_DIR$/stub_onesignal" />
             <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/wads" />
           </set>

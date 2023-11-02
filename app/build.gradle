@@ -7,8 +7,9 @@ android {
 //        main.res.srcDirs += 'src/main/res-tv'
 //        main.res.srcDirs += 'src/main/res-android-tv'
     }
-    compileSdk 33
-    buildToolsVersion '33.0.0'
+
+    compileSdk 34
+    buildToolsVersion '34.0.0'
 
     def versionPropsFile = file('version.properties')
 
@@ -118,15 +119,14 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.6.0'
-    implementation 'androidx.navigation:navigation-ui:2.6.0'
+    implementation 'androidx.navigation:navigation-fragment:2.7.5'
+    implementation 'androidx.navigation:navigation-ui:2.7.5'
     //implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21"
     implementation 'androidx.multidex:multidex:2.0.1'
-
 
 }
 static def versionCodeDate() {
