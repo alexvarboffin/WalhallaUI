@@ -3,6 +3,7 @@ package com.walhalla.landing;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.text.TextUtils;
@@ -27,9 +28,16 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 
     private static final String KEY_ERROR_ = "about:blank0error";
 
-
     private String homeUrl = null;
     private boolean isErrorPageShown = false;
+
+    public void setErrorPageShown(boolean errorPageShown) {
+        isErrorPageShown = errorPageShown;
+    }
+
+    public void setHomeUrl(String homeUrl) {
+        this.homeUrl = homeUrl;
+    }
 
     private static final int STATUS_CODE_UNKNOWN = 9999;
     private static final boolean HANDLE_ERROR_CODE = true;
@@ -76,8 +84,7 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 //            if (!TextUtils.isEmpty(body)) {
 //                ChromeView activity = this.activity.get();
 //                if (activity != null) {
-//                    activity.eventRequest(
-    //https://mc.yandex.ru
+//                    activity.eventRequest(//https://mc.yandex.ru
 //                            new BodyClass(Utils.makeDate(),
 //                                    body,
 //                                    webViewRequest.getUrl()));
@@ -155,29 +162,29 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 //    }
 
 
-    /* @SuppressWarnings("deprecation")*/
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        String url = request.getUrl().toString();
+        DLog.d("//1. " + url);
+        return handleUrl(view, url);
+    }
+
+    @Deprecated
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        DLog.d("//0. " + url);
+        return handleUrl(view, url);
+    }
 
-
-        //DLog.d("?dw-glossary=" + url);
-//        if (url.contains("/tvw/?dw-glossary")) {
-//            if (mCallback != null) {
-//                mCallback.showBanner();
-//            }
-//            return false;
-//        } else if (url.contains("page=")) {
-//            if (mCallback != null) {
-//                mCallback.showBanner();
-//            }
-//            return false;
-//        } else
-
+    private boolean handleUrl(WebView view, String url) {
         if (DownloadUtility.isDownloadableFile(url)) {
             Toast.makeText(context, R.string.fragment_main_downloading, Toast.LENGTH_LONG).show();
             DownloadUtility.downloadFile(context, url, DownloadUtility.getFileName(url));
             return true;
-        } else if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
+        } else if (url.startsWith("tg:") || url.startsWith("https://t.me/")) {
+            ActivityUtils.starttg(context, url);
+            return true; //handle itself
+        } else if ((url.startsWith("http://") || url.startsWith("https://"))) {
             // determine for opening the link externally or internally
             boolean external = DownloadUtility.isLinkExternal(url);
             boolean internal = DownloadUtility.isLinkInternal(url);
@@ -230,44 +237,9 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
                 return true;
             }
         }
-
-//        String webview_url = context.getString(R.string.app_url);
-//        String device_id = Util.phoneId(MainActivity.getAppContext().getApplicationContext());
-//
-
-//        if (url.startsWith(webview_url)) {
-//            view.loadUrl(url + "?id=" + device_id);
-//            return true;
-//        } else {
-//            view.getContext().startActivity(
-//                    new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-//            return true;
-//        }
-//                if (request..indexOf("host")<=0) {
-//                    // the link is not for activity page on my site, so launch another Activity that handles URLs
-//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                    startActivity(intent);
-//                    return true;
-//                }
-//                return false;
-
-        //@@@
-//        if (url.startsWith("app://{package_id}") || url.startsWith("uniwebview://accept")
-//                || url.startsWith("uniwebview://close")) {
-//            ChromeView mainActivity = activity;
-//            if (mainActivity != null) {
-//                mainActivity.mAcceptPressed(url);
-//            }
-//            return true;
-//        }
     }
 
-//            @TargetApi(Build.VERSION_CODES.N)
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView privacy, WebResourceRequest request) {
-//                final Uri uri = request.getConfig();
-//                return handleUri(uri);
-//            }
+
 //
 //            @Override
 //            public void onPageFinished(WebView privacy, String HTTP_BUHTA) {
@@ -323,12 +295,9 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
-
-
         if (KEY_ERROR_.equals(url)) {
             view.clearHistory();
         }
-
         ChromeView activity = this.activity;
         if (activity != null) {
             activity.onPageFinished(view, url);
@@ -427,24 +396,20 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         return o != null;
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-
         final int statusCode;
+        String cUrl = "";
         // SDK < 21 does not provide statusCode
-        if (Build.VERSION.SDK_INT < 21) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             statusCode = STATUS_CODE_UNKNOWN;
         } else {
             statusCode = errorResponse.getStatusCode();
-        }
-
-        String cUrl = "";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             cUrl = request.getUrl().toString();
         }
-
         //DLog.d("Status code: " + statusCode + " " + Build.VERSION.SDK_INT + " " + view.getUrl() + " " + cUrl);
-        DLog.d("[" + statusCode + "] " + cUrl + "");
+        DLog.d("[onReceivedHttpError::" + statusCode + "] " + cUrl + "");
 
 //        if (statusCode == 404) {
 //            //if (!mainUrl.equals(view.getUrl())) {
@@ -472,7 +437,8 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
             }
         }
     }
-    
+
+
 //Google play не пропустит!
 //    @SuppressLint("WebViewClientOnReceivedSslError")
 //    @Override

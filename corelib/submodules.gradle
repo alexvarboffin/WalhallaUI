@@ -18,3 +18,6 @@ project(':stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\u
 
 include ':stub_onesignal'
 project(':stub_onesignal').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_onesignal\\')
+
+include ':stub_admob'
+project(':stub_admob').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_admob\\')

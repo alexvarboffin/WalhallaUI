@@ -81,4 +81,13 @@ public class ActivityUtils {
     }
 
 
+    public static void starttg(Activity activity, String url) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            activity.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(activity, "can't start activity: " + url, Toast.LENGTH_LONG).show();
+        }
+    }
 }

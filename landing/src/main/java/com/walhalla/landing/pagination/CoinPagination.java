@@ -19,8 +19,7 @@ public class CoinPagination {
     }
 
     public void setupDrawer(Context context, Menu menu) {
-        //String[] urls = context.getResources().getStringArray(R.array.navigation_url_list);
-
+        String[] urls = context.getResources().getStringArray(R.array.navigation_url_list);
         String[] titles = context.getResources().getStringArray(R.array.navigation_title_list);
 
         // icon list
@@ -30,14 +29,11 @@ public class CoinPagination {
             icons[i] = iconTypedArray.getResourceId(i, R.drawable.ic_home);
         }
         iconTypedArray.recycle();
-
         categories = new CatItem[titles.length];
         for (int i = 0; i < titles.length; i++) {
             categories[i] = new CatItem(i, titles[i], dec0(v), icons[i]);
-
             menu.add(R.id.menu_container, categories[i]._id,
                     Menu.NONE, categories[i].title).setCheckable(true).setIcon(categories[i].icon);
-
         }
     }
 

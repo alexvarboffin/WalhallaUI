@@ -38,6 +38,7 @@ public class WPresenter {
     //protected ActivityResultLauncher<Intent> requestFileChooser;
     protected ValueCallback<Uri> mUploadMessage;
     protected ValueCallback<Uri[]> uploadMessage;
+    private CustomWebViewClient var0;
 
     public WPresenter(Handler handler, WebActivity compatActivity) {
         this.activity = compatActivity;
@@ -78,27 +79,6 @@ public class WPresenter {
 //            mUploadMessage.onReceiveValue(result0);
 //            mUploadMessage = null;
 //        });
-    }
-
-    private void alert(ActivityResult result, Uri[] selectedFiles, Context context) {
-        Intent intent = result.getData();
-        StringBuilder sb = new StringBuilder();
-        if (selectedFiles != null) {
-            for (Uri uri : selectedFiles) {
-                sb.append(uri.toString()).append("\n");
-            }
-        }
-        if (intent != null) {
-            sb.append(intent);
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("debug" + ((selectedFiles == null) ? selectedFiles : selectedFiles.length))
-
-                .setMessage(sb.toString()).setPositiveButton(context.getString(android.R.string.ok), (dialog, id) -> {
-                    dialog.cancel();
-                });
-        AlertDialog alert = builder.setCancelable(false).create();
-        alert.show();
     }
 
     private static final int FILECHOOSER_RESULTCODE = 1;
@@ -234,6 +214,8 @@ public class WPresenter {
         mView.getSettings().setDefaultTextEncodingName("utf-8");
         mView.getSettings().setLoadWithOverviewMode(true);
         //mView.getSettings().setUseWideViewPort(true);
+        mView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        //mView.getSettings().setAppCacheMaxSize( 100 * 1024 * 1024 ); // 100MB
 
         mView.getSettings().getLoadsImagesAutomatically();
         mView.getSettings().setGeolocationEnabled(true);
@@ -257,7 +239,8 @@ public class WPresenter {
         if (BuildConfig.DEBUG) {
             mView.setBackgroundColor(Color.parseColor("#80770000"));
         }
-        mView.setWebViewClient(new CustomWebViewClient(mView, chromeView, activity));
+        var0 = new CustomWebViewClient(mView, chromeView, activity);
+        mView.setWebViewClient(var0);
         makeFileSelector21_x(mView);
 
         CookieManager.getInstance().setAcceptCookie(true);
@@ -302,6 +285,7 @@ public class WPresenter {
         }
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private void handleUploadMessage(final int requestCode, final int resultCode, final Intent data) {
         Uri result = null;
         try {
@@ -332,7 +316,9 @@ public class WPresenter {
             } catch (Exception e) {
                 Toast.makeText(activity, "activity :" + e, Toast.LENGTH_LONG).show();
             }
-            mUploadMessage.onReceiveValue(result);
+            if (mUploadMessage != null) {
+                mUploadMessage.onReceiveValue(result);
+            }
             mUploadMessage = null;
         }
 
@@ -367,5 +353,35 @@ public class WPresenter {
         }
         mUploadMessages.onReceiveValue(results);
         mUploadMessages = null;
+    }
+
+    public void loadUrl(UWView mView, String s) {
+        mView.stopLoading();
+        mView.clearHistory();
+        mView.loadUrl("about:blank");
+        //mView.loadUrl("file:///android_asset/infAppPaused.html");
+        var0.setErrorPageShown(false);
+        var0.setHomeUrl(s);
+        mView.loadUrl(s);
+    }
+    private void alert(ActivityResult result, Uri[] selectedFiles, Context context) {
+        Intent intent = result.getData();
+        StringBuilder sb = new StringBuilder();
+        if (selectedFiles != null) {
+            for (Uri uri : selectedFiles) {
+                sb.append(uri.toString()).append("\n");
+            }
+        }
+        if (intent != null) {
+            sb.append(intent);
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("debug" + ((selectedFiles == null) ? selectedFiles : selectedFiles.length))
+
+                .setMessage(sb.toString()).setPositiveButton(context.getString(android.R.string.ok), (dialog, id) -> {
+                    dialog.cancel();
+                });
+        AlertDialog alert = builder.setCancelable(false).create();
+        alert.show();
     }
 }

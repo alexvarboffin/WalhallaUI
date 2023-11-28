@@ -1,7 +1,5 @@
 package com.walhalla.landing.base;
 
-import static com.walhalla.ui.Module_U.isFromGooglePlay;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -125,12 +123,10 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         // Создайте экземпляр DynamicWebView и получите его WebView
         dynamicWebView = new DynamicWebView(this);
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dynamicWebView.getWebView().setLayoutParams(lp);
         if (isSwipeEnabled()) {
             swipe = new SwipeRefreshLayout(context);
             swipe.setLayoutParams(lp);
-        }
-        dynamicWebView.getWebView().setLayoutParams(lp);
-        if (isSwipeEnabled()) {
             view.addView(swipe);
             swipe.addView(dynamicWebView.getWebView());
             swipe.setRefreshing(false);
@@ -153,8 +149,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
 
     @Override
     public void onBackPressed() {
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawerLayout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
             return;
@@ -199,7 +194,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         _c.setText(title);
         ImageView logo = mView.findViewById(R.id.aboutLogo);
         logo.setOnLongClickListener(v -> {
-            String _o = "[+]gp->" + isFromGooglePlay(mView.getContext());
+            String _o = "[+]gp->" + Module_U.isFromGooglePlay(mView.getContext());
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 _o = _o + ", category->" + mView.getContext().getApplicationInfo().category;
             }
