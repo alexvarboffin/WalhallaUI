@@ -1,8 +1,8 @@
 ext {
     minSdkVersion = 19
-    lifecycle_version = "2.6.1"
+
     kotlin_version = "1.8.10"
-    roomVersion = "2.5.1"
+
     okHttpVersion = "3.12.12"
     ONESIGNAL_APP_ID = ""
     APPSFLYER_DEV_KEY = ""

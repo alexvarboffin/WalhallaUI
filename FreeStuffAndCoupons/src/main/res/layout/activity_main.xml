@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="tk.alexapp.freestuffandcoupons.MainActivity">
+    tools:context="tk.alexapp.freestuffandcoupons.activity.MainActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"

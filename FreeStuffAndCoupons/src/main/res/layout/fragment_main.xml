@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tk.alexapp.freestuffandcoupons.MainActivity$PlaceholderFragment">
+    tools:context="tk.alexapp.freestuffandcoupons.activity.MainActivity$PlaceholderFragment">
 
     <ListView
         android:id="@+id/itemsList"

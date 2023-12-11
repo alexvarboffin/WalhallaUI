@@ -39,7 +39,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
 
     private boolean doubleBackToExitPressedOnce;
     private Handler mHandler;
-    private DynamicWebView dynamicWebView;
+    protected DynamicWebView dynamicWebView;
 
     private SwipeRefreshLayout swipe;
     protected Toolbar toolbar;

@@ -1,4 +1,4 @@
-package tk.alexapp.freestuffandcoupons;
+package tk.alexapp.freestuffandcoupons.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -33,6 +33,7 @@ import com.walhalla.ui.Module_U;
 
 import java.io.File;
 
+import tk.alexapp.freestuffandcoupons.R;
 import tk.alexapp.freestuffandcoupons.adapter.ItemsArrayAdapter;
 import tk.alexapp.freestuffandcoupons.domain.TabInfo;
 import tk.alexapp.freestuffandcoupons.domain.TabsInfo;
