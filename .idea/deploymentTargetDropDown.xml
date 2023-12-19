@@ -2,7 +2,26 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CacheFilesActivity">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="2624294010LA15CC" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2023-12-19T12:02:14.329618500Z" />
+        </State>
+      </entry>
       <entry key="FreeStuffAndCoupons">
+        <State />
+      </entry>
+      <entry key="Lottie">
         <State />
       </entry>
       <entry key="MediaStorage">
@@ -10,6 +29,22 @@
       </entry>
       <entry key="app">
         <State />
+      </entry>
+      <entry key="phonenumber">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="2624294010LA15CC" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2023-12-19T12:03:19.281287900Z" />
+        </State>
       </entry>
     </value>
   </component>

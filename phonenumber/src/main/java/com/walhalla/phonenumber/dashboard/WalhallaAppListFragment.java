@@ -1,5 +1,7 @@
 package com.walhalla.phonenumber.dashboard;
 
+import static com.walhalla.phonenumber.dashboard.DateColorUtils.getColorForDate;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,7 +87,15 @@ public class WalhallaAppListFragment extends Fragment implements SortedListAdapt
                     mm = topic.q;
                 }
 
-                boolean isInstalled = AppUtils.isAppInstalled(getContext(), mm);
+                String isInstalled0 = AppUtils.getAppVersion(getContext(), mm);
+                boolean isInstalled = isInstalled0 != null;
+                if (isInstalled) {
+                    String m0m = isInstalled0.split(".release")[0];
+                    String[] nn = m0m.split("\\.");
+                    topic.time = getColorForDate(nn[nn.length - 1]);
+                } else {
+                    topic.time = R.color.versionRed;
+                }
                 topic.isInstalled = isInstalled;
                 //DLog.d("@" + mm+" "+topic.isInstalled);
                 mModels.add(topic);

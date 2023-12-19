@@ -4,7 +4,9 @@ plugins {
 
 android {
     namespace 'com.walhalla.phonenumber'
+
     compileSdk 34
+    buildToolsVersion '34.0.0'
 
     buildFeatures {
         viewBinding true
@@ -14,7 +16,8 @@ android {
     defaultConfig {
         applicationId "com.walhalla.phonenumber"
         minSdk rootProject.minSdkVersion
-        targetSdk targetSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion0
+
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -41,7 +44,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation project(':ui')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21"
-
     implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
     implementation 'com.github.wrdlbrnft:modular-adapter:0.3.0.22'
     implementation 'com.google.code.gson:gson:2.10.1'

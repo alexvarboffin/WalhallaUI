@@ -41,7 +41,7 @@ android {
 
             applicationId "kgbook.ru"
             minSdkVersion rootProject.minSdkVersion
-            targetSdkVersion rootProject.targetSdkVersion
+            targetSdkVersion rootProject.targetSdkVersion0
             versionCode code
             versionName "1.1." + code + ".release"
 
@@ -128,7 +128,4 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21"
     implementation 'androidx.multidex:multidex:2.0.1'
 
-}
-static def versionCodeDate() {
-    return new Date().format("yyMMdd").toInteger()
 }

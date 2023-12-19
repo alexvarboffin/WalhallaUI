@@ -159,6 +159,7 @@ public class Module_U {
         try {
             Uri uri = Uri.parse(UConst.MARKET_CONSTANT + packageName);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage(PKG_NAME_VENDING);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.getApplicationContext().startActivity(intent);
         } catch (android.content.ActivityNotFoundException anfe) {
@@ -250,7 +251,6 @@ public class Module_U {
     }
 
     public static void shareThisApp(Context context, @Nullable String message) {
-
         if (message == null) {
             message = context.getString(R.string.share_text_default)
                     + (char) 10 + UConst.GOOGLE_PLAY_CONSTANT
@@ -262,15 +262,15 @@ public class Module_U {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
         intent.putExtra(Intent.EXTRA_TEXT, message);
+        //no need => intent.putExtra("ru.ok.android.action.SEND_MESSAGE", message);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
 
         //v1
         context.startActivity(intent);
 
         //v2
-        //Intent sender = Intent.createChooser(intent, "Share " + context.getString(R.string.app_name));
-        //context.startActivity(sender);
+//        Intent sender = Intent.createChooser(intent, "Share " + context.getString(R.string.app_name));
+//        context.startActivity(sender);
     }
 
 

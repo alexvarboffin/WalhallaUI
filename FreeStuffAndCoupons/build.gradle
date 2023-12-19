@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "tk.alexapp.freestuffandcoupons"
         minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion0
         versionCode 17
         versionName "2.2"
         // test publishing 21

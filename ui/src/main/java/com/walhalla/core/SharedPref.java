@@ -5,44 +5,45 @@ import android.content.SharedPreferences;
 
 import androidx.preference.PreferenceManager;
 
-import com.walhalla.ui.DLog;
-
 public class SharedPref {
 
     private static final String KEY_AGREE = "license_agree_ok";
     private static final String KEY_RATED = "key_rate_not_show_again";
 
-    private static final String KEY_FIRST_LAUNCH = "sp.fr.launch";
+    //private static final String KEY_FIRST_LAUNCH = "sp.fr.launch";
+    private static final String LAUNCH_COUNT_KEY = "launchCount1";
+
+
     private static final String KEY_RELOADED = "rate_launch_count";
     private static final String DATE_FIRST_LAUNCH = "DATE_FIRST_LAUNCH_";
 
-    private final SharedPreferences mSharedPreferences;
+    private final SharedPreferences settings;
 
     public SharedPref(Context activity) {
-        this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        this.settings = PreferenceManager.getDefaultSharedPreferences(activity);
     }
 
 
     public boolean licenseAgree() {
-        return mSharedPreferences.getBoolean(KEY_AGREE, false);
+        return settings.getBoolean(KEY_AGREE, false);
     }
 
 
     public void licenseAgree(boolean b) {
-        mSharedPreferences.edit().putBoolean(KEY_AGREE, b).apply();
+        settings.edit().putBoolean(KEY_AGREE, b).apply();
     }
 
     //Rate app
     public void appResumeCount(int count) {
-        mSharedPreferences.edit().putInt(KEY_RELOADED, count).apply();
+        settings.edit().putInt(KEY_RELOADED, count).apply();
     }
 
     public int appResumeCount() {
-        return mSharedPreferences.getInt(KEY_RELOADED, 0);
+        return settings.getInt(KEY_RELOADED, 0);
     }
 
     public boolean appRated() {
-        boolean flg = mSharedPreferences.getBoolean(KEY_RATED, false);
+        boolean flg = settings.getBoolean(KEY_RATED, false);
 //        if (BuildConfig.DEBUG) {
 //            DLog.d("[?] Rated -> " + flg
 //                    + " " + appReloadedCount() + "/" + LAUNCHES_UNTIL_PROMPT
@@ -52,22 +53,29 @@ public class SharedPref {
     }
 
     public void appRated(boolean rated) {
-        mSharedPreferences.edit().putBoolean(KEY_RATED, rated).apply();
+        settings.edit().putBoolean(KEY_RATED, rated).apply();
     }
 
     public void date_firstLaunch(long date_firstLaunch) {
-        mSharedPreferences.edit().putLong(DATE_FIRST_LAUNCH, date_firstLaunch).apply();
+        settings.edit().putLong(DATE_FIRST_LAUNCH, date_firstLaunch).apply();
     }
 
     public long date_firstLaunch() {
-        return mSharedPreferences.getLong(DATE_FIRST_LAUNCH, 0);
+        return settings.getLong(DATE_FIRST_LAUNCH, 0);
     }
 
-    public int startCount() {
-        return mSharedPreferences.getInt(KEY_FIRST_LAUNCH, 0);
+    public int getLaunchCount() {
+        return settings.getInt(LAUNCH_COUNT_KEY, 0);
     }
 
-    public void startCount(int i) {
-        mSharedPreferences.edit().putInt(KEY_FIRST_LAUNCH, i).apply();
+    public void setLaunchCount(int launchCount) {
+        settings.edit().putInt(LAUNCH_COUNT_KEY, launchCount).apply();
+    }
+
+    private void incrementLaunchCount() {
+        int launchCount = settings.getInt(LAUNCH_COUNT_KEY, 0) + 1;
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt(LAUNCH_COUNT_KEY, launchCount);
+        editor.apply();
     }
 }

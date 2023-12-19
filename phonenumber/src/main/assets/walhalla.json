@@ -79,14 +79,11 @@
     "project": "gachisoundboard",
     "features": ""
   },
-
   {
     "_q": "jokebox",
     "project": "",
     "features": ""
   },
-
-
   {
     "_q": "eysenck_iq_test",
     "project": "",
@@ -186,13 +183,13 @@
   {
     "_q": "motivatingquotes",
     "project": "",
-    "features": "",
+    "features": "GDPR",
     "color": "#2962FF"
   },
   {
     "_q": "statuses",
     "project": "",
-    "features": "",
+    "features": "GDPR",
     "color": "#2962FF"
   },
   {
@@ -203,8 +200,24 @@
   {
     "_q": "toasts",
     "project": "",
-    "features": "",
+    "features": "GDPR",
     "color": "#2962FF"
+  },
+  {
+    "_q": "com.walhalla.compatibility",
+    "name": "Compatibility RU",
+    "project": "wdcompatibility-b083d",
+    "features": "GDPR",
+    "color": "#2962FF",
+    "app_id": "4972436554141287137"
+  },
+  {
+    "_q": "com.walhalla.yourcompatibility",
+    "name": "Compatibility EN",
+    "project": "yourcompatibility",
+    "features": "GDPR",
+    "color": "#2962FF",
+    "app_id": "4973186822244367535"
   },
   {
     "_q": "dreambook",

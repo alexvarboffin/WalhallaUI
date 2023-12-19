@@ -3,6 +3,7 @@ apply from: "D:\\walhalla\\sdk\\android\\ui\\corelib/submodules.gradle"
 include ':app', ':ui', ':FreeStuffAndCoupons', ':wads'
 include ':phonenumber'
 
+include ':Lottie'
 include ':landing'
 
 include ':stubInjector'

@@ -17,6 +17,8 @@ public abstract class WordModel implements SortedListAdapter.ViewModel{
     @SerializedName("color")
     @Expose
     public String color;
+    public int time;
+
     public String getWord() {
         return q;
     }

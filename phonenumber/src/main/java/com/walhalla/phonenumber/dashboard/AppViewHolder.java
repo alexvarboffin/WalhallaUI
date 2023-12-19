@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
 import com.walhalla.phonenumber.databinding.ItemAppBinding;
+import com.walhalla.ui.DLog;
 import com.walhalla.ui.Module_U;
 
 
@@ -76,6 +77,9 @@ public class AppViewHolder extends SortedListAdapter.ViewHolder<AppModel> {
             Toast.makeText(v.getContext(), "@", Toast.LENGTH_SHORT).show();
             return false;
         });
+        if (obj.time > 0) {
+            mBinding.main.setBackgroundResource(obj.time);
+        }
     }
 
 }

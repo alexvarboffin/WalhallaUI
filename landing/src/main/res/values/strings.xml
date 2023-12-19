@@ -4,6 +4,26 @@
     <string name="url_privacy_policy">none</string>
     <string name="fragment_main_downloading">Downloading…</string>
 
-
+    <string name="nav_contact">Contact Us</string>
     <string name="nav_home">Home</string>
+    <string name="nav_about">About Us</string>
+
+    <string name="app_youtube" translatable="false">@null</string>
+    <string name="app_vk" translatable="false">@null</string>
+    <string name="app_ok" translatable="false">@null</string>
+
+    <string name="contact_phone">Phone:</string>
+    <string name="contact_instagram" translatable="false">Instagram:</string>
+    <string name="contact_twitter" translatable="false">Twitter:</string>
+    <string name="contact_facebook" translatable="false">Facebook:</string>
+    <string name="contact_address" translatable="false">Address:</string>
+    <string name="contact_email" translatable="false">E-mail:</string>
+    <string name="contact_ok" tools:ignore="Typos">Ok.ru:</string>
+    <string name="contact_vk" translatable="false">Vk.ru:</string>
+    <string name="contact_youtube" translatable="false">Youtube:</string>
+
+    <string name="network_error">Network error…</string>
+    <string name="network_error_message">No internet connection. Please reconnect and try again.</string>
+    <string name="action_open_connection_settings">Settings</string>
+
 </resources>

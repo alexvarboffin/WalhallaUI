@@ -149,6 +149,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         //viewModel.push(position);
     }
 
+    @SuppressLint("WakelockTimeout")
     @Override
     protected void onResume() {
         super.onResume();
@@ -173,43 +174,34 @@ public class ViewPagerActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
             case R.id.action_about:
                 Module_U.aboutDialog(this);
                 return true;
-
             case R.id.action_developer:
-                AppUtils.openChromeBrowser(this, "https://play.google.com/store/apps/developer?id=Walhalla+Dynamics");
+                //AppUtils.openChromeBrowser(this, "https://play.google.com/store/apps/developer?id=Walhalla+Dynamics");
+                Module_U.moreApp(getApplicationContext());
                 return true;
-
             case R.id.action_rate_app:
                 Module_U.rateUs(this);
                 return true;
-
             case R.id.action_share_app:
                 Module_U.shareThisApp(this);
                 return true;
-
             case R.id.action_discover_more_app:
                 Module_U.moreApp(this);
                 return true;
-
 //            case R.id.action_exit:
 //                this.finish();
 //                return true;
-
             case R.id.action_feedback:
                 Module_U.feedback(this);
                 return true;
-
 //            case R.id.action_more_app_01:
 //                Module_U.moreApp(this, "com.walhalla.ttloader");
 //                return true;
-//
 //            case R.id.action_more_app_02:
 //                Module_U.moreApp(this, "com.walhalla.vibro");
 //                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
