@@ -35,6 +35,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 dependencies {
@@ -50,7 +53,7 @@ dependencies {
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     //implementation 'com.google.android.play:core:1.9.0'
-    implementation 'androidx.annotation:annotation:1.7.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
     implementation 'org.jsoup:jsoup:1.17.1'
     //implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     //noinspection GradleDependency

@@ -329,7 +329,7 @@ public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
             //String packageName = "com.walhalla.whatismyipaddress";
 
             Uri uri = Uri.parse(UConst.MARKET_CONSTANT + packageName);
-            //Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=" + packageName);
+            //Uri uri = Uri.parse(GOOGLE_PLAY_CONSTANT + packageName);
 
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

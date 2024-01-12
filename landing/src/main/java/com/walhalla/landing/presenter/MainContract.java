@@ -9,6 +9,15 @@ import com.walhalla.landing.pagination.CatItem;
 import java.util.List;
 
 public interface MainContract {
+
+    interface ViewSimple {
+        void showLoading();
+
+        void hideLoading();
+
+        void displayUrl(String url);
+    }
+
     interface View {
         void showSideNavigationMenu();
 

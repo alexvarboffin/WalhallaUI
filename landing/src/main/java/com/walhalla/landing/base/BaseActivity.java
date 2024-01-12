@@ -37,7 +37,7 @@ import java.util.Calendar;
 public abstract class BaseActivity extends WebActivity implements ChromeView, ActivityConfig {
 
 
-    private boolean doubleBackToExitPressedOnce;
+    protected boolean doubleBackToExitPressedOnce;
     private Handler mHandler;
     protected DynamicWebView dynamicWebView;
 
@@ -53,14 +53,11 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mHandler = new Handler();
         //Handler handler = new Handler(Looper.getMainLooper());
         //presenter = new WPresenter(handler, this);
-
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
-
         //toolbar.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
     }
@@ -99,14 +96,14 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
     }
 
     @Override
-    public void onPageStarted() {
+    public void onPageStarted(String url) {
         if (isSwipeEnabled()) {
             swipe.setRefreshing(false);//modify if needed
         }
     }
 
     @Override
-    public void onPageFinished(WebView view, String url) {
+    public void onPageFinished(/*WebView view, */String url) {
         if (isSwipeEnabled()) {
             swipe.setRefreshing(false);
         }
@@ -150,7 +147,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawerLayout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
             return;
         } else {
@@ -158,13 +155,16 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
                 super.onBackPressed();
                 return;
             }
-            if (dynamicWebView.getWebView().canGoBack()) {
-                //Toast.makeText(this, "##" + (mWebBackForwardList.getCurrentIndex()), Toast.LENGTH_SHORT).show();
-                //historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
-                dynamicWebView.getWebView().goBack();
-                return;
+            if (USE_HISTORY()) {
+                if (dynamicWebView.getWebView().canGoBack()) {
+                    //Toast.makeText(this, "##" + (mWebBackForwardList.getCurrentIndex()), Toast.LENGTH_SHORT).show();
+                    //historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
+                    dynamicWebView.getWebView().goBack();
+                    return;
+                }
+            } else {
+                super.onBackPressed();
             }
-            // super.onBackPressed();
         }
 
         View coordinatorLayout = findViewById(R.id.CoordinatorLayout);
@@ -172,6 +172,9 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         this.doubleBackToExitPressedOnce = true;
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 1500);
     }
+
+    protected abstract boolean USE_HISTORY();
+
 
     public static void aboutDialog(Context context) {
         Calendar calendar = Calendar.getInstance();

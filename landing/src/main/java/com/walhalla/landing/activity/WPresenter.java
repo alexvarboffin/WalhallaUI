@@ -214,7 +214,9 @@ public class WPresenter {
         mView.getSettings().setDefaultTextEncodingName("utf-8");
         mView.getSettings().setLoadWithOverviewMode(true);
         //mView.getSettings().setUseWideViewPort(true);
-        mView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
+        //ERR_TOO_MANY_REDIRECTS
+        //mView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         //mView.getSettings().setAppCacheMaxSize( 100 * 1024 * 1024 ); // 100MB
 
         mView.getSettings().getLoadsImagesAutomatically();
@@ -237,7 +239,7 @@ public class WPresenter {
         mView.getSettings().setUserAgentString(tmp.replace("; wv)", ")"));
         //mView.getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0");
         if (BuildConfig.DEBUG) {
-            mView.setBackgroundColor(Color.parseColor("#80770000"));
+            //@@@ mView.setBackgroundColor(Color.parseColor("#80770000"));
         }
         var0 = new CustomWebViewClient(mView, chromeView, activity);
         mView.setWebViewClient(var0);
@@ -384,4 +386,6 @@ public class WPresenter {
         AlertDialog alert = builder.setCancelable(false).create();
         alert.show();
     }
+
+
 }

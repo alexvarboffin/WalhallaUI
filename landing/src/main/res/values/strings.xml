@@ -4,9 +4,11 @@
     <string name="url_privacy_policy">none</string>
     <string name="fragment_main_downloading">Downloading…</string>
 
-    <string name="nav_contact">Contact Us</string>
+
     <string name="nav_home">Home</string>
+    <string name="nav_contact">Contact Us</string>
     <string name="nav_about">About Us</string>
+
 
     <string name="app_youtube" translatable="false">@null</string>
     <string name="app_vk" translatable="false">@null</string>
@@ -25,5 +27,13 @@
     <string name="network_error">Network error…</string>
     <string name="network_error_message">No internet connection. Please reconnect and try again.</string>
     <string name="action_open_connection_settings">Settings</string>
+
+    <string name="app_phone" translatable="false">@null</string>
+    <string name="app_email" translatable="false">@null</string>
+    <string name="app_address" translatable="false">@null</string>
+    <string name="app_facebook" translatable="false">@null</string>
+    <string name="app_twitter" translatable="false">@null</string>
+    <string name="app_instagram" translatable="false">@null</string>
+    <string name="app_description">@null</string>
 
 </resources>

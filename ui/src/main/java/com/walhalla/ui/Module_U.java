@@ -34,6 +34,8 @@ import java.util.Map;
 public class Module_U {
 
     public static final String PKG_NAME_VENDING = "com.android.vending";
+    private static final String E_AAB = "e-mail client not found";
+
     //public static final int REQUEST_CODE_SHARE_APP = 1878;
 
 
@@ -201,7 +203,7 @@ public class Module_U {
             composeEmail(context, new String[]{context.getString(R.string.publisher_feedback_email)}, subject);
         } catch (Exception e) {
             DLog.handleException(e);
-            Toast.makeText(context, "e-mail client not found", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, E_AAB, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -216,11 +218,11 @@ public class Module_U {
             if (intent.resolveActivity(context.getPackageManager()) != null) {
                 context.startActivity(intent);
             } else {
-                Toast.makeText(context, "e-mail client not found", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, E_AAB, Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
             DLog.handleException(e);
-            Toast.makeText(context, "e-mail client not found", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, E_AAB, Toast.LENGTH_LONG).show();
         }
     }
 

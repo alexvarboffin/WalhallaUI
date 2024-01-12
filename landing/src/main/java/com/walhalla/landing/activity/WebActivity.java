@@ -9,13 +9,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.walhalla.landing.ChromeView;
-import com.walhalla.landing.pagination.CoinPagination;
+import com.walhalla.landing.pagination.SinglePagination;
 
 public abstract class WebActivity extends AppCompatActivity implements ChromeView
 {
 
     protected WPresenter presenter;
-    protected CoinPagination pagination; //optional use
+    protected SinglePagination pagination; //optional use
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

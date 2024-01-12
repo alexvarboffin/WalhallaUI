@@ -2,6 +2,7 @@ package com.walhalla.landing;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -22,11 +23,14 @@ import com.walhalla.landing.utility.ActivityUtils;
 import com.walhalla.landing.utility.DownloadUtility;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.Module_U;
-
+import com.walhalla.landing.R;
 
 public class CustomWebViewClient extends WebViewClient {//RequestInspector
 
     private static final String KEY_ERROR_ = "about:blank0error";
+
+    private final String[] downloadFileTypes;
+    private final String[] linksOpenedInExternalBrowser;
 
     private String homeUrl = null;
     private boolean isErrorPageShown = false;
@@ -55,11 +59,12 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         super();
         this.activity = activity;
         this.context = a;
+        this.downloadFileTypes = context.getResources().getStringArray(R.array.download_file_types);
+        this.linksOpenedInExternalBrowser = context.getResources().getStringArray(R.array.links_opened_in_external_browser);
     }
 
     public CustomWebViewClient(ChromeView activity, Activity a) {
-        this.activity = activity;
-        this.context = a;
+        this(null, activity, a);
     }
 
     @Override
@@ -69,7 +74,7 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         }
         ChromeView activity = this.activity;
         if (activity != null) {
-            activity.onPageStarted();
+            activity.onPageStarted(url);
         }
         super.onPageStarted(view, url, favicon);
     }
@@ -164,8 +169,11 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-        String url = request.getUrl().toString();
-        DLog.d("//1. " + url);
+        String url = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            url = request.getUrl().toString();
+            DLog.d("//1. " + url);
+        }
         return handleUrl(view, url);
     }
 
@@ -176,8 +184,28 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         return handleUrl(view, url);
     }
 
+    public boolean isDownloadableFile(String url) {
+        int index = url.indexOf("?");
+        if (index > -1) {
+            url = url.substring(0, index);
+        }
+        url = url.toLowerCase();
+        for (String type : downloadFileTypes) {
+            if (url.endsWith(type)) return true;
+        }
+        return false;
+    }
+
+    public boolean isLinkExternal(String url) {
+        for (String rule : linksOpenedInExternalBrowser) {
+            if (url.contains(rule)) return true;
+        }
+        return false;
+    }
+
     private boolean handleUrl(WebView view, String url) {
-        if (DownloadUtility.isDownloadableFile(url)) {
+        boolean var0 = isDownloadableFile(url);
+        if (var0) {
             Toast.makeText(context, R.string.fragment_main_downloading, Toast.LENGTH_LONG).show();
             DownloadUtility.downloadFile(context, url, DownloadUtility.getFileName(url));
             return true;
@@ -185,13 +213,13 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
             ActivityUtils.starttg(context, url);
             return true; //handle itself
         } else if ((url.startsWith("http://") || url.startsWith("https://"))) {
+            DLog.d("@c@");
             // determine for opening the link externally or internally
-            boolean external = DownloadUtility.isLinkExternal(url);
-            boolean internal = DownloadUtility.isLinkInternal(url);
+            boolean external = isLinkExternal(url);//external app
+            boolean internal = DownloadUtility.isLinkInternal(url);//internal webView
             if (!external && !internal) {
                 external = WebViewAppConfig.OPEN_LINKS_IN_EXTERNAL_BROWSER;
             }
-
             //My new Code
             if (url.endsWith(".apk")) {
                 Module_U.openBrowser(context, url);
@@ -200,10 +228,12 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 
             // open the link
             if (external) {
+                DLog.d("@@@");
                 Module_U.openBrowser(context, url);
                 return true;
             } else {
                 //@@@ showActionBarProgress(true);
+                DLog.d("wwssw");
                 return false;
             }
         } else if (url != null && url.startsWith("mailto:")) {
@@ -300,7 +330,7 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         }
         ChromeView activity = this.activity;
         if (activity != null) {
-            activity.onPageFinished(view, url);
+            activity.onPageFinished(/*view, */url);
         }
         //injectJS(view);
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
@@ -88,14 +89,14 @@ public class AppOpenAdManager {
 
     private void handleError(LoadAdError loadAdError) {
         //свежий ID
-        if(loadAdError.getCode()== AdRequest.ERROR_CODE_INTERNAL_ERROR){
-            Log.d(TAG, "-->0<--"+AD_UNIT_ID);
+        if (loadAdError.getCode() == AdRequest.ERROR_CODE_INTERNAL_ERROR) {
+            Log.d(TAG, "-->0<--" + AD_UNIT_ID);
         }
         //network connectivity
-        else if(loadAdError.getCode()== AdRequest.ERROR_CODE_NETWORK_ERROR){
-            Log.d(TAG, "-->2<--"+AD_UNIT_ID);
-        }else if(loadAdError.getCode()==AdRequest.ERROR_CODE_NO_FILL){
-            Log.d(TAG, "-->3<--"+AD_UNIT_ID);
+        else if (loadAdError.getCode() == AdRequest.ERROR_CODE_NETWORK_ERROR) {
+            Log.d(TAG, "-->2<--" + AD_UNIT_ID);
+        } else if (loadAdError.getCode() == AdRequest.ERROR_CODE_NO_FILL) {
+            Log.d(TAG, "-->3<--" + AD_UNIT_ID);
             //app-ads.txt
             //"com.google.android.gms.ads"
         }
@@ -108,7 +109,10 @@ public class AppOpenAdManager {
     private boolean wasLoadTimeLessThanNHoursAgo(long numHours) {
         long dateDifference = (new Date()).getTime() - loadTime;
         long numMilliSecondsPerHour = 3_600_000;
-        return (dateDifference < (numMilliSecondsPerHour * numHours));
+        boolean mm = (dateDifference < (numMilliSecondsPerHour * numHours));
+
+        DLog.d("@@@@@@@@@@@@isLoading=>" + isLoadingAd + " :: " + loadTime + " " + dateDifference + " " + mm);
+        return mm;
     }
 
     /**
@@ -126,7 +130,13 @@ public class AppOpenAdManager {
      *
      * @param activity the activity that shows the app open ad
      */
-    public void showAdIfAvailable(@NonNull final Activity activity) {
+    public void showAdIfAvailable(@Nullable final Activity activity) {
+
+//        if (activity == null) {
+//            DLog.d("");
+//            return;
+//        }
+
         showAdIfAvailable(
                 activity,
                 new OnShowAdCompleteListener() {
@@ -149,9 +159,7 @@ public class AppOpenAdManager {
      * @param activity                  the activity that shows the app open ad
      * @param onShowAdCompleteListener0 the listener to be notified when an app open ad is complete
      */
-    public void showAdIfAvailable(
-            @NonNull final Activity activity,
-            @NonNull OnShowAdCompleteListener onShowAdCompleteListener0) {
+    public void showAdIfAvailable(@NonNull final Activity activity, @NonNull OnShowAdCompleteListener onShowAdCompleteListener0) {
         // If the app open ad is already showing, do not show the ad again.
         if (isShowingAd) {
             DLog.d("The app open ad is already showing.");

@@ -38,13 +38,11 @@ android {
             vectorDrawables {
                 useSupportLibrary = true
             }
-
             applicationId "kgbook.ru"
             minSdkVersion rootProject.minSdkVersion
             targetSdkVersion rootProject.targetSdkVersion0
             versionCode code
             versionName "1.1." + code + ".release"
-
             setProperty("archivesBaseName", "kgbook.ru")
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
@@ -119,8 +117,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.7.5'
-    implementation 'androidx.navigation:navigation-ui:2.7.5'
+    implementation 'androidx.navigation:navigation-fragment:2.7.6'
+    implementation 'androidx.navigation:navigation-ui:2.7.6'
     //implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.5.2'
