@@ -1,5 +1,6 @@
 package com.walhalla.ui;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,8 @@ import android.content.pm.Signature;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -84,6 +87,7 @@ public class Module_U {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 _o = _o + ", category->" + mView.getContext().getApplicationInfo().category;
             }
+            _o = _o + ", SDK:" + Build.VERSION.SDK_INT;
             _c.setText(_o);
             return false;
         });
@@ -194,7 +198,7 @@ public class Module_U {
         try {
             String subject = Uri.encode(context.getPackageName()) + "_" + DLog.getAppVersion(context);
             subject = subject.replace("com.walhalla.", "");
-            DLog.d(subject + "\t" + context.getString(R.string.publisher_feedback_email));
+            //DLog.d(subject + "\t" + context.getString(R.string.publisher_feedback_email));
 
 
 //            intent.setData(Uri.parse("mailto:" + PublisherConfig.FEEDBACK_EMAIL +
@@ -312,5 +316,16 @@ public class Module_U {
 
     public static void shareThisApp(Context context) {
         shareThisApp(context, null);
+    }
+
+    public static void actionWirelessSettings(Activity activity) {
+        try {
+            Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            activity.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // Обработка исключения, если активность не найдена
+            e.printStackTrace();
+        }
     }
 }

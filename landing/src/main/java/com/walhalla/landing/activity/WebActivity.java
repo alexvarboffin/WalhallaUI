@@ -15,7 +15,7 @@ public abstract class WebActivity extends AppCompatActivity implements ChromeVie
 {
 
     protected WPresenter presenter;
-    protected SinglePagination pagination; //optional use
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

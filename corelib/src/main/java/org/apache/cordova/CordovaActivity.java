@@ -2,7 +2,6 @@ package org.apache.cordova;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,53 +13,46 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
-import org.apache.P;
-import org.apache.Utils;
 import org.apache.cordova.domen.BodyClass;
 import org.apache.cordova.domen.Dataset;
-import org.apache.cordova.view.BetView;
+import org.apache.cordova.utility.DemoUtils;
 import org.apache.cordova.view.GameView;
 import org.apache.mvp.presenter.MainPresenter;
-import org.jetbrains.annotations.NotNull;
 
-public abstract class CordovaActivity extends AppCompatActivity
-        implements org.apache.mvp.MainView//, WebFragment.Lecallback
+public abstract class CordovaActivity extends AppCompatActivity implements org.apache.mvp.MainView//, WebFragment.Lecallback
 {
 
     private ViewGroup container;
     private GameView gameView;
-    private BetView webView2;
+    //private BetView webView2;
 
     MainPresenter presenter;
     private final GConfig aaa;
 
 
-    private final ChromeView mmm = new ChromeView() {
+    private final ChromeView chromeView = new ChromeView() {
         @Override
-        public void onPageStarted() {
+        public void onPageStarted(String s) {
             //DLog.d("@@@@@@@@@@@@@@@@@" );
         }
 
         @Override
-        public void onPageFinished(WebView view, String url) {
+        public void onPageFinished(String url) {
             presenter.saveFirstPageIfValid(url);
 
 //                String title = view.getTitle();
@@ -86,7 +78,20 @@ public abstract class CordovaActivity extends AppCompatActivity
         public void eventRequest(BodyClass bodyClass) {
 
         }
+
+        @Override
+        public void setErrorPage() {
+            //binding.contentFake.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void removeErrorPage() {
+            DLog.d("=====");
+            //binding.contentFake.setVisibility(View.GONE);
+        }
     };
+
+    private DynamicWebViewHolder dynamicWebView;
 
     public CordovaActivity() {
         aaa = GCfc();
@@ -108,47 +113,54 @@ public abstract class CordovaActivity extends AppCompatActivity
 
         // Create WebView instances
         gameView = new GameView(this);
-        container.addView(gameView);
+        rootContainer(gameView);
 
 
-        webView2 = new BetView(this);
-        container.addView(webView2);
+//        webView2 = new BetView(this);
+//        rootContainer(webView2);
 
-        presenter.a123(new ChromeView() {
-            @Override
-            public void onPageStarted() {
 
-            }
+        generateViews(this, container);
 
-            @Override
-            public void onPageFinished(WebView view, String url) {
 
-            }
-
-            @Override
-            public void webClientError(int errorCode, String description, String failingUrl) {
-                if (BuildConfig.DEBUG) {
-                    //@@
-                }
-            }
-
-            @Override
-            public void mAcceptPressed(String url) {
-
-            }
-
-            @Override
-            public void eventRequest(BodyClass bodyClass) {
-
-            }
-        }, gameView);
+//        presenter.a123(new ChromeView() {
+//            @Override
+//            public void onPageStarted(String url) {
+//
+//            }
+//
+//            @Override
+//            public void onPageFinished(String url) {
+//
+//            }
+//
+//            @Override
+//            public void webClientError(int errorCode, String description, String failingUrl) {
+//                if (BuildConfig.DEBUG) {
+//                    //@@
+//                }
+//            }
+//
+//            @Override
+//            public void mAcceptPressed(String url) {
+//
+//            }
+//
+//            @Override
+//            public void eventRequest(BodyClass bodyClass) {
+//
+//            }
+//        }, gameView);
         //presenter.makeFileSelector21_x(gameView);
-        presenter.a123(mmm, webView2);
+        gameView.getSettings().setJavaScriptEnabled(true);
+
+
+        //@@@@@presenter.a123(chromeView, webView2);
 
         makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
 
         //if (BuildConfig.DEBUG) {
-        //makeDemoToolbar();
+            DemoUtils.makeDemoToolbar(this);
         //}
 //        View decorView = getWindow().getDecorView();
 //        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
@@ -160,6 +172,13 @@ public abstract class CordovaActivity extends AppCompatActivity
             presenter.init0(this);
         }
     }
+
+    private void generateViews(CordovaActivity cordovaActivity, ViewGroup parent) {
+        // Создайте экземпляр DynamicWebViewHolder и получите его WebView
+        dynamicWebView = new DynamicWebViewHolder(this);
+        dynamicWebView.generateViews(cordovaActivity, parent, presenter, chromeView, aaa.isSwipeEnabled());
+    }
+
 
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -173,56 +192,11 @@ public abstract class CordovaActivity extends AppCompatActivity
     private void hideProgressBar() {
     }
 
-//    private void makeDemoToolbar() {
-//        // Create a LinearLayout with horizontal orientation for RadioButtons
-//        LinearLayout radioLayout = new LinearLayout(this);
-//        radioLayout.setLayoutParams(new LinearLayout.LayoutParams(
-//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//        radioLayout.setOrientation(LinearLayout.HORIZONTAL);
-//        radioLayout.setGravity(Gravity.CENTER);
-//
-//
-//        Button button = new Button(this);
-//        button.setText("GAME");
-//        button.setGravity(Gravity.CENTER);
-//
-//        Button button1 = new Button(this);
-//        button1.setText("WEB");
-//        button1.setGravity(Gravity.CENTER);
-//
-//
-//        // Create a RadioGroup for switching WebView visibility
-//        LinearLayout layout = new LinearLayout(this);
-//        layout.setLayoutParams(new LinearLayout.LayoutParams(
-//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//        layout.setOrientation(LinearLayout.HORIZONTAL);
-//        layout.setGravity(Gravity.CENTER);
-//
-//        layout.addView(button);
-//        layout.addView(button1);
-//
-////        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-////
-////        });
-//
-//        button.setOnClickListener(v -> {
-//            makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
-//        });
-//        button1.setOnClickListener(v -> {
-//            //presenter.wrapContentRequest();
-//            makeScreen(new Dataset(ScreenType.WEB_VIEW, "https://google.com"));
-//        });
-//
-//        // Add RadioGroup to LinearLayout
-//        radioLayout.addView(layout);
-//
-//        // Add LinearLayout to the main layout container
-//        container.addView(radioLayout);
-//
-//        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) radioLayout.getLayoutParams();
-//        layoutParams.gravity = Gravity.BOTTOM;
-//        radioLayout.setLayoutParams(layoutParams);
-//    }
+
+
+    public void rootContainer(View view) {
+        container.addView(view);
+    }
 
     protected boolean rotated1 = false;
 
@@ -234,7 +208,7 @@ public abstract class CordovaActivity extends AppCompatActivity
                 //@@-- rotated1 = true;
             }
             boolean a = true;
-            webView2.setVisibility(!a ? View.VISIBLE : View.GONE);
+            webView2setVisibility(!a ? View.VISIBLE : View.GONE);
             gameView.setVisibility(a ? View.VISIBLE : View.GONE);
         } else if (screen.screenType == ScreenType.WEB_VIEW) {
 
@@ -244,7 +218,7 @@ public abstract class CordovaActivity extends AppCompatActivity
             //url = "https://m.aliexpress.ru/499900000000000";
             if (TextUtils.isEmpty(url)) {
                 boolean a = true;
-                webView2.setVisibility(!a ? View.VISIBLE : View.GONE);
+                webView2setVisibility(!a ? View.VISIBLE : View.GONE);
                 gameView.setVisibility(a ? View.VISIBLE : View.GONE);
             } else {
 
@@ -255,13 +229,28 @@ public abstract class CordovaActivity extends AppCompatActivity
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String url0 = MainPresenter.makeUrl(url, preferences, this);
                 //DLog.d("{@@@}" + url0);
-                webView2.loadUrl(url0);
+                webView2loadUrl(url0);
                 boolean a = false;
-                webView2.setVisibility(!a ? View.VISIBLE : View.GONE);
+                webView2setVisibility(!a ? View.VISIBLE : View.GONE);
                 gameView.setVisibility(a ? View.VISIBLE : View.GONE);
             }
 
         }
+    }
+
+    private void webView2loadUrl(String url0) {
+        if (dynamicWebView == null) {
+            return;
+        }//webView2.loadUrl(url0);
+        dynamicWebView.loadUrl(url0);
+    }
+
+    private void webView2setVisibility(int i) {
+        if (dynamicWebView == null) {
+            return;
+        }
+        //webView2.setVisibility
+        dynamicWebView.webView2setVisibility(i);
     }
 
 
@@ -272,8 +261,9 @@ public abstract class CordovaActivity extends AppCompatActivity
         presenter.onDestroy();
 
         gameView.destroy();
-        webView2.destroy();
 
+        //webView2.destroy();
+        dynamicWebView.destroy();
     }
 
     public void loadUrl(String url) {
@@ -317,8 +307,7 @@ public abstract class CordovaActivity extends AppCompatActivity
             getSupportActionBar().setHomeButtonEnabled(count > 0);
         }
         if (count > 0) {
-            getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(),
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
         } else {//count == 0
 
 

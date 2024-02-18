@@ -42,9 +42,9 @@ import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.androidbrowserhelper.trusted.TwaLauncher;
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
-import org.apache.cordova.BuildConfig;
 import org.apache.cordova.ChromeView;
 import org.apache.cordova.Const;
 import org.apache.cordova.GConfig;
@@ -63,6 +63,7 @@ import org.apache.cordova.v70.app.CustomWebViewClient;
 import org.apache.cordova.v70.app.MyJavascriptInterface;
 import org.apache.mvp.MainAdapter;
 import org.apache.mvp.MainView;
+import org.apache.utils.CustomTabUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -87,7 +88,7 @@ public class MainPresenter extends BasePresenter
 
 
     private final AbstractDatasetRepository repository;
-    private final CustomTabsIntent customTabsIntent;
+    private final CustomTabsIntent customTabsIntent0;
     private final SharedPreferences preferences;
 
     private String lUrl; //Saved tracker url
@@ -129,65 +130,18 @@ public class MainPresenter extends BasePresenter
         if (this.repository != null) {
             this.repository.setCallback(this);
         }
-        if (!(UrlSaver.OH_NONE == aaa.SAVE_URL_LOCAL_TYPE)) {
+        if (!(UrlSaver.OH_NONE == aaa.getSAVE_URL_LOCAL_TYPE())) {
             lUrl = pref.getTargetUrl();
         } else {
             lUrl = null;
         }
-        this.customTabsIntent = customWeb(context);
+        this.customTabsIntent0 = CustomTabUtils.customWeb(context);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         preferences.registerOnSharedPreferenceChangeListener(this);
     }
 
-    private CustomTabsIntent customWeb(Activity context) {
-        //Configure the color of the address bar
-        CustomTabColorSchemeParams defaultColors = new CustomTabColorSchemeParams.Builder()
-                .setToolbarColor(context.getResources().getColor(R.color.colorPrimaryDark))
-                //.setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark))
-                .setNavigationBarDividerColor(Color.BLACK).setSecondaryToolbarColor(Color.BLACK).build();
 
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        builder
-                //.setShowTitle(true)
-                .setDefaultColorSchemeParams(defaultColors);
-
-        //Configure a custom action button
-        //24dp
-        //@PandingIntent pandingIntent = new PendingI
-        //@builder.setActionButton(icon, description, pendingIntent, tint);
-
-        //Configure a custom menu
-        //builder.addMenuItem(menuItemTitle, menuItemPendingIntent);
-
-        //Android 12
-        final int flag = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE : PendingIntent.FLAG_UPDATE_CURRENT;
-
-        Intent intent = new Intent(context, CustomTabsBroadcastReceiver.class);
-        intent.setAction(ACTION_COPY_URL);
-        String label = "Copy link...";
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, flag);
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            //PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-//            pendingIntent = PendingIntent.getBroadcast(
-//                    this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        } else {
-//            //PendingIntent.FLAG_UPDATE_CURRENT
-//            pendingIntent = PendingIntent.getBroadcast(
-//                    this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        }
-        builder.addMenuItem(label, pendingIntent).build();
-//        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
-//        Bundle bundle = new Bundle();
-//        bundle.putString("goz_ad_click", "1");
-//        mFirebaseAnalytics.logEvent("in_offer_open_click", bundle);
-        CustomTabsIntent customTabsIntent = builder.build();
-        //customTabsIntent.intent.setPackage("com.android.chrome"); // Указываем пакет Chrome
-
-
-        return customTabsIntent;
-    }
 
     public static String makeUrl(String url, SharedPreferences preferences, Context context) {
         try {
@@ -315,7 +269,7 @@ public class MainPresenter extends BasePresenter
     public void onResume(Intent intent) {
         //DLog.d("@@@@@@@@@@@@@@@@" + aaa.ENABLE_TRACKER);
         if (!onlyOnetime) {
-            if (aaa.ENABLE_TRACKER
+            if (aaa.isENABLE_TRACKER()
                 //&& !BuildConfig.DEBUG
 
             ) {
@@ -363,7 +317,7 @@ public class MainPresenter extends BasePresenter
     }
 
     private void wrapRequest() {
-        if (aaa.WRAP_ENABLED) {
+        if (aaa.isWRAP_ENABLED()) {
             wrapContentRequest();
         }
     }
@@ -410,7 +364,7 @@ public class MainPresenter extends BasePresenter
         } else {
 
             if (!mView.rotated()) {
-                if (!(UrlSaver.OH_NONE == aaa.SAVE_URL_LOCAL_TYPE)) {
+                if (!(UrlSaver.OH_NONE == aaa.getSAVE_URL_LOCAL_TYPE())) {
                     lUrl = pref.getTargetUrl();
                     //lUrl = "https://2ip.ru";
                     //DLog.d("@@@@@@@@@@@@" + lUrl);
@@ -714,7 +668,7 @@ public class MainPresenter extends BasePresenter
     }
 
     public void saveFirstPageIfValid(String url) {
-        if (UrlSaver.FIRST_REDIRECT == aaa.SAVE_URL_LOCAL_TYPE) {
+        if (UrlSaver.FIRST_REDIRECT == aaa.getSAVE_URL_LOCAL_TYPE()) {
             if (lUrl == null && !TextUtils.isEmpty(url)) {
                 lUrl = url;
                 pref.setTargetUrl(url);
@@ -731,7 +685,7 @@ public class MainPresenter extends BasePresenter
     @Override
     public void successResponse(Dataset value) {
         DLog.d("@@d@" + value.url + " " + value.enabled);
-        if (aaa.SAVE_URL_LOCAL_TYPE == UrlSaver.FIRST) {
+        if (aaa.getSAVE_URL_LOCAL_TYPE() == UrlSaver.FIRST) {
             pref.setTargetUrl(value.url);
         }
         determineAdvertisingInfo0(value, context);
@@ -744,7 +698,12 @@ public class MainPresenter extends BasePresenter
 
     public void customTabsIntentLaunchUrl(String url) {
         try {
-            customTabsIntent.launchUrl(context, Uri.parse(url));
+
+//        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("goz_ad_click", "1");
+//        mFirebaseAnalytics.logEvent("in_offer_open_click", bundle);
+            customTabsIntent0.launchUrl(context, Uri.parse(url));
         } catch (Exception e) {
             DLog.handleException(e);
         }

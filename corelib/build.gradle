@@ -8,6 +8,8 @@ android {
     compileSdk 34
     buildToolsVersion '34.0.0'
 
+    namespace "org.apache.cordova"
+
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion0
@@ -67,7 +69,9 @@ dependencies {
     //@@implementation "com.google.firebase:firebase-analytics:$rootProject.analyticsVersion"
 
     //Нужно для захвата рекламного идентификатора
-    implementation 'com.google.android.gms:play-services-ads-lite:22.4.0'
+    //@@@ требует плагина и прописать в манифест!!! implementation 'com.google.android.gms:play-services-ads-lite:22.6.0'
+    //Не требует плагина и прописать в манифест!!!
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     //yandex
     // AppMetrica SDK.
@@ -86,7 +90,7 @@ dependencies {
     implementation 'androidx.ads:ads-identifier:1.0.0-alpha05'
     // Used for the calls to addCallback() in the snippets on this page.
     implementation 'com.google.guava:guava:31.1-jre'
-    implementation 'androidx.annotation:annotation:1.7.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
 
     //implementation 'com.appsflyer:af-android-sdk:6.9.2@aar'
     if (isEmpty(APPSFLYER_DEV_KEY)) {
@@ -99,10 +103,11 @@ dependencies {
     //TwaLauncher or CustomTabsIntent
     //Chrome Custom Tabs -> deprecated
     //Custom Tabs vs Trusted Web Activity (Trusted Web Activity extends Custom Tabs)
-    implementation "androidx.browser:browser:1.6.0" //It's android custom tabs lib
+    implementation "androidx.browser:browser:1.7.0" //It's android custom tabs lib
     implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
 
     // TWA 2.3.0 contains androidx.browser:browser:1.4.0
     implementation project(':ui')
     //implementation 'com.github.acsbendi:Android-Request-Inspector-WebView:1.0.2'
+    implementation 'org.imaginativeworld.oopsnointernet:oopsnointernet:2.0.0'
 }

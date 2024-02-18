@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import com.android.lib.navigation.Navigation;
 import com.walhalla.ui.Module_U;
 
+import org.apache.BackPressedUtil;
 import org.apache.P;
 import org.apache.Utils;
 import org.apache.cordova.domen.Dataset;
@@ -112,7 +113,7 @@ public abstract class CordovaApp extends AppCompatActivity
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (aaa.TOOLBAR_ENABLED) {
+        if (aaa.isTOOLBAR_ENABLED()) {
 //            toolbar.setSubtitle(Util.getAppVersion(this));
             toolbar.setVisibility(View.VISIBLE);
         } else {
@@ -282,8 +283,7 @@ public abstract class CordovaApp extends AppCompatActivity
             }
 
             this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, R.string.press_again_to_exit, Toast.LENGTH_SHORT).show();
-
+            BackPressedUtil.backPressedToast(this);
             new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 500);
 
         }

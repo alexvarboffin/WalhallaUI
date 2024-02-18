@@ -18,32 +18,13 @@
           <timeTargetWasSelectedWithDropDown value="2023-12-19T12:02:14.329618500Z" />
         </State>
       </entry>
+      <entry key="CanvasClicker">
+        <State />
+      </entry>
       <entry key="FreeStuffAndCoupons">
         <State />
       </entry>
       <entry key="Lottie">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\combo\.android\avd\Pixel_7_API_24.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-01-12T11:00:15.975119900Z" />
-        </State>
-      </entry>
-      <entry key="MediaStorage">
-        <State />
-      </entry>
-      <entry key="app">
-        <State />
-      </entry>
-      <entry key="phonenumber">
         <State>
           <runningDeviceTargetSelectedWithDropDown>
             <Target>
@@ -56,8 +37,20 @@
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2023-12-19T12:03:19.281287900Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-02-08T11:54:56.675811Z" />
         </State>
+      </entry>
+      <entry key="MediaStorage">
+        <State />
+      </entry>
+      <entry key="Promo">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="phonenumber">
+        <State />
       </entry>
     </value>
   </component>

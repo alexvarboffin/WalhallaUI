@@ -8,9 +8,9 @@ import com.android.installreferrer.api.InstallReferrerClient;
 import com.android.installreferrer.api.InstallReferrerStateListener;
 import com.android.installreferrer.api.ReferrerDetails;
 
-import org.apache.cordova.BuildConfig;
 import org.apache.cordova.Const;
 
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
 

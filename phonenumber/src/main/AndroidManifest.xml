@@ -25,11 +25,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneNumber"
         tools:targetApi="31">
-
+<!--        .activity.ViewPagerActivity.NoActionBar-->
         <activity
-            android:name=".activity.ViewPagerActivity"
+            android:name=".activity.PhoneNumberActivity"
             android:exported="true"
-            android:theme="@style/Theme.PhoneNumber.NoActionBar">
+            android:theme="@style/Theme.PhoneNumber">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +40,10 @@
             <!--                android:value="" />-->
         </activity>
 
+        <activity
+            android:name=".activity.CanvasClicker"
+            android:exported="true"
+            android:theme="@style/Theme.PhoneNumber.NoActionBar" />
 
         <activity
             android:name=".activity.ReviewActivity"

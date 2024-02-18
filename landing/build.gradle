@@ -12,9 +12,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-
     }
 
     buildTypes {
@@ -33,16 +30,18 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
     buildFeatures {
+        viewBinding true
         buildConfig true
     }
-    //namespace 'com.walhalla.ui'
-
+    namespace 'com.walhalla.landing'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
+//    implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
+//    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation("androidx.appcompat:appcompat:$rootProject.compatVersion")
+    implementation("com.google.android.material:material:$rootProject.materialVersion")
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.preference:preference:1.2.1'
@@ -57,5 +56,5 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation project(path: ':ui')
-
+    implementation 'org.imaginativeworld.oopsnointernet:oopsnointernet:2.0.0'
 }

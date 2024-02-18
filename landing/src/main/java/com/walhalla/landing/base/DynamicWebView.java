@@ -1,8 +1,11 @@
 package com.walhalla.landing.base;
 
 import android.content.Context;
+import android.webkit.DownloadListener;
 
 import androidx.appcompat.UWView;
+
+import com.walhalla.ui.DLog;
 
 public class DynamicWebView {
 
@@ -10,6 +13,7 @@ public class DynamicWebView {
 
     public DynamicWebView(Context context) {
         webView = new UWView(context);
+
         // Настройка WebView
         //webView.getSettings().setJavaScriptEnabled(true);
     }

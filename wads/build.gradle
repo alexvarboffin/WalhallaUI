@@ -15,6 +15,7 @@ android {
             consumerProguardFiles 'proguard-rules.pro'
         }
     }
+    namespace 'com.walhalla.library'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
@@ -34,7 +35,7 @@ dependencies {
 //    implementation "com.google.android.gms:play-services-ads:18.1.1"
     implementation "com.google.android.gms:play-services-ads:$rootProject.gmsAds"
     implementation "com.google.firebase:firebase-ads:$rootProject.gmsAds"
-
+    implementation "androidx.lifecycle:lifecycle-process:$rootProject.lifecycle_version"
 //        exclude group: 'com.android.support'
 //    }
 //+ Native ads

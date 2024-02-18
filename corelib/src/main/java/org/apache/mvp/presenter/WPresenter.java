@@ -30,7 +30,8 @@ import androidx.appcompat.UWView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.apache.cordova.BuildConfig;
+import com.walhalla.ui.BuildConfig;
+
 import org.apache.cordova.ChromeView;
 import org.apache.cordova.domen.BodyClass;
 import org.apache.cordova.repository.impl.FirebaseRepository;

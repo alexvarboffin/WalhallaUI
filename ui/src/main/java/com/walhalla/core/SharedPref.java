@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 
 public class SharedPref {
+    private static final String BANNER_SHOWN_KEY = "banner_shown";
 
     private static final String KEY_AGREE = "licenseagreeok";
     private static final String KEY_RATED = "key_rate_not_show_again";
@@ -16,13 +17,22 @@ public class SharedPref {
 
     private static final String KEY_RELOADED = "rate_launch_count";
     private static final String DATE_FIRST_LAUNCH = "DATE_FIRST_LAUNCH_";
+    private static SharedPref instance;
+
 
     private final SharedPreferences settings;
 
-    public SharedPref(Context activity) {
-        this.settings = PreferenceManager.getDefaultSharedPreferences(activity);
+
+    public static synchronized SharedPref getInstance(Context context) {
+        if (instance == null) {
+            instance = new SharedPref(context);
+        }
+        return instance;
     }
 
+    private SharedPref(Context activity) {
+        this.settings = PreferenceManager.getDefaultSharedPreferences(activity);
+    }
 
     public boolean licenseAgree() {
         return settings.getBoolean(KEY_AGREE, false);
@@ -77,5 +87,19 @@ public class SharedPref {
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt(LAUNCH_COUNT_KEY, launchCount);
         editor.apply();
+    }
+
+
+    //========================== Session Manager =============================
+    public boolean isBannerAlreadyShown() {
+        return settings.getBoolean(BANNER_SHOWN_KEY, false);
+    }
+
+    public void setBannerShown() {
+        settings.edit().putBoolean(BANNER_SHOWN_KEY, true).apply();
+    }
+
+    public void resetBannerShown() {
+        settings.edit().putBoolean(BANNER_SHOWN_KEY, false).apply();
     }
 }

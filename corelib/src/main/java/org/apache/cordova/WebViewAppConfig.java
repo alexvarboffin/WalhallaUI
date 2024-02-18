@@ -1,4 +1,4 @@
-package org.apache.cordova.v70;
+package org.apache.cordova;
 
 
 public class WebViewAppConfig
@@ -18,15 +18,7 @@ public class WebViewAppConfig
 	// true for opening webview links in external web browser rather than directly in the webview
 	public static final boolean OPEN_LINKS_IN_EXTERNAL_BROWSER = false;
 
-	// rules for opening links in external browser,
-	// if URL link contains the string, it will be opened in external browser,
-	// these rules have higher priority than OPEN_LINKS_IN_EXTERNAL_BROWSER option
-	public static final String[] LINKS_OPENED_IN_EXTERNAL_BROWSER = {
-			"target=blank",
-			"target=external",
-			"play.google.com/store",
-			"youtube.com/watch"
-	};
+
 
 	// rules for opening links in internal webview,
 	// if URL link contains the string, it will be loaded in internal webview,

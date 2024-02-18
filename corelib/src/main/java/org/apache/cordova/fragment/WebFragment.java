@@ -89,7 +89,7 @@ public class WebFragment extends Fragment implements ChromeView {
         clazz1 = view.findViewById(R.id.browser);
         progressBar = view.findViewById(R.id.progressBar1);
 
-        if (aaa.PROGRESSBAR_ENABLED) {
+        if (aaa.isPROGRESSBAR_ENABLED()) {
             progressBar.setVisibility(View.VISIBLE);
         } else {
             progressBar.setVisibility(View.GONE);
@@ -141,22 +141,22 @@ public class WebFragment extends Fragment implements ChromeView {
 
 
     @Override
-    public void onPageStarted() {
+    public void onPageStarted(String s) {
         mWebView.setVisibility(View.VISIBLE);
 //        // only make it invisible the FIRST time the app is run
 //        if (ShowOrHideWebViewInitialUse.equals("show")) {
 //            //mWebView.setVisibility(View.INVISIBLE);
 //        }
-        if (aaa.PROGRESSBAR_ENABLED) {
+        if (aaa.isPROGRESSBAR_ENABLED()) {
             progressBar.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
-    public void onPageFinished(@NonNull WebView view, String url) {
-        String title = view.getTitle();
+    public void onPageFinished(String url) {
+        String title = mWebView.getTitle();
         if (WEBTITLE_ENABLE && !TextUtils.isEmpty(title) && listener != null) {
-            if (title != null && title.startsWith(view.getUrl())) {
+            if (title != null && title.startsWith(mWebView.getUrl())) {
                 listener.setActionBarTitle(title);
             }
         }
@@ -191,6 +191,16 @@ public class WebFragment extends Fragment implements ChromeView {
     @Override
     public void eventRequest(BodyClass body) {
         presenter.event(body);
+    }
+
+    @Override
+    public void setErrorPage() {
+        Toast.makeText(getActivity(), "setErrorPage", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void removeErrorPage() {
+        Toast.makeText(getActivity(), "removeErrorPage", Toast.LENGTH_SHORT).show();
     }
 
 

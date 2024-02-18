@@ -1,7 +1,6 @@
 package com.walhalla.phonenumber.activity;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -15,7 +14,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.TextView;
@@ -23,7 +21,6 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -33,7 +30,7 @@ import static android.Manifest.permission.READ_SMS;
 
 import com.walhalla.phonenumber.R;
 
-public class MainActivity extends AppCompatActivity {
+public class PhoneNumberActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_CALL_PHONE_PERMISSION = 990;
     private TextView phone_number;
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Binding views
         phone_number = findViewById(R.id.phone_number);
-        phone_number.setText("");
+        phone_number.setText("79592287622");
 
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override

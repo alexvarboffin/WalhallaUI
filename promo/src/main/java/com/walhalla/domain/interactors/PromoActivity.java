@@ -1,8 +1,12 @@
 package com.walhalla.domain.interactors;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,5 +74,23 @@ public abstract class PromoActivity extends AppCompatActivity {
 //                        showMessage(new LogViewModel(R.drawable.ic_log_ex, error));
 //                    }
 //                });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        launchDropBox();
+    }
+
+    private void launchDropBox() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("dropbox://"));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PackageManager packageManager = getPackageManager();
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Dropbox app not installed", Toast.LENGTH_SHORT).show();
+        }
     }
 }

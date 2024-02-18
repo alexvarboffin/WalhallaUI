@@ -9,6 +9,10 @@ public interface ChromeView {
 
     void webClientError(int errorCode, String description, String failingUrl);
 
+    void removeErrorPage();
+
+    void setErrorPage();
+
     //void mAcceptPressed(String url);
 
     //void eventRequest(BodyClass bodyClass);

@@ -1,16 +1,15 @@
-package com.walhalla.landing.utility;
+package org.apache.cordova.utility;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.walhalla.landing.R;
 
+import org.apache.cordova.R;
 import org.imaginativeworld.oopsnointernet.dialogs.pendulum.DialogPropertiesPendulum;
 import org.imaginativeworld.oopsnointernet.dialogs.pendulum.NoInternetDialogPendulum;
 import org.imaginativeworld.oopsnointernet.dialogs.signal.DialogPropertiesSignal;
@@ -19,16 +18,16 @@ import org.imaginativeworld.oopsnointernet.snackbars.fire.NoInternetSnackbarFire
 import org.imaginativeworld.oopsnointernet.snackbars.fire.SnackbarPropertiesFire;
 
 public class NetUtils {
-
-    public static boolean isOnline(Context context) {
+    public static boolean isOnline(Context context)
+    {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+        if (netInfo != null && netInfo.isConnectedOrConnecting())
+        {
             return true;
         }
         return false;
     }
-
 
     public static void isOnlineFire(AppCompatActivity activity, ViewGroup mainContainer) {
         // No Internet Snackbar: Fire
@@ -63,16 +62,16 @@ public class NetUtils {
         });
 
         properties.setCancelable(false); // Optional
-        properties.setNoInternetConnectionTitle("No Internet"); // Optional
-        properties.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        properties.setNoInternetConnectionTitle(activity.getString(R.string.no_internet_title)); // Optional
+        properties.setNoInternetConnectionMessage(activity.getString(R.string.no_internet_message)); // Optional
         properties.setShowInternetOnButtons(true); // Optional
-        properties.setPleaseTurnOnText("Please turn on"); // Optional
-        properties.setWifiOnButtonText("Wifi"); // Optional
+        properties.setPleaseTurnOnText(activity.getString(R.string.please_turn_on)); // Optional
+        properties.setWifiOnButtonText(activity.getString(R.string.wifi_button)); // Optional
         properties.setMobileDataOnButtonText("Mobile data"); // Optional
 
-        properties.setOnAirplaneModeTitle("No Internet"); // Optional
-        properties.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
-        properties.setPleaseTurnOffText("Please turn off"); // Optional
+        properties.setOnAirplaneModeTitle(activity.getString(R.string.on_airplane_mode_title)); // Optional
+        properties.setOnAirplaneModeMessage(activity.getString(R.string.on_airplane_mode_message)); // Optional
+        properties.setPleaseTurnOffText(activity.getString(R.string.please_turn_off)); // Optional
         properties.setAirplaneModeOffButtonText("Airplane mode"); // Optional
         properties.setShowAirplaneModeOffButtons(true); // Optional
 
@@ -88,16 +87,16 @@ public class NetUtils {
             // ...
         });
         properties.setCancelable(false); // Optional
-        properties.setNoInternetConnectionTitle("No Internet"); // Optional
-        properties.setNoInternetConnectionMessage("Check your Internet connection and try again"); // Optional
+        properties.setNoInternetConnectionTitle(activity.getString(R.string.no_internet)); // Optional
+        properties.setNoInternetConnectionMessage(activity.getString(R.string.no_internet_message)); // Optional
         properties.setShowInternetOnButtons(true); // Optional
-        properties.setPleaseTurnOnText("Please turn on"); // Optional
-        properties.setWifiOnButtonText("Wifi"); // Optional
+        properties.setPleaseTurnOnText(activity.getString(R.string.please_turn_on)); // Optional
+        properties.setWifiOnButtonText(activity.getString(R.string.wifi_button)); // Optional
         properties.setMobileDataOnButtonText("Mobile data"); // Optional
 
-        properties.setOnAirplaneModeTitle("No Internet"); // Optional
-        properties.setOnAirplaneModeMessage("You have turned on the airplane mode."); // Optional
-        properties.setPleaseTurnOffText("Please turn off"); // Optional
+        properties.setOnAirplaneModeTitle(activity.getString(R.string.no_internet)); // Optional
+        properties.setOnAirplaneModeMessage(activity.getString(R.string.on_airplane_mode_message)); // Optional
+        properties.setPleaseTurnOffText(activity.getString(R.string.please_turn_off)); // Optional
         properties.setAirplaneModeOffButtonText("Airplane mode"); // Optional
         properties.setShowAirplaneModeOffButtons(true); // Optional
         builder.build();

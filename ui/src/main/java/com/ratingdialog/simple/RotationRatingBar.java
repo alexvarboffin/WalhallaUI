@@ -14,7 +14,7 @@ import com.walhalla.ui.R;
 
 public class RotationRatingBar extends TBaseRatingBar {
 
-    private static Handler sUiHandler = new Handler();
+    private static final Handler sUiHandler = new Handler();
 
     public RotationRatingBar(Context context) {
         super(context);

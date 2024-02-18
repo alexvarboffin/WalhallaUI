@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import com.google.gson.Gson;
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
 import org.apache.Utils;
-import org.apache.cordova.BuildConfig;
-import org.apache.cordova.Const;
+
 import org.apache.cordova.E;
 import org.apache.cordova.ScreenType;
 import org.apache.cordova.TPreferences;
@@ -117,19 +117,19 @@ public class FirebaseIpperRepository extends AbstractDatasetRepository implement
 
             //@@@@
             //"status"	"success"
-            //"country	"Ukraine"
-            //"countryCode	"UA"
-            //"region	"09"
-            //"regionName	"Luhansk"
-            //"city	"Kadiyivka"
+            //"country
+            //"countryCode	""
+            //"region	"01"
+            //"regionName
+            //"city	""
             //"zip	""
-            //"lat	48.5682
-            //"lon	38.6435
-            //"timezone	"Europe/Zaporozhye"
-            //"isp	"Lugansk Telephone Company"
-            //"org	"Lugansk Telephone Company"
-            //"as	"AS29031 Lugansk Telephone Company"
-            //"query	"195.3.134.234"
+            //"lat	42
+            //"lon	3
+            //"timezone	"E
+            //"isp	"
+            //"org	"
+            //"as	"
+            //"query	"1
 
             if (TRACKER_ENABLED && !BuildConfig.DEBUG) {
                 Map<String, Object> map = new HashMap<>();

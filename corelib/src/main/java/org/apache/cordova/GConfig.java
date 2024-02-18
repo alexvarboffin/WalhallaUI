@@ -6,20 +6,88 @@ import java.io.Serializable;
 
 public class GConfig implements Serializable {
 
-    public final UrlSaver SAVE_URL_LOCAL_TYPE;
-    public final boolean TOOLBAR_ENABLED;
-    public final boolean PROGRESSBAR_ENABLED;
 
-    public final boolean WRAP_ENABLED;
-    public final boolean ENABLE_TRACKER;
-    public GConfig(boolean en_toolbar, boolean en_progressbar, UrlSaver saver, //Save url or connect to tracker
-                   boolean en_wrap, boolean en_tracker) {
-        this.TOOLBAR_ENABLED = en_toolbar;
-        this.PROGRESSBAR_ENABLED = en_progressbar;
-
-        this.SAVE_URL_LOCAL_TYPE = saver;
-        this.WRAP_ENABLED = en_wrap;
-        this.ENABLE_TRACKER=en_tracker;
+    public boolean isTOOLBAR_ENABLED() {
+        return TOOLBAR_ENABLED;
     }
 
+    public boolean isPROGRESSBAR_ENABLED() {
+        return PROGRESSBAR_ENABLED;
+    }
+
+    public UrlSaver getSAVE_URL_LOCAL_TYPE() {
+        return SAVE_URL_LOCAL_TYPE;
+    }
+
+    public boolean isWRAP_ENABLED() {
+        return WRAP_ENABLED;
+    }
+
+    public boolean isENABLE_TRACKER() {
+        return ENABLE_TRACKER;
+    }
+
+    private final boolean TOOLBAR_ENABLED;
+    private final boolean PROGRESSBAR_ENABLED;
+    private final UrlSaver SAVE_URL_LOCAL_TYPE;
+    private final boolean WRAP_ENABLED;
+    private final boolean ENABLE_TRACKER;
+
+    private GConfig(Builder builder) {
+        this.TOOLBAR_ENABLED = builder.TOOLBAR_ENABLED;
+        this.PROGRESSBAR_ENABLED = builder.PROGRESSBAR_ENABLED;
+        this.SAVE_URL_LOCAL_TYPE = builder.SAVE_URL_LOCAL_TYPE;
+        this.WRAP_ENABLED = builder.WRAP_ENABLED;
+        this.ENABLE_TRACKER = builder.ENABLE_TRACKER;
+    }
+
+    public boolean isSwipeEnabled() {
+        return true;
+    }
+
+    public static class Builder {
+        private boolean TOOLBAR_ENABLED;
+        private boolean PROGRESSBAR_ENABLED;
+        private UrlSaver SAVE_URL_LOCAL_TYPE;
+        private boolean WRAP_ENABLED;
+        private boolean ENABLE_TRACKER;
+
+        public Builder() {
+            // Set default values if needed
+            this.TOOLBAR_ENABLED = true;
+            this.PROGRESSBAR_ENABLED = true;
+            this.SAVE_URL_LOCAL_TYPE = UrlSaver.OH_NONE;
+            this.WRAP_ENABLED = false;
+            this.ENABLE_TRACKER = false;
+        }
+
+        public Builder toolbarEnabled(boolean toolbarEnabled) {
+            this.TOOLBAR_ENABLED = toolbarEnabled;
+            return this;
+        }
+
+        public Builder progressbarEnabled(boolean progressbarEnabled) {
+            this.PROGRESSBAR_ENABLED = progressbarEnabled;
+            return this;
+        }
+
+        public Builder saveUrlLocalType(UrlSaver saveUrlLocalType) {
+            this.SAVE_URL_LOCAL_TYPE = saveUrlLocalType;
+            return this;
+        }
+
+        public Builder wrapEnabled(boolean wrapEnabled) {
+            this.WRAP_ENABLED = wrapEnabled;
+            return this;
+        }
+
+        public Builder enableTracker(boolean enableTracker) {
+            this.ENABLE_TRACKER = enableTracker;
+            return this;
+        }
+
+        public GConfig build() {
+            return new GConfig(this);
+        }
+    }
 }

@@ -29,15 +29,43 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 
     private static final String KEY_ERROR_ = "about:blank0error";
 
+    ReceivedError receivedError = null;
+
+
     private final String[] downloadFileTypes;
     private final String[] linksOpenedInExternalBrowser;
 
     private String homeUrl = null;
-    private boolean isErrorPageShown = false;
 
-    public void setErrorPageShown(boolean errorPageShown) {
-        isErrorPageShown = errorPageShown;
+    public void resetAllErrors() {
+        receivedError = null;
     }
+
+
+    static class ReceivedError {
+        String failingUrl;
+        Integer errorCode;
+
+        public ReceivedError(String failingUrl, int errorCode) {
+            this.failingUrl = failingUrl;
+            this.errorCode = errorCode;
+        }
+
+//        public void setErrorPageShown() {
+//            isErrorPageShown0 = true;
+//        }
+
+
+        @Override
+        public String toString() {
+            return "ReceivedError{" +
+                    "failingUrl='" + failingUrl + '\'' +
+                    ", errorCode=" + errorCode +
+                    '}';
+        }
+    }
+
+
 
     public void setHomeUrl(String homeUrl) {
         this.homeUrl = homeUrl;
@@ -180,7 +208,7 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
     @Deprecated
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        DLog.d("//0. " + url);
+        DLog.d("@@@. " + url);
         return handleUrl(view, url);
     }
 
@@ -215,10 +243,10 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         } else if ((url.startsWith("http://") || url.startsWith("https://"))) {
             DLog.d("@c@");
             // determine for opening the link externally or internally
-            boolean external = isLinkExternal(url);//external app
+            boolean openInExternalApp = isLinkExternal(url);//openInExternalApp app
             boolean internal = DownloadUtility.isLinkInternal(url);//internal webView
-            if (!external && !internal) {
-                external = WebViewAppConfig.OPEN_LINKS_IN_EXTERNAL_BROWSER;
+            if (!openInExternalApp && !internal) {
+                openInExternalApp = WebViewAppConfig.OPEN_LINKS_IN_EXTERNAL_BROWSER;
             }
             //My new Code
             if (url.endsWith(".apk")) {
@@ -227,7 +255,7 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
             }
 
             // open the link
-            if (external) {
+            if (openInExternalApp) {
                 DLog.d("@@@");
                 Module_U.openBrowser(context, url);
                 return true;
@@ -322,13 +350,30 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         }
     }
 
+
+    ReceivedError oldValue;
+
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
+        if (BuildConfig.DEBUG) {
+            int scale = (int) (100 * view.getScale());
+            DLog.d("[" + url + "], {Scale}->" + scale + ", " + receivedError);
+        }
+        ChromeView activity = this.activity;
+
+        //error is fixed
+        if (oldValue != null && receivedError == null) {
+            activity.removeErrorPage();
+        }
+
+        oldValue = receivedError;//set
+        receivedError = null;//reset error
+
         if (KEY_ERROR_.equals(url)) {
             view.clearHistory();
         }
-        ChromeView activity = this.activity;
+
         if (activity != null) {
             activity.onPageFinished(/*view, */url);
         }
@@ -341,30 +386,31 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
     private void handleErrorCode(WebView webView, int errorCode, String description, String failingUrl) {
 
         if (HANDLE_ERROR_CODE) {
-            if (errorCode == WebViewClient.ERROR_HOST_LOOKUP) {//-2 ERR_NAME_NOT_RESOLVED
-                if (!isErrorPageShown) {
+            if (errorCode == WebViewClient.ERROR_HOST_LOOKUP /*ERR_INTERNET_DISCONNECTED*/) {//-2 ERR_NAME_NOT_RESOLVED
+                if (!theerrorisalreadyshown()) {
                     if (homeUrl != null && homeUrl.equals(failingUrl)) {
                         //webView.loadData(timeoutMessageHtml, "text/html", "utf-8");
-                        webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
-                        isErrorPageShown = true;
+                        //@@@ webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
+                        setErrorPage(failingUrl, errorCode);
+                        //Toast.makeText(context, "@@@", Toast.LENGTH_SHORT).show();
                     }
                 }
                 webClientError(errorCode, description, failingUrl);
             } else if (errorCode == WebViewClient.ERROR_TIMEOUT) {//-8 ERR_CONNECTION_TIMED_OUT
-                if (!isErrorPageShown) {
+                if (!theerrorisalreadyshown()) {
                     if (homeUrl != null && homeUrl.equals(failingUrl)) {
                         //webView.loadData(timeoutMessageHtml, "text/html", "utf-8");
-                        webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
-                        isErrorPageShown = true;
+                        //@@@ webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
+                        setErrorPage(failingUrl, errorCode);
                     }
                 }
                 webClientError(errorCode, description, failingUrl);
             } else if (errorCode == WebViewClient.ERROR_CONNECT) {// -6	net::ERR_CONNECTION_REFUSED
-                if (!isErrorPageShown) {
+                if (!theerrorisalreadyshown()) {
                     if (homeUrl != null && homeUrl.equals(failingUrl)) {
                         //webView.loadData(timeoutMessageHtml, "text/html", "utf-8");
-                        webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
-                        isErrorPageShown = true;
+                        //@@@ webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
+                        setErrorPage(failingUrl, errorCode);
                     }
                 }
                 webClientError(errorCode, description, failingUrl);
@@ -375,6 +421,11 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
             //ERR_CONNECTION_RESET
         }
     }
+
+    private boolean theerrorisalreadyshown() {
+        return receivedError != null && receivedError.errorCode != null;
+    }
+
 
     /**
      * On API 23 or below
@@ -396,10 +447,10 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         }
 
         String mainUrl = (view.getUrl() == null) ? "" : view.getUrl();
-        DLog.d("@@@: " + mainUrl + " " + request.getUrl().toString());
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            DLog.d("@@@ >= 23" + error.getErrorCode() + "\t" + error.getDescription());
+            DLog.d("!! @@@ >= 23" + error.getErrorCode() + "\t" + error.getDescription());
+            DLog.d("!! @@@: " + mainUrl + " " + request.getUrl().toString());
+
             if (mainUrl.equals(request.getUrl().toString())) {
                 DLog.d("URL: " + mainUrl);
                 handleErrorCode(view, error.getErrorCode(), error.getDescription().toString(), request.getUrl().toString());
@@ -419,6 +470,16 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         if (nonNull(view)) {
             view.webClientError(errorCode, description, failingUrl);
         }
+    }
+
+    private void setErrorPage(String failingUrl, int errorCode) {
+        //isErrorPageShown0 = true;
+        receivedError = new ReceivedError(failingUrl, errorCode);
+        ChromeView view = activity;
+        if (nonNull(view)) {
+            view.setErrorPage();
+        }
+        //isErrorPageShown0 = false;
     }
 
     private boolean nonNull(Object o) {
@@ -468,7 +529,6 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
         }
     }
 
-
 //Google play не пропустит!
 //    @SuppressLint("WebViewClientOnReceivedSslError")
 //    @Override
@@ -476,4 +536,11 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
 //
 //        handler.proceed();// Пропустить проверку сертификата
 //    }
+
+
+    @Override
+    public void onScaleChanged(WebView view, float oldScale, float newScale) {
+        super.onScaleChanged(view, oldScale, newScale);
+        DLog.d("@@" + oldScale + "@@" + newScale);
+    }
 }

@@ -10,16 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
-import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.UWView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.apache.BackPressedUtil;
 import org.apache.P;
 import org.apache.Utils;
 
@@ -29,6 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
 
@@ -122,7 +122,7 @@ public abstract class CompatActivity extends AppCompatActivity
         main.setVisibility((web) ? View.GONE : View.VISIBLE);
         //mWebView.setVisibility((web) ? View.VISIBLE : View.GONE);
 
-        if (web && aaa.PROGRESSBAR_ENABLED) {
+        if (web && aaa.isPROGRESSBAR_ENABLED()) {
             pgb.setVisibility(View.VISIBLE);
         } else {
             hideProgressBar();
@@ -144,11 +144,11 @@ public abstract class CompatActivity extends AppCompatActivity
         clazz1 = findViewById(R.id.viewer);
         main = findViewById(R.id.mainContainer);
         pgb = findViewById(R.id.progressBar1);
-        if (!aaa.PROGRESSBAR_ENABLED) {
+        if (!aaa.isPROGRESSBAR_ENABLED()) {
             hideProgressBar();
         }
 
-        if (aaa.TOOLBAR_ENABLED) {
+        if (aaa.isTOOLBAR_ENABLED()) {
             toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 //            toolbar.setSubtitle(Util.getAppVersion(this));
@@ -280,19 +280,18 @@ public abstract class CompatActivity extends AppCompatActivity
 
     public void onPageStarted() {
         //@@@
-        if (aaa.PROGRESSBAR_ENABLED) {
+        if (aaa.isPROGRESSBAR_ENABLED()) {
             pgb.setVisibility(View.VISIBLE);
         }
     }
 
 
     @Override
-    public void onPageFinished(WebView view, String url) {
+    public void onPageFinished(String url) {
         presenter.saveFirstPageIfValid(url);
-
-        String title = view.getTitle();
+        String title = __mView.getTitle();
         if (webTitle() && !TextUtils.isEmpty(title) && toolbar != null) {
-            if (title != null && title.startsWith(view.getUrl())) {
+            if (title != null && title.startsWith(__mView.getUrl())) {
                 toolbar.setSubtitle(title);
             }
         }
@@ -305,7 +304,6 @@ public abstract class CompatActivity extends AppCompatActivity
         main = findViewById(R.id.mainContainer);
 
         if (main != null) {
-
             if (BuildConfig.DEBUG) {
                 main.setBackgroundColor(Color.parseColor("#80000000"));
             } else {
@@ -375,8 +373,7 @@ public abstract class CompatActivity extends AppCompatActivity
                 }
 
                 this.doubleBackToExitPressedOnce = true;
-                Toast.makeText(this, R.string.press_again_to_exit, Toast.LENGTH_SHORT).show();
-
+                BackPressedUtil.backPressedToast(this);
                 new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 800);
 
             }

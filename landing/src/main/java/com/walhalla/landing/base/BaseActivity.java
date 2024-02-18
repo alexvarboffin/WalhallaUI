@@ -4,21 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.UWView;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -27,8 +23,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.walhalla.landing.ChromeView;
 import com.walhalla.landing.R;
-import com.walhalla.landing.activity.WPresenter;
 import com.walhalla.landing.activity.WebActivity;
+import com.walhalla.landing.databinding.ActivityMainBinding;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.Module_U;
 
@@ -42,7 +38,9 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
     protected DynamicWebView dynamicWebView;
 
     private SwipeRefreshLayout swipe;
-    protected Toolbar toolbar;
+
+    protected ActivityMainBinding binding;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,10 +54,10 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         mHandler = new Handler();
         //Handler handler = new Handler(Looper.getMainLooper());
         //presenter = new WPresenter(handler, this);
-        setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         //toolbar.setVisibility(View.GONE);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -116,7 +114,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
 //        }
     }
 
-    protected void generateViews(Context context, ViewGroup view) {
+    protected void generateViews(Context context) {
         // Создайте экземпляр DynamicWebView и получите его WebView
         dynamicWebView = new DynamicWebView(this);
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -124,7 +122,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         if (isSwipeEnabled()) {
             swipe = new SwipeRefreshLayout(context);
             swipe.setLayoutParams(lp);
-            view.addView(swipe);
+            binding.contentMain.addView(swipe);
             swipe.addView(dynamicWebView.getWebView());
             swipe.setRefreshing(false);
             swipe.setOnRefreshListener(() -> {
@@ -132,7 +130,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
                 dynamicWebView.getWebView().reload();
             });
         } else {
-            view.addView(dynamicWebView.getWebView());
+            binding.contentMain.addView(dynamicWebView.getWebView());
         }
 
         //mWebView.setBackgroundColor(Color.BLACK);
@@ -140,7 +138,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         presenter.a123(this, dynamicWebView.getWebView());
     }
 
-    protected void loadUrl(String url) {
+    public void loadUrl(String url) {
         dynamicWebView.getWebView().loadUrl(url);
     }
 
@@ -167,7 +165,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
             }
         }
 
-        View coordinatorLayout = findViewById(R.id.CoordinatorLayout);
+        View coordinatorLayout = findViewById(R.id.coordinatorLayout);
         Snackbar.make(coordinatorLayout, getString(R.string.press_again_to_exit), Snackbar.LENGTH_LONG).setAction("Action", null).show();
         this.doubleBackToExitPressedOnce = true;
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 1500);

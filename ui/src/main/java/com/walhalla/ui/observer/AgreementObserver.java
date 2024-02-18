@@ -24,7 +24,7 @@ public class AgreementObserver extends AlertDialog.Builder implements DefaultLif
     public AgreementObserver(final AppCompatActivity activity, String url) {
         super(activity);
 
-       var1=new SharedPref(activity);
+        var1 = SharedPref.getInstance(activity);
 
         setTitle(activity.getString(R.string.app_name));
         //setIcon(R.mipmap.ic_launcher_round);

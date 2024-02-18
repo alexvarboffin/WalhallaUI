@@ -8,6 +8,7 @@ import com.google.android.gms.ads.AdView;
 
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
 

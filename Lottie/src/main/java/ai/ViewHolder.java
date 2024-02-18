@@ -21,7 +21,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(LottieComposition lottieDrawable, String fileName) {
         //lottieView.setImageDrawable(lottieDrawable);
-        if(lottieDrawable!=null){
+        if (lottieDrawable != null) {
             lottieView.setComposition(lottieDrawable);
             lottieView.playAnimation();
         }

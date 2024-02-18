@@ -30,7 +30,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor;
-import com.walhalla.threader.BuildConfig;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +39,7 @@ import java.util.concurrent.Future;
 
 import com.walhalla.domain.repository.AdvertRepository;
 import com.walhalla.library.AdMobCase;
+import com.walhalla.ui.BuildConfig;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 

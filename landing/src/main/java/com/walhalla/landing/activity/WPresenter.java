@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -28,6 +29,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.walhalla.landing.BuildConfig;
 import com.walhalla.landing.ChromeView;
 import com.walhalla.landing.CustomWebViewClient;
+import com.walhalla.ui.DLog;
 
 import java.io.File;
 
@@ -235,8 +237,7 @@ public class WPresenter {
 
         //"Mozilla/5.0 (Linux; Android 5.1.1; Nexus 7 Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.78 Safari/537.36 OPR/30.0.1856.93524"
         //System.getProperty("http.agent")
-        String tmp = mView.getSettings().getUserAgentString();
-        mView.getSettings().setUserAgentString(tmp.replace("; wv)", ")"));
+        setCustomUserAgent(mView);
         //mView.getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0");
         if (BuildConfig.DEBUG) {
             //@@@ mView.setBackgroundColor(Color.parseColor("#80770000"));
@@ -253,6 +254,13 @@ public class WPresenter {
 //        __mView.addJavascriptInterface(
 //                new MyJavascriptInterface(CompatActivity.this, __mView), "JSInterface");
 //@@        mView.addJavascriptInterface(new MyJavascriptInterface(mView.getContext(), mView), "Client");
+    }
+
+    private void setCustomUserAgent(UWView mView) {
+        String agentString = mView.getSettings().getUserAgentString();
+        String agentStringNew = agentString.replace("; wv)", ")");
+        //String realFirefox = "Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0";
+        mView.getSettings().setUserAgentString(agentStringNew);
     }
 
     //public static final int REQUEST_SELECT_FILE = 100;
@@ -357,15 +365,16 @@ public class WPresenter {
         mUploadMessages = null;
     }
 
-    public void loadUrl(UWView mView, String s) {
+    public void loadUrlWithClearHistory(UWView mView, String s) {
         mView.stopLoading();
         mView.clearHistory();
         mView.loadUrl("about:blank");
         //mView.loadUrl("file:///android_asset/infAppPaused.html");
-        var0.setErrorPageShown(false);
+        var0.resetAllErrors();
         var0.setHomeUrl(s);
         mView.loadUrl(s);
     }
+
     private void alert(ActivityResult result, Uri[] selectedFiles, Context context) {
         Intent intent = result.getData();
         StringBuilder sb = new StringBuilder();

@@ -131,7 +131,6 @@ public class FeedbackDialog extends DialogFragment {
 
     private void goToMail(String appName) {
         final String subject = getResources().getString(R.string.rateme__email_subject, appName);
-
         try {
             if (PackageUtils.isPackageInstalled(getContext(), GMAIL_PACKAGE_NAME)) {
                 Intent intent = new Intent(Intent.ACTION_SEND);

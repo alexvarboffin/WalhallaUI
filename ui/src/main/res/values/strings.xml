@@ -4,7 +4,7 @@
     <string name="rateme__dialog_first_button_rate">Rate our app in the Play Store</string>
     <string name="rateme__dialog_first_thanks">Thanks for the rating!</string>
     <string name="rateme__dialog_feedback_message">Would you mind sharing your feedback?</string>
-    <string name="rateme__email_subject" translatable="false">Feedback for %1$s</string>
+    <string name="rateme__email_subject" translatable="false">🥇Feedback for %1$s</string>
     <string name="rateme__icon_content_description" translatable="false">Icon</string>
 
     <string name="app_name">[App_Name]</string>

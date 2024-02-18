@@ -1,9 +1,7 @@
 package com.walhalla.ui.observer;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -13,7 +11,6 @@ import androidx.lifecycle.LifecycleOwner;
 
 import androidx.preference.PreferenceManager;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,6 +38,10 @@ import com.walhalla.ui.R;
 
 public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
 
+    // alexvarboffin@gmail.com
+    public static int[] v0 = new int[]{109, 111, 99, 46, 108, 105, 97, 109, 103, 64, 110, 105, 102, 102, 111, 98, 114, 97, 118, 120, 101, 108, 97};
+    private final String rateAppFeedbackEmail;
+
     private static final boolean DEBUG = BuildConfig.DEBUG;
     private static final String _DIALOG_TAG = "plain-dialog";
     //public static final int REQUEST_CODE_MARKET = 2322;
@@ -53,7 +54,7 @@ public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
 
                 DialogFragment builder = new RateMeDialog.Builder(
                         compatActivity.getPackageName(), compatActivity.getString(R.string.app_name))
-                        .enableFeedbackByEmail(compatActivity.getString(R.string.publisher_feedback_email))
+                        .enableFeedbackByEmail(RateAppModule.this.rateAppFeedbackEmail)
                         //.showAppIcon(R.mipmap.ic_launcher)
                         .setOnRatingListener(new DefaultOnRatingListener() {
                             @Override
@@ -83,6 +84,7 @@ public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
     private final AppCompatActivity compatActivity;
     private final SharedPref var1;
 
+
     //private final ActivityResultLauncher<Intent> default_rate_app_launcher;
 
     private int launch_count;
@@ -97,8 +99,11 @@ public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
     //(LEVEL_1/*DAYS_UNTIL_PROMPT * 24 * 60 */)
     public RateAppModule(AppCompatActivity context) {
         compatActivity = context;
-        this.var1 = new SharedPref(context);
+        this.var1 = SharedPref.getInstance(context);
         this.launch_count = this.var1.appResumeCount();
+        //this.rateAppFeedbackEmail=compatActivity.getString(R.string.publisher_feedback_email);
+        //this.rateAppFeedbackEmail=compatActivity.getString(R.string.publisher_feedback_email);
+        this.rateAppFeedbackEmail = dec0();
         this.reviewManager = ReviewManagerFactory.create(context);// Инициализируем ReviewManager
 
 //        default_rate_app_launcher = compatActivity.registerForActivityResult(
@@ -294,7 +299,7 @@ public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
 
     public static void appRated(Context context, boolean setOrReset /*true if rated*/) {
         SharedPreferences var1 = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPref var0 = new SharedPref(context);
+        SharedPref var0 = SharedPref.getInstance(context);
         var0.appRated(setOrReset);
         if (!setOrReset) {
             //New time
@@ -392,6 +397,17 @@ public class RateAppModule implements SimpleModule, DefaultLifecycleObserver {
 //                DLog.d("<failure>" + e.getLocalizedMessage());
 //            }
 //        });
+    }
 
+    public String dec0(int[] intArray) {
+        char[] strArray = new char[intArray.length];
+        for (int i = 0; i < intArray.length; i++) {
+            strArray[i] = (char) intArray[i];
+        }
+        return new StringBuilder((String.valueOf(strArray))).reverse().toString();
+    }
+
+    public String dec0() {
+        return dec0(v0);
     }
 }

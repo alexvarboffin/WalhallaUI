@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.walhalla.ui.BuildConfig;
 //import static android.accounts.AccountManager.VISIBILITY_UNDEFINED;
 
 public class InterAdListener extends com.google.android.gms.ads.AdListener {

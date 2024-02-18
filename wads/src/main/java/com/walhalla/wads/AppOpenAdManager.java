@@ -82,7 +82,7 @@ public class AppOpenAdManager {
                         isLoadingAd = false;
 
                         handleError(loadAdError);
-                        DLog.d("onAdFailedToLoad: " + loadAdError);
+                        DLog.d("onAdFailedToLoad: " + loadAdError.getMessage());
                     }
                 });
     }
@@ -103,6 +103,8 @@ public class AppOpenAdManager {
         Log.d(TAG, loadAdError.toString());
     }
 
+
+
     /**
      * Check if ad was loaded more than n hours ago.
      */
@@ -111,7 +113,7 @@ public class AppOpenAdManager {
         long numMilliSecondsPerHour = 3_600_000;
         boolean mm = (dateDifference < (numMilliSecondsPerHour * numHours));
 
-        DLog.d("@@@@@@@@@@@@isLoading=>" + isLoadingAd + " :: " + loadTime + " " + dateDifference + " " + mm);
+        DLog.d("@@isLoading=>" + isLoadingAd + " :: " + loadTime + " " + dateDifference + " " + mm);
         return mm;
     }
 

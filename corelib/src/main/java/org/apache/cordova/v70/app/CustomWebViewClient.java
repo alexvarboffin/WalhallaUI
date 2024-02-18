@@ -1,5 +1,6 @@
 package org.apache.cordova.v70.app;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -7,29 +8,65 @@ import android.text.TextUtils;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
-
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.core.net.MailTo;
 
-//import com.acsbendi.requestinspectorwebview.RequestInspectorWebViewClient;
-//import com.acsbendi.requestinspectorwebview.WebViewRequest;
-
+import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.Module_U;
 
-import org.apache.cordova.BuildConfig;
 import org.apache.cordova.ChromeView;
 import org.apache.cordova.R;
-import org.apache.cordova.v70.WebViewAppConfig;
-import org.apache.cordova.v70.utility.ActivityUtils;
-import org.apache.cordova.v70.utility.DownloadUtility;
+import org.apache.cordova.WebViewAppConfig;
+import org.apache.cordova.utility.ActivityUtils;
+import org.apache.cordova.utility.DownloadUtility;
 
-public class CustomWebViewClient extends WebViewClient { //RequestInspector
+public class CustomWebViewClient extends WebViewClient {//RequestInspector
+
+    private static final String KEY_ERROR_ = "about:blank0error";
+
+    private final String[] downloadFileTypes;
+    private final String[] linksOpenedInExternalBrowser;
+
+    private String homeUrl = null;
+
+    public void resetAllErrors() {
+        receivedError = null;
+    }
+
+
+    static class ReceivedError {
+        String failingUrl;
+        Integer errorCode;
+
+        public ReceivedError(String failingUrl, int errorCode) {
+            this.failingUrl = failingUrl;
+            this.errorCode = errorCode;
+        }
+
+//        public void setErrorPageShown() {
+//            isErrorPageShown0 = true;
+//        }
+
+
+        @Override
+        public String toString() {
+            return "ReceivedError{" +
+                    "failingUrl='" + failingUrl + '\'' +
+                    ", errorCode=" + errorCode +
+                    '}';
+        }
+    }
+
+    ReceivedError receivedError = null;
+
+    public void setHomeUrl(String homeUrl) {
+        this.homeUrl = homeUrl;
+    }
 
     private static final int STATUS_CODE_UNKNOWN = 9999;
     private static final boolean HANDLE_ERROR_CODE = true;
@@ -37,42 +74,44 @@ public class CustomWebViewClient extends WebViewClient { //RequestInspector
     private static final boolean isConnected = true;
 
     static final String offlineMessageHtml = "Offline Connection Error";
-    static final String timeoutMessageHtml = "Timeout Connection Error";
+    static final String timeoutMessageHtml = "<!DOCTYPE html><html><head><title>Error Page</title></head><body><h1>Network Error</h1><p>There was a problem loading the page. Please check your internet connection and try again.</p></body></html>";
 
     private final ChromeView activity;
     private final Activity context;
 
-    public CustomWebViewClient(@NonNull WebView webView, ChromeView chromeView, Activity a) {
+
+    public CustomWebViewClient(@NonNull WebView webView, ChromeView activity, Activity a) {
         super();
-        this.activity = chromeView;
+        this.activity = activity;
         this.context = a;
+        this.downloadFileTypes = context.getResources().getStringArray(R.array.download_file_types);
+        this.linksOpenedInExternalBrowser = context.getResources().getStringArray(R.array.links_opened_in_external_browser);
     }
 
     public CustomWebViewClient(ChromeView activity, Activity a) {
-        this.activity = activity;
-        this.context = a;
+        this(null, activity, a);
     }
 
     @Override
     public void onPageStarted(@NonNull WebView view, @NonNull String url, Bitmap favicon) {
+        if (homeUrl == null) {
+            homeUrl = url;
+        }
         ChromeView activity = this.activity;
         if (activity != null) {
-            activity.onPageStarted();
+            activity.onPageStarted(url);
         }
         super.onPageStarted(view, url, favicon);
     }
 
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-        ChromeView activity = this.activity;
-        if (activity != null) {
-            activity.onPageFinished(view, url);
+    private void setErrorPage(String failingUrl, int errorCode) {
+        //isErrorPageShown0 = true;
+        receivedError = new ReceivedError(failingUrl, errorCode);
+        ChromeView view = activity;
+        if (nonNull(view)) {
+            view.setErrorPage();
         }
-        //injectJS(view);
-
-        //String cookies = CookieManager.getInstance().getCookie(url);
-        //DLog.d("All the cookies in a string:" + url + "\n" + cookies);
+        //isErrorPageShown0 = false;
     }
 
 //    @Nullable
@@ -84,8 +123,7 @@ public class CustomWebViewClient extends WebViewClient { //RequestInspector
 //            if (!TextUtils.isEmpty(body)) {
 //                ChromeView activity = this.activity.get();
 //                if (activity != null) {
-//                    activity.eventRequest(
-    //https://mc.yandex.ru
+//                    activity.eventRequest(//https://mc.yandex.ru
 //                            new BodyClass(Utils.makeDate(),
 //                                    body,
 //                                    webViewRequest.getUrl()));
@@ -163,57 +201,109 @@ public class CustomWebViewClient extends WebViewClient { //RequestInspector
 //    }
 
 
-    /* @SuppressWarnings("deprecation")*/
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-
-        //DLog.d("1@@@@" + url);
-
-//        String webview_url = context.getString(R.string.app_url);
-//        String device_id = Util.phoneId(MainActivity.getAppContext().getApplicationContext());
-//
-//        if (url.startsWith("tel:")) {
-//            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
-//            startActivity(intent);
-//            return true;
-//        } else if (url.startsWith(webview_url)) {
-//            view.loadUrl(url + "?id=" + device_id);
-//            return true;
-//        } else {
-//            view.getContext().startActivity(
-//                    new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-//            return true;
-//        }
-
-
-//                if (request..indexOf("host")<=0) {
-//                    // the link is not for activity page on my site, so launch another Activity that handles URLs
-//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                    startActivity(intent);
-//                    return true;
-//                }
-//                return false;
-
-        //@@@
-        if (url.startsWith("app://{package_id}") || url.startsWith("uniwebview://accept")
-                || url.startsWith("uniwebview://close")) {
-            ChromeView mainActivity = activity;
-            if (mainActivity != null) {
-                mainActivity.mAcceptPressed(url);
-            }
-            return true;
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        String url = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            url = request.getUrl().toString();
+            DLog.d("//1. " + url);
         }
-
-        ..@@
+        return handleUrl(view, url);
     }
 
-//            @TargetApi(Build.VERSION_CODES.N)
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView privacy, WebResourceRequest request) {
-//                final Uri uri = request.getConfig();
-//                return handleUri(uri);
-//            }
+    @Deprecated
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        DLog.d("@@@. " + url);
+        return handleUrl(view, url);
+    }
+
+    public boolean isDownloadableFile(String url) {
+        int index = url.indexOf("?");
+        if (index > -1) {
+            url = url.substring(0, index);
+        }
+        url = url.toLowerCase();
+        for (String type : downloadFileTypes) {
+            if (url.endsWith(type)) return true;
+        }
+        return false;
+    }
+
+    public boolean isLinkExternal(String url) {
+        for (String rule : linksOpenedInExternalBrowser) {
+            if (url.contains(rule)) return true;
+        }
+        return false;
+    }
+
+    private boolean handleUrl(WebView view, String url) {
+        boolean var0 = isDownloadableFile(url);
+        if (var0) {
+            Toast.makeText(context, R.string.fragment_main_downloading, Toast.LENGTH_LONG).show();
+            DownloadUtility.downloadFile(context, url, DownloadUtility.getFileName(url));
+            return true;
+        } else if (url.startsWith("tg:") || url.startsWith("https://t.me/")) {
+            ActivityUtils.starttg(context, url);
+            return true; //handle itself
+        } else if ((url.startsWith("http://") || url.startsWith("https://"))) {
+            DLog.d("@c@");
+            // determine for opening the link externally or internally
+            boolean openInExternalApp = isLinkExternal(url);//openInExternalApp app
+            boolean internal = DownloadUtility.isLinkInternal(url);//internal webView
+            if (!openInExternalApp && !internal) {
+                openInExternalApp = WebViewAppConfig.OPEN_LINKS_IN_EXTERNAL_BROWSER;
+            }
+            //My new Code
+            if (url.endsWith(".apk")) {
+                Module_U.openBrowser(context, url);
+                return true;
+            }
+
+            // open the link
+            if (openInExternalApp) {
+                DLog.d("@@@");
+                Module_U.openBrowser(context, url);
+                return true;
+            } else {
+                //@@@ showActionBarProgress(true);
+                DLog.d("wwssw");
+                return false;
+            }
+        } else if (url != null && url.startsWith("mailto:")) {
+            MailTo mailTo = MailTo.parse(url);
+            ActivityUtils.startEmailActivity(context, mailTo.getTo(), mailTo.getSubject(), mailTo.getBody());
+            return true;
+        } else if (url != null && url.startsWith("tel:")) {
+            ActivityUtils.startCallActivity(context, url);
+            return true;
+        } else if (url != null && url.startsWith("sms:")) {
+            ActivityUtils.startSmsActivity(context, url);
+            return true;
+        } else if (url != null && url.startsWith("geo:")) {
+            ActivityUtils.startMapSearchActivity(context, url);
+            return true;
+        } else if (url != null && url.startsWith("yandexnavi:")) {
+            ActivityUtils.startyandexnavi(context, url);
+            return true;
+        } else if (url != null && url.startsWith("intent://maps.yandex")) {
+            ActivityUtils.startMapYandex(context, url.replace("intent://", "https://"));
+            return true;
+        } else {
+            if (isConnected) {
+                // return false to let the WebView handle the URL
+                return false;
+            } else {
+                // show the proper "not connected" message
+                view.loadData(offlineMessageHtml, "text/html", "utf-8");
+                // return true if the host application wants to leave the current
+                // WebView and handle the url itself
+                return true;
+            }
+        }
+    }
+
+
 //
 //            @Override
 //            public void onPageFinished(WebView privacy, String HTTP_BUHTA) {
@@ -241,6 +331,107 @@ public class CustomWebViewClient extends WebViewClient { //RequestInspector
 //            }*/
 
     /**
+     * API 22 or above ...
+     */
+    @Override
+    public void onReceivedError(WebView webView, int errorCode, String description, String failingUrl) {
+        final String oldValue = webView.getUrl();
+        if (!TextUtils.isEmpty(oldValue)) {
+            if (oldValue.equals(failingUrl)) {
+                if (errorCode == WebViewClient.ERROR_TIMEOUT || -2 == errorCode) {//-8
+
+                    webView.stopLoading();  // may not be needed
+//                    DLog.d("@@@err1 " + (failingUrl));
+//                    //view.loadData(timeoutMessageHtml, "text/html", "utf-8");
+//                    //webView.clearHistory();//clear history
+//                    DLog.d("@@@err2 " + failingUrl);
+//                    webView.loadUrl("about:blank");
+//                    webView.loadDataWithBaseURL(null, timeoutMessageHtml, "text/html", "UTF-8", null);
+//                    webView.invalidate();
+                } else {
+                    //privacy.loadData(errorCode+"", "text/html", "utf-8");
+                }
+                handleErrorCode(webView, errorCode, description, failingUrl);
+            }
+        }
+    }
+
+    ReceivedError oldValue;
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        if (BuildConfig.DEBUG) {
+            int scale = (int) (100 * view.getScale());
+            DLog.d("[" + url + "], {Scale}->" + scale + ", " + receivedError);
+        }
+        ChromeView activity = this.activity;
+
+        //error is fixed
+        if (oldValue != null && receivedError == null) {
+            activity.removeErrorPage();
+        }
+
+        oldValue = receivedError;//set
+        receivedError = null;//reset error
+
+        if (KEY_ERROR_.equals(url)) {
+            view.clearHistory();
+        }
+
+        if (activity != null) {
+            activity.onPageFinished(/*view, */url);
+        }
+        //injectJS(view);
+
+        //String cookies = CookieManager.getInstance().getCookie(url);
+        //DLog.d("All the cookies in a string:" + url + "\n" + cookies);
+    }
+
+    private void handleErrorCode(WebView webView, int errorCode, String description, String failingUrl) {
+
+        if (HANDLE_ERROR_CODE) {
+            if (errorCode == WebViewClient.ERROR_HOST_LOOKUP /*ERR_INTERNET_DISCONNECTED*/) {//-2 ERR_NAME_NOT_RESOLVED
+                if (!theerrorisalreadyshown()) {
+                    if (homeUrl != null && homeUrl.equals(failingUrl)) {
+                        //webView.loadData(timeoutMessageHtml, "text/html", "utf-8");
+                        //@@@ webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
+                        setErrorPage(failingUrl, errorCode);
+                        //Toast.makeText(context, "@@@", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                webClientError(errorCode, description, failingUrl);
+            } else if (errorCode == WebViewClient.ERROR_TIMEOUT) {//-8 ERR_CONNECTION_TIMED_OUT
+                if (!theerrorisalreadyshown()) {
+                    if (homeUrl != null && homeUrl.equals(failingUrl)) {
+                        //webView.loadData(timeoutMessageHtml, "text/html", "utf-8");
+                        //@@@ webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
+                        setErrorPage(failingUrl, errorCode);
+                    }
+                }
+                webClientError(errorCode, description, failingUrl);
+            } else if (errorCode == WebViewClient.ERROR_CONNECT) {// -6	net::ERR_CONNECTION_REFUSED
+                if (!theerrorisalreadyshown()) {
+                    if (homeUrl != null && homeUrl.equals(failingUrl)) {
+                        //webView.loadData(timeoutMessageHtml, "text/html", "utf-8");
+                        //@@@ webView.loadDataWithBaseURL(KEY_ERROR_, timeoutMessageHtml, "text/html", "UTF-8", null);
+                        setErrorPage(failingUrl, errorCode);
+                    }
+                }
+                webClientError(errorCode, description, failingUrl);
+            } else if (errorCode != -14) {// -14 is error for file not found, like 404.
+                webClientError(errorCode, description, failingUrl);
+            }
+            //ERR_CONNECTION_REFUSED
+            //ERR_CONNECTION_RESET
+        }
+    }
+
+    private boolean theerrorisalreadyshown() {
+        return receivedError != null && receivedError.errorCode != null;
+    }
+
+    /**
      * On API 23 or below
      *
      * @param view
@@ -259,13 +450,17 @@ public class CustomWebViewClient extends WebViewClient { //RequestInspector
 //                        .show();
         }
 
+        String mainUrl = (view.getUrl() == null) ? "" : view.getUrl();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            DLog.d("@@@ >= 23" + error.getErrorCode() + "\t" + error.getDescription());
-            if (isThisUrl(view, request)) {
-                handleErrorCode(error.getErrorCode(), error.getDescription().toString(), request.getUrl().toString());
+            DLog.d("!! @@@ >= 23" + error.getErrorCode() + "\t" + error.getDescription());
+            DLog.d("!! @@@: " + mainUrl + " " + request.getUrl().toString());
+
+            if (mainUrl.equals(request.getUrl().toString())) {
+                DLog.d("URL: " + mainUrl);
+                handleErrorCode(view, error.getErrorCode(), error.getDescription().toString(), request.getUrl().toString());
             }
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (isThisUrl(view, request)) {
+            if (mainUrl.equals(request.getUrl().toString())) {
                 DLog.d("[onReceived--HttpError >= 21 ] " + error + " " + request.getUrl() + " " + view.getUrl());
                 //m404();
             }
@@ -274,58 +469,72 @@ public class CustomWebViewClient extends WebViewClient { //RequestInspector
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private boolean isThisUrl(WebView webView, WebResourceRequest request) {
-        String mainUrl = (webView.getUrl() == null) ? "" : webView.getUrl();
-        String requestUrl = request.getUrl().toString();
-        boolean result = mainUrl.equals(requestUrl);
-        DLog.d("####: " + mainUrl + " " + requestUrl + " " + result);
-        return result;
+    private void webClientError(int errorCode, String description, String failingUrl) {
+        ChromeView view = activity;
+        if (nonNull(view)) {
+            view.webClientError(errorCode, description, failingUrl);
+        }
     }
 
+    private boolean nonNull(Object o) {
+        DLog.d("Nonnull" + ((o != null) ? o.getClass().getCanonicalName() : null));
+        return o != null;
+    }
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-
         final int statusCode;
+        String cUrl = "";
         // SDK < 21 does not provide statusCode
-        if (Build.VERSION.SDK_INT < 21) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             statusCode = STATUS_CODE_UNKNOWN;
         } else {
             statusCode = errorResponse.getStatusCode();
-        }
-
-        String cUrl = "";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             cUrl = request.getUrl().toString();
         }
-
         //DLog.d("Status code: " + statusCode + " " + Build.VERSION.SDK_INT + " " + view.getUrl() + " " + cUrl);
-        DLog.d("[" + statusCode + "] " + cUrl + "");
+        DLog.d("[onReceivedHttpError::" + statusCode + "] " + cUrl + "");
 
-        if (statusCode == 404) {
-            //if (!mainUrl.equals(view.getUrl())) {
-            //Data
+//        if (statusCode == 404) {
+//            //if (!mainUrl.equals(view.getUrl())) {
+//            mainUrl = view.getUrl();
+//
+//            //Data
+//
+//            //view.getUrl() - main url wat we nead
+//            //request.getUrl() - resource
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                if (request.getUrl().toString().equals(mainUrl)) {
+//                    if (BuildConfig.DEBUG) {
+//                        DLog.d("[onReceivedHttpError] " + statusCode + " " + request.getUrl() + " " + view.getUrl());
+//                    }
+//                    m404();
+//                }
+//            }
+//
+//            //}
+//        }
 
-            //view.getUrl() - main url wat we nead
-            //request.getUrl() - resource
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                if (isThisUrl(view, request)) {
-                    if (BuildConfig.DEBUG) {
-                        DLog.d("[onReceivedHttpError] " + statusCode + " " + request.getUrl() + " " + view.getUrl());
-                    }
-                    webClientError();
-                    //DLog.d("@@@@@@@@@@@@ {}{404}");
-                }
-            }
-
-            //}
-        } else if (statusCode == 403) {
+        if (statusCode == 403) {
             if (view.getUrl() != null && view.getUrl().equals(cUrl)) {
                 //m404();
             }
         }
     }
 
-}
+//Google play не пропустит!
+//    @SuppressLint("WebViewClientOnReceivedSslError")
+//    @Override
+//    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+//
+//        handler.proceed();// Пропустить проверку сертификата
+//    }
 
+
+    @Override
+    public void onScaleChanged(WebView view, float oldScale, float newScale) {
+        super.onScaleChanged(view, oldScale, newScale);
+        DLog.d("@@" + oldScale + "@@" + newScale);
+    }
+}
