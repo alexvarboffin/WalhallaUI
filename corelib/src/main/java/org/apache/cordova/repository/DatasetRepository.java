@@ -2,12 +2,12 @@ package org.apache.cordova.repository;
 
 import android.content.Context;
 
-import org.apache.cordova.domen.Dataset;
+import org.apache.cordova.domen.UIVisibleDataset;
 
 public interface DatasetRepository {
 
     interface RepoCallback {
-        void successResponse(Dataset value);
+        void successResponse(UIVisibleDataset value);
 
         void handleError(String message);
     }

@@ -6,9 +6,10 @@ import android.text.TextUtils;
 
 import com.walhalla.ui.DLog;
 
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.http.HttpClient;
 import org.apache.cordova.ScreenType;
-import org.apache.cordova.domen.Dataset;
+
 import org.apache.cordova.repository.AbstractDatasetRepository;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,7 +53,7 @@ public class RemoteBotNoBotRepository extends AbstractDatasetRepository implemen
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         DLog.handleException(e);
         //handler.post(() -> {
-        callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+        callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
         //});
     }
 
@@ -65,20 +66,20 @@ public class RemoteBotNoBotRepository extends AbstractDatasetRepository implemen
 
         handler.post(() -> {
 //            if (Config.TAG_NOBOT.equals(empty)) {
-//                makeScreen(new Dataset(WEB_VIEW, "https://google.com"));
+//                makeScreen(new UIVisibleDataset(WEB_VIEW, "https://google.com"));
 //            } else if (Const.TAG_BOT.equals(empty)) {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            } else {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            }
 
             if (TAG_BOT.equals(empty) || TextUtils.isEmpty(empty)) {
-                callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             } else {
                 if (/*Const.TAG_NOBOT.equals(empty)*/empty != null && !empty.isEmpty()) {
-                    callback.successResponse(new Dataset(ScreenType.WEB_VIEW, empty));
+                    callback.successResponse(new UIVisibleDataset(ScreenType.WEB_VIEW, empty));
                 } else {
-                    callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                    callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
                 }
             }
         });

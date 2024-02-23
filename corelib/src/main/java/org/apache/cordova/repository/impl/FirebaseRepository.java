@@ -1,7 +1,5 @@
 package org.apache.cordova.repository.impl;
 
-import static org.apache.cordova.constants.TableField.KEY_DATASET;
-
 import android.app.Activity;
 import android.content.Context;
 import android.webkit.WebView;
@@ -19,9 +17,14 @@ import com.google.firebase.database.ValueEventListener;
 import org.apache.cordova.Chipper;
 
 import org.apache.cordova.domen.BodyClass;
+
 import org.apache.cordova.domen.Dataset;
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.repository.AbstractDatasetRepository;
+
 import com.walhalla.ui.DLog;
+
+import org.apache.cordova.utility.TextU;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -33,8 +36,8 @@ import java.util.Map;
 public class FirebaseRepository extends AbstractDatasetRepository {
 
 
-
     public static final String HKEY_USERS = "users";
+    private final String KEY_DATASET;
 
     private static String __e(String aaa) {
         return aaa;
@@ -76,7 +79,7 @@ public class FirebaseRepository extends AbstractDatasetRepository {
             DLog.handleException(error.toException());
             // Failed to getConfig value
             if (callback != null) {
-                callback.successResponse(new Dataset(false, "", false, ""));
+                callback.successResponse(new UIVisibleDataset(false, "", false, ""));
             }
         }
 
@@ -93,14 +96,15 @@ public class FirebaseRepository extends AbstractDatasetRepository {
             //Post post = dataSnapshot.getValue(Post.class);
             if (KEY_DATASET.equals(dataSnapshot.getKey())) {
                 try {
-                    Dataset value = dataSnapshot.getValue(Dataset.class);
-                    //DLog.d("! @@-->: " + value.toString());
+                    Dataset raw = dataSnapshot.getValue(Dataset.class);
+                    //DLog.d("! @@-->: " + raw.toString());
 
                     if (callback != null) {
 
                         //value.setEnabled(true);
                         //value.url = "https://twitter.com/";
 
+                        UIVisibleDataset value = new UIVisibleDataset(raw);
                         callback.successResponse(value);
                         if (value != null) {
                         }
@@ -117,7 +121,7 @@ public class FirebaseRepository extends AbstractDatasetRepository {
             DLog.handleException(databaseError.toException());
             // Failed to getConfig value
             if (callback != null) {
-                callback.successResponse(new Dataset(false, "", false, ""));
+                callback.successResponse(new UIVisibleDataset(false, "", false, ""));
             }
         }
     };
@@ -133,6 +137,7 @@ public class FirebaseRepository extends AbstractDatasetRepository {
 
     public FirebaseRepository(Context context) {
         super(context);
+        this.KEY_DATASET = TextU.md5(context.getPackageName());
     }
 
 //    public void write() {
@@ -140,7 +145,7 @@ public class FirebaseRepository extends AbstractDatasetRepository {
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        database.setPersistenceEnabled(true);
 //        DatabaseReference myRef = database.getReference();
-//        myRef.setValue(new Dataset(true, "http://ya.ru", true, "ru|ua|de|ch"));
+//        myRef.setValue(new UIVisibleDataset(true, "http://ya.ru", true, "ru|ua|de|ch"));
 //        myRef.addValueEventListener(postListener);
 //    }
 

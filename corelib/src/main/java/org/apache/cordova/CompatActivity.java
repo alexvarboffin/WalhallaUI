@@ -31,13 +31,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
-
 import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import org.apache.cordova.domen.Dataset;
-
-
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.mvp.presenter.MainPresenter;
 import org.apache.mvp.MainView;
 import org.jetbrains.annotations.NotNull;
@@ -93,15 +90,13 @@ public abstract class CompatActivity extends AppCompatActivity
      * активирует Web
      */
     @Override
-    public void makeScreen(Dataset screen) {
-
-
-        if (screen.screenType == ScreenType.WEB_VIEW) {
+    public void makeScreen(UIVisibleDataset screen) {
+        if (screen.getScreenType() == ScreenType.WEB_VIEW) {
             if (!rotated0 && orientationWeb() != null && this.getRequestedOrientation() != orientationWeb()) {
                 this.setRequestedOrientation(orientationWeb());
             }
             launch0(screen);
-        } else if (screen.screenType == ScreenType.WEB_RAW) {
+        } else if (screen.getScreenType() == ScreenType.WEB_RAW) {
             if (!rotated0 && orientationWeb() != null && this.getRequestedOrientation() != orientationWeb()) {
                 this.setRequestedOrientation(orientationWeb());
             }
@@ -115,8 +110,8 @@ public abstract class CompatActivity extends AppCompatActivity
 
         Utils.hideKeyboard(this);
         boolean web =
-                (screen.screenType == ScreenType.WEB_VIEW)
-                        || (screen.screenType == ScreenType.WEB_RAW);
+                (screen.getScreenType() == ScreenType.WEB_VIEW)
+                        || (screen.getScreenType() == ScreenType.WEB_RAW);
 
         clazz1.setVisibility((web) ? View.VISIBLE : View.GONE);
         main.setVisibility((web) ? View.GONE : View.VISIBLE);
@@ -406,11 +401,11 @@ public abstract class CompatActivity extends AppCompatActivity
     }
 
 
-    public void launch0(Dataset aaa) {
-        if (aaa.screenType == ScreenType.WEB_VIEW) {
+    public void launch0(UIVisibleDataset aaa) {
+        if (aaa.getScreenType() == ScreenType.WEB_VIEW) {
             //__mView.clearHistory();
             __mView.post(() -> __mView.loadUrl(aaa.getUrl()));
-        } else if (aaa.screenType == ScreenType.WEB_RAW) {
+        } else if (aaa.getScreenType()  == ScreenType.WEB_RAW) {
             DLog.d("@@WEB_RAW@@" + aaa.getUrl());
             __mView.loadDataWithBaseURL("https://slot", aaa.getUrl(), "text/html", "utf-8", null);
         }
@@ -419,7 +414,7 @@ public abstract class CompatActivity extends AppCompatActivity
 //    @SuppressLint("SourceLockedOrientationActivity")
 //    @Override
 //    public void m404() {
-//        makeScreen(new Dataset(ScreenType.WEB_VIEW, NONENONE));
+//        makeScreen(new UIVisibleDataset(ScreenType.WEB_VIEW, NONENONE));
 //        if (toolbar != null) {
 //            toolbar.setSubtitle("");
 //        }

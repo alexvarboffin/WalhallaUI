@@ -29,7 +29,8 @@ import com.walhalla.ui.BuildConfig;
 import com.walhalla.ui.DLog;
 
 import org.apache.cordova.domen.BodyClass;
-import org.apache.cordova.domen.Dataset;
+
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.utility.DemoUtils;
 import org.apache.cordova.view.GameView;
 import org.apache.mvp.presenter.MainPresenter;
@@ -66,7 +67,7 @@ public abstract class CordovaActivity extends AppCompatActivity implements org.a
 
         @Override
         public void webClientError(int errorCode, String description, String failingUrl) {
-            makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+            makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
         }
 
         @Override
@@ -157,7 +158,7 @@ public abstract class CordovaActivity extends AppCompatActivity implements org.a
 
         //@@@@@presenter.a123(chromeView, webView2);
 
-        makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+        makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 
         //if (BuildConfig.DEBUG) {
             DemoUtils.makeDemoToolbar(this);
@@ -201,8 +202,8 @@ public abstract class CordovaActivity extends AppCompatActivity implements org.a
     protected boolean rotated1 = false;
 
     @Override
-    public void makeScreen(Dataset screen) {
-        if (screen.screenType == ScreenType.GAME_VIEW) {
+    public void makeScreen(UIVisibleDataset screen) {
+        if (screen.getScreenType() == ScreenType.GAME_VIEW) {
             if (orientation404() != null && this.getRequestedOrientation() != orientation404()) {
                 this.setRequestedOrientation(orientation404());
                 //@@-- rotated1 = true;
@@ -210,9 +211,8 @@ public abstract class CordovaActivity extends AppCompatActivity implements org.a
             boolean a = true;
             webView2setVisibility(!a ? View.VISIBLE : View.GONE);
             gameView.setVisibility(a ? View.VISIBLE : View.GONE);
-        } else if (screen.screenType == ScreenType.WEB_VIEW) {
-
-            String url = screen.url;
+        } else if (screen.getScreenType() == ScreenType.WEB_VIEW) {
+            String url = screen.getUrl();
             //url = "https://google.com/6665555";
             //url="";//
             //url = "https://m.aliexpress.ru/499900000000000";

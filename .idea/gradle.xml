@@ -15,18 +15,20 @@
             <option value="$PROJECT_DIR$/Lottie" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/corelib" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/ui" />
+            <option value="$PROJECT_DIR$/features/wads" />
             <option value="$PROJECT_DIR$/landing" />
             <option value="$PROJECT_DIR$/phonenumber" />
             <option value="$PROJECT_DIR$/promo" />
-            <option value="$PROJECT_DIR$/stubInjector" />
-            <option value="$PROJECT_DIR$/stub_admob" />
-            <option value="$PROJECT_DIR$/stub_appmetrica" />
-            <option value="$PROJECT_DIR$/stub_appsflyer" />
-            <option value="$PROJECT_DIR$/stub_facebook" />
-            <option value="$PROJECT_DIR$/stub_mtracker" />
-            <option value="$PROJECT_DIR$/stub_onesignal" />
-            <option value="$PROJECT_DIR$/ui" />
-            <option value="$PROJECT_DIR$/wads" />
+            <option value="$PROJECT_DIR$/stub" />
+            <option value="$PROJECT_DIR$/stub/stubInjector" />
+            <option value="$PROJECT_DIR$/stub/stub_admob" />
+            <option value="$PROJECT_DIR$/stub/stub_appmetrica" />
+            <option value="$PROJECT_DIR$/stub/stub_appsflyer" />
+            <option value="$PROJECT_DIR$/stub/stub_facebook" />
+            <option value="$PROJECT_DIR$/stub/stub_mtracker" />
+            <option value="$PROJECT_DIR$/stub/stub_onesignal" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

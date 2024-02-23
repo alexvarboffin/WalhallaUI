@@ -12,9 +12,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.walhalla.ui.DLog;
 
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.http.HttpClient;
 import org.apache.cordova.ScreenType;
-import org.apache.cordova.domen.Dataset;
+
 import org.apache.cordova.repository.AbstractDatasetRepository;
 
 import org.apache.mvp.presenter.MainPresenter;
@@ -67,7 +68,7 @@ public class KwkRemoteRepository extends AbstractDatasetRepository
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         DLog.handleException(e);
         //handler.post(() -> {
-        callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+        callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
         //});
     }
 
@@ -84,22 +85,22 @@ public class KwkRemoteRepository extends AbstractDatasetRepository
         }
         handler.post(() -> {
 //            if (Config.TAG_NOBOT.equals(var0)) {
-//                makeScreen(new Dataset(WEB_VIEW, "https://google.com"));
+//                makeScreen(new UIVisibleDataset(WEB_VIEW, "https://google.com"));
 //            } else if (Const.TAG_BOT.equals(var0)) {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            } else {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            }
 
             if (json.isEmpty()) {
-                callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             } else {
                 try {
                     DLog.d("{*} " + json);
                     Gson gson = new Gson();
                     KwkResponse entity = gson.fromJson(json, KwkResponse.class);
-                    Dataset aa = new Dataset(ScreenType.WEB_VIEW, entity.url);
-                    aa.enabled = true;
+                    UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_VIEW, entity.url);
+                    aa.setEnabled(true);
                     callback.successResponse(aa);
                 } catch (Exception e) {
                     DLog.handleException(e);

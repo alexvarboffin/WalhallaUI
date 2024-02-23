@@ -1,6 +1,5 @@
 package org.apache.cordova.repository.impl;
 
-import static org.apache.cordova.constants.TableField.KEY_DATASET;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,13 +18,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import org.apache.cordova.constants.TableField;
+import org.apache.cordova.domen.Dataset;
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.http.HttpClient;
 import org.apache.cordova.ScreenType;
-import org.apache.cordova.domen.Dataset;
+
 import org.apache.cordova.repository.AbstractDatasetRepository;
 
 import com.walhalla.ui.DLog;
+
+import org.apache.cordova.utility.TextU;
 import org.apache.mvp.presenter.MainPresenter;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,7 +49,8 @@ import okhttp3.ResponseBody;
 
 public class ExFirebaseRepository extends AbstractDatasetRepository implements Callback {
 
-    
+
+    private final String KEY_DATASET;
     private final Handler handler;
 
     private final ChildEventListener _cel = new ChildEventListener() {
@@ -86,7 +89,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
             DLog.handleException(error.toException());
             // Failed to getConfig value
             if (callback != null) {
-                callback.successResponse(new Dataset(false, "", false, ""));
+                callback.successResponse(new UIVisibleDataset(false, "", false, ""));
             }
         }
 
@@ -101,6 +104,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
 
             // Get Post object and use the values to update the UI
             //Post post = dataSnapshot.getValue(Post.class);
+
             if (KEY_DATASET.equals(dataSnapshot.getKey())) {
                 try {
                     Dataset value = dataSnapshot.getValue(Dataset.class);
@@ -112,7 +116,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
 
                         if (value != null) {
                             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-                            String url = MainPresenter.makeUrl(value.url, preferences, context);
+                            String url = MainPresenter.makeUrl(value.getUrl(), preferences, context);
                             //DLog.d("@@" + url);
                             OkHttpClient client = HttpClient.getUnsafeOkHttpClient(context);
                             Request request = new Request.Builder().url(url).build();
@@ -132,7 +136,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
             DLog.handleException(databaseError.toException());
             // Failed to getConfig value
             if (callback != null) {
-                callback.successResponse(new Dataset(false, "", false, ""));
+                callback.successResponse(new UIVisibleDataset(false, "", false, ""));
             }
         }
     };
@@ -140,6 +144,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
     public ExFirebaseRepository(Handler handler, Context context) {
         super(context);
         this.handler = handler;
+        this.KEY_DATASET = TextU.md5(context.getPackageName());
     }
 
 //    public void write() {
@@ -147,7 +152,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        database.setPersistenceEnabled(true);
 //        DatabaseReference myRef = database.getReference();
-//        myRef.setValue(new Dataset(true, "http://ya.ru", true, "ru|ua|de|ch"));
+//        myRef.setValue(new UIVisibleDataset(true, "http://ya.ru", true, "ru|ua|de|ch"));
 //        myRef.addValueEventListener(postListener);
 //    }
 
@@ -201,7 +206,7 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         DLog.handleException(e);
         //handler.post(() -> {
-        callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+        callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
         //});
     }
 
@@ -218,22 +223,22 @@ public class ExFirebaseRepository extends AbstractDatasetRepository implements C
         }
         handler.post(() -> {
 //            if (Config.TAG_NOBOT.equals(var0)) {
-//                makeScreen(new Dataset(WEB_VIEW, "https://google.com"));
+//                makeScreen(new UIVisibleDataset(WEB_VIEW, "https://google.com"));
 //            } else if (Const.TAG_BOT.equals(var0)) {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            } else {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            }
 
             if (json.isEmpty()) {
-                callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             } else {
                 try {
                     DLog.d("@" + json);
                     Gson gson = new Gson();
                     KwkRemoteRepository.KwkResponse entity = gson.fromJson(json, KwkRemoteRepository.KwkResponse.class);
-                    Dataset aa = new Dataset(ScreenType.WEB_VIEW, entity.url);
-                    aa.enabled = true;
+                    UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_VIEW, entity.url);
+                    aa.setEnabled(true);
                     callback.successResponse(aa);
                 } catch (Exception e) {
                     DLog.handleException(e);

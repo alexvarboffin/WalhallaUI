@@ -36,4 +36,7 @@
     <string name="app_instagram" translatable="false">@null</string>
     <string name="app_description">@null</string>
 
+    <string name="error_connecting_to_server">Error connecting to server!</string>
+    <string name="successfully_loaded">Successfully Loaded</string>
+
 </resources>

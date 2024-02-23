@@ -115,8 +115,8 @@ public class Utils {
 //       DLog.d(Build.FINGERPRINT);
 //       DLog.d(Build.MODEL);
 //       DLog.d(Build.BOARD);
-//       DLog.d(Build.MANUFACTURER);
-//       DLog.d(Build.HOST);
+//       DLog.d("m"+Build.MANUFACTURER);
+//       DLog.d(Build.HOST);//ubuntu
 //       DLog.d(Build.BRAND);
 //       DLog.d(Build.PRODUCT);
 //       DLog.d("-->"+Build.DEVICE);

@@ -58,7 +58,7 @@ dependencies {
     //4.8.2
     //implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
     if (isEmpty(ONESIGNAL_APP_ID)) {
-        implementation project(':stub_onesignal')
+        implementation project(':stub:stub_onesignal')
     } else {
         implementation 'com.onesignal:OneSignal:4.8.6'
     }
@@ -77,7 +77,7 @@ dependencies {
     // AppMetrica SDK.
     //implementation 'com.yandex.android:mobmetricalib:3.18.0'
     // Play Install Referrer library.
-    implementation 'com.android.installreferrer:installreferrer:2.2'
+    api 'com.android.installreferrer:installreferrer:2.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     // define a BOM and its version
@@ -94,7 +94,7 @@ dependencies {
 
     //implementation 'com.appsflyer:af-android-sdk:6.9.2@aar'
     if (isEmpty(APPSFLYER_DEV_KEY)) {
-        implementation project(':stub_appsflyer')
+        implementation project(':stub:stub_appsflyer')
     } else {
         implementation 'com.appsflyer:af-android-sdk:6.9.2'
     }
@@ -107,7 +107,7 @@ dependencies {
     implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
 
     // TWA 2.3.0 contains androidx.browser:browser:1.4.0
-    implementation project(':ui')
+    implementation project(':features:ui')
     //implementation 'com.github.acsbendi:Android-Request-Inspector-WebView:1.0.2'
     implementation 'org.imaginativeworld.oopsnointernet:oopsnointernet:2.0.0'
 }

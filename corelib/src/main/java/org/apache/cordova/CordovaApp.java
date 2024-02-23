@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +11,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import com.android.lib.navigation.Navigation;
-import com.walhalla.ui.Module_U;
 
 import org.apache.BackPressedUtil;
 import org.apache.P;
 import org.apache.Utils;
-import org.apache.cordova.domen.Dataset;
+
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.fragment.WebFragment;
 import org.apache.cordova.repository.DatasetRepository;
 import com.walhalla.ui.DLog;
@@ -69,9 +68,9 @@ public abstract class CordovaApp extends AppCompatActivity
      * активирует Web
      */
     @Override
-    public void makeScreen(Dataset screen) {
+    public void makeScreen(UIVisibleDataset screen) {
         Utils.hideKeyboard(this);
-        if (screen.screenType != ScreenType.WEB_VIEW) {
+        if (screen.getScreenType() != ScreenType.WEB_VIEW) {
             if (!rotated && orientation404() != null && this.getRequestedOrientation() != orientation404()) {
                 this.setRequestedOrientation(orientation404());
                 rotated = true;
@@ -83,13 +82,15 @@ public abstract class CordovaApp extends AppCompatActivity
             }
             launchER(screen.getUrl());
         }
-        boolean web = screen.screenType == ScreenType.WEB_VIEW;
-        if (web) {
-            launchER(screen.getUrl());
-        } else {
-            //replaceFragment();
-            DLog.d("@@" + screen);
-        }
+
+//        boolean web = screengetScreenType() == ScreenType.WEB_VIEW;
+//        if (web) {
+//            launchER(screen.getUrl());
+//        } else {
+//            //replaceFragment();
+//            DLog.d("@@" + screen);
+//        }
+
         //mWebView.setVisibility((web) ? View.VISIBLE : View.GONE);
 //        if (web && PROGRESSBAR_ENABLED) {
 //            pgb.setVisibility(View.VISIBLE);
@@ -323,7 +324,7 @@ public abstract class CordovaApp extends AppCompatActivity
 //    @SuppressLint("SourceLockedOrientationActivity")
 //    @Override
 //    public void m404() {
-//        makeScreen(new Dataset(ScreenType.WEB_VIEW, NONENONE));
+//        makeScreen(new UIVisibleDataset(ScreenType.WEB_VIEW, NONENONE));
 //        if (toolbar != null) {
 //            toolbar.setSubtitle("");
 //        }
@@ -340,7 +341,6 @@ public abstract class CordovaApp extends AppCompatActivity
         outState.putBoolean(P.KEY_ROTATED, rotated);
         super.onSaveInstanceState(outState);
     }
-
     @Override
     public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);

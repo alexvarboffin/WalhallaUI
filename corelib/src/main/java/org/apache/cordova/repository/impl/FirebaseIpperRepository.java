@@ -21,7 +21,8 @@ import org.apache.Utils;
 import org.apache.cordova.E;
 import org.apache.cordova.ScreenType;
 import org.apache.cordova.TPreferences;
-import org.apache.cordova.domen.Dataset;
+
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.http.HttpClient;
 import org.apache.cordova.model.IpApi;
 import org.apache.cordova.repository.AbstractDatasetRepository;
@@ -69,7 +70,7 @@ public class FirebaseIpperRepository extends AbstractDatasetRepository implement
     public void onFailure(@NonNull Call call, @NonNull IOException e) {
         DLog.handleException(e);
         //handler.post(() -> {
-        callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+        callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
         //});
     }
 
@@ -96,7 +97,7 @@ public class FirebaseIpperRepository extends AbstractDatasetRepository implement
                 TPreferences pref = TPreferences.getInstance(this.context);
                 pref.setMute("true");
 //                if (callback != null) {
-//                    callback.successResponse(new Dataset(false, null, false, ""));
+//                    callback.successResponse(new UIVisibleDataset(false, null, false, ""));
 //                }
 
             } else {
@@ -106,7 +107,7 @@ public class FirebaseIpperRepository extends AbstractDatasetRepository implement
                 repository.getConfig(context);
 
 //                try {
-//                    Dataset aa = new Dataset(ScreenType.WEB_VIEW, entity.url);
+//                    UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_VIEW, entity.url);
 //                    aa.setEnabled(true);
 //                    callback.successResponse(aa);
 //                } catch (Exception e) {

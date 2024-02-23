@@ -23,5 +23,7 @@
 
 -keep class org.apache.cordova.domen.Dataset { *; }
 -keep class org.apache.cordova.domen.KwkResponse { *; }
--keep class org.apache.cordova.domen.KwkResponseNew { *; }
+
+
+#-keep class org.apache.cordova.domen.KwkResponseNew { *; }
 -repackageclasses 'c7999'

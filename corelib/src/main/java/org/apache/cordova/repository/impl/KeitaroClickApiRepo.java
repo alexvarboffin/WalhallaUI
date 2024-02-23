@@ -17,8 +17,8 @@ import org.apache.Utils;
 import org.apache.cordova.Const;
 import org.apache.cordova.ScreenType;
 import org.apache.cordova.TPreferences;
-import org.apache.cordova.domen.Dataset;
 
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.http.HttpClient;
 import org.apache.cordova.model.click_api.ClickApiResponse;
 import org.apache.cordova.repository.AbstractDatasetRepository;
@@ -110,7 +110,7 @@ public class KeitaroClickApiRepo extends AbstractDatasetRepository
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         DLog.handleException(e);
         handler.post(() -> {
-            callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+            callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             callback.handleError(e.getMessage());
         });
     }
@@ -128,14 +128,14 @@ public class KeitaroClickApiRepo extends AbstractDatasetRepository
         }
         handler.post(() -> {
 //            if (Config.TAG_NOBOT.equals(var0)) {
-//                makeScreen(new Dataset(WEB_VIEW, "https://google.com"));
+//                makeScreen(new UIVisibleDataset(WEB_VIEW, "https://google.com"));
 //            } else if (Const.TAG_BOT.equals(var0)) {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            } else {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            }
             if (json.isEmpty()) {
-                callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             } else {
                 try {
                     Gson gson = new Gson();
@@ -144,12 +144,12 @@ public class KeitaroClickApiRepo extends AbstractDatasetRepository
                     DLog.d("@bot@"+is_bot+" "+entity.info.url);
 
                     //Before
-//                    Dataset aa = new Dataset(ScreenType.WEB_RAW, entity.body);
+//                    UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_RAW, entity.body);
 //                    aa.setEnabled(true);
 //                    callback.successResponse(aa);
 
-                    Dataset aa = new Dataset(ScreenType.WEB_VIEW, privacyUrl);
-                    aa.enabled = true;
+                    UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_VIEW, privacyUrl);
+                    aa.setEnabled(true);
                     callback.successResponse(aa);
 
                 } catch (Exception e) {

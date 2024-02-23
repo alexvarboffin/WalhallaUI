@@ -1,23 +1,23 @@
 include ':c'
 project(':c').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\corelib\\')
 
-include ':stub_mtracker'
-project(':stub_mtracker').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_mtracker\\')
+include ':stub:stub_mtracker'
+project(':stub:stub_mtracker').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_mtracker\\')
 
-include ':stub_appmetrica'
-project(':stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_appmetrica\\')
+include ':stub:stub_appmetrica'
+project(':stub:stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_appmetrica\\')
 
-include ':stub_facebook'
-project(':stub_facebook').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_facebook\\')
+include ':stub:stub_facebook'
+project(':stub:stub_facebook').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_facebook\\')
 
-include ':stub_appsflyer'
-project(':stub_appsflyer').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_appsflyer\\')
+include ':stub:stub_appsflyer'
+project(':stub:stub_appsflyer').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_appsflyer\\')
 
-include ':stub_appmetrica'
-project(':stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_appmetrica\\')
+include ':stub:stub_appmetrica'
+project(':stub:stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_appmetrica\\')
 
-include ':stub_onesignal'
-project(':stub_onesignal').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_onesignal\\')
+include ':stub:stub_onesignal'
+project(':stub:stub_onesignal').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_onesignal\\')
 
-include ':stub_admob'
-project(':stub_admob').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub_admob\\')
+include ':stub:stub_admob'
+project(':stub:stub_admob').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_admob\\')

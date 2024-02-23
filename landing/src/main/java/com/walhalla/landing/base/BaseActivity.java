@@ -2,6 +2,7 @@ package com.walhalla.landing.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -14,8 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.UWView;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -36,8 +38,8 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
     protected boolean doubleBackToExitPressedOnce;
     private Handler mHandler;
     protected DynamicWebView dynamicWebView;
-
     private SwipeRefreshLayout swipe;
+
 
     protected ActivityMainBinding binding;
 
@@ -85,6 +87,9 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         } else if (itemId == R.id.action_feedback) {
             Module_U.feedback(this);
             return true;
+        }else if (itemId == R.id.action_refresh) {
+            dynamicWebView.getWebView().reload();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,10 +130,7 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
             binding.contentMain.addView(swipe);
             swipe.addView(dynamicWebView.getWebView());
             swipe.setRefreshing(false);
-            swipe.setOnRefreshListener(() -> {
-                swipe.setRefreshing(false);
-                dynamicWebView.getWebView().reload();
-            });
+            swipeWebViewRef(swipe, dynamicWebView.getWebView());
         } else {
             binding.contentMain.addView(dynamicWebView.getWebView());
         }
@@ -136,6 +138,22 @@ public abstract class BaseActivity extends WebActivity implements ChromeView, Ac
         //mWebView.setBackgroundColor(Color.BLACK);
         // register class containing methods to be exposed to JavaScript
         presenter.a123(this, dynamicWebView.getWebView());
+    }
+
+    private void swipeWebViewRef(SwipeRefreshLayout swipe, UWView webView) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            webView.setOnScrollChangeListener((view, i, i1, i2, i3) -> {
+                if (!view.canScrollVertically(-1)) {
+                    swipe.setEnabled(true); // Разрешить обновление при прокрутке вверх
+                } else {
+                    swipe.setEnabled(false); // Запретить обновление при прокрутке вниз
+                }
+            });
+        }
+        swipe.setOnRefreshListener(() -> {
+            swipe.setRefreshing(false);
+            webView.reload();
+        });
     }
 
     public void loadUrl(String url) {

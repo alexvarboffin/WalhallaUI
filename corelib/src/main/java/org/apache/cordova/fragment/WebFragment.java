@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -29,7 +28,7 @@ import org.apache.cordova.GConfig;
 import org.apache.cordova.R;
 import org.apache.cordova.domen.BodyClass;
 import com.walhalla.ui.DLog;
-import org.apache.mvp.presenter.WPresenter;
+import org.apache.mvp.presenter.WPresenterForFragment;
 
 import javax.annotation.Nullable;
 
@@ -48,7 +47,7 @@ public class WebFragment extends Fragment implements ChromeView {
     private Lecallback listener;
     private String launchUrl;
 
-    private WPresenter presenter;
+    private WPresenterForFragment presenter;
     //private String ShowOrHideWebViewInitialUse = "show";
 
     public static WebFragment newInstance(String url, GConfig config) {
@@ -68,7 +67,8 @@ public class WebFragment extends Fragment implements ChromeView {
             aaa = (GConfig) getArguments().getSerializable(P.ARG_PARAM2);
         }
         Handler handler = new Handler(Looper.getMainLooper());
-        presenter = new WPresenter(handler, (AppCompatActivity) getActivity());
+
+        presenter = new WPresenterForFragment(handler, (AppCompatActivity) getActivity(), this);
     }
 
     @Nullable
@@ -185,7 +185,7 @@ public class WebFragment extends Fragment implements ChromeView {
 
     @Override
     public void mAcceptPressed(String url) {
-        //makeScreen(new Dataset(ScreenType.GAME_VIEW, NONENONE));
+        //makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, NONENONE));
     }
 
     @Override
@@ -195,12 +195,18 @@ public class WebFragment extends Fragment implements ChromeView {
 
     @Override
     public void setErrorPage() {
-        Toast.makeText(getActivity(), "setErrorPage", Toast.LENGTH_SHORT).show();
+
+        //NOT USE ->> getActivity()
+
+        //Toast.makeText(getContext(), "setErrorPage", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void removeErrorPage() {
-        Toast.makeText(getActivity(), "removeErrorPage", Toast.LENGTH_SHORT).show();
+
+        //NOT USE ->> getActivity()
+
+        //Toast.makeText(getActivity(), "removeErrorPage", Toast.LENGTH_SHORT).show();
     }
 
 

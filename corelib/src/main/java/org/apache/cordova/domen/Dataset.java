@@ -1,27 +1,22 @@
 package org.apache.cordova.domen;
 
-
-import android.content.pm.ActivityInfo;
-
-import androidx.annotation.NonNull;
-
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.apache.cordova.ScreenType;
 
+// Класс для работы с Firebase
 public class Dataset {
 
     public ScreenType screenType;
 
     public Dataset(String url) {
-        this.url = url;
+        this.a = url;
     }
 
     public Dataset(ScreenType type, String url) {
         this.screenType = type;
-        this.url = url;
+        this.a = url;
     }
 
 //    public boolean isMenu() {
@@ -53,10 +48,6 @@ public class Dataset {
     public String viewType = "app";
 
 
-    @SerializedName("url")
-    @Expose
-    public String url;
-
     public boolean isDemo() {
         return demo;
     }
@@ -68,6 +59,11 @@ public class Dataset {
     @SerializedName("demo")
     @Expose
     private boolean demo;
+
+    public void setWhitelist(String whitelist) {
+        this.whitelist = whitelist;
+    }
+
     @SerializedName("whitelist")
     @Expose
     private String whitelist;
@@ -77,19 +73,28 @@ public class Dataset {
 
     public Dataset(Boolean isEnabled, String successUrl, Boolean isDemo, String whitelist) {
         this.enabled = isEnabled;
-        this.url = successUrl;
+        this.a = successUrl;
         this.demo = isDemo;
         this.whitelist = whitelist;
     }
 
+    @Expose
+    @SerializedName("url")
+    private String a;
+
+    public void setUrl(String a) {
+        this.a = a;
+    }
+
     public String getUrl() {
-        return url;
+        return a;
     }
 
     public String getWhitelist() {
         return whitelist;
     }
 
+    //@DevelopOnly
     @Override
     public String toString() {
         return "Dataset{" +
@@ -97,7 +102,7 @@ public class Dataset {
                 ", enabled=" + enabled +
                 ", portrait=" + orientation +
                 ", web=" + webview_external +
-                ", url='" + url + '\'' +
+                ", url='" + a + '\'' +
                 ", demo=" + demo +
                 ", whitelist='" + whitelist + '\'' +
                 '}';

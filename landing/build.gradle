@@ -55,6 +55,8 @@ dependencies {
     //noinspection GradleDependency
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation project(path: ':ui')
+    implementation project(':features:ui')
+
     implementation 'org.imaginativeworld.oopsnointernet:oopsnointernet:2.0.0'
+    api 'com.airbnb.android:lottie:5.2.0'
 }

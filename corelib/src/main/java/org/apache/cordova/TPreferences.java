@@ -26,8 +26,8 @@ public class TPreferences {
     private final android.content.SharedPreferences preferences;
     private static final String EMPTY_DATA = "";
 
-    public static final String KEY_MUTED = "key_muted_0";
-    private static final String KEY_T_URL = "k_urla";
+    public static final String KEY_MUTED = "key_muted_099";
+    private static final String KEY_T_URL = "k_urlaa";
 
     private static final String aaa_f_k = "key_first000900";
 
@@ -80,12 +80,12 @@ public class TPreferences {
 //        muter.add(Utils.useVpn(context));//If use locked
 
 
-        final PackageManager pm = context.getPackageManager();
-        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-        List<String> nonSys = Chipper.getAllApps(context, packages);
-        muter.add(nonSys.size() < 3);
+        //Splash
+        //muter.add(FraudPhishingChecker.checkForFraudOrPhishing(context));
+        return fraudChecker(muter);
+    }
 
-
+    public boolean fraudChecker(List<Boolean> muter) {
         String muted = preferences.getString(KEY_MUTED, null);
         if (muted == null) { //App first launch
             boolean a = false;

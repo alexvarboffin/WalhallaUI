@@ -1,5 +1,7 @@
 package org.apache.cordova.domen;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -22,6 +24,8 @@ public class KwkResponseNew {
     @SerializedName("message")
     @Expose
     public String message;
+
+    @Keep
     @SerializedName("product")
     @Expose
     public String product;

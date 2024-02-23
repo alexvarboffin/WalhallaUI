@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.net.MailTo;
+import androidx.core.net.ParseException;
 
 import com.walhalla.landing.utility.ActivityUtils;
 import com.walhalla.landing.utility.DownloadUtility;
@@ -64,7 +65,6 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
                     '}';
         }
     }
-
 
 
     public void setHomeUrl(String homeUrl) {
@@ -265,8 +265,11 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
                 return false;
             }
         } else if (url != null && url.startsWith("mailto:")) {
-            MailTo mailTo = MailTo.parse(url);
-            ActivityUtils.startEmailActivity(context, mailTo.getTo(), mailTo.getSubject(), mailTo.getBody());
+            try {
+                androidx.core.net.MailTo mailTo = MailTo.parse(url);
+                ActivityUtils.startEmailActivity(context, mailTo.getTo(), mailTo.getSubject(), mailTo.getBody());
+            } catch (ParseException e) {
+            }
             return true;
         } else if (url != null && url.startsWith("tel:")) {
             ActivityUtils.startCallActivity(context, url);
@@ -473,6 +476,7 @@ public class CustomWebViewClient extends WebViewClient {//RequestInspector
     }
 
     private void setErrorPage(String failingUrl, int errorCode) {
+        DLog.d("@@@@");
         //isErrorPageShown0 = true;
         receivedError = new ReceivedError(failingUrl, errorCode);
         ChromeView view = activity;

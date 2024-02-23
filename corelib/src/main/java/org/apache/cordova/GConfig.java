@@ -19,8 +19,8 @@ public class GConfig implements Serializable {
         return SAVE_URL_LOCAL_TYPE;
     }
 
-    public boolean isWRAP_ENABLED() {
-        return WRAP_ENABLED;
+    public boolean isWRAPenabled() {
+        return wrapEnabled;
     }
 
     public boolean isENABLE_TRACKER() {
@@ -30,14 +30,19 @@ public class GConfig implements Serializable {
     private final boolean TOOLBAR_ENABLED;
     private final boolean PROGRESSBAR_ENABLED;
     private final UrlSaver SAVE_URL_LOCAL_TYPE;
-    private final boolean WRAP_ENABLED;
+
+    public void setWrapEnabled(boolean wrapEnabled) {
+        this.wrapEnabled = wrapEnabled;
+    }
+
+    private boolean wrapEnabled;
     private final boolean ENABLE_TRACKER;
 
     private GConfig(Builder builder) {
         this.TOOLBAR_ENABLED = builder.TOOLBAR_ENABLED;
         this.PROGRESSBAR_ENABLED = builder.PROGRESSBAR_ENABLED;
         this.SAVE_URL_LOCAL_TYPE = builder.SAVE_URL_LOCAL_TYPE;
-        this.WRAP_ENABLED = builder.WRAP_ENABLED;
+        this.wrapEnabled = builder.WRAP_ENABLED;
         this.ENABLE_TRACKER = builder.ENABLE_TRACKER;
     }
 

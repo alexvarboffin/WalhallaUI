@@ -1,15 +1,11 @@
 package org.apache.mvp.presenter;
 
-import static com.android.lib.CustomTabsBroadcastReceiver.ACTION_COPY_URL;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -35,7 +31,6 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.browser.trusted.TrustedWebActivityIntentBuilder;
 import androidx.preference.PreferenceManager;
 
-import com.android.lib.CustomTabsBroadcastReceiver;
 import com.appsflyer.AppsFlyerLib;
 
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
@@ -53,7 +48,8 @@ import org.apache.cordova.ScreenType;
 import org.apache.cordova.TPreferences;
 import org.apache.cordova.constants.TableField;
 import org.apache.cordova.domen.BodyClass;
-import org.apache.cordova.domen.Dataset;
+
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.enumer.UrlSaver;
 import org.apache.cordova.repository.AbstractDatasetRepository;
 import org.apache.cordova.repository.DatasetRepository;
@@ -317,7 +313,7 @@ public class MainPresenter extends BasePresenter
     }
 
     private void wrapRequest() {
-        if (aaa.isWRAP_ENABLED()) {
+        if (aaa.isWRAPenabled()) {
             wrapContentRequest();
         }
     }
@@ -356,7 +352,7 @@ public class MainPresenter extends BasePresenter
         }
 
         //Local payload
-        Dataset localDataset = mView.data();
+        UIVisibleDataset localDataset = mView.data();
         //DLog.d("LOCALE1" + storage.appWebDisabler(this) + " " + Build.MANUFACTURER + Build.MODEL);
         if (pref.appWebDisabler(context) || localDataset != null) {//show main screen
             DLog.d("<wd> " + pref.appWebDisabler(context));
@@ -384,13 +380,14 @@ public class MainPresenter extends BasePresenter
                     // "https://indianpzdc.xyz/", this, this);
                     // final FirebaseRepository repo = new FirebaseRepository(this);
                     if (repository != null) {
+                        DLog.d("=================");
                         repository.getConfig(context);
                     }
                 } else {
                     DLog.d("sssscccc" + lUrl);
-                    Dataset aa = new Dataset();
-                    aa.url = lUrl;
-                    aa.enabled = true;
+                    UIVisibleDataset aa = new UIVisibleDataset();
+                    aa.setUrl(lUrl);
+                    aa.setEnabled(true);
                     determineAdvertisingInfo0(aa, context);
                 }
             }
@@ -400,7 +397,7 @@ public class MainPresenter extends BasePresenter
 
     private String advertId = null;
 
-    public void determineAdvertisingInfo0(Dataset value, Activity context) {
+    public void determineAdvertisingInfo0(UIVisibleDataset value, Activity context) {
         advertId = preferences.getString(Const.pref_advertisingId, null);
         if (!TextUtils.isEmpty(advertId)) {
             makeView(value);
@@ -415,13 +412,12 @@ public class MainPresenter extends BasePresenter
                     advertId = idInfo.getId();
                 }
             } catch (GooglePlayServicesNotAvailableException e) {
-                e.printStackTrace();
+                DLog.handleException(e);
             } catch (GooglePlayServicesRepairableException e) {
                 DLog.handleException(e);
             } catch (IOException e) {
-                e.printStackTrace();
+                DLog.handleException(e);
             }
-
 
             handler.post(() -> {
                 //UI Thread work here
@@ -470,7 +466,7 @@ public class MainPresenter extends BasePresenter
     }
 
     @SuppressLint("SourceLockedOrientationActivity")
-    public void makeView(Dataset dataset) {
+    public void makeView(UIVisibleDataset dataset) {
 
         //dataset.url="https://pin-up.ru/";
         DLog.d("**** " + dataset);
@@ -560,7 +556,7 @@ public class MainPresenter extends BasePresenter
             }
 
 
-            if (ScreenType.WEB_RAW == dataset.screenType) {
+            if (ScreenType.WEB_RAW == dataset.getScreenType()) {
                 mView.makeScreen(dataset);
             }
         }
@@ -570,20 +566,19 @@ public class MainPresenter extends BasePresenter
 
         if (TextUtils.isEmpty(url)) {
             if (dataset == null) {
-                dataset = new Dataset();
+                dataset = new UIVisibleDataset();
             }
-            dataset.screenType = ScreenType.GAME_VIEW;
-            dataset.url = url;
-            dataset.enabled = false;
+            dataset.setScreenType(ScreenType.GAME_VIEW);
+            dataset.setUrl(url);
+            dataset.setEnabled(false);
             mView.makeScreen(dataset);
             //restart();
         } else {
-
             if (dataset == null) {
-                dataset = new Dataset();
+                dataset = new UIVisibleDataset();
             }
-            dataset.screenType = ScreenType.WEB_VIEW;
-            dataset.url = url;
+            dataset.setScreenType(ScreenType.WEB_VIEW);
+            dataset.setUrl(url);
             mView.makeScreen(dataset);
             //launch(url);
         }
@@ -683,10 +678,10 @@ public class MainPresenter extends BasePresenter
 
     //Remote Repo Callback...
     @Override
-    public void successResponse(Dataset value) {
-        DLog.d("@@d@" + value.url + " " + value.enabled);
+    public void successResponse(UIVisibleDataset value) {
+        DLog.d("@@d@" + value.getUrl() + " " + value.getEnabled());
         if (aaa.getSAVE_URL_LOCAL_TYPE() == UrlSaver.FIRST) {
-            pref.setTargetUrl(value.url);
+            pref.setTargetUrl(value.getUrl());
         }
         determineAdvertisingInfo0(value, context);
     }

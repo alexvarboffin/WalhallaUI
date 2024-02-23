@@ -82,42 +82,8 @@ public class Chipper {
         }
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
-    public static List<String> getAllApps(Context context, List<ApplicationInfo> packages) {
-        final String packageName = context.getPackageName();
-        //StringBuilder installedPackageName = new StringBuilder();
-        List<String> installedPackageName = new ArrayList<>();
-
-        for (ApplicationInfo packageInfo : packages) {
-            if (!packageName.equals(packageInfo.packageName) && noneSysApp(packageInfo.packageName)) {
-                //installedPackageName.append(packageInfo.packageName).append((char) 10);
-                installedPackageName.add(packageInfo.packageName);
-            }
-            //DLog.d("1234567 Source dir : " + packageInfo.sourceDir);
-            //DLog.d("1234567 Launch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName));
-        }
-        return installedPackageName;
-    }
 
 
-    static String[] system_app = new String[]{
-            "com.google", //com.google.android
-            "com.android",
-            "android", "com.xiaomi.", "com.miui.",
-            "com.huawei.", "com.sonymobile.",
-            "com.qualcomm.", "com.mediatek",
-            "com.samsung", "com.zte.",
-            "com.sec.", "com.realme", "com.oppo"
-    };
-
-    private static boolean noneSysApp(String packageName) {
-        for (String s : system_app) {
-            if (packageName.startsWith(s)) {
-                return false;
-            }
-        }
-        return true;
-    }
 
 
     //public static String getMachine(Context context)
@@ -153,10 +119,9 @@ public class Chipper {
         List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
 
         int total = packages.size();
-        List<String> nonSys = getAllApps(context, packages);
-
-        map.put("app_stat", nonSys.size() + "/" + total);
-        map.put("app", nonSys);
+//        List<String> nonSys = getNonSystemApps(context, packages);
+//        map.put("app_stat", nonSys.size() + "/" + total);
+//        map.put("app", nonSys);
 
         //GpStatus
         //GpVersion

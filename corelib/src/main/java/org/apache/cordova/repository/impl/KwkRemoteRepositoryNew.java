@@ -13,10 +13,11 @@ import com.onesignal.OneSignal;
 import com.walhalla.ui.DLog;
 
 import org.apache.cordova.Const;
+import org.apache.cordova.domen.UIVisibleDataset;
 import org.apache.cordova.http.HttpClient;
 import org.apache.cordova.TPreferences;
 import org.apache.cordova.ScreenType;
-import org.apache.cordova.domen.Dataset;
+
 import org.apache.cordova.repository.AbstractDatasetRepository;
 import org.apache.cordova.domen.KwkResponseNew;
 import org.apache.mvp.presenter.MainPresenter;
@@ -72,7 +73,7 @@ public class KwkRemoteRepositoryNew extends AbstractDatasetRepository
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         DLog.handleException(e);
         handler.post(() -> {
-            callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+            callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             callback.handleError(e.getMessage());
         });
     }
@@ -90,16 +91,16 @@ public class KwkRemoteRepositoryNew extends AbstractDatasetRepository
         }
         handler.post(() -> {
 //            if (Config.TAG_NOBOT.equals(var0)) {
-//                makeScreen(new Dataset(WEB_VIEW, "https://google.com"));
+//                makeScreen(new UIVisibleDataset(WEB_VIEW, "https://google.com"));
 //            } else if (Const.TAG_BOT.equals(var0)) {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            } else {
-//                makeScreen(new Dataset(ScreenType.GAME_VIEW, null));
+//                makeScreen(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
 //            }
             DLog.d("@: " + json);
 
             if (json.isEmpty()) {
-                callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
             } else {
                 try {
                     Gson gson = new Gson();
@@ -116,12 +117,12 @@ public class KwkRemoteRepositoryNew extends AbstractDatasetRepository
 
                     }
                     if (TextUtils.isEmpty(offerUrl)) {
-                        callback.successResponse(new Dataset(ScreenType.GAME_VIEW, null));
+                        callback.successResponse(new UIVisibleDataset(ScreenType.GAME_VIEW, null));
                     } else {
 
                         //Before
-                        Dataset aa = new Dataset(ScreenType.WEB_VIEW, offerUrl);
-                        aa.enabled = true;
+                        UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_VIEW, offerUrl);
+                        aa.setEnabled(true);
                         callback.successResponse(aa);
 
                         //Delayed Request
@@ -130,7 +131,7 @@ public class KwkRemoteRepositoryNew extends AbstractDatasetRepository
                             partNumTwo(context, client_id);
                         }, 7_000);
 
-                        //### Dataset aa = new Dataset(ScreenType.WEB_VIEW, offerUrl);
+                        //### UIVisibleDataset aa = new UIVisibleDataset(ScreenType.WEB_VIEW, offerUrl);
                         //### aa.setEnabled(true);
                         //### callback.successResponse(aa);
                     }
