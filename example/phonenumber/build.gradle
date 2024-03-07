@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.walhalla.phonenumber'
+
+    compileSdk 34
+    buildToolsVersion '34.0.0'
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.walhalla.phonenumber"
+        minSdk rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion0
+
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation project(':features:ui')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21"
+    implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
+    implementation 'com.github.wrdlbrnft:modular-adapter:0.3.0.22'
+    implementation 'com.google.code.gson:gson:2.10.1'
+}

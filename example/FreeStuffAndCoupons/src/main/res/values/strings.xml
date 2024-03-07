@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Free Stuff And Coupons</string>
+    <string name="defaultItemLabel">test text1 long long long long long long long long long long long long long long long long long long text</string>
+    <string name="tab0Title">SAMPLES</string>
+    <string name="tab1Title">FREE STUFF</string>
+    <string name="tab2Title">COUPONS</string>
+    <string name="unknownTabTitle">unknown tab</string>
+
+
+
+     <string name="banner_ad_unit_id">ca-app-pub-8573994824830166/4438731373</string>
+
+
+
+    <!--<string name="banner_ad_unit_id">ca-app-pub-8573994824830166/9612461441</string>-->
+
+
+    <string name="about_version">Version</string>
+    <string name="app_copyright" translatable="false">&#169; 2019 ALEXAPP.TK</string>
+
+    <string name="market_rate_url" translatable="false">market://details?id=%1$s</string>
+    <string name="action_share_app">Share App</string>
+    <string name="action_rate_app">Rate App</string>
+    <string name="action_privacy_policy">Privacy Policy</string>
+    <string name="action_contacs_us">Contact Us</string>
+    <string name="action_about">About</string>
+    <string name="action_exit">Exit</string>
+</resources>
