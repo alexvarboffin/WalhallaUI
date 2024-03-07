@@ -1,5 +1,7 @@
 package org.apache.mvp;
 
+import static org.apache.cordova.Const.KEY_ORGANIC_;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.RemoteException;
@@ -60,6 +62,7 @@ public class MainAdapter {
                     // Соединение установлено
                     try {
                         ReferrerDetails response = var0.getInstallReferrer();
+
                         String referrerUrl = response.getInstallReferrer();
                         long referrerClickTime = response.getReferrerClickTimestampSeconds();
                         long appInstallTime = response.getInstallBeginTimestampSeconds();
@@ -74,7 +77,7 @@ public class MainAdapter {
                         //Referrer
                         DLog.d("REF: " + referrerUrl + "\t" + referrerClickTime + "\t" + appInstallTime + "\n" + instantExperienceLaunched);
 
-                        if (!referrerUrl.contains("utm_medium=organic")) {
+                        if (!referrerUrl.contains("utm_medium=" + Const.KEY_ORGANIC_)) {
                             preferences.edit().putBoolean(Const.KEY_ORGANIC_, true).apply();
                         }
                         var0.endConnection();

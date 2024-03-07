@@ -11,15 +11,17 @@
           <set>
             <option value="$PROJECT_DIR$/../multithreader/threader" />
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/FreeStuffAndCoupons" />
-            <option value="$PROJECT_DIR$/Lottie" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/corelib" />
+            <option value="$PROJECT_DIR$/example" />
+            <option value="$PROJECT_DIR$/example/FreeStuffAndCoupons" />
+            <option value="$PROJECT_DIR$/example/Lottie" />
+            <option value="$PROJECT_DIR$/example/phonenumber" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/landing" />
             <option value="$PROJECT_DIR$/features/ui" />
             <option value="$PROJECT_DIR$/features/wads" />
-            <option value="$PROJECT_DIR$/landing" />
-            <option value="$PROJECT_DIR$/phonenumber" />
+            <option value="$PROJECT_DIR$/features/webview" />
             <option value="$PROJECT_DIR$/promo" />
             <option value="$PROJECT_DIR$/stub" />
             <option value="$PROJECT_DIR$/stub/stubInjector" />

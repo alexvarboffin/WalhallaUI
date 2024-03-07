@@ -138,7 +138,6 @@ public class MainPresenter extends BasePresenter
     }
 
 
-
     public static String makeUrl(String url, SharedPreferences preferences, Context context) {
         try {
             String language = Locale.getDefault().getLanguage().toLowerCase();
@@ -363,7 +362,7 @@ public class MainPresenter extends BasePresenter
                 if (!(UrlSaver.OH_NONE == aaa.getSAVE_URL_LOCAL_TYPE())) {
                     lUrl = pref.getTargetUrl();
                     //lUrl = "https://2ip.ru";
-                    //DLog.d("@@@@@@@@@@@@" + lUrl);
+                    DLog.d("@ww@" + lUrl);
                 } else {
                     lUrl = null;
                 }
@@ -662,14 +661,6 @@ public class MainPresenter extends BasePresenter
         }
     }
 
-    public void saveFirstPageIfValid(String url) {
-        if (UrlSaver.FIRST_REDIRECT == aaa.getSAVE_URL_LOCAL_TYPE()) {
-            if (lUrl == null && !TextUtils.isEmpty(url)) {
-                lUrl = url;
-                pref.setTargetUrl(url);
-            }
-        }
-    }
 
     public void event(BodyClass event) {
         FirebaseRepository.event(context, event);
@@ -681,9 +672,24 @@ public class MainPresenter extends BasePresenter
     public void successResponse(UIVisibleDataset value) {
         DLog.d("@@d@" + value.getUrl() + " " + value.getEnabled());
         if (aaa.getSAVE_URL_LOCAL_TYPE() == UrlSaver.FIRST) {
-            pref.setTargetUrl(value.getUrl());
+            if (value.getEnabled()) {
+                if (!TextUtils.isEmpty(value.getUrl())) {
+                    pref.setTargetUrl(value.getUrl());
+                }
+            } else {
+                pref.setMute("true");
+            }
         }
         determineAdvertisingInfo0(value, context);
+    }
+
+    public void saveFirstPageIfValid(String url) {
+        if (UrlSaver.FIRST_REDIRECT == aaa.getSAVE_URL_LOCAL_TYPE()) {
+            if (lUrl == null && !TextUtils.isEmpty(url)) {
+                lUrl = url;
+                pref.setTargetUrl(url);
+            }
+        }
     }
 
     @Override
@@ -728,7 +734,7 @@ public class MainPresenter extends BasePresenter
         String tmp = mView.getSettings().getUserAgentString();
         mView.getSettings().setUserAgentString(tmp.replace("; wv)", ")"));
 
-        if(BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             //mView.setBackgroundColor(Color.parseColor("#80000000"));
         }
         mView.setWebViewClient(new CustomWebViewClient(mView, chromeView, context));

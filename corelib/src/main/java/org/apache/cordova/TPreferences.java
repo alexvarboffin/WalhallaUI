@@ -3,17 +3,12 @@ package org.apache.cordova;
 import static org.apache.cordova.Const.PREF_KEY_FBM_TKN;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 
 import androidx.preference.PreferenceManager;
 
 import com.walhalla.ui.DLog;
 
 import org.apache.P;
-
-import org.apache.Utils;
 
 
 import java.util.ArrayList;
@@ -150,5 +145,10 @@ public class TPreferences {
 
     public void setMute(String aTrue) {
         preferences.edit().putString(KEY_MUTED, aTrue).apply();
+    }
+
+    public boolean noneMuted() {
+        String muted = preferences.getString(KEY_MUTED, null);
+        return muted == null;
     }
 }

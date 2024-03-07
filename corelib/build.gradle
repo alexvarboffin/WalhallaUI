@@ -63,7 +63,7 @@ dependencies {
         implementation 'com.onesignal:OneSignal:4.8.6'
     }
 
-    implementation 'com.google.firebase:firebase-database:20.3.0'
+    implementation "com.google.firebase:firebase-database:$rootProject.firebaseDatabase"
     //Firebase Crashlytics
     //@@implementation "com.google.firebase:firebase-crashlytics:$rootProject.crashlyticsVersion"
     //@@implementation "com.google.firebase:firebase-analytics:$rootProject.analyticsVersion"

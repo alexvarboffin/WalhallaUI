@@ -1,13 +1,16 @@
 apply from: "D:\\walhalla\\sdk\\android\\ui\\corelib/submodules.gradle"
 
-include ':app', ':FreeStuffAndCoupons'
-include ':phonenumber'
+include ':app'
+
 
 include ':features:ui'
 include ':features:wads'
+include ':features:landing'
+include ':features:webview'
 
-include ':Lottie'
-include ':landing'
+include ':example:FreeStuffAndCoupons'
+include ':example:Lottie'
+include ':example:phonenumber'
 
 include ':stub:stubInjector'
 
