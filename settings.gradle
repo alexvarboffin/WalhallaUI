@@ -1,7 +1,6 @@
-apply from: "D:\\walhalla\\sdk\\android\\ui\\corelib/submodules.gradle"
+apply from: "D:\\walhalla\\sdk\\android\\ui\\kwk\\corelib\\submodules.gradle"
 
 include ':app'
-
 
 include ':features:ui'
 include ':features:wads'

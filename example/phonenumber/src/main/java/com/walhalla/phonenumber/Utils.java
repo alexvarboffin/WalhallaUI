@@ -21,29 +21,29 @@ import java.util.List;
 
 public class Utils {
     
-    public static ArrayList<WordModel> oBuffers(Context context) {
-        Gson gson = new Gson();
-        Type listUserType = new TypeToken<List<AppModel>>() {
-        }.getType();
-        ArrayList<WordModel> oBuffers = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        try {
-            InputStream is = context.getAssets().open("walhalla.json");
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-            String str;
-            while ((str = br.readLine()) != null) {
-                sb.append(str);
-//                AppModel obj = new AppModel();
-//                obj.q = str;
-//                oBuffers.add(obj);
-            }
-            br.close();
-            //oBuffers = gson.fromJson(jsonFileString, listUserType);
-            oBuffers.addAll(gson.fromJson(sb.toString(), listUserType));
-
-        } catch (Exception e) {
-            DLog.d(e.getLocalizedMessage());
-        }
-        return oBuffers;
-    }
+//    public static ArrayList<WordModel> oBuffers(Context context) {
+//        Gson gson = new Gson();
+//        Type listUserType = new TypeToken<List<AppModel>>() {
+//        }.getType();
+//        ArrayList<WordModel> oBuffers = new ArrayList<>();
+//        StringBuilder sb = new StringBuilder();
+//        try {
+//            InputStream is = context.getAssets().open("walhalla.json");
+//            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+//            String str;
+//            while ((str = br.readLine()) != null) {
+//                sb.append(str);
+////                AppModel obj = new AppModel();
+////                obj.q = str;
+////                oBuffers.add(obj);
+//            }
+//            br.close();
+//            //oBuffers = gson.fromJson(jsonFileString, listUserType);
+//            oBuffers.addAll(gson.fromJson(sb.toString(), listUserType));
+//
+//        } catch (Exception e) {
+//            DLog.d(e.getLocalizedMessage());
+//        }
+//        return oBuffers;
+//    }
 }

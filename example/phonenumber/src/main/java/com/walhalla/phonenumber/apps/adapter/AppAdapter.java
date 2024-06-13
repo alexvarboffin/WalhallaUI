@@ -16,15 +16,16 @@ import android.widget.PopupMenu;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.walhalla.core.UConst;
 import com.walhalla.phonenumber.AppIconUtils;
 import com.walhalla.phonenumber.R;
 import com.walhalla.phonenumber.apps.adapter.appitem.AppObj;
 import com.walhalla.phonenumber.apps.adapter.appitem.AppViewHolder;
 import com.walhalla.phonenumber.dashboard.AppModel;
+
 import com.walhalla.ui.DLog;
-import com.walhalla.ui.Module_U;
-import com.walhalla.utils.AppUtils;
+import com.walhalla.ui.UConst;
+import com.walhalla.ui.plugins.Launcher;
+import com.walhalla.ui.utils.PackageUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,7 +81,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
                         mm0 = app.url;
                     }
                     DLog.d("" + mm0);
-                    Module_U.openMarketApp(context, mm0.replace(UConst.GOOGLE_PLAY_CONSTANT, ""));
+                    Launcher.openMarketApp(context, mm0.replace(UConst.GOOGLE_PLAY_CONSTANT, ""));
                 }
 
                 //Module_U.openMarketApp(context, app.url);
@@ -143,7 +144,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
                 String count = jsonObject.getString("count");
 
                 // Проверка установки приложения по пакету
-                boolean isInstalled = AppUtils.isAppInstalled(context, url);
+                boolean isInstalled = PackageUtils.isAppInstalled(context, url);
 
                 AppObj app = new AppObj(id, url, title, rate, count, isInstalled);
                 appList.add(app);
@@ -171,16 +172,13 @@ public class AppAdapter extends RecyclerView.Adapter<AppViewHolder> {
         popupMenu.getMenuInflater().inflate(R.menu.menu_app_item, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.menu_option1:
-                    // Обработка действия всплывающего меню
-                    return true;
-                case R.id.menu_option2:
-                    // Обработка действия всплывающего меню
-                    return true;
-                default:
-                    return false;
+            int itemId = item.getItemId();
+            if (itemId == R.id.menu_option1) {// Обработка действия всплывающего меню
+                return true;
+            } else if (itemId == R.id.menu_option2) {// Обработка действия всплывающего меню
+                return true;
             }
+            return false;
         });
 
         popupMenu.show();

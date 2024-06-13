@@ -24,8 +24,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import kgbook.ru.R;
+
+import com.walhalla.plugins.Launcher;
+import com.walhalla.plugins.Module_U;
 import com.walhalla.ui.DLog;
-import com.walhalla.ui.Module_U;
 
 import java.util.Locale;
 
@@ -167,11 +169,11 @@ public class QiblaCompassActivity extends AppCompatActivity implements LocationL
                 return true;
 
             case R.id.action_privacy_policy:
-                Module_U.openBrowser(this, "https://google.com");
+                Launcher.openBrowser(this, "https://google.com");
                 return true;
 
             case R.id.action_rate_app:
-                Module_U.rateUs(this);
+                Launcher.rateUs(this);
                 return true;
 
             case R.id.action_share_app:

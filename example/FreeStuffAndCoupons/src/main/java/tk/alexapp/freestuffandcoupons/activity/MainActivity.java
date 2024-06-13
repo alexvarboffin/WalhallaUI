@@ -29,7 +29,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.walhalla.ui.Module_U;
+import com.walhalla.plugins.Launcher;
+import com.walhalla.plugins.Module_U;
 
 import java.io.File;
 
@@ -220,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_rate_app:
-                Module_U.rateUs(this);
+                Launcher.rateUs(this);
                 return true;
 
             case R.id.action_share_app:

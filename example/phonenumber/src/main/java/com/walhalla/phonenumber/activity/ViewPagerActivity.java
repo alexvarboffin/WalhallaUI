@@ -10,8 +10,6 @@ import android.os.PowerManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,18 +19,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.walhalla.core.UConst;
-import com.walhalla.phonenumber.AppUtils;
+
 import com.walhalla.phonenumber.R;
 import com.walhalla.phonenumber.apps.AppListFragment;
 import com.walhalla.phonenumber.apps.ViewPagerAdapter;
 import com.walhalla.phonenumber.dashboard.WalhallaAppListFragment;
+
 import com.walhalla.ui.DLog;
-import com.walhalla.ui.Module_U;
+import com.walhalla.ui.plugins.Launcher;
+import com.walhalla.ui.plugins.Module_U;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +71,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         mPagerAdapter.addFragment(new WalhallaAppListFragment(), "W");
         indexToPage.add("W");
         Menu m = navView.getMenu();
-        m.add("W").setIcon(R.drawable.cancel);
+        m.add("W").setIcon(R.drawable.ic_dots);
 
         int j = 0;
 
@@ -173,37 +171,37 @@ public class ViewPagerActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_about:
-                Module_U.aboutDialog(this);
-                return true;
-            case R.id.action_developer:
-                //AppUtils.openChromeBrowser(this, "https://play.google.com/store/apps/developer?id=Walhalla+Dynamics");
-                Module_U.moreApp(getApplicationContext());
-                return true;
-            case R.id.action_rate_app:
-                Module_U.rateUs(this);
-                return true;
-            case R.id.action_share_app:
-                Module_U.shareThisApp(this);
-                return true;
-            case R.id.action_discover_more_app:
-                Module_U.moreApp(this);
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_about) {
+            Module_U.aboutDialog(this);
+            return true;
+        } else if (itemId == R.id.action_developer) {
+            //AppUtils.openChromeBrowser(this, "https://play.google.com/store/apps/developer?id=Walhalla+Dynamics");
+            Module_U.moreApp(getApplicationContext());
+            return true;
+        } else if (itemId == R.id.action_rate_app) {
+            Launcher.rateUs(this);
+            return true;
+        } else if (itemId == R.id.action_share_app) {
+            Module_U.shareThisApp(this);
+            return true;
+        } else if (itemId == R.id.action_discover_more_app) {
+            Module_U.moreApp(this);
+            return true;
+        } else if (itemId == R.id.action_feedback) {
+            Module_U.feedback(this);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
 //            case R.id.action_exit:
 //                this.finish();
 //                return true;
-            case R.id.action_feedback:
-                Module_U.feedback(this);
-                return true;
-//            case R.id.action_more_app_01:
+        //            case R.id.action_more_app_01:
 //                Module_U.moreApp(this, "com.walhalla.ttloader");
 //                return true;
 //            case R.id.action_more_app_02:
 //                Module_U.moreApp(this, "com.walhalla.vibro");
 //                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

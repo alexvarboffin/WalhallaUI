@@ -6,7 +6,9 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.walhalla.ui.Module_U;
+
+import com.walhalla.plugins.Launcher;
+import com.walhalla.plugins.Module_U;
 
 import kgbook.ru.R;
 
@@ -33,11 +35,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_privacy_policy:
-                Module_U.openBrowser(this, "https://google.com");
+                Launcher.openBrowser(this, "https://google.com");
                 return true;
 
             case R.id.action_rate_app:
-                Module_U.rateUs(this);
+                Launcher.rateUs(this);
                 return true;
 
             case R.id.action_share_app:

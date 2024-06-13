@@ -9,8 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
 import com.walhalla.phonenumber.databinding.ItemAppBinding;
-import com.walhalla.ui.DLog;
-import com.walhalla.ui.Module_U;
+import com.walhalla.ui.plugins.Launcher;
 
 
 public class AppViewHolder extends SortedListAdapter.ViewHolder<AppModel> {
@@ -60,7 +59,7 @@ public class AppViewHolder extends SortedListAdapter.ViewHolder<AppModel> {
         if (!TextUtils.isEmpty(obj.privacy_policy)) {
             mBinding.privacyPolicy.setVisibility(View.VISIBLE);
             mBinding.privacyPolicy.setOnClickListener(v -> {
-                Module_U.openBrowser(v.getContext(), obj.privacy_policy);
+                Launcher.openBrowser(v.getContext(), obj.privacy_policy);
             });
 
         } else {

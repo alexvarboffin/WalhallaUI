@@ -1,5 +1,5 @@
-package kgbook.ru.pcleaner;
+package kgbook.ru.pcleaner
 
-public class Config {
-    private final boolean ADS_ENABLE = true;
+class Config {
+    private val ADS_ENABLE = true
 }

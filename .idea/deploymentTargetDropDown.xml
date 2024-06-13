@@ -58,8 +58,24 @@
       <entry key="example.phonenumber">
         <State />
       </entry>
-      <entry key="phonenumber">
+      <entry key="inappreview">
         <State />
+      </entry>
+      <entry key="phonenumber">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="2624294010LA15CC" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-04-29T17:25:23.538575100Z" />
+        </State>
       </entry>
     </value>
   </component>

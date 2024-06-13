@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 
 android {
+
+    namespace("com.walhalla.promo")
+
     compileSdk 34
     buildToolsVersion '34.0.0'
 
@@ -19,8 +22,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
 }
@@ -30,9 +33,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
-
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation project(path: ':threader')
 }

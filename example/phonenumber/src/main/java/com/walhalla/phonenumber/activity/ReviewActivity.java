@@ -11,9 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.walhalla.core.UConst;
 import com.walhalla.phonenumber.R;
-import com.walhalla.ui.Module_U;
+import com.walhalla.ui.UConst;
 import com.walhalla.ui.observer.RateAppModule;
 
 public class ReviewActivity extends AppCompatActivity {

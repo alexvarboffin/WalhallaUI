@@ -2,6 +2,7 @@ package com.walhalla.phonenumber.dashboard;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,6 +10,8 @@ public class AppModel extends WordModel {
 
 
     //    public String name;
+
+    @PropertyName("project")
     @SerializedName("project")
     @Expose
     public String projectName;
@@ -36,4 +39,6 @@ public class AppModel extends WordModel {
     public <T> boolean isContentTheSameAs(@NonNull T model) {
         return false;
     }
+
+
 }

@@ -1,10 +1,9 @@
 package com.walhalla.phonenumber.dashboard;
 
-import static com.walhalla.core.UConst.GOOGLE_PLAY_CONSTANT;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,25 +17,29 @@ import androidx.appcompat.widget.PopupMenu;
 
 import com.github.wrdlbrnft.modularadapter.ModularAdapter;
 import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
+import com.google.firebase.database.FirebaseDatabase;
 import com.walhalla.phonenumber.AppIconUtils;
 import com.walhalla.phonenumber.R;
 
-import com.walhalla.phonenumber.dashboard.AppModel;
-import com.walhalla.phonenumber.dashboard.AppViewHolder;
-import com.walhalla.phonenumber.dashboard.WordModel;
 import com.walhalla.phonenumber.databinding.ItemAppBinding;
-import com.walhalla.ui.DLog;
-import com.walhalla.ui.Module_U;
 
+import com.walhalla.ui.DLog;
+import com.walhalla.ui.UConst;
+import com.walhalla.ui.plugins.Launcher;
+import com.walhalla.ui.plugins.Module_U;
 
 import java.lang.reflect.Field;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
 
+    private static final String KEY_PROJECT_NAME = "__projectName__";
     private final Context context;
+    Map<String, String> map = new HashMap<>();
 
     public interface Listener {
         void onExampleModelClicked(WordModel model);
@@ -48,6 +51,18 @@ public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
         super(context, WordModel.class, comparator);
         this.context = context;
         mListener = listener;
+
+        map.put("Безопасность данных", "https://play.google.com/console/developers/7076844630778011299/app/@/app-content/data-privacy-security");
+        map.put("Отзывы", "https://play.google.com/console/developers/7076844630778011299/app/@/user-feedback/reviews");
+        map.put("@ Соответствие правилам", "https://play.google.com/console/developers/7076844630778011299/app/@/policy-center");
+        map.put("Контент приложения (деклараций)", "https://play.google.com/console/developers/7076844630778011299/app/@/app-content/overview");
+        map.put("Рабочая версия", "https://play.google.com/console/developers/7076844630778011299/app/@/tracks/production");
+
+        map.put("Доступность приложения", "https://play.google.com/console/developers/7076844630778011299/app/@/advanced-distribution");
+
+
+        map.put("app-ads.txt", "https://__projectName__.web.app/app-ads.txt");
+
     }
 
     @NonNull
@@ -78,7 +93,34 @@ public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
                     h0.mBinding.installedIcon.setImageBitmap(iconBitmap);
                 }
             });
+
+            h0.mBinding.installedIcon.setOnClickListener(v->{
+                showEditDialog(topic, position);
+            });
         }
+    }
+
+    EditAppItemDialog dialog;
+
+    private void showEditDialog(AppModel appItem, int position) {
+        dialog = new EditAppItemDialog(context,
+                appItem, new EditAppItemDialog.OnSaveListener() {
+            @Override
+            public void onSave(String newTitle, String newDescription, String newFeatures) {
+                appItem.features=newFeatures;
+                FirebaseDatabase.getInstance().getReference("walhalla")
+                        .child(String.valueOf(position))
+                        .setValue(appItem)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                dialog.dismiss();
+                            } else {
+                                // Handle failure
+                            }
+                        });
+            }
+        });
+        dialog.show();
     }
 
     private void crash(View view, int position) {
@@ -89,11 +131,12 @@ public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
             mm = topic.q;
         }
 
-        String aa = "https://console.firebase.google.com/project/" +
-                topic.projectName + "/crashlytics/app/android:" +
-                mm + "/issues?state=open&time=last-seven-days&tag=all";
-        Module_U.openBrowser(context, aa);
-        DLog.d(aa);
+        String entryValue = "https://console.firebase.google.com/project/__projectName__/crashlytics/app/android:" + mm + "/issues?state=open&time=last-seven-days&tag=all";
+        if (!TextUtils.isEmpty(topic.projectName)) {
+            entryValue = entryValue.replace(KEY_PROJECT_NAME, topic.projectName);
+        }
+        Launcher.openBrowser(context, entryValue);
+        DLog.d(entryValue);
     }
 
     private void showPopupMenu(View v, int position) {
@@ -101,6 +144,22 @@ public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
         PopupMenu popup = new PopupMenu(v.getContext(), v);
         MenuInflater inflater = popup.getMenuInflater();
         Menu menu = popup.getMenu();
+
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            menu.add(entry.getKey()).setOnMenuItemClickListener(item -> {
+
+                String entryValue = entry.getValue();
+                if (topic.app_id != null) {
+                    entryValue = entryValue.replace("@", topic.app_id);
+                }
+                if (!TextUtils.isEmpty(topic.projectName)) {
+                    entryValue = entryValue.replace(KEY_PROJECT_NAME, topic.projectName);
+                }
+                DLog.d("" + entryValue);
+                Launcher.openBrowser(context, entryValue);
+                return true;
+            });
+        }
 
         inflater.inflate(R.menu.popup_topic, menu);
         Object menuHelper;
@@ -115,108 +174,86 @@ public class WalhallaAppAdapter extends SortedListAdapter<WordModel> {
         }
         popup.setOnMenuItemClickListener(menuItem -> {
 
-            switch (menuItem.getItemId()) {
-
-                case R.id.sub_text:
-                    if (popup != null) {
-                        popup.dismiss();
-                    }
-                    Intent intent1 = new Intent(Intent.ACTION_SEND);
-                    intent1.setType("text/plain");
-                    String mm = "com.walhalla." + topic.q;
-                    if (topic.q.contains(".")) {
-                        mm = topic.q;
-                    }
-                    String shareBody = mm + "\n";
-                    intent1.putExtra(Intent.EXTRA_SUBJECT, "app");
-                    intent1.putExtra(Intent.EXTRA_TEXT, shareBody);
-                    intent1.putExtra("com.pinterest.EXTRA_DESCRIPTION", shareBody);
-                    context.startActivity(Intent.createChooser(intent1, "Share Quote"));
-                    Toast.makeText(context, "share_as_text", Toast.LENGTH_SHORT).show();
-                    return true;
-
-                case R.id.action_open_link:
-                    String mm0 = "com.walhalla." + topic.q;
-                    if (topic.q.contains(".")) {
-                        mm0 = topic.q;
-                    }
-                    DLog.d("" + mm0);
-                    Module_U.openMarketApp(context, mm0);
-                    return true;
-
-
-                case R.id.action_share_googlePlayLink:
-                    String s = "com.walhalla." + topic.q;
-                    if (topic.q.contains(".")) {
-                        s = topic.q;
-                    }
-                    s = GOOGLE_PLAY_CONSTANT + s;
-                    Module_U.shareText(context, s, "SHARE");
-                    return true;
-
-
-                case R.id.action_open_privacy_policy:
-                    String replace = "https://@.web.app/privacy_policy.html".replace("@", topic.projectName);
-                    Module_U.openBrowser(context, replace);
-                    return true;
-
-                case R.id.action_open_google:
-                    String replace1 = "https://www.google.com/search?client=firefox-b-d&q=@".replace("@", topic.q);
-                    Module_U.openBrowser(context, replace1);
-                    return true;
-
-                case R.id.action_user_feedback:
-                    if (topic.app_id != null) {
-                        String m0 = "https://play.google.com/console/developers/7076844630778011299/app/@/user-feedback/reviews";
-                        String replace2 = m0.replace("@", topic.app_id);
-                        Module_U.openBrowser(context, replace2);
-                    }
-                    return true;
-
-                case R.id.action_dataprivacysecurity:
-                    if (topic.app_id != null) {
-                        String security = "https://play.google.com/console/developers/7076844630778011299/app/@/app-content/data-privacy-security";
-                        String replace21 = security.replace("@", topic.app_id);
-                        Module_U.openBrowser(context, replace21);
-                    }
-                    return true;
-
-//                case R.id.action_share_image:
-//                    popup.dismiss();
-//                    showWatermark(tv_quotes_watermark);
-//                    Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(),
-//                            Bitmap.Config.ARGB_8888);
-//                    Canvas canvas = new Canvas(bitmap);
-//                    relativeLayout.draw(canvas);
-//                    Uri uri = CoreUtil.getLocalBitmapUri(getActivity(), bitmap);
-//                    hideWatermark(tv_quotes_watermark);
-//                    String appName = getString(R.string.app_name);
-//
-//                    String extra = status.text;
-//                    if (!TextUtils.isEmpty(status.author)) {
-//                        extra = extra + "\n" + "— " + status.author + "\n" + appName;
-//                    }
-//
-//                    Intent intent = Share.makeImageShare(extra);
-//                    intent.putExtra(Intent.EXTRA_STREAM, uri);
-//                    intent.putExtra(Intent.EXTRA_SUBJECT, appName);
-//                    //intent.putExtra(Intent.EXTRA_TITLE, appName);
-//
-//                    //BugFix
-//                    //java.lang.SecurityException: Permission Denial: reading androidx.core.content.FileProvider
-//                    Intent chooser = Intent.createChooser(intent, appName);
-//                    List<ResolveInfo> resInfoList = getActivity().getPackageManager()
-//                            .queryIntentActivities(chooser, PackageManager.MATCH_DEFAULT_ONLY);
-//                    for (ResolveInfo resolveInfo : resInfoList) {
-//                        String packageName = resolveInfo.activityInfo.packageName;
-//                        getActivity().grantUriPermission(packageName, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-//                                | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    }
-//
-//                    getActivity().startActivity(chooser);
-//                    Toast.makeText(getActivity(), "Share as Image", Toast.LENGTH_SHORT).show();
-//                    return true;
+            int itemId = menuItem.getItemId();
+            if (itemId == R.id.sub_text) {
+                if (popup != null) {
+                    popup.dismiss();
+                }
+                Intent intent1 = new Intent(Intent.ACTION_SEND);
+                intent1.setType("text/plain");
+                String mm = "com.walhalla." + topic.q;
+                if (topic.q.contains(".")) {
+                    mm = topic.q;
+                }
+                String shareBody = mm + "\n";
+                intent1.putExtra(Intent.EXTRA_SUBJECT, "app");
+                intent1.putExtra(Intent.EXTRA_TEXT, shareBody);
+                intent1.putExtra("com.pinterest.EXTRA_DESCRIPTION", shareBody);
+                context.startActivity(Intent.createChooser(intent1, "Share Quote"));
+                Toast.makeText(context, "share_as_text", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (itemId == R.id.action_open_link) {
+                String mm0 = "com.walhalla." + topic.q;
+                if (topic.q.contains(".")) {
+                    mm0 = topic.q;
+                }
+                DLog.d("" + mm0);
+                Launcher.openMarketApp(context, mm0);
+                return true;
+            } else if (itemId == R.id.action_share_googlePlayLink) {
+                String s = "com.walhalla." + topic.q;
+                if (topic.q.contains(".")) {
+                    s = topic.q;
+                }
+                s = UConst.GOOGLE_PLAY_CONSTANT + s;
+                Module_U.shareText(context, s, "SHARE");
+                return true;
+            } else if (itemId == R.id.action_open_privacy_policy) {
+                String replace = "https://@.web.app/privacy_policy.html".replace("@", topic.projectName);
+                Launcher.openBrowser(context, replace);
+                return true;
+            } else if (itemId == R.id.action_open_google) {
+                String replace1 = "https://www.google.com/search?client=firefox-b-d&q=@".replace("@", topic.q);
+                Launcher.openBrowser(context, replace1);
+                return true;
             }
+
+//            else if (itemId == R.id.action_share_image) {
+//                popup.dismiss();
+//                showWatermark(tv_quotes_watermark);
+//                Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(),
+//                        Bitmap.Config.ARGB_8888);
+//                Canvas canvas = new Canvas(bitmap);
+//                relativeLayout.draw(canvas);
+//                Uri uri = CoreUtil.getLocalBitmapUri(getActivity(), bitmap);
+//                hideWatermark(tv_quotes_watermark);
+//                String appName = getString(R.string.app_name);
+//
+//                String extra = status.text;
+//                if (!TextUtils.isEmpty(status.author)) {
+//                    extra = extra + "\n" + "— " + status.author + "\n" + appName;
+//                }
+//
+//                Intent intent = Share.makeImageShare(extra);
+//                intent.putExtra(Intent.EXTRA_STREAM, uri);
+//                intent.putExtra(Intent.EXTRA_SUBJECT, appName);
+//                //intent.putExtra(Intent.EXTRA_TITLE, appName);
+//
+//                //BugFix
+//                //java.lang.SecurityException: Permission Denial: reading androidx.core.content.FileProvider
+//                Intent chooser = Intent.createChooser(intent, appName);
+//                List<ResolveInfo> resInfoList = getActivity().getPackageManager()
+//                        .queryIntentActivities(chooser, PackageManager.MATCH_DEFAULT_ONLY);
+//                for (ResolveInfo resolveInfo : resInfoList) {
+//                    String packageName = resolveInfo.activityInfo.packageName;
+//                    getActivity().grantUriPermission(packageName, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+//                            | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                }
+//
+//                getActivity().startActivity(chooser);
+//                Toast.makeText(getActivity(), "Share as Image", Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
             return false;
         });
         popup.show();
