@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +22,7 @@ public class ItemsArrayAdapter extends ArrayAdapter<ListItemInfo> {
 
     private static final String TAG = "ItemsArrayAdapter";
     private final Activity context;
-    private TabInfo tabInfo;
+    private final TabInfo tabInfo;
 
     public ItemsArrayAdapter(Activity context, TabInfo tabInfo) {
         super(context, R.layout.list_item, tabInfo.getItemsAsArray());
@@ -28,16 +30,17 @@ public class ItemsArrayAdapter extends ArrayAdapter<ListItemInfo> {
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
             convertView = inflater.inflate(R.layout.list_item, null, true);
         }
-        TextView itemLabel = (TextView) convertView.findViewById(R.id.itemLabel);
+        TextView itemLabel = convertView.findViewById(R.id.itemLabel);
         final ListItemInfo itemInfo = tabInfo.getItemInfo(position);
         itemLabel.setText(itemInfo.getTitle());
-        ImageView itemImage = (ImageView) convertView.findViewById(R.id.itemImage);
+        ImageView itemImage = convertView.findViewById(R.id.itemImage);
         downloadImage(itemInfo, itemImage);
         return convertView;
     }

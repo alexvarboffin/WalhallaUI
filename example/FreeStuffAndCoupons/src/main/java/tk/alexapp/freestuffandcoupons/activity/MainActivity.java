@@ -29,8 +29,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.walhalla.plugins.Launcher;
-import com.walhalla.plugins.Module_U;
+import com.walhalla.ui.plugins.Launcher;
+import com.walhalla.ui.plugins.Module_U;
 
 import java.io.File;
 
@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
             this.tabsInfo = tabsInfo;
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
@@ -188,16 +189,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return getResources().getString(R.string.tab0Title);
-                case 1:
-                    return getResources().getString(R.string.tab1Title);
-                case 2:
-                    return getResources().getString(R.string.tab2Title);
-                default:
-                    return getResources().getString(R.string.unknownTabTitle);
-            }
+            return switch (position) {
+                case 0 -> getResources().getString(R.string.tab0Title);
+                case 1 -> getResources().getString(R.string.tab1Title);
+                case 2 -> getResources().getString(R.string.tab2Title);
+                default -> getResources().getString(R.string.unknownTabTitle);
+            };
         }
     }
 
@@ -210,35 +207,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.menu_about:
-                Module_U.aboutDialog(this);
-                return true;
-
-            case R.id.action_privacy_policy:
-                //Module_U.openBrowser(this, getString(R.string.privacy_policy_url));
-                return true;
-
-            case R.id.action_rate_app:
-                Launcher.rateUs(this);
-                return true;
-
-            case R.id.action_share_app:
-                Module_U.shareThisApp(this);
-                return true;
-
-            case R.id.action_exit:
-                this.finish();
-                return true;
-
-            case R.id.action_feedback:
-                Module_U.feedback(this);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_about) {
+            Module_U.aboutDialog(this);
+            return true;
+        } else if (itemId == R.id.action_privacy_policy) {
+            //Module_U.openBrowser(this, getString(R.string.privacy_policy_url));
+            return true;
+        } else if (itemId == R.id.action_rate_app) {
+            Launcher.rateUs(this);
+            return true;
+        } else if (itemId == R.id.action_share_app) {
+            Module_U.shareThisApp(this);
+            return true;
+        } else if (itemId == R.id.action_exit) {
+            this.finish();
+            return true;
+        } else if (itemId == R.id.action_feedback) {
+            Module_U.feedback(this);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /**

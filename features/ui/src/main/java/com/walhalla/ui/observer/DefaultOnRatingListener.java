@@ -8,7 +8,7 @@ import com.androidsx.rateme.OnRatingListener;
 
 public class DefaultOnRatingListener implements OnRatingListener, Parcelable {
 
-    public static final String TAG = "@@@";
+
 
     public DefaultOnRatingListener() {
     }
@@ -39,6 +39,6 @@ public class DefaultOnRatingListener implements OnRatingListener, Parcelable {
 
     @Override
     public void onRating(RatingAction action, float rating) {
-        Log.d(TAG, "Rating " + rating + ", after " + action);
+        //Log.d(TAG, "Rating " + rating + ", after " + action);
     }
 }

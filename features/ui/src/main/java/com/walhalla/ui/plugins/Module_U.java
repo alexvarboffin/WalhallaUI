@@ -24,7 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
-import com.walhalla.abcsharedlib.SharedNetwork;
+import com.walhalla.abcsharedlib.Share;
 import com.walhalla.ui.UConst;
 import com.walhalla.ui.DLog;
 import com.walhalla.ui.R;
@@ -233,7 +233,7 @@ public class Module_U {
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
         //intent.setType("*/*");
         if (extra.length() < 50000) {
-            intent.putExtra(SharedNetwork.comPinterestEXTRA_DESCRIPTION, extra);
+            intent.putExtra(Share.comPinterestEXTRA_DESCRIPTION, extra);
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Intent chooser = Intent.createChooser(intent, chooserTitle);

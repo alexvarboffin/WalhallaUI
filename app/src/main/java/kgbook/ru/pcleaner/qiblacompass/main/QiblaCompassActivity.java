@@ -25,9 +25,9 @@ import androidx.core.app.ActivityCompat;
 
 import kgbook.ru.R;
 
-import com.walhalla.plugins.Launcher;
-import com.walhalla.plugins.Module_U;
 import com.walhalla.ui.DLog;
+import com.walhalla.ui.plugins.Launcher;
+import com.walhalla.ui.plugins.Module_U;
 
 import java.util.Locale;
 
@@ -157,28 +157,21 @@ public class QiblaCompassActivity extends AppCompatActivity implements LocationL
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-//            case R.string.start_test_again:
+        int itemId = item.getItemId();//            case R.string.start_test_again:
 //                return false;
-
-            case R.id.action_about:
-                //Module_U.aboutDialog(this);
+        if (itemId == R.id.action_about) {//Module_U.aboutDialog(this);
 //                startActivity(new Intent(getApplicationContext(), ActivityAbout.class));
 //                overridePendingTransition(R.anim.open_next, R.anim.close_main);
-                return true;
-
-            case R.id.action_privacy_policy:
-                Launcher.openBrowser(this, "https://google.com");
-                return true;
-
-            case R.id.action_rate_app:
-                Launcher.rateUs(this);
-                return true;
-
-            case R.id.action_share_app:
-                Module_U.shareThisApp(this);
-                return true;
+            return true;
+        } else if (itemId == R.id.action_privacy_policy) {
+            Launcher.openBrowser(this, "https://google.com");
+            return true;
+        } else if (itemId == R.id.action_rate_app) {
+            Launcher.rateUs(this);
+            return true;
+        } else if (itemId == R.id.action_share_app) {
+            Module_U.shareThisApp(this);
+            return true;
 
 //            case R.id.action_discover_more_app:
 //                Module_U.moreApp(this);
@@ -187,14 +180,11 @@ public class QiblaCompassActivity extends AppCompatActivity implements LocationL
 //            case R.id.action_exit:
 //                this.finish();
 //                return true;
-
-            case R.id.action_feedback:
-                Module_U.feedback(this);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        } else if (itemId == R.id.action_feedback) {
+            Module_U.feedback(this);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
 
 
         //action_how_to_use_app
