@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class a extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private LottieAdapter adapter;
 
     @Override
@@ -23,7 +22,7 @@ public class a extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lottie);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
