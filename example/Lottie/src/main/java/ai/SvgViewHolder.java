@@ -1,14 +1,12 @@
 package ai;
 
-import android.graphics.drawable.PictureDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.airbnb.lottie.LottieAnimationView;
 
 public class SvgViewHolder extends RecyclerView.ViewHolder {
     private final ImageView lottieView;
@@ -20,11 +18,11 @@ public class SvgViewHolder extends RecyclerView.ViewHolder {
         fileNameTextView = itemView.findViewById(R.id.fileNameTextView);
     }
 
-    public void bind(PictureDrawable pictureDrawable, String fileName) {
+    public void bind(Drawable pictureDrawable, String fileName) {
         //lottieView.setImageDrawable(lottieDrawable);
         if (pictureDrawable != null) {
-            // Set the drawable to the ImageView
             lottieView.setImageDrawable(pictureDrawable);
         }
+        fileNameTextView.setText(fileName);
     }
 }

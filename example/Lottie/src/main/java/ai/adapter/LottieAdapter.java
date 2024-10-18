@@ -1,22 +1,24 @@
-package ai;
+package ai.adapter;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieComposition;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import ai.FileItem;
+import ai.R;
+import ai.ViewHolder;
 
 public class LottieAdapter extends RecyclerView.Adapter<ViewHolder> {
 

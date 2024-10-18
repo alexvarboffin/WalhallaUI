@@ -2,6 +2,7 @@ package ai;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.util.Log;
@@ -17,20 +18,21 @@ import java.util.List;
 
 public class FileUtils {
 
-    public static void loadSvgFromAssets(Context context, String filename, ImageView imageView) {
-        try {
-            InputStream inputStream = context.getAssets().open(filename);
-            SVG svg = SVG.getFromInputStream(inputStream);
+//    public static void loadSvgFromAssets(Context context, String filename, ImageView imageView) {
+//        try {
+//            InputStream inputStream = context.getAssets().open(filename);
+//            SVG svg = SVG.getFromInputStream(inputStream);
+//
+//            // Convert SVG to a drawable
+//            PictureDrawable pictureDrawable = new PictureDrawable(svg.renderToPicture());
+//
+//            // Set the drawable to the ImageView
+//            imageView.setImageDrawable(pictureDrawable);
+//        } catch (IOException | SVGParseException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-            // Convert SVG to a drawable
-            PictureDrawable pictureDrawable = new PictureDrawable(svg.renderToPicture());
-
-            // Set the drawable to the ImageView
-            imageView.setImageDrawable(pictureDrawable);
-        } catch (IOException | SVGParseException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void loadSvgFromUri(Context context, Uri uri, ImageView imageView) {
         try {
@@ -47,8 +49,27 @@ public class FileUtils {
         }
     }
 
+    public static List<FileItem> loadXmlFromAssets(Context context, String folderName) {
+        List<FileItem> drawables = new ArrayList<>();
+        try {
+
+            AssetManager assetManager = context.getAssets();
+            String[] xmlFiles = assetManager.list(folderName);
+
+            if (xmlFiles != null) {
+                for (String fileName : xmlFiles) {
+                    String m = folderName + "/" + fileName;
+                    drawables.add(new FileItem(m));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return drawables;
+    }
+
     public static List<FileItem> getLottieAnimations(Context context, String folderName) {
-        List<FileItem> lottieDrawables = new ArrayList<>();
+        List<FileItem> items = new ArrayList<>();
         AssetManager assetManager = context.getAssets();
 
         String fileName = "";
@@ -60,7 +81,7 @@ public class FileUtils {
                     try {
                         fileName = folderName + "/" + lottieFile;
                         InputStream inputStream = assetManager.open(fileName);
-                        lottieDrawables.add(new FileItem(fileName));
+                        items.add(new FileItem(fileName));
                     } catch (IOException e) {
                         String[] lottieFiles0 = assetManager.list(fileName);
                         if (lottieFiles0 != null) {
@@ -68,7 +89,7 @@ public class FileUtils {
                                 try {
                                     String s = fileName + "/" + lottieFile0;
                                     InputStream inputStream = assetManager.open(s);
-                                    lottieDrawables.add(new FileItem(s));
+                                    items.add(new FileItem(s));
 
                                 } catch (IOException e0) {
                                     Log.d("@@", "getLottieAnimations: " + fileName);
@@ -81,6 +102,8 @@ public class FileUtils {
         } catch (IOException e) {
             Log.d("@@", "getLottieAnimations: " + fileName);
         }
-        return lottieDrawables;
+        return items;
     }
+
+
 }

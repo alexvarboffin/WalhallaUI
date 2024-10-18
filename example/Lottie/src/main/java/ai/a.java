@@ -1,35 +1,71 @@
 package ai;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.android.material.tabs.TabLayoutMediator;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import ai.databinding.ActivityMainBinding;
+import ai.fragment.LottieFragment;
+import ai.fragment.SvgFragment;
+import ai.fragment.XmlFragment;
+
 public class a extends AppCompatActivity {
-    private LottieAdapter adapter;
+
+
+    private ActivityMainBinding binding;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lottie);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new LottieFragment()); // Add your first fragment
+        fragments.add(new SvgFragment()); // Add your second fragment (replace with actual fragment)
+        fragments.add(new XmlFragment());
 
-        adapter = new LottieAdapter(FileUtils.getLottieAnimations(this, "lottie"), this);
-        recyclerView.setAdapter(adapter);
+        viewPagerAdapter = new ViewPagerAdapter(this, fragments);
+        binding.viewPager.setAdapter(viewPagerAdapter);
+
+        // TabLayout setup
+        new TabLayoutMediator(binding.tabLayout, binding.viewPager,
+                (tab, position) -> tab.setText("Tab " + (position + 1))
+        ).attach();
     }
 
+    public static class ViewPagerAdapter extends FragmentStateAdapter {
+
+        private final List<Fragment> fragmentList;
+
+        public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<Fragment> fragmentList) {
+            super(fragmentActivity);
+            this.fragmentList = fragmentList;  // Initialize the list of fragments
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return fragmentList.get(position);  // Return the fragment based on position
+        }
+
+        @Override
+        public int getItemCount() {
+            return fragmentList.size();  // Return the number of fragments
+        }
+    }
 
 //    private List<LottieDrawable> getLottieAnimations(Context context) {
 //        List<LottieDrawable> lottieDrawables = new ArrayList<>();

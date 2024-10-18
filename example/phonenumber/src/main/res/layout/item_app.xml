@@ -58,12 +58,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" android:textColor="@android:color/black"/>
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -75,7 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/overflow_menu"
             android:background="@null"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RelativeOverlap">
 
             <TextView
                 android:id="@+id/features"

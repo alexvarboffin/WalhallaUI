@@ -53,7 +53,7 @@ public class MainPresenter {
 
             this.doubleBackToExitPressedOnce = true;
             Toast.makeText(var0, var0.getString(R.string.press_again_to_exit), Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 500);
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 1600);
         }
             /*
             //Next/Prev Navigation

@@ -1,5 +1,7 @@
 package ai.fragment;
 
+import static ai.FileUtils.loadXmlFromAssets;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +14,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import ai.FileUtils;
 import ai.adapter.SvgAdapter;
+import ai.adapter.XmlAdapter;
 import ai.databinding.FragmentLottieBinding;
 
 
-public class SvgFragment extends Fragment {
+public class XmlFragment extends Fragment {
 
     private FragmentLottieBinding binding;
 
@@ -27,9 +30,9 @@ public class SvgFragment extends Fragment {
 
         // RecyclerView setup
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        SvgAdapter adapter = new SvgAdapter(FileUtils.getLottieAnimations(getContext(), "svg"), getContext());
-        binding.recyclerView.setAdapter(adapter);
+        XmlAdapter adapter = new XmlAdapter(getContext(), loadXmlFromAssets(getContext(), "xml"));
 
+        binding.recyclerView.setAdapter(adapter);
         return binding.getRoot();
     }
 

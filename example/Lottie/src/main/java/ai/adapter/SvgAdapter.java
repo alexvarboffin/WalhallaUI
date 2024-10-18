@@ -1,6 +1,7 @@
-package ai;
+package ai.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PictureDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,17 +19,21 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import ai.FileItem;
+import ai.R;
+import ai.SvgViewHolder;
+
 public class SvgAdapter extends RecyclerView.Adapter<SvgViewHolder> {
 
     private final List<FileItem> animationList;
-    private final List<PictureDrawable> lottieDrawables;
+    private final List<Drawable> drawables;
 
     private Context context;
 
     public SvgAdapter(List<FileItem> animationList, Context context) {
         this.animationList = animationList;
         this.context = context;
-        lottieDrawables = new ArrayList<PictureDrawable>();
+        drawables = new ArrayList<>();
         for (FileItem filename : animationList) {
             try {
                 InputStream inputStream = context.getAssets().open(filename.getFileName());
@@ -36,7 +41,7 @@ public class SvgAdapter extends RecyclerView.Adapter<SvgViewHolder> {
 
                 // Convert SVG to a drawable
                 PictureDrawable pictureDrawable = new PictureDrawable(svg.renderToPicture());
-                lottieDrawables.add(pictureDrawable);
+                drawables.add(pictureDrawable);
             } catch (IOException | SVGParseException e) {
                 Log.d("@@@", "getLottieAnimations: "+e.getLocalizedMessage());
             }
@@ -54,7 +59,7 @@ public class SvgAdapter extends RecyclerView.Adapter<SvgViewHolder> {
     public void onBindViewHolder(@NonNull SvgViewHolder holder, int position) {
         FileItem animation = animationList.get(position);
         String fileName = animation.getFileName();
-        holder.bind(lottieDrawables.get(position), fileName);
+        holder.bind(drawables.get(position), fileName);
     }
 
     @Override

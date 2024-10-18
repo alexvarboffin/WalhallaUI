@@ -11,14 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import ai.FileUtils;
-import ai.adapter.SvgAdapter;
+import ai.adapter.LottieAdapter;
 import ai.databinding.FragmentLottieBinding;
 
-
-public class SvgFragment extends Fragment {
+public class LottieFragment extends Fragment {
 
     private FragmentLottieBinding binding;
-
+    private LottieAdapter adapter;
 
     @Nullable
     @Override
@@ -27,7 +26,7 @@ public class SvgFragment extends Fragment {
 
         // RecyclerView setup
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        SvgAdapter adapter = new SvgAdapter(FileUtils.getLottieAnimations(getContext(), "svg"), getContext());
+        adapter = new LottieAdapter(FileUtils.getLottieAnimations(requireContext(), "lottie"), requireContext());
         binding.recyclerView.setAdapter(adapter);
 
         return binding.getRoot();
@@ -39,3 +38,4 @@ public class SvgFragment extends Fragment {
         binding = null;
     }
 }
+

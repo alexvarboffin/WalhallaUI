@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/item_border">
 
     <ImageView
+        android:src="@drawable/item_border"
         android:minHeight="110dp"
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -14,7 +16,8 @@
         android:layout_gravity="center"
         android:layout_margin="16dp"
         app:lottie_autoPlay="false"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/fileNameTextView"

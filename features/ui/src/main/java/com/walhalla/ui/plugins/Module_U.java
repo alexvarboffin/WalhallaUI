@@ -88,16 +88,39 @@ public class Module_U {
         _c.setText(title);
         ImageView logo = mView.findViewById(R.id.aboutLogo);
         logo.setOnLongClickListener(v -> {
-            String _o = "[+]gp->" + isFromGooglePlay(mView.getContext());
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                _o = _o + ", category->" + mView.getContext().getApplicationInfo().category;
-            }
-            _o = _o + ", SDK:" + Build.VERSION.SDK_INT;
-            _c.setText(_o);
+            _c.setText(_o(context));
             return false;
         });
         //dialog.setButton();
         dialog.show();
+    }
+
+    private static String _o(Context context) {
+        ApplicationInfo appInfo;
+        int minSdk = -1;
+        int targetSdk = -1;
+
+        try {
+            appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 0);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                minSdk = appInfo.minSdkVersion;
+            }
+            targetSdk = appInfo.targetSdkVersion;
+        } catch (PackageManager.NameNotFoundException e) {
+            DLog.handleException(e);
+        }
+
+
+        String _o = "[+]gp->" + isFromGooglePlay(context);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            _o = _o + ", category->" + context.getApplicationInfo().category;
+        }
+        _o = _o + ", "
+                + "Device SDK: " + Build.VERSION.SDK_INT + "\n" +
+                "minSdk: " + minSdk + "\n" +
+                "targetSdk: " + targetSdk + "\n" +
+                "compileSdk: Not available at runtime (compile-time value)";
+        return _o;
     }
 
 
