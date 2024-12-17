@@ -12,7 +12,7 @@ public class SharedPref {
     private static final String KEY_RATED = "key_rate_not_show_again";
 
     //private static final String KEY_FIRST_LAUNCH = "sp.fr.launch";
-    private static final String LAUNCH_COUNT_KEY = "var12300";
+    private static final String LAUNCH_COUNT_KEY = "var_launch";
 
 
     private static final String KEY_RELOADED = "rate_launch_count";

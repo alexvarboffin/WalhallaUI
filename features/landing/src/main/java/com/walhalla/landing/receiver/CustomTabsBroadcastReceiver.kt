@@ -1,44 +1,41 @@
-package com.walhalla.landing.receiver;
+package com.walhalla.landing.receiver
 
-import android.content.BroadcastReceiver;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
+import android.content.BroadcastReceiver
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.widget.Toast
 
-public class CustomTabsBroadcastReceiver extends BroadcastReceiver {
-
-
-    public static final String ACTION_ITEM_2 = "action.item2";
-    public static String ACTION_COPY_URL = "action.copy";
-    public static final String ACTION_PRIVACY = "action.privacy";
-
-
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-
+class CustomTabsBroadcastReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent?) {
         if (intent != null) {
-            String action = intent.getAction();
-            if (ACTION_COPY_URL.equals(action)) {
-                String url = intent.getDataString();
-                Toast.makeText(context, "Copy link pressed. URL = " + url, Toast.LENGTH_LONG).show();
-                ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("Copied Text", url);
-                clipboard.setPrimaryClip(clip);
-            } else if (ACTION_ITEM_2.equals(action)) {
-                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
-            } else if (ACTION_PRIVACY.equals(action)) {
+            val action = intent.action
+            if (ACTION_COPY_URL == action) {
+                val url = intent.dataString
+                Toast.makeText(context, "Copy link pressed. URL = $url", Toast.LENGTH_LONG).show()
+                val clipboard =
+                    context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("Copied Text", url)
+                clipboard.setPrimaryClip(clip)
+            } else if (ACTION_ITEM_2 == action) {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            } else if (ACTION_PRIVACY == action) {
                 //AboutBox.showPolicy(context);
             }
         }
     }
+    //    public void toast(String msg) {
+    //        View coordinatorLayout = cfindViewById(android.R.id.content);
+    //        if (coordinatorLayout != null) {
+    //            Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    //        }
+    //    }
 
-//    public void toast(String msg) {
-//        View coordinatorLayout = cfindViewById(android.R.id.content);
-//        if (coordinatorLayout != null) {
-//            Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//        }
-//    }
+    companion object {
+        const val ACTION_ITEM_2: String = "action.item2"
+        @JvmField
+        var ACTION_COPY_URL: String = "action.copy"
+        const val ACTION_PRIVACY: String = "action.privacy"
+    }
 }
