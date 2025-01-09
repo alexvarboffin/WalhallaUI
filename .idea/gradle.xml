@@ -4,18 +4,15 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="C:/android/gradle/gradle-7.0.2" />
-        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/../multithreader/threader" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/example" />
-            <option value="$PROJECT_DIR$/example/FreeStuffAndCoupons" />
-            <option value="$PROJECT_DIR$/example/Lottie" />
-            <option value="$PROJECT_DIR$/example/phonenumber" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/landing" />
             <option value="$PROJECT_DIR$/features/ui" />
@@ -30,6 +27,7 @@
             <option value="$PROJECT_DIR$/stub/stub_facebook" />
             <option value="$PROJECT_DIR$/stub/stub_mtracker" />
             <option value="$PROJECT_DIR$/stub/stub_onesignal" />
+            <option value="$PROJECT_DIR$/wvcompose" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

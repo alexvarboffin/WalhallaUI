@@ -1,3 +1,14 @@
+//plugins {
+//    alias(libs.plugins.kotlinAndroid)
+//    //id "org.jetbrains.kotlin.android" version "2.1.0"
+//}
+//plugins {
+//    alias(libs.plugins.kotlinAndroid)
+//}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
+//apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.android.library'
 
 android {
@@ -25,17 +36,21 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:$rootProject.compatVersion"
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "com.google.android.material:material:1.12.0"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    implementation libs.androidx.core.ktx
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     implementation project(path: ':threader')
     //implementation "com.walhalla.threader:threader-android-app"

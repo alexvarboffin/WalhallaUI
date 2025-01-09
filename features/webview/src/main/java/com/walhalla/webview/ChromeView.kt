@@ -1,23 +1,23 @@
-package com.walhalla.webview;
+package com.walhalla.webview
 
-import android.app.Activity;
+import android.app.Activity
 
-public interface ChromeView {
-    void onPageStarted(String url);
+interface ChromeView {
+    fun onPageStarted(url: String?)
 
-    void onPageFinished(/*WebView view, */String url);
+    fun onPageFinished( /*WebView view, */url: String?)
 
-    void webClientError(ReceivedError failure);
+    fun webClientError(failure: ReceivedError?)
 
-    void removeErrorPage();
+    fun removeErrorPage()
 
-    void setErrorPage(ReceivedError receivedError);
+    fun setErrorPage(receivedError: ReceivedError?)
 
-    void openBrowser(Activity context, String url);
-
+    fun openBrowser(
+        context: Activity?,
+        url: String?
+    )
     //void openOauth2(Activity context, String url);
-
     //void mAcceptPressed(String url);
-
     //void eventRequest(BodyClass bodyClass);
 }
