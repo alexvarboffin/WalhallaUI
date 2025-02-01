@@ -1,11 +1,12 @@
 package com.walhalla.phonenumber.dashboard;
 
-import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
+
 import com.google.firebase.database.PropertyName;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public abstract class WordModel implements SortedListAdapter.ViewModel{
+public abstract class WordModel //implements SortedListAdapter.ViewModel
+{
     public boolean isInstalled; // Новое поле
 
     @SerializedName("_id")

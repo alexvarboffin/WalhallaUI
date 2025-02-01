@@ -1,6 +1,6 @@
 [versions]
 installreferrer = "2.2"
-minSdk = "24"
+minSdk = "21"
 compileSdk = "35"
 targetSdk = "35"
 
@@ -47,7 +47,7 @@ logback = "1.5.12"
 multidex = "2.0.1"
 navigationFragment = "2.8.5"
 precompose = "1.7.0-alpha01"
-
+ksp="2.1.0-1.0.29"
 playServicesAds = "23.6.0"
 preference = "1.2.1"
 preferenceKtxKtx = "1.2.1"
@@ -130,12 +130,14 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
+#androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-ksp = {id = "com.google.devtools.ksp", version.ref="ksp"}

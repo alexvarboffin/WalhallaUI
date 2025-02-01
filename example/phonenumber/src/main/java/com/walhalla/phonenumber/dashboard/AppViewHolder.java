@@ -6,13 +6,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
+
 import com.walhalla.phonenumber.databinding.ItemAppBinding;
 import com.walhalla.ui.plugins.Launcher;
 
 
-public class AppViewHolder extends SortedListAdapter.ViewHolder<AppModel> {
+public class AppViewHolder
+        extends SortedListAdapter.ViewHolder<AppModel>
+{
 
     public final ItemAppBinding mBinding;
 
