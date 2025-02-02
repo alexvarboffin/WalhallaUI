@@ -1,6 +1,7 @@
 package com.walhalla.webview
 
 import android.app.Activity
+import android.content.Context
 
 interface ChromeView {
     fun onPageStarted(url: String?)
@@ -13,10 +14,8 @@ interface ChromeView {
 
     fun setErrorPage(receivedError: ReceivedError?)
 
-    fun openBrowser(
-        context: Activity?,
-        url: String?
-    )
+    fun openBrowser(url: String)
+
     //void openOauth2(Activity context, String url);
     //void mAcceptPressed(String url);
     //void eventRequest(BodyClass bodyClass);
