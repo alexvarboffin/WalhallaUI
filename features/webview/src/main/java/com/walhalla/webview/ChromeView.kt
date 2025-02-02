@@ -8,11 +8,11 @@ interface ChromeView {
 
     fun onPageFinished( /*WebView view, */url: String?)
 
-    fun webClientError(failure: ReceivedError?)
+    fun webClientError(failure: ReceivedError)
 
     fun removeErrorPage()
 
-    fun setErrorPage(receivedError: ReceivedError?)
+    fun setErrorPage(receivedError: ReceivedError)
 
     fun openBrowser(url: String)
 

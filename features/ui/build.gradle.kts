@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.library") //alias(libs.plugins.android.library)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.ksp)
+    //alias(libs.plugins.kotlin.ksp)
 }
 //plugins {
 //    alias(libs.plugins.android.application) apply false
