@@ -1,54 +1,58 @@
-package com.walhalla.wads.preference;
+package com.walhalla.wads.preference
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 
-import androidx.preference.PreferenceManager;
+class SharedPref private constructor(activity: Context) {
+    private val settings: SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(activity)
 
-public class SharedPref {
-    
-    private static final String LAUNCH_COUNT_KEY = "var12300";
-    private static final String BANNER_SHOWN_KEY = "banner_shown";
-    private static SharedPref instance;
-    private final SharedPreferences settings;
+    val isBannerAlreadyShown: Boolean
+        //========================== Session Manager =============================
+        get() = settings.getBoolean(
+            BANNER_SHOWN_KEY,
+            false
+        )
 
+    fun setBannerShown() {
+        settings.edit().putBoolean(BANNER_SHOWN_KEY, true).apply()
+    }
 
-    public static synchronized SharedPref getInstance(Context context) {
-        if (instance == null) {
-            instance = new SharedPref(context);
+    fun resetBannerShown() {
+        settings.edit().putBoolean(BANNER_SHOWN_KEY, false).apply()
+    }
+
+    var launchCount: Int
+        get() = settings.getInt(
+            LAUNCH_COUNT_KEY,
+            0
+        )
+        set(launchCount) {
+            settings.edit().putInt(
+                LAUNCH_COUNT_KEY,
+                launchCount
+            ).apply()
         }
-        return instance;
+
+    private fun incrementLaunchCount() {
+        val launchCount = settings.getInt(LAUNCH_COUNT_KEY, 0) + 1
+        val editor = settings.edit()
+        editor.putInt(LAUNCH_COUNT_KEY, launchCount)
+        editor.apply()
     }
 
-    private SharedPref(Context activity) {
-        this.settings = PreferenceManager.getDefaultSharedPreferences(activity);
-    }
+    companion object {
+        private const val LAUNCH_COUNT_KEY = "var12300"
+        private const val BANNER_SHOWN_KEY = "banner_shown"
+        private var instance: SharedPref? = null
 
-    //========================== Session Manager =============================
-    public boolean isBannerAlreadyShown() {
-        return settings.getBoolean(BANNER_SHOWN_KEY, false);
-    }
-
-    public void setBannerShown() {
-        settings.edit().putBoolean(BANNER_SHOWN_KEY, true).apply();
-    }
-
-    public void resetBannerShown() {
-        settings.edit().putBoolean(BANNER_SHOWN_KEY, false).apply();
-    }
-
-    public int getLaunchCount() {
-        return settings.getInt(LAUNCH_COUNT_KEY, 0);
-    }
-
-    public void setLaunchCount(int launchCount) {
-        settings.edit().putInt(LAUNCH_COUNT_KEY, launchCount).apply();
-    }
-
-    private void incrementLaunchCount() {
-        int launchCount = settings.getInt(LAUNCH_COUNT_KEY, 0) + 1;
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt(LAUNCH_COUNT_KEY, launchCount);
-        editor.apply();
+        @Synchronized
+        fun getInstance(context: Context): SharedPref {
+            if (instance == null) {
+                instance = SharedPref(context)
+            }
+            return instance!!
+        }
     }
 }

@@ -1,19 +1,16 @@
-package com.walhalla.utils;
+package com.walhalla.utils
 
-import android.app.Activity;
-import android.content.Context;
+import android.app.Activity
+import android.content.Context
 
-public interface AManagerI {
-
+interface AManagerI {
     interface RewardManagerCallback {
-        void successResult7(int position);
+        fun successResult7(position: Int)
 
-        void errorShowAds();
-
-        //void onResumeVideo();
+        fun errorShowAds() //void onResumeVideo();
     }
 
-    void loadRewardAd(Context context);
+    fun loadRewardAd(context: Context)
 
-    void showRewardAdBanner(Activity activity, int position, RewardManagerCallback callback);
+    fun showRewardAdBanner(activity: Activity, position: Int, callback: RewardManagerCallback?)
 }
