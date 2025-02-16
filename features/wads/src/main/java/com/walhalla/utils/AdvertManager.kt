@@ -182,7 +182,7 @@ private constructor() {
         private var instance: AdvertManager? = null
 
         @Synchronized
-        fun getInstance(): AdvertManager {
+        fun getInstance0(): AdvertManager {
             if (instance == null) {
                 instance = AdvertManager()
             }

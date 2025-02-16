@@ -5,7 +5,7 @@ plugins {
 }
 //plugins {
 //    alias(libs.plugins.android.application) apply false
-//    id("com.android.library") //alias(libs.plugins.android.library) apply false
+//    alias(libs.plugins.android.library) //alias(libs.plugins.android.library) apply false
 //    alias(libs.plugins.kotlin.android) apply false
 //}
 
@@ -38,21 +38,19 @@ android {
     }
 
     buildTypes {
-        debug {
-            // minifyEnabled не используется в библиотеке
+        getByName("debug") {
+            // Конфигурация для debug // minifyEnabled не используется в библиотеке
         }
-        release {
-            proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-            )
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             consumerProguardFiles("consumer-rules.pro")
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     buildFeatures {
@@ -63,14 +61,14 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.material)
+    implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
 
 //    implementation "androidx.appcompat:appcompat${compatVersion}:"
 //    implementation "com.google.android.material:material:${materialVersion}"
 
 
-    api(libs.androidx.preference)
+    api(libs.androidx.preference.ktx)
 
     implementation(libs.androidx.swiperefreshlayout)
 
