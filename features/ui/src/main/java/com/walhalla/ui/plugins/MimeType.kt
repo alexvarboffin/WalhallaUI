@@ -1,5 +1,5 @@
-package com.walhalla.ui.plugins;
+package com.walhalla.ui.plugins
 
-public class MimeType {
-    public static final String TEXT_PLAIN = "text/plain";
+object MimeType {
+    const val TEXT_PLAIN: String = "text/plain"
 }

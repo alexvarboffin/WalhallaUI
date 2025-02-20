@@ -1,159 +1,150 @@
-package com.walhalla.ui;
+package com.walhalla.ui
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.util.Log;
+import android.content.Context
+import android.content.pm.PackageManager
+import android.util.Log
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.zip.ZipFile
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.walhalla.ui.BuildConfig;
-
-import java.text.SimpleDateFormat;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
-
-public class DLog {
-
-    private static final boolean DEBUG = BuildConfig.DEBUG;
-    private static final String TAG = "@@@";
+object DLog {
+    private val DEBUG = BuildConfig.DEBUG
+    private const val TAG = "@@@"
 
 
     /**
      * Log Level Error
-     **/
-    public static void e(String message) {
+     */
+    fun e(message: String) {
         if (DEBUG) {
-            Log.e(TAG, buildLogMsg(message));
+            Log.e(TAG, buildLogMsg(message))
         }
     }
 
     /**
      * Log Level Warning
-     **/
-    public static void w(String message) {
-        if (DEBUG) Log.w(TAG, buildLogMsg(message));
+     */
+    fun w(message: String) {
+        if (DEBUG) Log.w(TAG, buildLogMsg(message))
     }
 
     /**
      * Log Level Information
-     **/
-    public static void i(String message) {
-        if (DEBUG) Log.i(TAG, buildLogMsg(message));
+     */
+    fun i(message: String) {
+        if (DEBUG) Log.i(TAG, buildLogMsg(message))
     }
 
     /**
      * Log Level Debug
-     **/
-    public static void d(String message) {
-        if (DEBUG) Log.d(TAG, buildLogMsg(message));
+     */
+    @JvmStatic
+    fun d(message: String) {
+        if (DEBUG) Log.d(TAG, buildLogMsg(message))
     }
 
     /**
      * Log Level Verbose
-     **/
-    public static void v(String message) {
-        if (DEBUG) DLog.d(buildLogMsg(message));
+     */
+    fun v(message: String) {
+        if (DEBUG) d(buildLogMsg(message))
     }
 
 
-    private static String buildLogMsg(String message) {
-
-        StackTraceElement ste = Thread.currentThread().getStackTrace()[4];
+    private fun buildLogMsg(message: String): String {
+        val ste = Thread.currentThread().stackTrace[4]
 
 
         //Class<? extends StackTraceElement> obj = ste.getClass();
         //if (ste.getClass() instanceof Fragment) {
         //    sb.append("#");
         //}
-
         return "\uD83D\uDE80 " +
-                ste.getFileName().replace(".java", "") +
+                ste.fileName.replace(".java", "") +
                 "::" +
-                ste.getMethodName() +
+                ste.methodName +
                 " ● " +
                 message +
-                " █";
-
+                " █"
     }
 
 
-    public static boolean nonNull(Object o) {
+    @JvmStatic
+    fun nonNull(o: Any?): Boolean {
         if (DEBUG) {
-            Log.i(TAG, "nonNull: " + ((o == null) ? o : o.toString()));
+            Log.i(TAG, "nonNull: " + (if ((o == null)) o else o.toString()))
         }
-        return o != null;
+        return o != null
     }
 
-//    context.getString(R.string.app_name) + " v"
-// + versionName + " (build " + versionCode + ")"
-
-    public static String getAppVersion(Context context) {
-        String tmp = null;
+    //    context.getString(R.string.app_name) + " v"
+    // + versionName + " (build " + versionCode + ")"
+    fun getAppVersion(context: Context): String {
+        var tmp: String? = null
         try {
-
-//            versionCode = context.getPackageManager()
+            //            versionCode = context.getPackageManager()
 //                    .getPackageInfo(context.getPackageName(),
 //                            0).versionCode;
-            tmp = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-        } catch (PackageManager.NameNotFoundException ignore) {}
+
+            tmp = context.packageManager.getPackageInfo(context.packageName, 0).versionName
+        } catch (ignore: PackageManager.NameNotFoundException) {
+        }
         if (tmp == null) {
-            tmp = "Unknown";
+            tmp = "Unknown"
         }
-        return tmp;
+        return tmp
     }
 
-    public static String timeStamp(@NonNull Context context) {
+    fun timeStamp(context: Context): String {
         try {
-            ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), 0);
-            ZipFile zf = new ZipFile(applicationInfo.sourceDir);
-            ZipEntry ze = zf.getEntry("classes.dex");
-            long time = ze.getTime();
-            String s = SimpleDateFormat.getInstance().format(new java.util.Date(time));
-            zf.close();
-            return s;
-        } catch (Exception e) {
-            return "Unknown";
+            val applicationInfo = context.packageManager.getApplicationInfo(context.packageName, 0)
+            val zf = ZipFile(applicationInfo.sourceDir)
+            val ze = zf.getEntry("classes.dex")
+            val time = ze.time
+            val s = SimpleDateFormat.getInstance().format(Date(time))
+            zf.close()
+            return s
+        } catch (e: Exception) {
+            return "Unknown"
         }
     }
 
-    public static void handleException(@Nullable Exception e) {
+    @JvmStatic
+    fun handleException(e: Exception?) {
         if (e == null) {
-            DLog.d("Exception --> NULL");
-            return;
+            d("Exception --> NULL")
+            return
         }
-//        if(e instanceof IllegalStateException){
+        //        if(e instanceof IllegalStateException){
 //            IllegalStateException e1 = (IllegalStateException) e;
 //        }
         if (DEBUG) {
             //Log.d(TAG, e.getClass().getSimpleName());
-            Log.d(TAG, buildLogMsg(e.getClass().getSimpleName()
-                    + " @@@ " + (e.getMessage() == null ? "NULL" :
-                    (
-                            e.getMessage()
-                            //.replace("Column{", "\n|_")
+            Log.d(
+                TAG, buildLogMsg(
+                    (e.javaClass.simpleName
+                            + " @@@ " + (if (e.message == null) "NULL" else (e.message //.replace("Column{", "\n|_")
                             //.replace("}, ", "\n")
                             //.replace(", ", "|")
-                    )
-            )));
+                            )
+                            ))
+                )
+            )
         }
     }
-
-//    private static String ff(String replace) {
-//
-//        if (replace.contains("Found:")) {
-//            String[] mm = replace.replace("Expected:", "").split("Found:");
-//            String[] c = mm[0].split(",");
-//            String[] c1 = mm[1].split(",");
-//            for (int i = 0; i < c.length; i++) {
-//                if (!c[i].equals(c1[i])) {
-//                    DLog.d(c[i] + " __> " + c1[i]);
-//                }
-//            }
-//            return mm[0] + "\n" + mm[1];
-//        }
-//        return replace;
-//    }
+    //    private static String ff(String replace) {
+    //
+    //        if (replace.contains("Found:")) {
+    //            String[] mm = replace.replace("Expected:", "").split("Found:");
+    //            String[] c = mm[0].split(",");
+    //            String[] c1 = mm[1].split(",");
+    //            for (int i = 0; i < c.length; i++) {
+    //                if (!c[i].equals(c1[i])) {
+    //                    DLog.d(c[i] + " __> " + c1[i]);
+    //                }
+    //            }
+    //            return mm[0] + "\n" + mm[1];
+    //        }
+    //        return replace;
+    //    }
 }

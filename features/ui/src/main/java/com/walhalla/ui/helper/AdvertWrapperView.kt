@@ -1,25 +1,18 @@
-package com.walhalla.ui.helper;
+package com.walhalla.ui.helper
 
-import androidx.lifecycle.LifecycleObserver;
-import android.content.Context;
-import android.util.AttributeSet;
-import android.widget.FrameLayout;
+import android.content.Context
+import android.util.AttributeSet
+import android.widget.FrameLayout
+import androidx.lifecycle.LifecycleObserver
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+class AdvertWrapperView : FrameLayout, LifecycleObserver {
+    constructor(context: Context) : super(context)
 
-public class AdvertWrapperView extends FrameLayout
-        implements LifecycleObserver {
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
-    public AdvertWrapperView(@NonNull Context context) {
-        super(context);
-    }
-
-    public AdvertWrapperView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public AdvertWrapperView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 }

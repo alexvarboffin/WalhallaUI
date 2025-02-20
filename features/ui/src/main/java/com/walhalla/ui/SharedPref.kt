@@ -1,92 +1,87 @@
-package com.walhalla.ui;
+package com.walhalla.ui
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 
-import androidx.preference.PreferenceManager;
+class SharedPref private constructor(activity: Context) {
+    private val settings: SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(activity)
 
-public class SharedPref {
-
-
-    private static final String KEY_AGREE = "licenseagreeok";
-    private static final String KEY_RATED = "key_rate_not_show_again";
-
-    //private static final String KEY_FIRST_LAUNCH = "sp.fr.launch";
-    private static final String LAUNCH_COUNT_KEY = "var_launch";
-
-
-    private static final String KEY_RELOADED = "rate_launch_count";
-    private static final String DATE_FIRST_LAUNCH = "DATE_FIRST_LAUNCH_";
-    private static SharedPref instance;
-
-
-    private final SharedPreferences settings;
-
-
-    public static synchronized SharedPref getInstance(Context context) {
-        if (instance == null) {
-            instance = new SharedPref(context);
-        }
-        return instance;
-    }
-
-    private SharedPref(Context activity) {
-        this.settings = PreferenceManager.getDefaultSharedPreferences(activity);
-    }
-
-    public boolean licenseAgree() {
-        return settings.getBoolean(KEY_AGREE, false);
+    fun licenseAgree(): Boolean {
+        return settings.getBoolean(KEY_AGREE, false)
     }
 
 
-    public void licenseAgree(boolean b) {
-        settings.edit().putBoolean(KEY_AGREE, b).apply();
+    fun licenseAgree(b: Boolean) {
+        settings.edit().putBoolean(KEY_AGREE, b).apply()
     }
 
     //Rate app
-    public void appResumeCount(int count) {
-        settings.edit().putInt(KEY_RELOADED, count).apply();
+    fun appResumeCount(count: Int) {
+        settings.edit().putInt(KEY_RELOADED, count).apply()
     }
 
-    public int appResumeCount() {
-        return settings.getInt(KEY_RELOADED, 0);
+    fun appResumeCount(): Int {
+        return settings.getInt(KEY_RELOADED, 0)
     }
 
-    public boolean appRated() {
-        boolean flg = settings.getBoolean(KEY_RATED, false);
-//        if (BuildConfig.DEBUG) {
+    fun appRated(): Boolean {
+        val flg = settings.getBoolean(KEY_RATED, false)
+        //        if (BuildConfig.DEBUG) {
 //            DLog.d("[?] Rated -> " + flg
 //                    + " " + appReloadedCount() + "/" + LAUNCHES_UNTIL_PROMPT
 //                    + " " + date_firstLaunch());
 //        }
-        return flg;
+        return flg
     }
 
-    public void appRated(boolean rated) {
-        settings.edit().putBoolean(KEY_RATED, rated).apply();
+    fun appRated(rated: Boolean) {
+        settings.edit().putBoolean(KEY_RATED, rated).apply()
     }
 
-    public void date_firstLaunch(long date_firstLaunch) {
-        settings.edit().putLong(DATE_FIRST_LAUNCH, date_firstLaunch).apply();
+    fun date_firstLaunch(date_firstLaunch: Long) {
+        settings.edit().putLong(DATE_FIRST_LAUNCH, date_firstLaunch).apply()
     }
 
-    public long date_firstLaunch() {
-        return settings.getLong(DATE_FIRST_LAUNCH, 0);
+    fun date_firstLaunch(): Long {
+        return settings.getLong(DATE_FIRST_LAUNCH, 0)
     }
 
-    public int getLaunchCount() {
-        return settings.getInt(LAUNCH_COUNT_KEY, 0);
+    var launchCount: Int
+        get() = settings.getInt(LAUNCH_COUNT_KEY, 0)
+        set(launchCount) {
+            settings.edit()
+                .putInt(LAUNCH_COUNT_KEY, launchCount).apply()
+        }
+
+    private fun incrementLaunchCount() {
+        val launchCount = settings.getInt(LAUNCH_COUNT_KEY, 0) + 1
+        val editor = settings.edit()
+        editor.putInt(LAUNCH_COUNT_KEY, launchCount)
+        editor.apply()
     }
 
-    public void setLaunchCount(int launchCount) {
-        settings.edit().putInt(LAUNCH_COUNT_KEY, launchCount).apply();
-    }
+    companion object {
+        private const val KEY_AGREE = "licenseagreeok"
+        private const val KEY_RATED = "key_rate_not_show_again"
 
-    private void incrementLaunchCount() {
-        int launchCount = settings.getInt(LAUNCH_COUNT_KEY, 0) + 1;
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt(LAUNCH_COUNT_KEY, launchCount);
-        editor.apply();
-    }
+        //private static final String KEY_FIRST_LAUNCH = "sp.fr.launch";
+        private const val LAUNCH_COUNT_KEY = "var_launch"
 
+
+        private const val KEY_RELOADED = "rate_launch_count"
+        private const val DATE_FIRST_LAUNCH = "DATE_FIRST_LAUNCH_"
+        private var instance: SharedPref? = null
+
+
+        @JvmStatic
+        @Synchronized
+        fun getInstance(context: Context): SharedPref {
+            if (instance == null) {
+                instance = SharedPref(context)
+            }
+            return instance!!
+        }
+    }
 }

@@ -1,4 +1,3 @@
-package com.walhalla.ui.observer;
+package com.walhalla.ui.observer
 
-public interface SimpleModule {
-}
+interface SimpleModule 

@@ -16,7 +16,7 @@ public class Navigation {
         this.activity = activity;
     }
 
-    //    public void replaceFragment(Fragment fragment) {
+//    public void replaceFragment(Fragment fragment) {
 //        FragmentManager fragmentManager = activity.getSupportFragmentManager();
 //        fragmentManager.beginTransaction()
 //                .add(org.apache.cordova.R.@@@@@@@@@@@@@@@@@, fragment)

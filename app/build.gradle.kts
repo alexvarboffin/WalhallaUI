@@ -83,7 +83,7 @@ dependencies {
     implementation(project(":promo"))
     
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.material)
+    implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
