@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230902792033",
+    "project_id": "audioguide-79aa9",
+    "storage_bucket": "audioguide-79aa9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230902792033:android:11c751b9fab0d2d1528f20",
+        "android_client_info": {
+          "package_name": "com.kworkapp.audiogid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5EEq091BhQbJtoGyhNQdXZxKYzwVN7zQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

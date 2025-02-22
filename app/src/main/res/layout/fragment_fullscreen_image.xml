@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#302B2B"
+        android:padding="@dimen/rateme__dialog_title_height">
+
+        <Button
+            android:id="@+id/buttonClose"
+            android:layout_width="@dimen/rateme__button_title_size"
+            android:layout_height="@dimen/rateme__button_title_size"
+            android:layout_alignParentEnd="true"
+            android:background="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/buttonShare"-->
+        <!--            android:layout_width="@dimen/rateme__button_title_size"-->
+        <!--            android:layout_height="@dimen/rateme__button_title_size"-->
+        <!--            android:layout_marginEnd="@dimen/rateme__horizontal_spacing"-->
+        <!--            android:layout_marginRight="@dimen/rateme__horizontal_spacing"-->
+        <!--            android:layout_toStartOf="@id/buttonClose"-->
+        <!--            android:layout_toLeftOf="@id/buttonClose"-->
+        <!--            android:background="@android:drawable/ic_menu_share" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/dialog_title"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBottom="@+id/buttonClose"-->
+        <!--            android:text="@string/rateme__dialog_first_title"-->
+        <!--            android:textSize="@dimen/rateme__text_size" />-->
+    </RelativeLayout>
+
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/photoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:adjustViewBounds="true"
+        android:background="#D5000000"
+        android:scaleType="centerInside" />
+
+
+</RelativeLayout>

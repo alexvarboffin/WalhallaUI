@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorToolbarFilterBackground" format="color" />
+    <attr name="colorSupportContactDivider" format="color" />
+    <attr name="colorSportIconBackground" format="color" />
+    <attr name="colorSportIconBackgroundSelected" format="color" />
+    <attr name="colorStatusGreen" format="color" />
+    <attr name="colorStatusRed" format="color" />
+    <attr name="colorSubCategoryText" format="color" />
+    <attr name="colorSupportBadge" format="color" />
+    <attr name="colorSupportContact" format="color" />
+
+    <attr name="colorSupportFabBackground" format="color" />
+    <attr name="colorSupportFabText" format="color" />
+    <attr name="colorSupportMessageDate" format="color" />
+    <attr name="colorSupportMessageOperatorBackground" format="color" />
+    <attr name="colorSupportMessageSelfBackground" format="color" />
+    <attr name="colorSupportMessageText" format="color" />
+    <attr name="colorSupportTicketsRestrictedImage" format="color" />
+    <attr name="colorBackgroundPrimary" format="color" />
+    <attr name="colorScoreLine" format="color" />
+    <attr name="colorScoreToto" format="color" />
+    <attr name="colorScreenshotTextPrimary" format="color" />
+    <attr name="colorScreenshotTextSecondary" format="color" />
+    <attr name="colorSecondary" format="color" />
+    <attr name="colorSecondaryContainer" format="color" />
+    <attr name="colorSecondaryInverse" format="color" />
+    <attr name="colorSecondaryVariant" format="color" />
+    <attr name="colorSeekbarBackground" format="color" />
+    <attr name="colorSeekbarProgress" format="color" />
+    <attr name="colorSeekbarProgressDisabled" format="color" />
+    <attr name="colorSeekbarThumb" format="color" />
+    <attr name="colorSeekbarThumbDisabled" format="color" />
+    <attr name="colorShimmerParticleAccent" format="color" />
+    <attr name="colorShimmerParticleNormal" format="color" />
+    <attr name="colorRegisterBonusSelectedBackground" format="color" />
+    <attr name="colorRegisterBonusBackground" format="color" />
+    <attr name="colorRegisterBonusStroke" format="color" />
+    <attr name="colorPopupFilterBackground" format="color" />
+    <attr name="colorInviteFriendsIcon" format="color" />
+    <attr name="colorCashoutWarrantyIcon" format="color" />
+ <attr name="colorHomeLogoText" format="color" />
+ <attr name="colorHomeLogoEcoPayz" format="color" />
+<attr name="colorHomeLogoVisa" format="color" />
+<attr name="colorHomeLogoWebMoney" format="color" />
+
+</resources>
