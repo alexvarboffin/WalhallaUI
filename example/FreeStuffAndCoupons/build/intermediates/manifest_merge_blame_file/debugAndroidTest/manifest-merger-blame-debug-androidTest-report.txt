@@ -1,0 +1,32 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="tk.alexapp.freestuffandcoupons.test" >
+4
+5    <uses-sdk
+5-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:5:5-74
+6        android:minSdkVersion="21"
+6-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:5:15-41
+7        android:targetSdkVersion="34" />
+7-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:5:42-71
+8
+9    <instrumentation
+9-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:11:5-15:80
+10        android:name="android.support.test.runner.AndroidJUnitRunner"
+10-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:11:22-83
+11        android:functionalTest="false"
+11-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:14:22-52
+12        android:handleProfiling="false"
+12-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:13:22-53
+13        android:label="Tests for tk.alexapp.freestuffandcoupons"
+13-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:15:22-78
+14        android:targetPackage="tk.alexapp.freestuffandcoupons" />
+14-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:12:22-76
+15
+16    <application android:debuggable="true" >
+16-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:7:5-9:19
+17        <uses-library android:name="android.test.runner" />
+17-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:8:9-60
+17-->D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest7873976185987083006.xml:8:23-57
+18    </application>
+19
+20</manifest>

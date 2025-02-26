@@ -1,0 +1,5 @@
+tk.alexapp.freestuffandcoupons.test.FreeStuffAndCoupons-androidTest-0 D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\generated\res\resValues\androidTest\debug
+tk.alexapp.freestuffandcoupons.test.FreeStuffAndCoupons-androidTest-1 D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\generated\res\rs\androidTest\debug
+tk.alexapp.freestuffandcoupons.test.FreeStuffAndCoupons-mergeDebugAndroidTestResources-2 D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+tk.alexapp.freestuffandcoupons.test.FreeStuffAndCoupons-mergeDebugAndroidTestResources-3 D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+tk.alexapp.freestuffandcoupons.test.FreeStuffAndCoupons-merged_res-4 D:\walhalla\sdk\android\ui\example\FreeStuffAndCoupons\build\intermediates\merged_res\debugAndroidTest

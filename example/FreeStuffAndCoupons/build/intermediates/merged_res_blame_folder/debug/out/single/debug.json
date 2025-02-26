@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/layout_dialog_about.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/layout/dialog_about.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_share_black_24dp.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_share_black_24dp.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/layout_activity_media.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/layout/activity_media.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_exit_to_app_black_24dp.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_exit_to_app_black_24dp.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/layout_fragment_main.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/layout/fragment_main.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_security_black_24dp.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_security_black_24dp.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_star_black_24dp.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_star_black_24dp.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/layout_list_item.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/layout/list_item.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/layout_activity_main.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/layout/activity_main.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/menu_main.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/menu/main.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_menu_info.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_menu_info.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_more_vert_black_24dp.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_more_vert_black_24dp.xml"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-merged_res-54:/drawable_ic_feedback_black_24dp.xml.flat",
+        "source": "tk.alexapp.freestuffandcoupons.FreeStuffAndCoupons-main-56:/drawable/ic_feedback_black_24dp.xml"
+    }
+]

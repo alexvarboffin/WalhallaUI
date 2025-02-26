@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/activity_simle_main.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/activity_simle_main.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/item_app_other.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/item_app_other.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/activity_rewiew.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/activity_rewiew.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/canvasactivity_main.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/canvasactivity_main.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/dialog_edit_app_item.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/dialog_edit_app_item.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/item_app.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/item_app.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/activity_main.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/activity_cache_files.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/activity_cache_files.xml"
+    },
+    {
+        "merged": "com.walhalla.phonenumber-mergeDebugResources-46:/layout/fragment_list.xml",
+        "source": "com.walhalla.phonenumber-main-49:/layout/fragment_list.xml"
+    }
+]

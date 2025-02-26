@@ -1,0 +1,306 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.walhalla.phonenumber"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="35" />
+10
+11    <!-- <uses-feature -->
+12    <!-- android:name="android.hardware.telephony" -->
+13    <!-- android:required="false" /> -->
+14    <uses-feature
+14-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:8:5-10:36
+15        android:name="android.hardware.telephony"
+15-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:9:9-50
+16        android:required="false" />
+16-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:10:9-33
+17
+18    <uses-permission android:name="android.permission.WAKE_LOCK" />
+18-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:12:5-68
+18-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:12:22-65
+19    <uses-permission android:name="android.permission.READ_SMS" />
+19-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:13:5-67
+19-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:13:22-64
+20    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+20-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:14:5-77
+20-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:14:22-74
+21    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+21-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:15:5-75
+21-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:15:22-72
+22    <uses-permission android:name="android.permission.CALL_PHONE" />
+22-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:16:5-69
+22-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:16:22-66
+23
+24    <queries>
+24-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:70:5-74:15
+25        <intent>
+25-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:71:9-73:18
+26            <action android:name="android.intent.action.MAIN" />
+26-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:35:17-69
+26-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:35:25-66
+27        </intent>
+28    </queries>
+29
+30    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+30-->[:features:ui] D:\walhalla\sdk\android\ui\features\ui\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-79
+30-->[:features:ui] D:\walhalla\sdk\android\ui\features\ui\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:22-76
+31    <uses-permission android:name="android.permission.INTERNET" />
+31-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:23:5-67
+31-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:23:22-64
+32
+33    <permission
+33-->[androidx.core:core:1.13.0] C:\Users\combo\.gradle\caches\8.9\transforms\1341c3da5b6115fa45643dc54f494335\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+34        android:name="com.walhalla.phonenumber.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+34-->[androidx.core:core:1.13.0] C:\Users\combo\.gradle\caches\8.9\transforms\1341c3da5b6115fa45643dc54f494335\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+35        android:protectionLevel="signature" />
+35-->[androidx.core:core:1.13.0] C:\Users\combo\.gradle\caches\8.9\transforms\1341c3da5b6115fa45643dc54f494335\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+36
+37    <uses-permission android:name="com.walhalla.phonenumber.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+37-->[androidx.core:core:1.13.0] C:\Users\combo\.gradle\caches\8.9\transforms\1341c3da5b6115fa45643dc54f494335\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+37-->[androidx.core:core:1.13.0] C:\Users\combo\.gradle\caches\8.9\transforms\1341c3da5b6115fa45643dc54f494335\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+38
+39    <application
+39-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:18:5-68:19
+40        android:allowBackup="true"
+40-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:19:9-35
+41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+41-->[androidx.core:core:1.13.0] C:\Users\combo\.gradle\caches\8.9\transforms\1341c3da5b6115fa45643dc54f494335\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+42        android:dataExtractionRules="@xml/data_extraction_rules"
+42-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:20:9-65
+43        android:debuggable="true"
+44        android:extractNativeLibs="true"
+45        android:fullBackupContent="@xml/backup_rules"
+45-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:21:9-54
+46        android:icon="@mipmap/ic_launcher"
+46-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:22:9-43
+47        android:label="@string/app_name"
+47-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:23:9-41
+48        android:roundIcon="@mipmap/ic_launcher_round"
+48-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:24:9-54
+49        android:supportsRtl="true"
+49-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:25:9-35
+50        android:testOnly="true"
+51        android:theme="@style/Theme.PhoneNumber" >
+51-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:26:9-49
+52
+53        <!-- .activity.ViewPagerActivity.NoActionBar -->
+54        <activity
+54-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:29:9-41:20
+55            android:name="com.walhalla.phonenumber.activity.MainActivity"
+55-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:30:13-50
+56            android:exported="true"
+56-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:31:13-36
+57            android:theme="@style/Theme.PhoneNumber.NoActionBar" >
+57-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:32:13-65
+58            <intent-filter>
+58-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:34:13-37:29
+59                <action android:name="android.intent.action.MAIN" />
+59-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:35:17-69
+59-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:35:25-66
+60
+61                <category android:name="android.intent.category.LAUNCHER" />
+61-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:36:17-77
+61-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:36:27-74
+62            </intent-filter>
+63            <!-- <meta-data -->
+64            <!-- android:name="android.app.lib_name" -->
+65            <!-- android:value="" /> -->
+66        </activity>
+67        <activity
+67-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:43:9-46:68
+68            android:name="com.walhalla.phonenumber.activity.CanvasClicker"
+68-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:44:13-51
+69            android:exported="true"
+69-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:45:13-36
+70            android:theme="@style/Theme.PhoneNumber.NoActionBar" />
+70-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:46:13-65
+71        <activity
+71-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:48:9-51:68
+72            android:name="com.walhalla.phonenumber.activity.ReviewActivity"
+72-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:49:13-52
+73            android:exported="true"
+73-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:50:13-36
+74            android:theme="@style/Theme.PhoneNumber.NoActionBar" />
+74-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:51:13-65
+75        <activity
+75-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:53:9-56:68
+76            android:name="com.walhalla.phonenumber.activity.CacheFiles.CacheFilesActivity"
+76-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:54:13-67
+77            android:exported="true"
+77-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:55:13-36
+78            android:theme="@style/Theme.PhoneNumber.NoActionBar" />
+78-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:56:13-65
+79
+80        <provider
+81            android:name="androidx.core.content.FileProvider"
+81-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:59:13-62
+82            android:authorities="com.walhalla.phonenumber.provider"
+82-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:60:13-60
+83            android:exported="false"
+83-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:61:13-37
+84            android:grantUriPermissions="true" >
+84-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:62:13-47
+85            <meta-data
+85-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:63:13-65:57
+86                android:name="android.support.FILE_PROVIDER_PATHS"
+86-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:64:17-67
+87                android:resource="@xml/provider_path" />
+87-->D:\walhalla\sdk\android\ui\example\phonenumber\src\main\AndroidManifest.xml:65:17-54
+88        </provider>
+89
+90        <service
+90-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:26:9-35:19
+91            android:name="com.google.firebase.components.ComponentDiscoveryService"
+91-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:27:13-84
+92            android:directBootAware="true"
+92-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:32:13-43
+93            android:exported="false" >
+93-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:28:13-37
+94            <meta-data
+94-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:29:13-31:85
+95                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+95-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:30:17-120
+96                android:value="com.google.firebase.components.ComponentRegistrar" />
+96-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:31:17-82
+97            <meta-data
+97-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:32:13-34:85
+98                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+98-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:33:17-109
+99                android:value="com.google.firebase.components.ComponentRegistrar" />
+99-->[com.google.firebase:firebase-database:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\8bb2ed35f44749908eb8ac7232bd9a12\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:34:17-82
+100            <meta-data
+100-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\033d663598caf2ec746c6ac7104f4be6\transformed\jetified-firebase-common-ktx-21.0.0\AndroidManifest.xml:12:13-14:85
+101                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+101-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\033d663598caf2ec746c6ac7104f4be6\transformed\jetified-firebase-common-ktx-21.0.0\AndroidManifest.xml:13:17-116
+102                android:value="com.google.firebase.components.ComponentRegistrar" />
+102-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\033d663598caf2ec746c6ac7104f4be6\transformed\jetified-firebase-common-ktx-21.0.0\AndroidManifest.xml:14:17-82
+103            <meta-data
+103-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:35:13-37:85
+104                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+104-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:36:17-109
+105                android:value="com.google.firebase.components.ComponentRegistrar" />
+105-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:37:17-82
+106        </service>
+107
+108        <activity
+108-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\combo\.gradle\caches\8.9\transforms\0011177cc0693eabe514c73fec229ffc\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+109            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+109-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\combo\.gradle\caches\8.9\transforms\0011177cc0693eabe514c73fec229ffc\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+110            android:exported="false"
+110-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\combo\.gradle\caches\8.9\transforms\0011177cc0693eabe514c73fec229ffc\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+111            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+111-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\combo\.gradle\caches\8.9\transforms\0011177cc0693eabe514c73fec229ffc\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+112
+113        <provider
+113-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:23:9-28:39
+114            android:name="com.google.firebase.provider.FirebaseInitProvider"
+114-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:24:13-77
+115            android:authorities="com.walhalla.phonenumber.firebaseinitprovider"
+115-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:25:13-72
+116            android:directBootAware="true"
+116-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:26:13-43
+117            android:exported="false"
+117-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:27:13-37
+118            android:initOrder="100" />
+118-->[com.google.firebase:firebase-common:21.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\7d90765e81dfadfa242678441be27a33\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:28:13-36
+119        <provider
+119-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+120            android:name="androidx.startup.InitializationProvider"
+120-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+121            android:authorities="com.walhalla.phonenumber.androidx-startup"
+121-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+122            android:exported="false" >
+122-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+123            <meta-data
+123-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+124                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+124-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+125                android:value="androidx.startup" />
+125-->[androidx.emoji2:emoji2:1.3.0] C:\Users\combo\.gradle\caches\8.9\transforms\ad36fbd07c894770bacf3de66f31b35d\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+126            <meta-data
+126-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\combo\.gradle\caches\8.9\transforms\2e96b0119bee3cd893f63c866810c1bf\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+127                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+127-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\combo\.gradle\caches\8.9\transforms\2e96b0119bee3cd893f63c866810c1bf\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+128                android:value="androidx.startup" />
+128-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\combo\.gradle\caches\8.9\transforms\2e96b0119bee3cd893f63c866810c1bf\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+129            <meta-data
+129-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+130                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+130-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+131                android:value="androidx.startup" />
+131-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+132        </provider>
+133
+134        <uses-library
+134-->[androidx.window:window:1.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\9f0a137b71b3ed2cdf193da6217b8bdc\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+135            android:name="androidx.window.extensions"
+135-->[androidx.window:window:1.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\9f0a137b71b3ed2cdf193da6217b8bdc\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+136            android:required="false" />
+136-->[androidx.window:window:1.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\9f0a137b71b3ed2cdf193da6217b8bdc\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+137        <uses-library
+137-->[androidx.window:window:1.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\9f0a137b71b3ed2cdf193da6217b8bdc\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+138            android:name="androidx.window.sidecar"
+138-->[androidx.window:window:1.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\9f0a137b71b3ed2cdf193da6217b8bdc\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+139            android:required="false" />
+139-->[androidx.window:window:1.0.0] C:\Users\combo\.gradle\caches\8.9\transforms\9f0a137b71b3ed2cdf193da6217b8bdc\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+140
+141        <meta-data
+141-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\a39eb2ab0c0119ee17953281d624fd6d\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+142            android:name="com.google.android.gms.version"
+142-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\a39eb2ab0c0119ee17953281d624fd6d\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+143            android:value="@integer/google_play_services_version" />
+143-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\a39eb2ab0c0119ee17953281d624fd6d\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+144
+145        <receiver
+145-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+146            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+146-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+147            android:directBootAware="false"
+147-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+148            android:enabled="true"
+148-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+149            android:exported="true"
+149-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+150            android:permission="android.permission.DUMP" >
+150-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+151            <intent-filter>
+151-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+152                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+152-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+152-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+153            </intent-filter>
+154            <intent-filter>
+154-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+155                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+155-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+155-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+156            </intent-filter>
+157            <intent-filter>
+157-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+158                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+158-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+158-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+159            </intent-filter>
+160            <intent-filter>
+160-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+161                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+161-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+161-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\combo\.gradle\caches\8.9\transforms\dd4eba9017ebfbb2d3ba84f713acbdd7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+162            </intent-filter>
+163        </receiver> <!-- The activities will be merged into the manifest of the hosting app. -->
+164        <activity
+164-->[com.google.android.play:core-common:2.0.4] C:\Users\combo\.gradle\caches\8.9\transforms\9610c13e0f72c9b8490fe95ae2c1ca27\transformed\jetified-core-common-2.0.4\AndroidManifest.xml:14:9-18:65
+165            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+165-->[com.google.android.play:core-common:2.0.4] C:\Users\combo\.gradle\caches\8.9\transforms\9610c13e0f72c9b8490fe95ae2c1ca27\transformed\jetified-core-common-2.0.4\AndroidManifest.xml:15:13-93
+166            android:exported="false"
+166-->[com.google.android.play:core-common:2.0.4] C:\Users\combo\.gradle\caches\8.9\transforms\9610c13e0f72c9b8490fe95ae2c1ca27\transformed\jetified-core-common-2.0.4\AndroidManifest.xml:16:13-37
+167            android:stateNotNeeded="true"
+167-->[com.google.android.play:core-common:2.0.4] C:\Users\combo\.gradle\caches\8.9\transforms\9610c13e0f72c9b8490fe95ae2c1ca27\transformed\jetified-core-common-2.0.4\AndroidManifest.xml:17:13-42
+168            android:theme="@style/Theme.PlayCore.Transparent" />
+168-->[com.google.android.play:core-common:2.0.4] C:\Users\combo\.gradle\caches\8.9\transforms\9610c13e0f72c9b8490fe95ae2c1ca27\transformed\jetified-core-common-2.0.4\AndroidManifest.xml:18:13-62
+169    </application>
+170
+171</manifest>

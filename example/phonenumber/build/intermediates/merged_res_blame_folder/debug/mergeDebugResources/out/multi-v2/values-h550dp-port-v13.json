@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.walhalla.phonenumber-mergeDebugResources-45:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\combo\\.gradle\\caches\\8.9\\transforms\\04ad24b821950bdf89aa8bcb4df2b0dd\\transformed\\material-1.12.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "64",
+                        "endOffsets": "115"
+                    }
+                }
+            ]
+        }
+    ]
+}

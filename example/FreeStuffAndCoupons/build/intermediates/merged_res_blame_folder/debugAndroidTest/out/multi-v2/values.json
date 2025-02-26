@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "tk.alexapp.freestuffandcoupons.test.FreeStuffAndCoupons-mergeDebugAndroidTestResources-2:/values/values.xml",
+            "map": [
+                {
+                    "source": "D:\\walhalla\\sdk\\android\\ui\\example\\FreeStuffAndCoupons\\build\\generated\\res\\resValues\\androidTest\\debug\\values\\gradleResValues.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "159",
+                        "endColumns": "98",
+                        "endOffsets": "253"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "98",
+                        "endOffsets": "149"
+                    }
+                }
+            ]
+        }
+    ]
+}
