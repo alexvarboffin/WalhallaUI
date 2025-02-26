@@ -1,10 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16.0dip</dimen>
+    <dimen name="activity_vertical_margin">16.0dip</dimen>
+    <dimen name="appbar_elevation">6.0dip</dimen>
+    <dimen name="banner_dot_size">8.0dip</dimen>
+    <dimen name="banner_dot_size_large">10.0dip</dimen>
+    <dimen name="big_text_size">14.0sp</dimen>
+    <dimen name="bottom_logo_size">52.0dip</dimen>
+    <dimen name="bottom_sheet_dialog_corner_radius">16.0dip</dimen>
+    <dimen name="bottom_sheet_one_click_height">126.0dip</dimen>
+    <dimen name="bottom_space_to_fit_fab">72.0dip</dimen>
+    <dimen name="browser_actions_context_menu_max_width">500.0dip</dimen>
+    <dimen name="browser_actions_context_menu_min_padding">20.0dip</dimen>
+
+    <dimen name="coupon_amount_view_collapsed_height_express">104.0dip</dimen>
+    <dimen name="coupon_amount_view_collapsed_height_single">72.0dip</dimen>
+    <dimen name="coupon_amount_view_collapsed_height_system">104.0dip</dimen>
+    <dimen name="coupon_amount_view_expanded_height_express">256.0dip</dimen>
+    <dimen name="coupon_amount_view_expanded_height_single">180.0dip</dimen>
+    <dimen name="coupon_amount_view_expanded_height_system">212.0dip</dimen>
+    <dimen name="coupon_amount_view_expanded_promocodes_express">180.0dip</dimen>
+    <dimen name="daily_express_collapsed_width">156.0dip</dimen>
+
+    <item name="disabled_alpha_material_dark" type="dimen">0.3</item>
+    <item name="disabled_alpha_material_light" type="dimen">0.26</item>
+    <dimen name="divider_width">1.0dip</dimen>
+    <dimen name="drawer_item_height">40.0dip</dimen>
+    <dimen name="drawer_width">240.0dip</dimen>
+    <dimen name="error_icon_width">20.0dip</dimen>
+    <dimen name="fastscroll_default_thickness">8.0dip</dimen>
+    <dimen name="fastscroll_margin">0.0dip</dimen>
+    <dimen name="fastscroll_minimum_range">50.0dip</dimen>
+    <dimen name="favorite_item_star_width">20.0dip</dimen>
+    <dimen name="golden_race_bets_padding">32.0dip</dimen>
+    <dimen name="golden_race_bets_padding_bottom">140.0dip</dimen>
+    <dimen name="golden_race_bets_padding_top">32.0dip</dimen>
+    <dimen name="golden_race_big_padding">12.0dip</dimen>
+    <dimen name="golden_race_description_padding">76.0dip</dimen>
+    <dimen name="golden_race_lage_padding">40.0dip</dimen>
+    <dimen name="golden_race_padding">16.0dip</dimen>
+    <dimen name="golden_race_small_padding">8.0dip</dimen>
+    <dimen name="golden_race_table_horizontal_padding">8.0dip</dimen>
+    <dimen name="golden_race_tiny_padding">8.0dip</dimen>
+    <dimen name="golden_race_title_padding">54.0dip</dimen>
+    <item name="highlight_alpha_material_colored" type="dimen">0.26</item>
+    <item name="highlight_alpha_material_dark" type="dimen">0.2</item>
+    <item name="highlight_alpha_material_light" type="dimen">0.12</item>
+    <item name="hint_alpha_material_dark" type="dimen">0.5</item>
+    <item name="hint_alpha_material_light" type="dimen">0.38</item>
+    <item name="hint_pressed_alpha_material_dark" type="dimen">0.7</item>
+    <item name="hint_pressed_alpha_material_light" type="dimen">0.54</item>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20.0dip</dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">800.0dip</dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">120.0dip</dimen>
+    <dimen name="large_text_size">18.0sp</dimen>
+    <dimen name="login_screen_big_vertical_margin">52.0dip</dimen>
+    <dimen name="login_screen_card_space_vertical">16.0dip</dimen>
+    <dimen name="login_screen_middle_top_margin">8.0dip</dimen>
+    <dimen name="login_screen_small_top_margin">8.0dip</dimen>
+    <dimen name="login_screen_tiny_top_margin">4.0dip</dimen>
+    <dimen name="loyalty_table_title_text">7.0sp</dimen>
+    <dimen name="loyalty_table_title_width">72.0dip</dimen>
+    <dimen name="main_text_size">12.0sp</dimen>
+    <dimen name="message_bubble_corner">16.0dip</dimen>
+    <dimen name="outcomes_1x2_view_height">40.0dip</dimen>
+    <dimen name="outcomes_1x2_view_height_large">52.0dip</dimen>
+    <dimen name="padding_large">16.0dip</dimen>
+    <dimen name="padding_normal">8.0dip</dimen>
+    <dimen name="padding_small">4.0dip</dimen>
+    <dimen name="profile_balance_button_width">102.0dip</dimen>
+    <dimen name="profile_button_size">40.0dip</dimen>
+    <dimen name="profile_icon_size">20.0dip</dimen>
+    <dimen name="subtitle_corner_radius">2.0dip</dimen>
+    <dimen name="subtitle_outline_width">2.0dip</dimen>
+    <dimen name="subtitle_shadow_offset">2.0dip</dimen>
+    <dimen name="subtitle_shadow_radius">2.0dip</dimen>
+    <dimen name="supercategory_corner_radius">6.0dip</dimen>
+    <dimen name="tooltip_corner_radius">2.0dip</dimen>
+    <dimen name="tooltip_horizontal_padding">16.0dip</dimen>
+    <dimen name="tooltip_margin">8.0dip</dimen>
+    <dimen name="tooltip_precise_anchor_extra_offset">8.0dip</dimen>
+    <dimen name="tooltip_precise_anchor_threshold">96.0dip</dimen>
+    <dimen name="tooltip_vertical_padding">6.5dip</dimen>
+    <dimen name="tooltip_y_offset_non_touch">0.0dip</dimen>
+    <dimen name="tooltip_y_offset_touch">16.0dip</dimen>
+    <dimen name="top_sheet_modal_elevation">16.0dip</dimen>
+    <dimen name="top_sheet_modal_peek_height">256.0dip</dimen>
+
+    <dimen name="rateme__default_padding">16dp</dimen>
+    <dimen name="rateme__small_padding">8dp</dimen>
+    <dimen name="rateme__horizontal_spacing">16dp</dimen>
+    <dimen name="rateme__horizontal_spacing_small">4dp</dimen>
+    <dimen name="rateme__dialog_title_height">12dp</dimen>
+    <dimen name="rateme__text_size">20sp</dimen>
+    <dimen name="rateme__icon_size">88dp</dimen>
+    <dimen name="rateme__button_title_size">28dp</dimen>
 </resources>

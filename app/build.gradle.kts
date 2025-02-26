@@ -1,100 +1,124 @@
-import java.util.Properties
+import com.android.build.gradle.internal.dsl.SigningConfig
 import java.io.FileInputStream
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
+    id("kotlin-parcelize")
+
+////    id("org.jetbrains.kotlin.android")
+////    id("kotlin-android")
+////    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
+////    id("com.google.devtools.ksp")
+//    id("com.google.devtools.ksp") version "2.1.0-1.0.29"
 }
-
 android {
-    namespace = "kgbook.ru"
-    
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    buildToolsVersion = libs.versions.buildTools.get()
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
 
-    val versionPropsFile = file("version.properties")
+    compileSdk = 35
+    buildToolsVersion = "35.0.0"
 
-    if (versionPropsFile.canRead()) {
-        val versionProps = Properties()
-        versionProps.load(FileInputStream(versionPropsFile))
-        
-        val code = versionCodeDate()
+    namespace = "com.kworkapp.audiogid"
 
-        defaultConfig {
-            resourceConfigurations.addAll(listOf("ru", "uk", "en"))
+    val code = versionCodeDate()
 
-            multiDexEnabled = true
-            vectorDrawables {
-                useSupportLibrary = true
-            }
-            
-            applicationId = "kgbook.ru"
-            minSdk = libs.versions.minSdk.get().toInt()
-            targetSdk = libs.versions.targetSdk.get().toInt()
-            versionCode = code
-            versionName = "1.1.$code.release"
-            setProperty("archivesBaseName", "kgbook.ru")
-            testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-        }
-    } else {
-        throw GradleException("Could not read version.properties!")
+    defaultConfig {
+        resConfigs("sw", "en", "ru")
+        vectorDrawables.useSupportLibrary = true
+        applicationId = "com.kworkapp.audiogid"
+
+        minSdk = 21
+        targetSdk = 35
+        versionCode = code
+        versionName = "1.2.$code"
+        setProperty("archivesBaseName", "audiogid-$code")
     }
 
     signingConfigs {
-        create("x") {
-            keyAlias = "key0"
-            keyPassword = "kgbookpass"
-            storeFile = file("keystore/kwk_jakubai_kgbook.jks")
-            storePassword = "kgbookpass"
+        create("d") {
+            keyAlias = "release"
+            keyPassword = "release"
+            storeFile = file("keystore/keystore.jks")
+            storePassword = "release"
         }
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("d")
+            versionNameSuffix = "-DEMO"
+        }
+        getByName("release") {
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("x")
-        }
-        debug {
-            signingConfig = signingConfigs.getByName("x")
+            signingConfig = signingConfigs.getByName("d")
+            versionNameSuffix = ".release"
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-    buildFeatures {
-        viewBinding = true
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    
-    implementation(project(":features:ui"))
-    implementation(project(":promo"))
-    
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.navigation.fragment)
-    implementation(libs.androidx.navigation.ui)
-    
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.runner)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.kotlin.stdlib.jdk8)
-    implementation(libs.androidx.multidex)
-}
+    implementation(libs.androidx.swiperefreshlayout)
 
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
+//    com.appsflyer
+//    com\bumptech\glide
+//    implementation("com.airbnb.android:lottie:6.1.0")
+//    implementation("com.github.Piashsarker:AndroidAppUpdateLibrary:1.0.4")
+//    implementation("com.robinhood.ticker:ticker:2.0.4")
+//    implementation("com.github.skydoves:balloon:1.6.3")
+
+    //noinspection GradleDependency
+    implementation(libs.exoplayer)
+    implementation(libs.androidx.multidex)
+    implementation(libs.gson)
+    //implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    implementation("com.google.firebase:firebase-crashlytics:19.0.1")
+//    implementation("com.github.MoeidHeidari:banner:1.04")
+
+
+    //implementation("com.jsibbold:zoomage:1.3.1")
+    //implementation("com.bogdwellers:pinchtozoom:0.1")
+    //implementation("com.github.MikeOrtiz:TouchImageView:1.4.1")
+    //implementation("com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0")
+
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+    //implementation("com.github.chrisbanes:photoview:2.3.0")
+
+    //implementation("com.chibde:audiovisualizer:2.2.0")
+    implementation("io.github.gautamchibde:audiovisualizer:2.2.5")
+    implementation(libs.androidx.preference.ktx)
+    implementation("com.github.duanhong169:colorpicker:1.1.6")
+    implementation("com.github.duanhong169:TextButton:1.0.5")
+    implementation(project(":ui"))
+}
 fun versionCodeDate(): Int {
     return SimpleDateFormat("yyMMdd").format(Date()).toInt()
-} 
+}

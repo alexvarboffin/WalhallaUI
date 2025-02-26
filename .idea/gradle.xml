@@ -6,28 +6,13 @@
       <GradleProjectSettings>
         <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:/android/gradle/gradle-7.0.2" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../android/gradle/gradle-7.0.2" />
         <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../multithreader/threader" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/landing" />
-            <option value="$PROJECT_DIR$/features/ui" />
-            <option value="$PROJECT_DIR$/features/wads" />
-            <option value="$PROJECT_DIR$/features/webview" />
-            <option value="$PROJECT_DIR$/promo" />
-            <option value="$PROJECT_DIR$/stub" />
-            <option value="$PROJECT_DIR$/stub/stubInjector" />
-            <option value="$PROJECT_DIR$/stub/stub_admob" />
-            <option value="$PROJECT_DIR$/stub/stub_appmetrica" />
-            <option value="$PROJECT_DIR$/stub/stub_appsflyer" />
-            <option value="$PROJECT_DIR$/stub/stub_facebook" />
-            <option value="$PROJECT_DIR$/stub/stub_mtracker" />
-            <option value="$PROJECT_DIR$/stub/stub_onesignal" />
-            <option value="$PROJECT_DIR$/wvcompose" />
+            <option value="D:/walhalla/sdk/android/UI/features/ui" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="22dp"
+        android:background="#FFFFFF">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="22dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UselessParent">
+                    <!-- Subtitle Section -->
+                    <TextView
+                        android:id="@+id/subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:gravity="center"
+                        android:text="@string/app_name"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <!-- Description Section -->
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subtitle"
+                        android:layout_margin="16dp"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <!-- Image Section -->
+
+                    <!--                        android:scaleType="centerCrop"-->
+
+                    <FrameLayout
+                        android:id="@+id/imgContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/description">
+
+                        <!--                            <com.ortiz.touchview.TouchImageView-->
+                        <!--                                android:id="@+id/iv_image_activity"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="match_parent"-->
+                        <!--                                android:layout_marginTop="20dp"-->
+                        <!--                                android:scaleType="centerCrop" />-->
+
+                        <!--                            <com.ortiz.touchview.TouchImageView-->
+                        <!--                                android:id="@+id/image0"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_gravity="center_horizontal"-->
+                        <!--                                android:layout_margin="16dp"-->
+                        <!--                                android:adjustViewBounds="true"-->
+                        <!--                                android:scrollbars="horizontal|vertical"-->
+                        <!--                                tools:ignore="ContentDescription" />-->
+
+
+                        <!--                            <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView-->
+                        <!--                                android:id="@+id/image0"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="match_parent"-->
+                        <!--                                android:layout_margin="16dp" />-->
+
+                        <!--                            <com.jsibbold.zoomage.ZoomageView-->
+                        <!--                                android:id="@+id/image0"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="match_parent"-->
+                        <!--                                app:zoomage_restrictBounds="false"-->
+                        <!--                                app:zoomage_animateOnReset="true"-->
+                        <!--                                app:zoomage_autoResetMode="UNDER"-->
+                        <!--                                app:zoomage_autoCenter="true"-->
+                        <!--                                app:zoomage_zoomable="true"-->
+                        <!--                                app:zoomage_translatable="true"-->
+                        <!--                                app:zoomage_minScale="0.6"-->
+                        <!--                                app:zoomage_maxScale="8"-->
+                        <!--                                />-->
+
+                        <ImageView
+                            android:id="@+id/image0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="16dp"
+                            android:adjustViewBounds="true"
+                            android:scrollbars="horizontal|vertical"
+                            tools:ignore="ContentDescription" />
+
+                        <ImageView
+                            android:id="@+id/avatar"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="12dp"
+                            android:adjustViewBounds="true"
+                            tools:ignore="ContentDescription" />
+                    </FrameLayout>
+
+                    <!--                        <com.example.moeidbannerlibrary.banner.BannerLayout-->
+                    <!--                            android:id="@+id/image"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_below="@id/description"-->
+                    <!--                            android:layout_margin="8dp"-->
+                    <!--                            app:autoPlaying="true"-->
+                    <!--                            app:centerScale="1"-->
+                    <!--                            app:itemSpace="0"-->
+                    <!--                            app:moveSpeed="0.5"-->
+                    <!--                            app:showIndicator="false" />-->
+                    <!-- Link Section -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imgContainer"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <!--                            <ImageView-->
+                        <!--                                android:layout_width="24dp"-->
+                        <!--                                android:layout_height="24dp"-->
+                        <!--                                android:src="@drawable/ic_link"-->
+                        <!--                                app:tint="@android:color/holo_blue_dark"-->
+                        <!--                                tools:ignore="ContentDescription" />-->
+
+                        <TextView
+                            android:id="@+id/link"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autoLink="web"
+                            android:backgroundTint="@android:color/holo_blue_dark"
+                            android:text="@string/app_name"
+                            android:textColor="@android:color/holo_blue_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
