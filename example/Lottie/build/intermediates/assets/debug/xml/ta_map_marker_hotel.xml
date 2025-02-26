@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:drawable="@drawable/ta_bg_map_marker_hotel"
+        android:gravity="center" />
+    <item
+        android:id="@+id/indicator"
+        android:drawable="@android:color/transparent"
+        android:gravity="top|center_horizontal"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"
+        tools:drawable="@drawable/ta_ic_default_place_hotel"
+        tools:height="32dp"
+        tools:width="32dp" />
+</layer-list>

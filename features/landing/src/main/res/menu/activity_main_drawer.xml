@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_home1"-->
+        <!--            android:checked="true"-->
+        <!--            android:icon="@drawable/ic_home"-->
+        <!--            android:title="@string/nav_home" />-->
+
+        <item
+            android:id="@+id/nav_contact"
+            android:checkable="false"
+            android:icon="@drawable/ic_email"
+            android:orderInCategory="100"
+            android:title="@string/nav_contact" />
+        <item
+            android:id="@+id/nav_about"
+            android:checkable="false"
+            android:icon="@drawable/ic_info"
+            android:orderInCategory="101"
+            android:title="@string/nav_about" />
+        <item
+            android:id="@+id/nav_share"
+            android:checkable="false"
+            android:icon="@drawable/ic_menu_share"
+            android:orderInCategory="102"
+            android:title="@string/action_share_app" />
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/action_exit"
+            android:icon="@drawable/ic_close_black_24dp"
+            android:orderInCategory="104"
+            android:title="@string/action_exit" />
+    </group>
+
+
+</menu>

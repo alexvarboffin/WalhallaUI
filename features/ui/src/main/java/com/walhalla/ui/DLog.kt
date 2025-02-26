@@ -39,7 +39,7 @@ object DLog {
      * Log Level Debug
      */
     @JvmStatic
-    fun d(message: String) {
+    fun d(message: String?) {
         if (DEBUG) Log.d(TAG, buildLogMsg(message))
     }
 
@@ -51,7 +51,7 @@ object DLog {
     }
 
 
-    private fun buildLogMsg(message: String): String {
+    private fun buildLogMsg(message: String?): String {
         val ste = Thread.currentThread().stackTrace[4]
 
 

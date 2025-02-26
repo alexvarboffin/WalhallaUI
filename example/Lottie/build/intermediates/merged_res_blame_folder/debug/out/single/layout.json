@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-mergeDebugResources-33:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-mergeDebugResources-33:\\layout\\fragment_lottie.xml",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\fragment_lottie.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-mergeDebugResources-33:\\layout\\item_lottie.xml",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\item_lottie.xml"
+    },
+    {
+        "merged": "ai.Lottie-mergeDebugResources-33:/layout/item_svg.xml",
+        "source": "ai.Lottie-main-36:/layout/item_svg.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-mergeDebugResources-33:\\layout\\item_svg.xml",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\item_svg.xml"
+    }
+]

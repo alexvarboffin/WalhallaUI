@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="nav_home">Главная</string>
+    <string name="nav_contact">Контакты</string>
+    <string name="nav_about">О проекте</string>
+    <string name="contact_phone">Phone:</string>
+    <string name="contact_ok">Ok.ru:</string>
+
+
+    <string name="network_error">Ошибка сети…</string>
+    <string name="successfully_loaded">Перенаправление…</string>
+
+    <string name="network_error_message">Отсутствует подключение к интернету. Переподключитесь и попробуйте снова.</string>
+    <string name="action_open_connection_settings">Настройки</string>
+
+    <string name="action_share">Поделиться</string>
+<!--    <string name="wv_reload_page">Обновить</string>-->
+    <string name="wv_reload_page">Попробовать снова</string>
+
+
+
+    <string name="no_internet_title">Нет Интернета</string>
+    <string name="no_internet_message">Проверьте подключение к Интернету и повторите попытку</string>
+    <string name="please_turn_on">Пожалуйста, включите</string>
+    <string name="wifi_button_text">Wi-Fi</string>
+
+<!--    <string name="mobile_data_button_text">Мобильные сети</string>-->
+    <string name="mobile_data_button_text">Mobile data</string>
+
+
+    <string name="airplane_mode_title">Режим самолета</string>
+    <string name="airplane_mode_message">Вы включили режим самолета.</string>
+    <string name="please_turn_off">Пожалуйста, выключите</string>
+    <string name="airplane_mode_off_button_text">Режим самолета</string>
+    <string name="airplane_mode_off_title">Нет Интернета</string>
+    <string name="airplane_mode_off_message">Вы включили режим самолета.</string>
+    <string name="airplane_mode_button_text">Режим самолета</string>
+
+    <string name="no_internet_connection_message">Отсутствует подключение к Интернету!</string>
+    <string name="on_airplane_mode_message">Вы включили режим самолета!</string>
+
+
+    <string name="error_connecting_to_server">Ошибка подключения к серверу!</string>
+
+
+</resources>

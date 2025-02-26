@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.UWView
+            android:id="@+id/inner00"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="0dp" />
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/control_panel"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true">-->
+
+        <!--            &lt;!&ndash; Добавьте здесь кнопку или другие элементы управления &ndash;&gt;-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/button_menu"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Menu"/>-->
+        <!--        </LinearLayout>-->
+
+
+        <RelativeLayout
+            android:id="@+id/mainAdChildLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:visibility="invisible"
+            android:weightSum="1"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/mainLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal"
+                android:padding="0dp">
+
+                <Button
+                    android:id="@+id/mainCloseButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="0dp"
+                    android:paddingTop="0dp"
+                    android:text="close" />
+
+                <TextView
+                    android:id="@+id/mainTitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="65dp"
+                    android:layout_marginBottom="5dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainBrowserLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/mainLinearLayout"
+                android:background="@android:color/holo_blue_dark"
+                android:orientation="vertical"
+                android:weightSum="1"></RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--   bottom |right|end-->
+    <!--    "center|left|start"
+    center|bottom-->
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/fab"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_anchor="@id/inner00"-->
+    <!--        app:layout_anchorGravity="left|start|top"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:layout_marginBottom="8dp"-->
+    <!--        android:src="@drawable/ic_menu"-->
+    <!--        android:contentDescription="@string/wv_menu" />-->
+
+    <LinearLayout
+        android:id="@+id/control_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="40dp"
+        app:layout_anchor="@id/rel"
+        app:layout_anchorGravity="left|start|top">
+
+
+        <ImageView
+            android:id="@+id/button_menu"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_overflow_menu"
+            app:tint="@color/colorAccent"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

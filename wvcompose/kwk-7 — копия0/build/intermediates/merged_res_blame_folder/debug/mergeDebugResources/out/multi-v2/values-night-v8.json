@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.walhalla.wvcompose7.kwk-7-mergeDebugResources-45:/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+                    "source": "D:\\walhalla\\sdk\\android\\ui\\wvcompose\\kwk-7\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "215"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "211"
+                    }
+                }
+            ]
+        }
+    ]
+}

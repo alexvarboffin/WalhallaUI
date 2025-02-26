@@ -1,0 +1,21 @@
+<resources>
+
+
+    <string name="app_name" translatable="false">core_lib</string>
+    <string name="press_again_to_exit">Press again to exit</string>
+    <string name="fragment_main_downloading">Downloading…</string>
+
+    <!--    <string name="api_key" translatable="false">123</string>-->
+
+
+    <string name="no_internet_title">No Internet</string>
+    <string name="no_internet_message">Check your Internet connection and try again</string>
+    <string name="please_turn_on">Please turn on</string>
+    <string name="wifi_button">Wifi</string>
+    <string name="mobile_data_button">Mobile data</string>
+    <string name="on_airplane_mode_title">No Internet</string>
+    <string name="on_airplane_mode_message">You have turned on the airplane mode.</string>
+    <string name="please_turn_off">Please turn off</string>
+    <string name="no_internet">No Internet</string>
+    <string name="action_settings">Settings</string>
+</resources>

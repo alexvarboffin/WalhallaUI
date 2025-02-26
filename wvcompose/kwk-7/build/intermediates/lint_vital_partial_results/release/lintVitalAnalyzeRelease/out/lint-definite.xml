@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.3" type="incidents">
+
+    <incident
+        id="LintError"
+        severity="ignore"
+        message="Premature end of file.">
+        <location
+            file="${:kwk-7*release*MAIN*sourceProvider*0*resDir*0}/mipmap/ic_launcher.xml"/>
+    </incident>
+
+    <incident
+        id="LintError"
+        severity="ignore"
+        message="Premature end of file.">
+        <location
+            file="${:kwk-7*release*MAIN*sourceProvider*0*resDir*0}/mipmap/ic_launcher_round.xml"/>
+    </incident>
+
+</incidents>

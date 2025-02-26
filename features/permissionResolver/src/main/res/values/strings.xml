@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alert_perm_title">Permission required</string>
+    <string name="format_request_permision">%1$s will need to have read/write permission your sdcard to save Files.Do you want to grant it?</string>
+    <string name="app_name">0</string>
+    <string name="this_permission_is_needed">This permission is needed:</string>
+
+</resources>

@@ -1,0 +1,21 @@
+
+include ':stub:stub_mtracker'
+project(':stub:stub_mtracker').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_mtracker\\')
+
+include ':stub:stub_appmetrica'
+project(':stub:stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_appmetrica\\')
+
+include ':stub:stub_facebook'
+project(':stub:stub_facebook').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_facebook\\')
+
+include ':stub:stub_appsflyer'
+project(':stub:stub_appsflyer').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_appsflyer\\')
+
+include ':stub:stub_appmetrica'
+project(':stub:stub_appmetrica').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_appmetrica\\')
+
+include ':stub:stub_onesignal'
+project(':stub:stub_onesignal').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_onesignal\\')
+
+include ':stub:stub_admob'
+project(':stub:stub_admob').projectDir = new File('D:\\walhalla\\sdk\\android\\ui\\stub\\stub_admob\\')

@@ -1,0 +1,7 @@
+#Mon Apr 29 20:12:39 AST 2024
+base.0=D\:\\walhalla\\sdk\\android\\ui\\example\\Lottie\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+base.1=D\:\\walhalla\\sdk\\android\\ui\\example\\Lottie\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\15\\classes.dex
+path.0=0/classes.dex
+path.1=15/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex

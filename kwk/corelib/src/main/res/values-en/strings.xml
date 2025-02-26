@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_internet_title">No Internet</string>
+    <string name="no_internet_message">Check your Internet connection and try again</string>
+    <string name="please_turn_on">Please turn on</string>
+    <string name="wifi_button">Wifi</string>
+    <string name="mobile_data_button">Mobile data</string>
+    <string name="on_airplane_mode_title">No Internet</string>
+    <string name="on_airplane_mode_message">You have turned on the airplane mode.</string>
+    <string name="please_turn_off">Please turn off</string>
+    <string name="no_internet">No Internet</string>
+</resources>

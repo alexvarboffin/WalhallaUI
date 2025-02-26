@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.a.betpawa",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 240429,
+      "versionName": "1.1.240429.release",
+      "outputFile": "a-debug.apk"
+    }
+  ],
+  "elementType": "File"
+}

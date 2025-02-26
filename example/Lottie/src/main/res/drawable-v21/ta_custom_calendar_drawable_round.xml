@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_selected" app:calendar_state_selected ="true"/>
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_selected_first_in_line" app:calendar_state_selected_first_in_line ="true"/>
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_selected_last_in_line" app:calendar_state_selected_last_in_line ="true"/>
+
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_rounded_start_round" app:calendar_state_selected_start ="true"/>
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_rounded_start_without_middle_round" app:calendar_state_selected_start_without_middle ="true"/>
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_rounded_end_round" app:calendar_state_selected_end ="true"/>
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_rounded_end_without_middle_round" app:calendar_state_selected_end_without_middle ="true"/>
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_rounded_single_round" app:calendar_state_selected_single ="true"/>
+
+    <item android:drawable="@drawable/ta_calendar_background_shape_fill_default" />
+
+</selector>

@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion0
+        targetSdkVersion rootProject.targetSdkVersion0
+    }
+
+    buildTypes {
+        debug {
+            //minifyEnabled false not_use in lib
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    namespace 'com.walhalla.stelth'
+
+}
+
+dependencies {
+    api(libs.androidx.preference)
+    api(libs.gson)
+    // Play Install Referrer library.
+    api (libs.installreferrer)
+    implementation project(':features:ui')
+//implementation project(path: ':features:ui')
+//implementation fileTree(dir: 'libs', include: ['*.jar'])
+//implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
+//    testImplementation 'junit:junit:4.13'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

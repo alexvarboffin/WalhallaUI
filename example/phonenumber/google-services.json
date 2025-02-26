@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "681715471354",
+    "firebase_url": "https://landingj0bar-default-rtdb.firebaseio.com",
+    "project_id": "landingj0bar",
+    "storage_bucket": "landingj0bar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681715471354:android:4624cdbc6ef78eef0b0a43",
+        "android_client_info": {
+          "package_name": "com.j0bar.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRZBPOMtY_dCMaRRaIY3K2i-odQ8OgK0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681715471354:android:157784f489f05dac0b0a43",
+        "android_client_info": {
+          "package_name": "com.walhalla.phonenumber"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRZBPOMtY_dCMaRRaIY3K2i-odQ8OgK0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

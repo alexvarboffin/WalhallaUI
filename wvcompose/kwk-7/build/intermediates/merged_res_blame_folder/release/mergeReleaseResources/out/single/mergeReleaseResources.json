@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_achievement_devil.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/achievement_devil.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap_ic_launcher_round.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_ic_blessing.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/ic_blessing.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_achievement_risk.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/achievement_risk.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap_ic_launcher.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap/ic_launcher.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_ic_curse.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/ic_curse.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_achievement_curse.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/achievement_curse.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_ic_pentagram.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/ic_pentagram.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/raw_win_sound.mp3.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/raw/win_sound.mp3"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/raw_spin_sound.mp3.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/raw/spin_sound.mp3"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.walhalla.wvcompose7.kwk-7-release-43:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.walhalla.wvcompose7.kwk-7-main-44:/mipmap-xxhdpi/ic_launcher.webp"
+    }
+]

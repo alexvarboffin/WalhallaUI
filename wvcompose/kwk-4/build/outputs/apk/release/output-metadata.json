@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.walhalla.wvcompose4",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 4001,
+      "versionName": "4.0.0.1.release",
+      "outputFile": "wvcompose4-webview-slotmachine-material3-compose-4.0.0.1-release.apk"
+    }
+  ],
+  "elementType": "File",
+  "baselineProfiles": [
+    {
+      "minApi": 28,
+      "maxApi": 30,
+      "baselineProfiles": [
+        "baselineProfiles/1/wvcompose4-webview-slotmachine-material3-compose-4.0.0.1-release.dm"
+      ]
+    },
+    {
+      "minApi": 31,
+      "maxApi": 2147483647,
+      "baselineProfiles": [
+        "baselineProfiles/0/wvcompose4-webview-slotmachine-material3-compose-4.0.0.1-release.dm"
+      ]
+    }
+  ],
+  "minSdkVersionForDexing": 24
+}

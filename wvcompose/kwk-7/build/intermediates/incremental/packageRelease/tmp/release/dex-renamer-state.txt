@@ -1,0 +1,4 @@
+#Sat Jan 11 17:22:53 AST 2025
+base.0=D\:\\walhalla\\sdk\\android\\ui\\wvcompose\\kwk-7\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

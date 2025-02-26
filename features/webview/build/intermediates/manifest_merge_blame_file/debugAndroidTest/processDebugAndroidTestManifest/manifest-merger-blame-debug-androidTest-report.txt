@@ -1,0 +1,115 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.walhalla.webview.test" >
+4
+5    <uses-sdk
+5-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:5:5-74
+6        android:minSdkVersion="21"
+6-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:5:15-41
+7        android:targetSdkVersion="21" />
+7-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:5:42-71
+8
+9    <instrumentation
+9-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:11:5-15:75
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:11:22-76
+11        android:functionalTest="false"
+11-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:14:22-52
+12        android:handleProfiling="false"
+12-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:13:22-53
+13        android:label="Tests for com.walhalla.webview.test"
+13-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:15:22-73
+14        android:targetPackage="com.walhalla.webview.test" />
+14-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:12:22-71
+15
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[:features:webview] D:\walhalla\sdk\android\ui\features\webview\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-79
+16-->[:features:webview] D:\walhalla\sdk\android\ui\features\webview\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:22-76
+17
+18    <queries>
+18-->[:features:webview] D:\walhalla\sdk\android\ui\features\webview\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:5-13:15
+19        <intent>
+19-->[:features:webview] D:\walhalla\sdk\android\ui\features\webview\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:9-12:18
+20            <action android:name="android.intent.action.MAIN" />
+20-->[:features:webview] D:\walhalla\sdk\android\ui\features\webview\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-65
+20-->[:features:webview] D:\walhalla\sdk\android\ui\features\webview\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:21-62
+21        </intent>
+22    </queries>
+23
+24    <permission
+24-->[androidx.core:core:1.15.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\b67d99884711de6261b3d6a58daaa7a9\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+25        android:name="com.walhalla.webview.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+25-->[androidx.core:core:1.15.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\b67d99884711de6261b3d6a58daaa7a9\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+26        android:protectionLevel="signature" />
+26-->[androidx.core:core:1.15.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\b67d99884711de6261b3d6a58daaa7a9\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+27
+28    <uses-permission android:name="com.walhalla.webview.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+28-->[androidx.core:core:1.15.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\b67d99884711de6261b3d6a58daaa7a9\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+28-->[androidx.core:core:1.15.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\b67d99884711de6261b3d6a58daaa7a9\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+29
+30    <application
+30-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:7:5-9:19
+31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+31-->[androidx.core:core:1.15.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\b67d99884711de6261b3d6a58daaa7a9\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+32        android:debuggable="true"
+33        android:extractNativeLibs="true" >
+34        <uses-library android:name="android.test.runner" />
+34-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:8:9-60
+34-->D:\walhalla\sdk\android\ui\features\webview\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest4698022012909962548.xml:8:23-57
+35
+36        <provider
+36-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+37            android:name="androidx.startup.InitializationProvider"
+37-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+38            android:authorities="com.walhalla.webview.test.androidx-startup"
+38-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+39            android:exported="false" >
+39-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+40            <meta-data
+40-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+41                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+41-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+42                android:value="androidx.startup" />
+42-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+43        </provider>
+44
+45        <receiver
+45-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+46            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+46-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+47            android:directBootAware="false"
+47-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+48            android:enabled="true"
+48-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+49            android:exported="true"
+49-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+50            android:permission="android.permission.DUMP" >
+50-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+51            <intent-filter>
+51-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+52                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+52-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+52-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+53            </intent-filter>
+54            <intent-filter>
+54-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+55                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+55-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+55-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+56            </intent-filter>
+57            <intent-filter>
+57-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+58                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+58-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+58-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+59            </intent-filter>
+60            <intent-filter>
+60-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+61                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+61-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+61-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\combo\.gradle\caches\8.10.2\transforms\88fc48c6899ab7beb03e6a7a1742e963\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+62            </intent-filter>
+63        </receiver>
+64    </application>
+65
+66</manifest>

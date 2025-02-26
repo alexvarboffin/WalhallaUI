@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+color background
+color black
+color ic_launcher_background
+color primary
+color secondary
+color surface
+color white
+drawable achievement_curse
+drawable achievement_devil
+drawable achievement_risk
+drawable ic_blessing
+drawable ic_curse
+drawable ic_launcher_foreground
+drawable ic_pentagram
+mipmap ic_launcher
+mipmap ic_launcher_round
+raw spin_sound
+raw win_sound
+string app_name
+style Theme.WVCompose

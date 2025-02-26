@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:drawable="@drawable/ta_bg_map_marker_poi"
+        android:gravity="center" />
+    <item
+        android:id="@+id/indicator"
+        android:bottom="2dp"
+        android:drawable="@android:color/transparent"
+        android:end="2dp"
+        android:start="2dp"
+        android:top="2dp"
+        tools:drawable="@drawable/ta_ic_default_place_metro_station" />
+</layer-list>

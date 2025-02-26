@@ -1,0 +1,5 @@
+ai.test.Lottie-androidTest-0 D:\walhalla\sdk\android\ui\example\Lottie\build\generated\res\resValues\androidTest\debug
+ai.test.Lottie-androidTest-1 D:\walhalla\sdk\android\ui\example\Lottie\build\generated\res\rs\androidTest\debug
+ai.test.Lottie-mergeDebugAndroidTestResources-2 D:\walhalla\sdk\android\ui\example\Lottie\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+ai.test.Lottie-mergeDebugAndroidTestResources-3 D:\walhalla\sdk\android\ui\example\Lottie\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+ai.test.Lottie-merged_res-4 D:\walhalla\sdk\android\ui\example\Lottie\build\intermediates\merged_res\debugAndroidTest

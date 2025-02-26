@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-merged_res-34:\\drawable_item_border.xml.flat",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\drawable\\item_border.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-merged_res-34:\\layout_fragment_lottie.xml.flat",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\fragment_lottie.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-merged_res-34:\\layout_item_svg.xml.flat",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\item_svg.xml"
+    },
+    {
+        "merged": "ai.Lottie-merged_res-34:/layout_item_svg.xml.flat",
+        "source": "ai.Lottie-main-36:/layout/item_svg.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-merged_res-34:\\layout_item_lottie.xml.flat",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\item_lottie.xml"
+    },
+    {
+        "merged": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-merged_res-34:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\combo\\.gradle\\daemon\\8.2\\ai.Lottie-main-36:\\layout\\activity_main.xml"
+    }
+]

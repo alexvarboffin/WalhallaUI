@@ -1,0 +1,1 @@
+-include "C:\android\proguard\bottom.pro"
