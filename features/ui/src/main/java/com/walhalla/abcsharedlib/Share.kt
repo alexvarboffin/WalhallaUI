@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.util.Log.d
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import com.walhalla.ui.DLog.d
 import com.walhalla.ui.DLog.handleException
 import com.walhalla.ui.R
 import com.walhalla.ui.UConst
+
+
 import java.io.File
 
 object Share {
@@ -21,8 +23,8 @@ object Share {
 
 
     //-> ПРИ ШАРЕ ФАЙЛА С СД_КАРД, ПИНТЕРЕСТ НЕ ПИШЕТ ДЕСКРИПТИОН
-    fun shareFile(context: Context, packageName0: String, description: String, file0: File) {
-        //        File file1 = new File("/storage/emulated/0/");
+    fun shareFile(context: Context, packageName0: String, description: String, file: File) {
+//        File file1 = new File("/storage/emulated/0/");
 //        File[] aa = file1.listFiles();
 //        for (File file2 : aa) {
 //            DLog.d("#" + file2);
@@ -30,9 +32,9 @@ object Share {
         //File file = new File(Environment.//@@@@@().getAbsolutePath(), filename);
 
         try {
-            if (file0.exists() && !file0.isDirectory) {
+            if (file.exists() && !file.isDirectory) {
             }
-            val path = FileProvider.getUriForFile(context, packageName0 + KEY_FILE_PROVIDER, file0)
+            val path = FileProvider.getUriForFile(context, packageName0 + KEY_FILE_PROVIDER, file)
             //            if (Build.VERSION.SDK_INT >= 23) {
 //                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 //                Uri path = FileProvider.getUriForFile(this,getApplicationContext().getPackageName() +  ".FileProvider", new File(filePath + fileName));
@@ -72,7 +74,7 @@ object Share {
         //                        + context.getPackageName()))
         //        );
         val type = context.contentResolver.getType(path)
-        d("::TYPE:: $type $path")
+        println("::TYPE:: $type $path")
 
         if (DEBUG) {
             //intent.putExtra(Intent.EXTRA_EMAIL, aa);

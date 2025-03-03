@@ -1,0 +1,14 @@
+R_DEF: Internal format may change without notice
+local
+anim slide_down
+anim slide_up
+array download_file_types
+array links_opened_in_external_browser
+drawable ic_account
+raw blockedhost
+string app_name
+string data_to_clipboard
+string fragment_main_downloading
+string network_error
+string network_error_message
+xml authenticator

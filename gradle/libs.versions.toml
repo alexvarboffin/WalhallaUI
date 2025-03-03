@@ -1,4 +1,7 @@
 [versions]
+compiler = "4.16.0"
+okhttp = "4.12.0"
+oopsnointernet = "2.0.0"
 accompanistSwiperefresh = "0.32.0"
 accompanistWebview = "0.36.0"
 agp = "8.7.3"
@@ -51,19 +54,33 @@ androidx-material = "1.12.0"
 playServicesAds = "23.6.0"
 lifecycleProcess = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
+taptargetview = "1.15.0"
+browser = "1.8.0"
+androidbrowserhelper = "2.5.0"
+coreSplashscreen = "1.0.1"
+
 
 [libraries]
+androidbrowserhelper = { module = "com.google.androidbrowserhelper:androidbrowserhelper", version.ref = "androidbrowserhelper" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycleViewmodel" }
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 androidx-preference = { module = "androidx.preference:preference", version.ref = "preferenceVersion" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
 exoplayer = { module = "com.google.android.exoplayer:exoplayer", version.ref = "exoplayer" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "compiler" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
 
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleProcess" }
+oopsnointernet = { module = "org.imaginativeworld.oopsnointernet:oopsnointernet", version.ref = "oopsnointernet" }
+taptargetview = { module = "com.getkeepsafe.taptargetview:taptargetview", version.ref = "taptargetview" }
 
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }

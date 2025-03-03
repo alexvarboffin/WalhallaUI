@@ -97,8 +97,8 @@ dependencies {
     implementation(libs.gson)
     //implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 
     implementation("com.google.firebase:firebase-crashlytics:19.0.1")
 //    implementation("com.github.MoeidHeidari:banner:1.04")
@@ -117,7 +117,7 @@ dependencies {
     implementation(libs.androidx.preference.ktx)
     implementation("com.github.duanhong169:colorpicker:1.1.6")
     implementation("com.github.duanhong169:TextButton:1.0.5")
-    implementation(project(":ui"))
+    implementation(project(":features:ui"))
 }
 fun versionCodeDate(): Int {
     return SimpleDateFormat("yyMMdd").format(Date()).toInt()
