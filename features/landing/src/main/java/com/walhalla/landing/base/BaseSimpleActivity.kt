@@ -52,10 +52,10 @@ abstract class BaseSimpleActivity : WebActivity(), ChromeView {
         //toolbar.setVisibility(View.GONE);
         setSupportActionBar(binding!!.toolbar)
         activityConfig = getActivityConfig()
-        presenter = WViewPresenter(this, activityConfig)
+        presenter = WViewPresenter(this, activityConfig!!)
     }
 
-    protected abstract fun getActivityConfig(): ActivityConfig?
+    protected abstract fun getActivityConfig(): ActivityConfig
 
     @SuppressLint("NonConstantResourceId")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

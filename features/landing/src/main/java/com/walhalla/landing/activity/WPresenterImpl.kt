@@ -1,6 +1,5 @@
 package com.walhalla.landing.activity
 
-import android.R
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
@@ -11,6 +10,7 @@ import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.util.Log.d
 import android.webkit.CookieManager
 import android.webkit.PermissionRequest
 import android.webkit.ValueCallback
@@ -23,7 +23,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.walhalla.landing.BuildConfig
-import com.walhalla.ui.DLog.d
+
 import com.walhalla.webview.ChromeView
 import com.walhalla.webview.CustomWebViewClient
 import com.walhalla.webview.MyWebChromeClient
@@ -44,13 +44,18 @@ class WPresenterImpl(
     private var mPermissionRequest: PermissionRequest? = null
     var j: Int = 0
 
-    private val myWebChromeClient: MyWebChromeClient = object : MyWebChromeClient(this) {
-        override fun onPermissionRequest(request: PermissionRequest) {
-            //mPermissionRequest = request;
 
-            val requestedResources = request.resources
+    private fun makeFileSelector21_x(uwView: UWView) {
 
-            //            for (String r : requestedResources) {
+
+        val myWebChromeClient: MyWebChromeClient = object : MyWebChromeClient(
+            activity,uwView, this) {
+            override fun onPermissionRequest(request: PermissionRequest) {
+                //mPermissionRequest = request;
+
+                val requestedResources = request.resources
+
+//            for (String r : requestedResources) {
 //                if (r.equals(PermissionRequest.RESOURCE_VIDEO_CAPTURE)) {
 //                    FragmentManager m = activity.getSupportFragmentManager();
 //                    // In this sample, we only accept video capture request.
@@ -83,28 +88,28 @@ class WPresenterImpl(
 //
 //                // Manifest.permission.CAMERA
 //                //Manifest.permission.RECORD_AUDIO
-            Handler(Looper.getMainLooper()).postDelayed({
-                d("[" + j + "] " + request.resources.contentToString() + " " + request.origin)
-                //                String[] arr = new String[]{
+                Handler(Looper.getMainLooper()).postDelayed({
+                   println("[" + j + "] " + request.resources.contentToString() + " " + request.origin)
+                    //                String[] arr = new String[]{
 //                        PermissionRequest.RESOURCE_AUDIO_CAPTURE,
 //                        PermissionRequest.RESOURCE_VIDEO_CAPTURE
 //                };
 //                request.grant(arr);
 //            request.grant(request.getResources());
-                if (j == 0) {
+                    if (j == 0) {
 //                String[] arr = new String[]{
 //                        PermissionRequest.RESOURCE_AUDIO_CAPTURE,
 //                        PermissionRequest.RESOURCE_VIDEO_CAPTURE
 //                };
-                    request.grant(request.resources)
-                } else {
-                    request.grant(request.resources)
-                }
-                j++
-            }, 1000)
+                        request.grant(request.resources)
+                    } else {
+                        request.grant(request.resources)
+                    }
+                    j++
+                }, 1000)
 
 
-            //            for (int i = 0; i < 100; i++) {
+                //            for (int i = 0; i < 100; i++) {
 //                try {
 //                    String[] arr = new String[]{
 //                            PermissionRequest.RESOURCE_AUDIO_CAPTURE,
@@ -125,77 +130,76 @@ class WPresenterImpl(
 ////                        request.deny();
 ////                    }
 //                });
-        }
-
-        override fun onPermissionRequestCanceled(request: PermissionRequest) {
-            //super.onPermissionRequestCanceled(request);
-            mPermissionRequest = null
-            val fragment =
-                activity.supportFragmentManager.findFragmentByTag(FRAGMENT_DIALOG) as DialogFragment?
-            fragment?.dismiss()
-            d("@@@@@@@@@@@@====$request")
-        }
-
-        //Requre - > a.setSupportMultipleWindows(true);
-        @SuppressLint("SetJavaScriptEnabled")
-        override fun onCreateWindow(
-            view: WebView,
-            isDialog: Boolean,
-            isUserGesture: Boolean,
-            resultMsg: Message
-        ): Boolean {
-            d("@@@$isDialog")
-            if (BuildConfig.DEBUG) {
-                view.setBackgroundColor(Color.YELLOW)
             }
-            val newWebView = WebView(view.context)
-            newWebView.settings.javaScriptEnabled = true
 
-
-            //uwView.addView(newWebView);
-            val builder = AlertDialog.Builder(view.context)
-
-            //builder.setTitle("@");
-            builder.setView(newWebView)
-            builder.setPositiveButton(
-                R.string.cancel
-            ) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
-            val dialog = builder.create()
-            newWebView.webChromeClient = this
-            newWebView.webViewClient = object : WebViewClient() {
-                //                    @Override
-                //                    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                //                        try {
-                //                            String newUrl = request.getUrl().toString();
-                //                            //Log.d("@@@w@@@", "shouldOverrideUrlLoading: " + transport + ", " + isDialog);
-                //                            Log.d("@@@w@@@", "shouldOverrideUrlLoading: " + newUrl);
-                //                            //dialog.setTitle(newUrl);
-                //                            view.loadUrl(newUrl);
-                //                            if (newUrl.contains("oauth.telegram.org/auth/push?")) {
-                //                                dialog.dismiss();
-                //                            }
-                //                        }catch (Exception e){
-                //                            DLog.handleException(e);
-                //                        }
-                //                        return true;
-                //                    }
+            override fun onPermissionRequestCanceled(request: PermissionRequest) {
+                //super.onPermissionRequestCanceled(request);
+                mPermissionRequest = null
+                val fragment =
+                    activity.supportFragmentManager.findFragmentByTag(FRAGMENT_DIALOG) as DialogFragment?
+                fragment?.dismiss()
+                println("@@@@@@@@@@@@====$request")
             }
-            dialog.show()
-            val transport = resultMsg.obj as WebView.WebViewTransport
-            transport.webView = newWebView
-            resultMsg.sendToTarget()
 
-            //                WebViewDialogFragment dialogFragment = new WebViewDialogFragment();
+            //Requre - > a.setSupportMultipleWindows(true);
+            @SuppressLint("SetJavaScriptEnabled")
+            override fun onCreateWindow(
+                view: WebView,
+                isDialog: Boolean,
+                isUserGesture: Boolean,
+                resultMsg: Message
+            ): Boolean {
+                println("@@@$isDialog")
+                if (BuildConfig.DEBUG) {
+                    view.setBackgroundColor(Color.YELLOW)
+                }
+                val newWebView = WebView(view.context)
+                newWebView.settings.javaScriptEnabled = true
+
+
+                //uwView.addView(newWebView);
+                val builder = AlertDialog.Builder(view.context)
+
+                //builder.setTitle("@");
+                builder.setView(newWebView)
+                builder.setPositiveButton(android.R.string.cancel
+                ) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+                val dialog = builder.create()
+                newWebView.webChromeClient = this
+                newWebView.webViewClient = object : WebViewClient() {
+                    //                    @Override
+                    //                    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                    //                        try {
+                    //                            String newUrl = request.getUrl().toString();
+                    //                            //Log.d("@@@w@@@", "shouldOverrideUrlLoading: " + transport + ", " + isDialog);
+                    //                            Log.d("@@@w@@@", "shouldOverrideUrlLoading: " + newUrl);
+                    //                            //dialog.setTitle(newUrl);
+                    //                            view.loadUrl(newUrl);
+                    //                            if (newUrl.contains("oauth.telegram.org/auth/push?")) {
+                    //                                dialog.dismiss();
+                    //                            }
+                    //                        }catch (Exception e){
+                    //                            DLog.handleException(e);
+                    //                        }
+                    //                        return true;
+                    //                    }
+                }
+                dialog.show()
+                val transport = resultMsg.obj as WebView.WebViewTransport
+                transport.webView = newWebView
+                resultMsg.sendToTarget()
+
+                //                WebViewDialogFragment dialogFragment = new WebViewDialogFragment();
 //                if (activity instanceof AppCompatActivity) {
 //                    FragmentManager m = ((AppCompatActivity) activity).getSupportFragmentManager();
 //                    dialogFragment.show(m, "WebViewDialogFragment");
 //                }
-            return true
+                return true
+            }
         }
-    }
 
-    private fun makeFileSelector21_x(uwView: UWView) {
-        //        uwView.setWebChromeClient(@@new WebChromeClient() {
+
+//        uwView.setWebChromeClient(@@new WebChromeClient() {
 //            // For 3.0+ Devices (Start)
 //            // onActivityResult attached before constructor
 //            private void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
@@ -226,7 +230,7 @@ class WPresenterImpl(
     }
 
     override fun onConfirmation__(allowed: Boolean, resources: Array<String>?) {
-//        DLog.d("Permission granted." + allowed + " " + Arrays.toString(resources));
+//        println("Permission granted." + allowed + " " + Arrays.toString(resources));
 //
 //        if (allowed) {
 //            mPermissionRequest.grant(resources);
@@ -386,7 +390,7 @@ class WPresenterImpl(
         builder.setTitle("debug" + (if ((selectedFiles == null)) selectedFiles else selectedFiles.size))
 
             .setMessage(sb.toString()).setPositiveButton(
-                context.getString(R.string.ok)
+                context.getString(android.R.string.ok)
             ) { dialog: DialogInterface, id: Int ->
                 dialog.cancel()
             }
@@ -410,7 +414,7 @@ class WPresenterImpl(
         val file =
             File(imageStorageDir.toString() + File.separator + "IMG_" + System.currentTimeMillis() + ".jpg")
         val tmp = Uri.fromFile(file)
-        d("[captureImageUri]$tmp")
+        println("[captureImageUri]$tmp")
         return tmp
     }
 

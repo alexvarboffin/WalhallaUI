@@ -22,10 +22,7 @@ android {
         }
         getByName("release") {
             // minifyEnabled true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             consumerProguardFiles("consumer-rules.pro")
         }
     }
@@ -53,7 +50,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
-    api(libs.androidx.preference)
+    api(libs.androidx.preference.ktx)
 
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.annotation)

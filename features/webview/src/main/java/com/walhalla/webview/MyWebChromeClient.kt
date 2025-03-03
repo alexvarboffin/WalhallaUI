@@ -34,10 +34,7 @@ open class MyWebChromeClient(
 
         // Добавляем View в корневой layout
         val decorView = activity.window.decorView as FrameLayout
-        decorView.addView(customView, FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.MATCH_PARENT,
-            FrameLayout.LayoutParams.MATCH_PARENT
-        ))
+        decorView.addView(customView, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
 
         // Скрываем WebView
         webView.visibility = View.GONE
