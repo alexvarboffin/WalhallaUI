@@ -70,4 +70,6 @@
     <string name="confirmation">This web page wants to use following resources:\n\n%s</string>
     <string name="allow">Allow</string>
     <string name="deny">Deny</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
 </resources>

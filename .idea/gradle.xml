@@ -10,9 +10,25 @@
         <option name="gradleJvm" value="jbr-21" />
         <option name="modules">
           <set>
+            <option value="D:/walhalla/sdk/android/ui/stub/stub_admob" />
+            <option value="D:/walhalla/sdk/android/ui/stub/stub_appmetrica" />
+            <option value="D:/walhalla/sdk/android/ui/stub/stub_appsflyer" />
+            <option value="D:/walhalla/sdk/android/ui/stub/stub_facebook" />
+            <option value="D:/walhalla/sdk/android/ui/stub/stub_mtracker" />
+            <option value="D:/walhalla/sdk/android/ui/stub/stub_onesignal" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="D:/walhalla/sdk/android/UI/features/ui" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/landing" />
+            <option value="$PROJECT_DIR$/features/ui" />
+            <option value="$PROJECT_DIR$/features/wads" />
+            <option value="$PROJECT_DIR$/features/webview" />
+            <option value="$PROJECT_DIR$/promo" />
+            <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/stub" />
+            <option value="$PROJECT_DIR$/stub/stubInjector" />
+            <option value="$PROJECT_DIR$/wvcompose" />
+            <option value="$PROJECT_DIR$/../multithreader/threader" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

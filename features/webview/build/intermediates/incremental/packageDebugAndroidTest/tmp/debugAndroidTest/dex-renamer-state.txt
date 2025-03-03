@@ -1,0 +1,13 @@
+#Sun Mar 02 20:48:59 AST 2025
+path.3=10/classes.dex
+path.2=0/classes.dex
+path.1=0/classes.dex
+path.0=classes.dex
+base.3=G\:\\android\\WalhallaUI\\features\\webview\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\10\\classes.dex
+base.2=G\:\\android\\WalhallaUI\\features\\webview\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+base.1=G\:\\android\\WalhallaUI\\features\\webview\\build\\intermediates\\dex\\debugAndroidTest\\mergeLibDexDebugAndroidTest\\0\\classes.dex
+base.0=G\:\\android\\WalhallaUI\\features\\webview\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex

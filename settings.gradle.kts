@@ -28,7 +28,7 @@ dependencyResolutionManagement {
     }
 }
 
-apply(from = "D:\\walhalla\\sdk\\android\\ui\\kwk\\corelib\\submodules.gradle")
+apply(from = "kwk\\corelib\\submodules.gradle")
 
 include(":app")
 
@@ -43,4 +43,6 @@ include(":promo")
 include(":wvcompose")
 
 include(":threader")
-project(":threader").projectDir = File("../multithreader/threader/") 
+project(":threader").projectDir = File("../multithreader/threader/")
+
+include(":shared")
