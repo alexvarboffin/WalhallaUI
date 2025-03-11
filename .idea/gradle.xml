@@ -23,12 +23,15 @@
             <option value="$PROJECT_DIR$/features/ui" />
             <option value="$PROJECT_DIR$/features/wads" />
             <option value="$PROJECT_DIR$/features/webview" />
+            <option value="$PROJECT_DIR$/kwk" />
+            <option value="$PROJECT_DIR$/kwk/StelthCore" />
+            <option value="$PROJECT_DIR$/kwk/corelib" />
             <option value="$PROJECT_DIR$/promo" />
             <option value="$PROJECT_DIR$/shared" />
             <option value="$PROJECT_DIR$/stub" />
             <option value="$PROJECT_DIR$/stub/stubInjector" />
             <option value="$PROJECT_DIR$/wvcompose" />
-            <option value="$PROJECT_DIR$/../multithreader/threader" />
+            <option value="$PROJECT_DIR$/../../multithreader/threader" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
