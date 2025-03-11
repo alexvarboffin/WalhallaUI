@@ -1,26 +1,21 @@
-package org.apache.mvp;
+package org.apache.mvp
 
-import org.apache.cordova.domen.UIVisibleDataset;
-import org.apache.mvp.presenter.DeviceCheck;
+import org.apache.cordova.domen.UIVisibleDataset
+import org.apache.mvp.presenter.DeviceCheck
 
 /*
- * Rotate function
- *
- * */
-public interface MainView extends CompatView, DeepLinker, ReferrerAdapter.Callback {
+* Rotate function
+*
+* */
+interface MainView : CompatView, DeepLinker, ReferrerAdapter.Callback {
+    fun data(): UIVisibleDataset? //Initial data values
 
+    fun makeScreen(screen: UIVisibleDataset)
 
-    UIVisibleDataset data(); //Initial data values
+    fun rotated(): Boolean
 
-    void makeScreen(UIVisibleDataset screen);
-
-    boolean rotated();
-
-    void hiDeRefreshLayout();
+    fun hiDeRefreshLayout()
 
     //void wrapContentRequest();
-
-    DeviceCheck checkDevice();
-
-
+    fun checkDevice(): DeviceCheck?
 }

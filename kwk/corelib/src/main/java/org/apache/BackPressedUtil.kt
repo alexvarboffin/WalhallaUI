@@ -1,32 +1,29 @@
-package org.apache;
+package org.apache
 
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.widget.Toast;
+import android.app.Activity
+import android.content.Context
+import android.view.View
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
+import org.apache.cordova.R
 
-import androidx.annotation.NonNull;
-import com.google.android.material.snackbar.Snackbar;
-
-import org.apache.cordova.R;
-
-public class BackPressedUtil {
-
-    public static void backPressedToast(@NonNull Activity activity) {
+object BackPressedUtil {
+    @JvmStatic
+    fun backPressedToast(activity: Activity) {
         //View view = activity.findViewById(android.R.id.content);
-        View view = activity.findViewById(R.id.cLayout);
+        val view = activity.findViewById<View>(R.id.cLayout)
         if (view == null) {
-            showToast(activity, R.string.press_again_to_exit, Toast.LENGTH_SHORT);
+            showToast(activity, R.string.press_again_to_exit, Toast.LENGTH_SHORT)
         } else {
-            showSnackbar(activity, view, R.string.press_again_to_exit, Snackbar.LENGTH_LONG);
+            showSnackbar(activity, view, R.string.press_again_to_exit, Snackbar.LENGTH_LONG)
         }
     }
 
-    private static void showToast(@NonNull Context context, int resId, int duration) {
-        Toast.makeText(context, resId, duration).show();
+    private fun showToast(context: Context, resId: Int, duration: Int) {
+        Toast.makeText(context, resId, duration).show()
     }
 
-    private static void showSnackbar(@NonNull Activity activity, @NonNull View view, int resId, int duration) {
-        Snackbar.make(view, resId, duration).setAction("Action", null).show();
+    private fun showSnackbar(activity: Activity, view: View, resId: Int, duration: Int) {
+        Snackbar.make(view, resId, duration).setAction("Action", null).show()
     }
 }

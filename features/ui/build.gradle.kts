@@ -1,3 +1,14 @@
+extra.apply {
+    set("minSdkVersion", 21)
+    set("okHttpVersion", "4.12.0")
+    set("ONESIGNAL_APP_ID", "")
+    set("APPSFLYER_DEV_KEY", "")
+    set("FACEBOOK_SDK", "")
+    set("MYTRACKER_KEY", "")
+    set("APP_METRICA", "")
+}
+
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)

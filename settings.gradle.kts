@@ -30,6 +30,9 @@ dependencyResolutionManagement {
 
 apply(from = "kwk\\corelib\\submodules.gradle")
 
+include(":kwk:corelib")
+include(":kwk:StelthCore")
+
 include(":app")
 
 include(":features:ui")
@@ -43,6 +46,6 @@ include(":promo")
 include(":wvcompose")
 
 include(":threader")
-project(":threader").projectDir = File("../multithreader/threader/")
+project(":threader").projectDir = File("../../multithreader/threader/")
 
 include(":shared")

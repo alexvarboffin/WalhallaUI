@@ -1,17 +1,15 @@
-package org.apache.cordova.repository;
+package org.apache.cordova.repository
 
-import android.content.Context;
+import android.content.Context
+import org.apache.cordova.domen.UIVisibleDataset
 
-import org.apache.cordova.domen.UIVisibleDataset;
-
-public interface DatasetRepository {
-
+interface DatasetRepository {
     interface RepoCallback {
-        void successResponse(UIVisibleDataset value);
+        fun successResponse(value: UIVisibleDataset)
 
-        void handleError(String message);
+        fun handleError(message: String?)
     }
 
 
-    void getConfig(Context context); //String rawUrl
+    fun getConfig(context: Context?) //String rawUrl
 }

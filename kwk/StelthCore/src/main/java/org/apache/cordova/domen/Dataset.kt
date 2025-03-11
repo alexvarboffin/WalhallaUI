@@ -1,113 +1,83 @@
-package org.apache.cordova.domen;
+package org.apache.cordova.domen
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 // Класс для работы с Firebase
-public class Dataset {
+class Dataset {
+    var screenType: ScreenType? = null
 
-    public ScreenType screenType;
-
-    public Dataset(String url) {
-        this.a = url;
+    constructor(url: String?) {
+        this.url = url
     }
 
-    public Dataset(ScreenType type, String url) {
-        this.screenType = type;
-        this.a = url;
+    constructor(type: ScreenType?, url: String?) {
+        this.screenType = type
+        this.url = url
     }
 
-//    public boolean isMenu() {
-//        return menu;
-//    }
-//
-//    @SerializedName("menu")
-//    @Expose
-//    private boolean menu;
 
-
+    //    public boolean isMenu() {
+    //        return menu;
+    //    }
+    //
+    //    @SerializedName("menu")
+    //    @Expose
+    //    private boolean menu;
     @SerializedName("enabled")
     @Expose
-    public Boolean enabled; //not support Boolean type
+    var enabled: Boolean? = null //not support Boolean type
 
     //true = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     //false = LANDSCAPE
-
     @SerializedName("portrait")
     @Expose
-    public Integer orientation = null;
+    var orientation: Int? = null
 
     @SerializedName("webview_external")
     @Expose
-    public boolean webview_external;
+    var webview_external: Boolean = false
 
     @SerializedName("viewType")
     @Expose
-    public String viewType = "app";
+    var viewType: String = "app"
 
-
-    public boolean isDemo() {
-        return demo;
-    }
-
-    public void setDemo(boolean demo) {
-        this.demo = demo;
-    }
 
     @SerializedName("demo")
     @Expose
-    private boolean demo;
-
-    public void setWhitelist(String whitelist) {
-        this.whitelist = whitelist;
-    }
+    var isDemo: Boolean = false
 
     @SerializedName("whitelist")
     @Expose
-    private String whitelist;
+    var whitelist: String? = null
 
-    public Dataset() {
-    }
+    constructor()
 
-    public Dataset(Boolean isEnabled, String successUrl, Boolean isDemo, String whitelist) {
-        this.enabled = isEnabled;
-        this.a = successUrl;
-        this.demo = isDemo;
-        this.whitelist = whitelist;
+    constructor(isEnabled: Boolean?, successUrl: String?, isDemo: Boolean, whitelist: String?) {
+        this.enabled = isEnabled
+        this.url = successUrl
+        this.isDemo = isDemo
+        this.whitelist = whitelist
     }
 
     @Expose
     @SerializedName("url")
-    private String a;
-
-    public void setUrl(String a) {
-        this.a = a;
-    }
-
-    public String getUrl() {
-        return a;
-    }
-
-    public String getWhitelist() {
-        return whitelist;
-    }
+    var url: String? = null
 
     //@DevelopOnly
-    @Override
-    public String toString() {
+    override fun toString(): String {
         return "Dataset{" +
                 "screenType=" + screenType +
                 ", enabled=" + enabled +
                 ", portrait=" + orientation +
                 ", web=" + webview_external +
-                ", url='" + a + '\'' +
-                ", demo=" + demo +
+                ", url='" + url + '\'' +
+                ", demo=" + isDemo +
                 ", whitelist='" + whitelist + '\'' +
-                '}';
+                '}'
     }
 
-    public boolean isEnabled() {
-        return enabled != null && enabled;
+    fun isEnabled(): Boolean {
+        return enabled != null && enabled as Boolean
     }
 }

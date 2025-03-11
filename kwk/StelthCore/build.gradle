@@ -1,3 +1,6 @@
+plugins {
+    alias(libs.plugins.kotlin.android)
+}
 apply plugin: 'com.android.library'
 
 android {
@@ -25,6 +28,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.walhalla.stelth'
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
 }
 
@@ -32,8 +38,9 @@ dependencies {
     api(libs.androidx.preference)
     api(libs.gson)
     // Play Install Referrer library.
-    api (libs.installreferrer)
+    api(libs.installreferrer)
     implementation project(':features:ui')
+    implementation libs.androidx.core.ktx
 //implementation project(path: ':features:ui')
 //implementation fileTree(dir: 'libs', include: ['*.jar'])
 //implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'

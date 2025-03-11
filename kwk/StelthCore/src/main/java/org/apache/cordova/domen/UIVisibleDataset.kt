@@ -1,110 +1,81 @@
-package org.apache.cordova.domen;
+package org.apache.cordova.domen
 
 
 // Класс для пользовательских интерфейсов
-public class UIVisibleDataset {
+class UIVisibleDataset {
+    private val dataset: Dataset
 
-    private final Dataset dataset;
-
-    public UIVisibleDataset(Dataset dataset) {
-        this.dataset = dataset;
+    constructor(dataset: Dataset) {
+        this.dataset = dataset
     }
 
-    public UIVisibleDataset() {
-        this.dataset = new Dataset();
+    constructor() {
+        this.dataset = Dataset()
     }
 
-    public UIVisibleDataset(ScreenType type, String url) {
-        this.dataset = new Dataset();
-        this.dataset.screenType = type;
-        this.dataset.setUrl(url);
+    constructor(type: ScreenType?, url: String?) {
+        this.dataset = Dataset()
+        dataset.screenType = type
+        dataset.url = url
     }
 
-    public UIVisibleDataset(Boolean isEnabled, String successUrl, Boolean isDemo, String whitelist) {
-        this.dataset = new Dataset();
-        this.dataset.enabled = isEnabled;
-        this.dataset.setUrl(successUrl);
-        this.dataset.setDemo(isDemo);
-        this.dataset.setWhitelist(whitelist);
+    constructor(isEnabled: Boolean?, successUrl: String?, isDemo: Boolean, whitelist: String?) {
+        this.dataset = Dataset()
+        dataset.enabled = isEnabled
+        dataset.url = successUrl
+        dataset.isDemo = isDemo
+        dataset.whitelist = whitelist
     }
 
 
-    // Остальные методы для работы с UI...
+    var screenType: ScreenType?
+        // Остальные методы для работы с UI...
+        get() = dataset.screenType
+        set(screenType) {
+            dataset.screenType = screenType
+        }
 
-    // Внутренний класс Dataset доступен только внутри UIVisibleDataset
-//    private class Dataset {
-//        // Поля и методы класса Dataset...
-//    }
+    var enabled: Boolean?
+        get() = dataset.enabled
+        set(enabled) {
+            dataset.enabled = enabled
+        }
 
-    // Методы для доступа к полям класса Dataset через прослойку
+    var orientation: Int?
+        get() = dataset.orientation
+        set(orientation) {
+            dataset.orientation = orientation
+        }
 
-    public ScreenType getScreenType() {
-        return dataset.screenType;
-    }
+    var isWebview_external: Boolean
+        get() = dataset.webview_external
+        set(webview_external) {
+            dataset.webview_external = webview_external
+        }
 
-    public void setScreenType(ScreenType screenType) {
-        dataset.screenType = screenType;
-    }
+    var viewType: String?
+        get() = dataset.viewType
+        set(viewType) {
+            dataset.viewType = viewType
+        }
 
-    public Boolean getEnabled() {
-        return dataset.enabled;
-    }
+    var isDemo: Boolean
+        get() = dataset.isDemo
+        set(demo) {
+            dataset.isDemo = demo
+        }
 
-    public void setEnabled(Boolean enabled) {
-        dataset.enabled = enabled;
-    }
+    val whitelist: String
+        get() = dataset.whitelist
 
-    public Integer getOrientation() {
-        return dataset.orientation;
-    }
+    var url: String?
+        //    public void setWhitelist(String whitelist) {
+        get() = dataset.url
+        set(url) {
+            dataset.url = url
+        }
 
-    public void setOrientation(Integer orientation) {
-        dataset.orientation = orientation;
-    }
-
-    public boolean isWebview_external() {
-        return dataset.webview_external;
-    }
-
-    public void setWebview_external(boolean webview_external) {
-        dataset.webview_external = webview_external;
-    }
-
-    public String getViewType() {
-        return dataset.viewType;
-    }
-
-    public void setViewType(String viewType) {
-        dataset.viewType = viewType;
-    }
-
-    public boolean isDemo() {
-        return dataset.isDemo();
-    }
-
-    public void setDemo(boolean demo) {
-        dataset.setDemo(demo);
-    }
-
-    public String getWhitelist() {
-        return dataset.getWhitelist();
-    }
-
-//    public void setWhitelist(String whitelist) {
-//        dataset.set = whitelist;
-//    }
-
-    public String getUrl() {
-        return dataset.getUrl();
-    }
-
-    public void setUrl(String url) {
-        dataset.setUrl(url);
-    }
-
-    public boolean isEnabled() {
-        return dataset.isEnabled();
-    }
-
-    // Дополнительные методы, если необходимо
+    fun isEnabled(): Boolean {
+        return dataset.isEnabled
+    } // Дополнительные методы, если необходимо
 }

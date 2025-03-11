@@ -1,55 +1,34 @@
-package org.apache.mvp.presenter;
+package org.apache.mvp.presenter
 
-public class DeviceCheck {
+class DeviceCheck private constructor(builder: Builder) {
 
-    private final boolean checkEmulator;
-    private final boolean rooted;
-    private final boolean packageSignature;
-
-    private DeviceCheck(Builder builder) {
-        this.checkEmulator = builder.checkEmulator;
-        this.rooted = builder.rooted;
-        this.packageSignature = builder.signature;
-
-    }
-
-    public boolean isCheckEmulator() {
-        return checkEmulator;
-    }
-
-    public boolean isPackageSignature() {
-        return packageSignature;
-    }
+    val isCheckEmulator: Boolean = builder.checkEmulator
+    val isCheckRoot: Boolean = builder.rooted
+    val isPackageSignature: Boolean = builder.signature
 
 
-    public boolean isCheckRoot() {
-        return rooted;
-    }
+    class Builder {
+        internal var checkEmulator: Boolean = false
+        var rooted: Boolean = false
+        var signature: Boolean = false
 
-    public static class Builder {
-        private boolean checkEmulator;
-        private boolean rooted;
-        private boolean signature;
-
-        public Builder setCheckEmulator(boolean checkEmulator) {
-            this.checkEmulator = checkEmulator;
-            return this;
+        fun setCheckEmulator(checkEmulator: Boolean): Builder {
+            this.checkEmulator = checkEmulator
+            return this
         }
 
-        public Builder setRooted(boolean rooted) {
-            this.rooted = rooted;
-            return this;
+        fun setRooted(rooted: Boolean): Builder {
+            this.rooted = rooted
+            return this
         }
 
-        public Builder setSignature(boolean signature) {
-            this.signature = signature;
-            return this;
+        fun setSignature(signature: Boolean): Builder {
+            this.signature = signature
+            return this
         }
 
-        public DeviceCheck build() {
-            return new DeviceCheck(this);
+        fun build(): DeviceCheck {
+            return DeviceCheck(this)
         }
-    }
-
-    // Другие методы класса
+    } // Другие методы класса
 }
