@@ -158,7 +158,8 @@ object Share {
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
         }
         return intent
-    } //    private static void shareFile(Context context, String message, File file) {
+    }
+    //    private static void shareFile(Context context, String message, File file) {
     //
     ////        File file1 = new File("/storage/emulated/0/");
     ////        File[] aa = file1.listFiles();
