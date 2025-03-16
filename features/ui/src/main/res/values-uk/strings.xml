@@ -6,9 +6,9 @@
     <string name="rateme__dialog_feedback_message">Написати розробнику?</string>
 
     <string name="action_exit">Вихід</string>
-    <string name="tab_text_1">Додатки</string>
+
     <string name="action_settings">Налаштування</string>
-    <string name="tab_text_3">Лог</string>
+
 
     <string name="action_contact_us">Зворотній зв\'язок</string>
     <string name="action_discover_more_app">Ще додатків…</string>

@@ -19,10 +19,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.walhalla.abcsharedlib.Share
 import com.walhalla.ui.DLog
 import com.walhalla.ui.R
-import com.walhalla.ui.UConst
 import java.io.ByteArrayInputStream
 import java.security.cert.CertificateException
 import java.security.cert.CertificateFactory

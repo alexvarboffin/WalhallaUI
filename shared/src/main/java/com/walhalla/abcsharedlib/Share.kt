@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.util.Log.d
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import com.walhalla.shared.R
 import com.walhalla.ui.DLog.handleException
-import com.walhalla.ui.R
+
 import com.walhalla.ui.UConst
 
 
