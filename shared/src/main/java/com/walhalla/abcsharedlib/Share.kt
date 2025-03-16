@@ -17,7 +17,7 @@ import java.io.File
 object Share {
     private const val DEBUG = false
     const val comPinterestEXTRA_DESCRIPTION: String = "com.pinterest.EXTRA_DESCRIPTION"
-    val email: String = if (DEBUG) "alexvarboffin.abba11@blogger.com" else ""
+    private val email: String = if (DEBUG) "alexvarboffin.abba11@blogger.com" else ""
 
     const val KEY_FILE_PROVIDER: String = ".fileprovider"
 
