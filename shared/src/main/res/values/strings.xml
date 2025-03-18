@@ -2,4 +2,10 @@
 <resources>
     <string name="app_name">shared</string>
     <string name="no_app_available_to_share">No app found.</string>
+
+    <string name="publisher_feedback_email" translatable="false">ceh4@protonmail.ch</string>
+    <string name="play_google_pub" translatable="false">Walhalla Dynamics</string>
+    <string name="share_text_default">Hey my friend check out this app</string>
+
+
 </resources>

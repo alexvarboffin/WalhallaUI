@@ -11,7 +11,7 @@ object Launcher {
     @JvmStatic
     fun openMarketApp(context: Context, packageName: String) {
         try {
-            val uri = Uri.parse(com.walhalla.ui.UConst.MARKET_CONSTANT + packageName)
+            val uri = Uri.parse(UConst.MARKET_CONSTANT + packageName)
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage(Module_U.PKG_NAME_VENDING)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -26,7 +26,7 @@ object Launcher {
                     )
                 )
             } catch (a: ActivityNotFoundException) {
-                openBrowser(context, com.walhalla.ui.UConst.GOOGLE_PLAY_CONSTANT + packageName)
+                openBrowser(context, UConst.GOOGLE_PLAY_CONSTANT + packageName)
             }
         }
     }
