@@ -1,70 +1,59 @@
-package com.walhalla.library;
+package com.walhalla.library
 
-import android.util.Log;
+import android.util.Log
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
 //import static android.accounts.AccountManager.VISIBILITY_UNDEFINED;
-
-public class InterAdListener extends com.google.android.gms.ads.AdListener {
-
-    private static final String TAG = "@@@";
-    private static final boolean DEBUG = BuildConfig.DEBUG;
-
-    private final InterstitialAd interstitialAd;
-
-    public InterAdListener(InterstitialAd adView) {
-        this.interstitialAd = adView;
+class InterAdListener(private val interstitialAd: InterstitialAd) : AdListener() {
+    override fun onAdClosed() {
+        super.onAdClosed()
+        Log.d(TAG, "onAdClosed: " + interstitialAd.adUnitId)
     }
 
 
-    @Override
-    public void onAdClosed() {
-        super.onAdClosed();
-        Log.d(TAG, "onAdClosed: " + interstitialAd.getAdUnitId());
-    }
-
-
-    @Override
-    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-        super.onAdFailedToLoad(loadAdError);
+    override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+        super.onAdFailedToLoad(loadAdError)
         if (DEBUG) {
-            Log.d(TAG, String.format("Ad %s failed to load with error %d.",
-                    interstitialAd.getAdUnitId(), loadAdError.getCode()));
+            Log.d(
+                TAG, String.format(
+                    "Ad %s failed to load with error %d.",
+                    interstitialAd.adUnitId, loadAdError.code
+                )
+            )
         }
     }
 
-    @Override
-    public void onAdOpened() {
-        super.onAdOpened();
-        Log.d(TAG, "onAdOpened: " + interstitialAd.getAdUnitId());
+    override fun onAdOpened() {
+        super.onAdOpened()
+        Log.d(TAG, "onAdOpened: " + interstitialAd.adUnitId)
     }
 
 
-//    @Override
-//    public void onAdLeftApplication() {
-//        super.onAdLeftApplication();
-//        Log.d(TAG, "onAdLeftApplication: " + interstitialAd.getAdUnitId());
-//    }
-
-    @Override
-    public void onAdLoaded() {
-        super.onAdLoaded();
-        Log.d(TAG, "onAdLoaded: " + interstitialAd.getAdUnitId());
+    //    @Override
+    //    public void onAdLeftApplication() {
+    //        super.onAdLeftApplication();
+    //        Log.d(TAG, "onAdLeftApplication: " + interstitialAd.getAdUnitId());
+    //    }
+    override fun onAdLoaded() {
+        super.onAdLoaded()
+        Log.d(TAG, "onAdLoaded: " + interstitialAd.adUnitId)
         //interstitialAd.show();
     }
 
-    @Override
-    public void onAdClicked() {
-        super.onAdClicked();
-        Log.d(TAG, "onAdClicked: " + interstitialAd.getAdUnitId());
+    override fun onAdClicked() {
+        super.onAdClicked()
+        Log.d(TAG, "onAdClicked: " + interstitialAd.adUnitId)
     }
 
-    @Override
-    public void onAdImpression() {
-        super.onAdImpression();
-        Log.d(TAG, "onAdImpression: " + interstitialAd.getAdUnitId());
+    override fun onAdImpression() {
+        super.onAdImpression()
+        Log.d(TAG, "onAdImpression: " + interstitialAd.adUnitId)
+    }
+
+    companion object {
+        private const val TAG = "@@@"
+        private val DEBUG = BuildConfig.DEBUG
     }
 }

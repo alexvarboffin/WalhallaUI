@@ -1,136 +1,90 @@
-package com.walhalla.domain.repository.from_internet;
+package com.walhalla.domain.repository.from_internet
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.OnLifecycleEvent;
-
-import android.os.Build;
-import android.os.Handler;
-
-import androidx.annotation.NonNull;
-
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
-import com.google.android.gms.ads.AdView;
-
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-
-import com.google.android.material.appbar.AppBarLayout;
-import com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
-import com.walhalla.domain.repository.AdvertRepository;
-import com.walhalla.library.AdMobCase;
-import com.walhalla.library.BuildConfig;
-
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import android.R
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.os.Build
+import android.os.Handler
+import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.material.appbar.AppBarLayout
+import com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor
+import com.walhalla.domain.repository.AdvertRepository
+import com.walhalla.library.AdMobCase.attachToBottom
+import com.walhalla.library.AdMobCase.attachToTop
+import com.walhalla.library.AdMobCase.createBanner
+import com.walhalla.library.AdMobCase.interstitialBannerRequest
+import com.walhalla.library.BuildConfig
+import java.util.concurrent.ExecutionException
+import kotlin.concurrent.Volatile
 
 /**
  * Created by combo on 18.07.2017.
- * <p>
- * <p>
+ *
+ *
+ *
+ *
  * demo ads => "ca-app-pub-3940256099942544/6300978111"
  */
+class AdvertAdmobRepository
+@SuppressLint("UseSparseArrays") private constructor(private val config: AdvertConfig) :
+    AdvertRepository, LifecycleObserver {
+    private val lock = Any()
 
+    private val startTime = System.currentTimeMillis()
 
-public class AdvertAdmobRepository
-        implements AdvertRepository, LifecycleObserver {
-
-
-    private static final boolean DEBUG = BuildConfig.DEBUG;
-    private final Object lock = new Object();
-
-    private long startTime = System.currentTimeMillis();
-
-
-    private final AdvertConfig config;
 
     /**
      * Getter & Setter
      */
-    public HashMap<Integer, AdView> getHashMap() {
-        return mAdViewHashMap;
-    }
-
-    public void setHashMap(HashMap<Integer, AdView> hashMap) {
-        mAdViewHashMap = hashMap;
-    }
-
     /**
      * ads
      */
-    private HashMap<Integer, AdView> mAdViewHashMap;
+    var hashMap: HashMap<Int, AdView?> = HashMap()
+
     //private HashMap<Integer, RewardedVideoAd> mRewardedVideoAdHashMap;
-
-    private List<InterstitialAd> mInterstitialAdList;
-
-
-    private static final String TAG = "@@@@";
-
-    private volatile static int position = -1;
-
-    private static AdvertAdmobRepository INSTANCE;
-
-    public static AdvertAdmobRepository getInstance(AdvertConfig config) {
-        if (INSTANCE == null) {
-            INSTANCE = new AdvertAdmobRepository(config);
-        }
-        return INSTANCE;
-    }
+    private val mInterstitialAdList: List<InterstitialAd>? = null
 
 
-//    public ViewAdmobRepository(Context context) {
-//        this.mContext = context;
-//    }
-
-    @SuppressLint("UseSparseArrays")
-    private AdvertAdmobRepository(@NonNull AdvertConfig config) {
-        this.config = config;
-        this.mAdViewHashMap = new HashMap<>();
+    //    public ViewAdmobRepository(Context context) {
+    //        this.mContext = context;
+    //    }
+    init {
         if (DEBUG) {
-            Log.d(TAG, "AdMobCase: " + this.hashCode());
+            Log.d(TAG, "AdMobCase: " + this.hashCode())
         }
     }
 
 
-//    @Override
-//    public void initialize(Context context) {
-//        MobileAds.initialize(context, config.application_id());
-//        position = -1;
-//    }
-
-
-    public void initialize(@NonNull Activity context) {
+    //    @Override
+    //    public void initialize(Context context) {
+    //        MobileAds.initialize(context, config.application_id());
+    //        position = -1;
+    //    }
+    fun initialize(context: Activity) {
 //        MobileAds.initialize(context, new OnInitializationCompleteListener() {
 //            @Override
 //            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
 //                //config.application_id()
 //            }
 //        });
-        position = -1;
+        position = -1
     }
 
 
     //Getter
-    @Override
-    public AdView getNewAdsBanner(ViewGroup viewGroup) {
+    override fun getNewAdsBanner(viewGroup: ViewGroup): AdView {
 //        Log.i(TAG, "run: " + Thread.currentThread().getName()
 //                + "" + "@" + viewGroup.getClass().getSimpleName());
 //
@@ -148,120 +102,106 @@ public class AdvertAdmobRepository
 
 //        Button message = new Button(viewGroup.getContext());
 //        message.setText("000000000000000000000000000000000");
-        AdView adView;
-        int key = viewGroup.getId();
 
-        synchronized (lock) {
-            position++;
-            Log.i(TAG, "[+]: position: " + position);
-            if (mAdViewHashMap.isEmpty() || mAdViewHashMap.get(key) == null) {
+        var adView: AdView?
+        val key = viewGroup.id
 
+        synchronized(lock) {
+            position++
+            Log.i(TAG, "[+]: position: " + position)
+            if (hashMap.isEmpty() || hashMap[key] == null) {
                 //Create new banner
-                if (position > config.banner_ad_unit_id.size()) {
-                    position = 0;
-                }
-                int mapKey = config.banner_ad_unit_id.keyAt(position);
-                String banner_ad_unit_id = config.banner_ad_unit_id.get(mapKey);
-                adView = AdMobCase.createBanner(viewGroup.getContext(), banner_ad_unit_id);
-                mAdViewHashMap.put(key, adView);
 
+                if (position > config.banner_ad_unit_id.size()) {
+                    position = 0
+                }
+                val mapKey = config.banner_ad_unit_id.keyAt(position)
+                val banner_ad_unit_id = config.banner_ad_unit_id[mapKey]
+                adView = createBanner(viewGroup.context, banner_ad_unit_id)
+                hashMap.put(key, adView)
             } else {
-                adView = mAdViewHashMap.get(key);
+                adView = hashMap[key]
             }
         }
-        return adView;
+        return adView!!
     }
 
 
     //Fail
-    private void attach(ViewGroup viewGroup, int gravity) {
-        Handler mainHandler = new Handler(viewGroup.getContext().getMainLooper());
-        ThreadExecutor threadExecutor = new ThreadExecutor();
+    private fun attach(viewGroup: ViewGroup, gravity: Int) {
+        val mainHandler = Handler(viewGroup.context.mainLooper)
+        val threadExecutor = ThreadExecutor()
 
-        Future<?> future = threadExecutor.execute(() -> {
-
+        val future = threadExecutor.execute {
             try {
+                val count = viewGroup.childCount
 
-                int count = viewGroup.getChildCount();
-
-                AdView mAdView = getNewAdsBanner(viewGroup);
+                val mAdView = getNewAdsBanner(viewGroup)
 
 
-                if (viewGroup instanceof RelativeLayout) {
-
-                    RelativeLayout relativeLayout = (RelativeLayout) viewGroup;
+                if (viewGroup is RelativeLayout) {
+                    val relativeLayout = viewGroup
 
                     //Resize block
-                    ViewGroup.LayoutParams params = relativeLayout.getLayoutParams();
-                    params.height = params.height + 50;
+                    val params = relativeLayout.layoutParams
+                    params.height = params.height + 50
 
 
-                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                            WRAP_CONTENT, WRAP_CONTENT
-                    );
-                    layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                    var layoutParams = RelativeLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                    layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL)
                     if (count > 0) {
-
-
                         //RelativeLayout.LayoutParams child_lp = new RelativeLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
 
 
-                        switch (gravity) {
-
-                            case Gravity.TOP:
-                                View child = relativeLayout.getChildAt(0);
-                                RelativeLayout.LayoutParams child_lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+                        when (gravity) {
+                            Gravity.TOP -> {
+                                val child = relativeLayout.getChildAt(0)
+                                val child_lp =
+                                    child.layoutParams as RelativeLayout.LayoutParams
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                                    child_lp.removeRule(RelativeLayout.ALIGN_PARENT_TOP);//Remove top
+                                    child_lp.removeRule(RelativeLayout.ALIGN_PARENT_TOP) //Remove top
                                 } else {
-                                    child_lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);//Remove top
+                                    child_lp.addRule(
+                                        RelativeLayout.ALIGN_PARENT_TOP,
+                                        0
+                                    ) //Remove top
                                 }
-                                layoutParams = AdMobCase.attachToTop(child.getId());
-                                mAdView.setLayoutParams(layoutParams);
-                                break;
+                                layoutParams = attachToTop(child.id)
+                                mAdView.layoutParams = layoutParams
+                            }
 
-                            case Gravity.BOTTOM:
+                            Gravity.BOTTOM -> {
                                 //default:
-                                child = relativeLayout.getChildAt(count - 1);
+                                val child = relativeLayout.getChildAt(count - 1)
                                 //child_lp.addRule(RelativeLayout.ABOVE, mAdView.getId());
-                                child_lp = (RelativeLayout.LayoutParams) child.getLayoutParams();
+                                val child_lp = child.getLayoutParams() as RelativeLayout.LayoutParams
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                                    child_lp.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);//Remove bottom
+                                    child_lp.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM) //Remove bottom
                                 } else {
-                                    child_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 0);//Remove bottom
+                                    child_lp.addRule(
+                                        RelativeLayout.ALIGN_PARENT_BOTTOM,
+                                        0
+                                    ) //Remove bottom
                                 }
-                                layoutParams = AdMobCase.attachToBottom(child.getId());
-                                mAdView.setLayoutParams(layoutParams);
-                                //viewGroup.addView(button, count/*lp*/);//ok
-
-                                break;
+                                layoutParams = attachToBottom(child.getId())
+                                mAdView.layoutParams = layoutParams
+                            }
                         }
-
-
                     } else {
-                        switch (gravity) {
-
-                            case Gravity.TOP:
-                                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-                                break;
-
-                            case Gravity.BOTTOM:
-                                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-                                break;
+                        when (gravity) {
+                            Gravity.TOP -> layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                            Gravity.BOTTOM -> layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
                         }
                     }
 
-                    mAdView.setLayoutParams(layoutParams);
-                    relativeLayout.addView(mAdView, count);
-
-                } else if (viewGroup instanceof LinearLayout) {
-
-                    LinearLayout linearLayout = (LinearLayout) viewGroup;
-                    linearLayout.addView(mAdView);
-
-                } else if (viewGroup instanceof CoordinatorLayout) {
-
-
+                    mAdView.layoutParams = layoutParams
+                    relativeLayout.addView(mAdView, count)
+                } else if (viewGroup is LinearLayout) {
+                    viewGroup.addView(mAdView)
+                } else if (viewGroup is CoordinatorLayout) {
                     //Attach in linerlayout
 //            LinearLayout linearLayout = new LinearLayout(viewGroup.getContext());
 //            linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -278,36 +218,43 @@ public class AdvertAdmobRepository
                     //MobileAds.initialize(context, context.getString(R.string.application_id));
 
 
-                    CoordinatorLayout.LayoutParams layoutParams =
-                            new CoordinatorLayout.LayoutParams(WRAP_CONTENT,
-                                    WRAP_CONTENT);
-//                    (CoordinatorLayout.LayoutParams) viewGroup.getLayoutParams();
+                    val layoutParams =
+                        CoordinatorLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                        )
 
+                    //                    (CoordinatorLayout.LayoutParams) viewGroup.getLayoutParams();
                     if (gravity == Gravity.TOP) {
-                        layoutParams.anchorGravity = Gravity.BOTTOM;
-//                            layoutParams.setAnchorId(R.id.app_bar);
-                        layoutParams.setBehavior(
-                                new AppBarLayout.ScrollingViewBehavior(viewGroup.getContext(), null));
+                        layoutParams.anchorGravity = Gravity.BOTTOM
+                        //                            layoutParams.setAnchorId(R.id.app_bar);
+                        layoutParams.behavior =
+                            AppBarLayout.ScrollingViewBehavior(viewGroup.getContext(), null)
                     } else {
                         //Bottom
-                        layoutParams.gravity = gravity | Gravity.CENTER_HORIZONTAL;
+                        layoutParams.gravity = gravity or Gravity.CENTER_HORIZONTAL
                     }
 
-//            layout.setLayoutParams(layoutParams);
+
+                    //            layout.setLayoutParams(layoutParams);
+                    viewGroup.addView(
+                        mAdView,
+                        layoutParams
+                    ) //  <==========  ERROR IN THIS LINE DURING 2ND RUN
 
 
-                    viewGroup.addView(mAdView, layoutParams); //  <==========  ERROR IN THIS LINE DURING 2ND RUN
+                    Log.i(
+                        TAG,
+                        "@@@: " + mAdView.adUnitId + mAdView.hashCode()
+                    )
 
 
-                    Log.i(TAG, "@@@: " + mAdView.getAdUnitId() + mAdView.hashCode());
-
-
-//            layout.addView(mAdView);
+                    //            layout.addView(mAdView);
                     //viewGroup.addView(banner, params);
-                } else if (viewGroup instanceof AdView) {
-                    getHashMap().put(viewGroup.getId(), (AdView) viewGroup);
-                } else if (viewGroup instanceof DrawerLayout) {
-                    attach(((ViewGroup) viewGroup.getChildAt(0)), gravity);
+                } else if (viewGroup is AdView) {
+                    hashMap[viewGroup.getId()] = viewGroup
+                } else if (viewGroup is DrawerLayout) {
+                    attach((viewGroup.getChildAt(0) as ViewGroup), gravity)
                 } else {
                     //frame_layout
                     //lp
@@ -322,56 +269,45 @@ public class AdvertAdmobRepository
 //
 //                        });
 
-                    mainHandler.post(() -> {
-                        if (mAdView.getParent() != null) {
-                            ((ViewGroup) mAdView.getParent()).removeView(mAdView); // <- fix
+
+                    mainHandler.post {
+                        if (mAdView.parent != null) {
+                            (mAdView.parent as ViewGroup).removeView(mAdView) // <- fix
                         }
-                        viewGroup.addView(mAdView);
-                    });
+                        viewGroup.addView(mAdView)
+                    }
                 }
 
 
-//                    threadExecutor.postOnUiThread(() -> AdMobCase.interstitialBannerRequest(mAdView));
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        AdMobCase.interstitialBannerRequest(mAdView);
-                    }
-                });
-
-            } catch (Exception e) {
-                Log.i(TAG, "run-exception: " + e.getMessage());
-
+                //                    threadExecutor.postOnUiThread(() -> AdMobCase.interstitialBannerRequest(mAdView));
+                mainHandler.post { interstitialBannerRequest(mAdView) }
+            } catch (e: Exception) {
+                Log.i(
+                    TAG,
+                    "run-exception: " + e.message
+                )
             }
-
-
-        });
-        try {
-            future.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
         }
-
-
+        try {
+            future.get()
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        } catch (e: ExecutionException) {
+            e.printStackTrace()
+        }
     }
 
 
     //Other attach
-    public void attach(Activity activity, int gravity) {
-        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) activity
-                .findViewById(android.R.id.content)).getChildAt(0);//#Empty if not set content
-        attach(viewGroup, gravity);
+    @JvmOverloads
+    fun attach(activity: Activity, gravity: Int = Gravity.BOTTOM) {
+        val viewGroup = (activity
+            .findViewById<View>(R.id.content) as ViewGroup).getChildAt(0) as ViewGroup //#Empty if not set content
+        attach(viewGroup, gravity)
     }
 
-    public void attach(Activity activity) {
-        attach(activity, Gravity.BOTTOM);
-
-    }
-
-    public void admobBannerCall(ViewGroup viewGroup) {
-        attach(viewGroup, Gravity.BOTTOM);
+    fun admobBannerCall(viewGroup: ViewGroup) {
+        attach(viewGroup, Gravity.BOTTOM)
     }
 
 
@@ -380,41 +316,56 @@ public class AdvertAdmobRepository
     //
     //=======================================================================================
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    private void oncreate() {
-
+    private fun oncreate() {
     }
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    private void pause() {
-
-        for (AdView adView : getHashMap().values()) {
+    private fun pause() {
+        for (adView in hashMap.values) {
             if (adView != null) {
-                Log.d(TAG, "pause: " + adView.getAdUnitId() + " " + adView.hashCode());
-                adView.pause();
+                Log.d(TAG, "pause: " + adView.adUnitId + " " + adView.hashCode())
+                adView.pause()
             }
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    private void resume() {
-        for (AdView adView : getHashMap().values()) {
+    private fun resume() {
+        for (adView in hashMap.values) {
             if (adView != null) {
                 if (DEBUG) {
-                    Log.d(TAG, "resume: " + adView.getAdUnitId() + " " + adView.hashCode());
+                    Log.d(TAG, "resume: " + adView.adUnitId + " " + adView.hashCode())
                 }
-                adView.resume();
+                adView.resume()
             }
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    private void destroy() {
-        Log.d(TAG, "destroy: ");
-//        for (AdView adView : getHashMap().values()) {
+    private fun destroy() {
+        Log.d(TAG, "destroy: ")
+        //        for (AdView adView : getHashMap().values()) {
 //            if (adView != null) {
 //                adView.destroy();
 //            }
 //        }
+    }
+
+    companion object {
+        private val DEBUG = BuildConfig.DEBUG
+        private const val TAG = "@@@@"
+
+        @Volatile
+        private var position = -1
+
+        private var INSTANCE: AdvertAdmobRepository? = null
+
+        fun getInstance(config: AdvertConfig): AdvertAdmobRepository {
+            if (INSTANCE == null) {
+                INSTANCE = AdvertAdmobRepository(config)
+            }
+            return INSTANCE!!
+        }
     }
 }

@@ -6,10 +6,10 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.walhalla.wads.DLog
+import com.walhalla.ui.DLog
 
-class AdListener //Constructor #1
-    (private val mObject: Any) : AdListener() {
+
+class AdListener(private val mObject: Any) : AdListener() {
     override fun onAdClosed() {
         super.onAdClosed()
         if (DEBUG) {
