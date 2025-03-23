@@ -1,73 +1,71 @@
-package com.walhalla.ui.utils;
+package com.walhalla.ui.utils
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import com.walhalla.ui.DLog.handleException
+import com.walhalla.ui.plugins.Launcher.openMarketApp
 
-import com.walhalla.ui.DLog;
-import com.walhalla.ui.plugins.Launcher;
-
-public class PackageUtils {
-    public static void launchOrOpenPlayStore(Context context, String packageName) {
+object PackageUtils {
+    fun launchOrOpenPlayStore(context: Context, packageName: String) {
         if (isAppInstalledActivities(context, packageName)) {
-            Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+            val intent = context.packageManager.getLaunchIntentForPackage(packageName)
             if (intent != null) {
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
             }
         } else {
-            Launcher.openMarketApp(context, packageName);
+            openMarketApp(context, packageName)
         }
     }
 
-    public static boolean isAppInstalledActivities(Context context, String packageName) {
-        PackageManager pm = context.getPackageManager();
+    fun isAppInstalledActivities(context: Context, packageName: String): Boolean {
+        val pm = context.packageManager
         try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
         }
     }
 
-    public static boolean isAppInstalled(Context context, String packageName) {
-        PackageManager pm = context.getPackageManager();
+    fun isAppInstalled(context: Context, packageName: String): Boolean {
+        val pm = context.packageManager
         try {
-            pm.getPackageInfo(packageName, 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            pm.getPackageInfo(packageName, 0)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
         }
     }
 
-    public static String getAppVersion(Context context, String packageName) {
+    fun getAppVersion(context: Context, packageName: String): String? {
         try {
-            PackageManager pm = context.getPackageManager();
-            PackageInfo packageInfo = pm.getPackageInfo(packageName, 0);
-            return packageInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            DLog.handleException(e);
-            return null;
+            val pm = context.packageManager
+            val packageInfo = pm.getPackageInfo(packageName, 0)
+            return packageInfo.versionName
+        } catch (e: PackageManager.NameNotFoundException) {
+            handleException(e)
+            return null
         }
     }
 
 
     //isPackageInstalledForLaunch
-    public static boolean isPackageInstalled(Context context, String packageName) {
-        PackageManager manager = context.getPackageManager();
+    fun isPackageInstalled(context: Context, packageName: String): Boolean {
+        val manager = context.packageManager
         try {
-            manager.getPackageInfo(packageName,
-                    //PackageManager.GET_ACTIVITIES
-                    PackageManager.GET_SIGNATURES
-            );
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            manager.getPackageInfo(
+                packageName,  //PackageManager.GET_ACTIVITIES
+                PackageManager.GET_SIGNATURES
+            )
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
         }
     }
 
-    public static boolean isPackageInstalledForLaunch(Context context, String ruokandroid) {
-        return isPackageInstalled(context, ruokandroid);
+    fun isPackageInstalledForLaunch(context: Context, ruokandroid: String): Boolean {
+        return isPackageInstalled(context, ruokandroid)
     }
 }

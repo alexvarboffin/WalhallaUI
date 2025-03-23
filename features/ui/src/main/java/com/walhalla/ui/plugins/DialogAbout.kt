@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import com.walhalla.ui.DLog
 import com.walhalla.ui.R
 import com.walhalla.ui.plugins.Module_U.isFromGooglePlay
+import com.walhalla.shared.R as sharedR
 
 import java.util.Calendar
 
@@ -29,7 +30,7 @@ object DialogAbout {
         val calendar = Calendar.getInstance()
         val year = calendar[Calendar.YEAR]
         //&#169; - html
-        val title = "\u00a9 " + year + " " + context.getString(R.string.play_google_pub)
+        val title = "\u00a9 " + year + " " + context.getString(sharedR.string.play_google_pub)
 
         val mView = LayoutInflater.from(context).inflate(R.layout.about, null)
         val dialog = AlertDialog.Builder(context)
@@ -37,9 +38,8 @@ object DialogAbout {
             .setCancelable(true)
             .setIcon(null)
 
-            .setNegativeButton(
-                R.string.action_discover_more_app
-            ) { dialog1: DialogInterface?, which: Int -> Module_U.moreApp(context) }
+            .setNegativeButton(sharedR.string.action_discover_more_app) {
+                dialog1: DialogInterface?, which: Int -> Module_U.moreApp(context) }
             .setPositiveButton(android.R.string.ok, null)
 
             .setView(mView)

@@ -1,292 +1,285 @@
-package com.androidsx.rateme;
+package com.androidsx.rateme
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
+import android.app.Activity
+import android.app.Dialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.LightingColorFilter
+import android.graphics.PorterDuff
+import android.graphics.drawable.LayerDrawable
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.RatingBar.OnRatingBarChangeListener
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
+import com.androidsx.rateme.FeedbackDialog.Companion.newInstance
+import com.walhalla.ui.DLog.d
+import com.walhalla.ui.DLog.handleException
+import com.walhalla.ui.R
+import com.walhalla.ui.UConst
+import com.walhalla.ui.UConst.MARKET_CONSTANT
+import com.walhalla.ui.observer.DefaultOnRatingListener
+import com.walhalla.ui.observer.RateAppModule
+import com.walhalla.ui.plugins.MimeType
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
-
-import com.walhalla.ui.UConst;
-import com.walhalla.ui.plugins.MimeType;
-import com.walhalla.ui.DLog;
-import com.walhalla.ui.R;
-import com.walhalla.ui.observer.DefaultOnRatingListener;
-import com.walhalla.ui.observer.RateAppModule;
-
-import static com.walhalla.ui.UConst.MARKET_CONSTANT;
-
-
-public class RateMeDialog extends DialogFragment {
-
-    private final static String RESOURCE_NAME = "titleDivider";
-    private final static String DEFAULT_TYPE_RESOURCE = "id";
-    private final static String DEFAULT_PACKAGE = "android";
-    private static final double RATING_LIMIT = 5.0;
-
+class RateMeDialog : DialogFragment {
     // Views
-    private View mView;
-    private View tView;
-    private ImageButton close;
-    private RatingBar ratingBar;
-    private LayerDrawable stars;
-    private Button rateMe;
-    private Button noThanks;
-    private Button share;
+    private lateinit var mView: View
+    private lateinit var tView: View
+    private lateinit var close: ImageButton
+    private lateinit var ratingBar: RatingBar
+    private lateinit var stars: LayerDrawable
+    private lateinit var rateMe: Button
+    private lateinit var noThanks: Button
+    private lateinit var share: Button
 
     // Configuration. It all comes from the builder. On, on resume, from the saved bundle
-    private String appPackageName;
-    private String appName;
-    private int headerBackgroundColor;
-    private int headerTextColor;
-    private int bodyBackgroundColor;
-    private int bodyTextColor;
-    private boolean feedbackByEmailEnabled;
-    private String feedbackEmail;
-    private boolean showShareButton;
-    private int appIconResId;
-    private int lineDividerColor;
-    private int rateButtonBackgroundColor;
-    private int rateButtonTextColor;
-    private int rateButtonPressedBackgroundColor;
-    private int defaultStarsSelected;
-    private int iconCloseColor;
-    private int iconShareColor;
-    private boolean showOKButtonByDefault;
-    private OnRatingListener onRatingListener;
+    private var appPackageName: String? = null
+    private var appName: String? = null
+    private var headerBackgroundColor = 0
+    private var headerTextColor = 0
+    private var bodyBackgroundColor = 0
+    private var bodyTextColor = 0
+    private var feedbackByEmailEnabled = false
+    private var feedbackEmail: String? = null
+    private var showShareButton = false
+    private var appIconResId = 0
+    private var lineDividerColor = 0
+    private var rateButtonBackgroundColor = 0
+    private var rateButtonTextColor = 0
+    private var rateButtonPressedBackgroundColor = 0
+    private var defaultStarsSelected = 0
+    private var iconCloseColor = 0
+    private var iconShareColor = 0
+    private var showOKButtonByDefault = false
+    private var onRatingListener: OnRatingListener? = null
 
-    private boolean new_rate_module = true;
-    private Activity activity;
+    private val new_rate_module = true
+    private var activity: Activity? = null
 
 
-    public RateMeDialog() {
-        // Empty constructor, required for exo_controls_pause/resume
+    constructor()
+
+    constructor(
+        appPackageName: String?,
+        appName: String?,
+        headerBackgroundColor: Int,
+        headerTextColor: Int,
+        bodyBackgroundColor: Int,
+        bodyTextColor: Int,
+        feedbackByEmailEnabled: Boolean,
+        feedbackEmail: String?,
+        showShareButton: Boolean,
+        appIconResId: Int,
+        lineDividerColor: Int,
+        rateButtonBackgroundColor: Int,
+        rateButtonTextColor: Int,
+        rateButtonPressedBackgroundColor: Int,
+        defaultStarsSelected: Int,
+        iconCloseColor: Int,
+        iconShareColor: Int,
+        showOKButtonByDefault: Boolean,
+        onRatingListener: OnRatingListener?
+    ) {
+        this.appPackageName = appPackageName
+        this.appName = appName
+        this.headerBackgroundColor = headerBackgroundColor
+        this.headerTextColor = headerTextColor
+        this.bodyBackgroundColor = bodyBackgroundColor
+        this.bodyTextColor = bodyTextColor
+        this.feedbackByEmailEnabled = feedbackByEmailEnabled
+        this.feedbackEmail = feedbackEmail
+        this.showShareButton = showShareButton
+        this.appIconResId = appIconResId
+        this.lineDividerColor = lineDividerColor
+        this.rateButtonBackgroundColor = rateButtonBackgroundColor
+        this.rateButtonTextColor = rateButtonTextColor
+        this.rateButtonPressedBackgroundColor = rateButtonPressedBackgroundColor
+        this.defaultStarsSelected = defaultStarsSelected
+        this.iconCloseColor = iconCloseColor
+        this.iconShareColor = iconShareColor
+        this.showOKButtonByDefault = showOKButtonByDefault
+        this.onRatingListener = onRatingListener
     }
 
-    public RateMeDialog(String appPackageName,
-                        String appName,
-                        int headerBackgroundColor,
-                        int headerTextColor,
-                        int bodyBackgroundColor,
-                        int bodyTextColor,
-                        boolean feedbackByEmailEnabled,
-                        String feedbackEmail,
-                        boolean showShareButton,
-                        int appIconResId,
-                        int lineDividerColor,
-                        int rateButtonBackgroundColor,
-                        int rateButtonTextColor,
-                        int rateButtonPressedBackgroundColor,
-                        int defaultStarsSelected,
-                        int iconCloseColor,
-                        int iconShareColor,
-                        boolean showOKButtonByDefault,
-                        OnRatingListener onRatingListener) {
-        this.appPackageName = appPackageName;
-        this.appName = appName;
-        this.headerBackgroundColor = headerBackgroundColor;
-        this.headerTextColor = headerTextColor;
-        this.bodyBackgroundColor = bodyBackgroundColor;
-        this.bodyTextColor = bodyTextColor;
-        this.feedbackByEmailEnabled = feedbackByEmailEnabled;
-        this.feedbackEmail = feedbackEmail;
-        this.showShareButton = showShareButton;
-        this.appIconResId = appIconResId;
-        this.lineDividerColor = lineDividerColor;
-        this.rateButtonBackgroundColor = rateButtonBackgroundColor;
-        this.rateButtonTextColor = rateButtonTextColor;
-        this.rateButtonPressedBackgroundColor = rateButtonPressedBackgroundColor;
-        this.defaultStarsSelected = defaultStarsSelected;
-        this.iconCloseColor = iconCloseColor;
-        this.iconShareColor = iconShareColor;
-        this.showOKButtonByDefault = showOKButtonByDefault;
-        this.onRatingListener = onRatingListener;
-    }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        initializeUiFields()
+        d("All components were initialized successfully")
 
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        initializeUiFields();
-        DLog.d("All components were initialized successfully");
+        val builder = AlertDialog.Builder(requireActivity())
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        setIconsTitleColor(iconCloseColor, iconShareColor)
 
-        setIconsTitleColor(iconCloseColor, iconShareColor);
-
-        stars.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
-        ratingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
-            //DLog.d("@@@" + rating + " " + fromUser);
-            if (rating >= RATING_LIMIT) {
-                rateMe.setVisibility(View.VISIBLE);
-                noThanks.setVisibility(View.GONE);
-            } else if (rating > 0.0) {
-                noThanks.setVisibility(View.VISIBLE);
-                rateMe.setVisibility(View.GONE);
-            } else {
-                noThanks.setVisibility(View.GONE);
-                rateMe.setVisibility(View.GONE);
+        stars!!.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP)
+        ratingBar!!.onRatingBarChangeListener =
+            OnRatingBarChangeListener { ratingBar: RatingBar?, rating: Float, fromUser: Boolean ->
+                //DLog.d("@@@" + rating + " " + fromUser);
+                if (rating >= RATING_LIMIT) {
+                    rateMe!!.visibility = View.VISIBLE
+                    noThanks!!.visibility = View.GONE
+                } else if (rating > 0.0) {
+                    noThanks!!.visibility = View.VISIBLE
+                    rateMe!!.visibility = View.GONE
+                } else {
+                    noThanks!!.visibility = View.GONE
+                    rateMe!!.visibility = View.GONE
+                }
+                defaultStarsSelected = rating.toInt()
             }
-            defaultStarsSelected = (int) rating;
-        });
-        ratingBar.setStepSize(1.0f);
-        ratingBar.setRating((float) defaultStarsSelected);
-        configureButtons();
+        ratingBar!!.stepSize = 1.0f
+        ratingBar!!.rating = defaultStarsSelected.toFloat()
+        configureButtons()
 
         try {
-            close.setOnClickListener(v -> {
-                RateAppModule.appRated(getActivity(), false); //not rated
-                dismiss();
-                RateMeDialogTimer.clearSharedPreferences(getActivity());
-                DLog.d("Clear the shared preferences");
-                RateMeDialogTimer.setOptOut(getActivity(), true);
-                onRatingListener.onRating(OnRatingListener.RatingAction.DISMISSED_WITH_CROSS, ratingBar.getRating());
-            });
-        } catch (Exception e) {
-            DLog.handleException(e);
-            dismiss();
+            close!!.setOnClickListener { v: View? ->
+                RateAppModule.appRated(getActivity(), false) //not rated
+                dismiss()
+                RateMeDialogTimer.clearSharedPreferences(getActivity())
+                d("Clear the shared preferences")
+                RateMeDialogTimer.setOptOut(getActivity(), true)
+                onRatingListener!!.onRating(
+                    OnRatingListener.RatingAction.DISMISSED_WITH_CROSS,
+                    ratingBar!!.rating
+                )
+            }
+        } catch (e: Exception) {
+            handleException(e)
+            dismiss()
         }
 
         try {
-            share.setVisibility(showShareButton ? View.VISIBLE : View.GONE);
-            share.setOnClickListener(v -> {
-                startActivity(shareApp(appPackageName));
-                DLog.d("Share the application");
-                onRatingListener.onRating(OnRatingListener.RatingAction.SHARED_APP, ratingBar.getRating());
-
-            });
-        } catch (Exception e) {
-            DLog.handleException(e);
-            dismiss();
+            share!!.visibility = if (showShareButton) View.VISIBLE else View.GONE
+            share!!.setOnClickListener { v: View? ->
+                startActivity(shareApp(appPackageName))
+                d("Share the application")
+                onRatingListener!!.onRating(
+                    OnRatingListener.RatingAction.SHARED_APP,
+                    ratingBar!!.rating
+                )
+            }
+        } catch (e: Exception) {
+            handleException(e)
+            dismiss()
         }
 
-        return builder.setView(mView).setCustomTitle(tView).setCancelable(false).create();
+        return builder.setView(mView).setCustomTitle(tView).setCancelable(false).create()
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         if (savedInstanceState != null) {
-            this.appPackageName = savedInstanceState.getString("appPackageName");
-            this.appName = savedInstanceState.getString("appName");
-            this.headerBackgroundColor = savedInstanceState.getInt("headerBackgroundColor");
-            this.headerTextColor = savedInstanceState.getInt("headerTextColor");
-            this.bodyBackgroundColor = savedInstanceState.getInt("bodyBackgroundColor");
-            this.bodyTextColor = savedInstanceState.getInt("bodyTextColor");
-            this.feedbackByEmailEnabled = savedInstanceState.getBoolean("feedbackByEmailEnabled");
-            this.feedbackEmail = savedInstanceState.getString("feedbackEmail");
-            this.showShareButton = savedInstanceState.getBoolean("showShareButton");
-            this.appIconResId = savedInstanceState.getInt("appIconResId");
-            this.lineDividerColor = savedInstanceState.getInt("lineDividerColor");
-            this.rateButtonBackgroundColor = savedInstanceState.getInt("rateButtonBackgroundColor");
-            this.rateButtonTextColor = savedInstanceState.getInt("rateButtonTextColor");
-            this.rateButtonPressedBackgroundColor = savedInstanceState.getInt("rateButtonPressedBackgroundColor");
-            this.defaultStarsSelected = savedInstanceState.getInt("defaultStarsSelected");
-            this.iconCloseColor = savedInstanceState.getInt("iconCloseColor");
-            this.iconShareColor = savedInstanceState.getInt("iconShareColor");
-            this.showOKButtonByDefault = savedInstanceState.getBoolean("showOKButtonByDefault");
-            this.onRatingListener = savedInstanceState.getParcelable("onRatingListener");
+            this.appPackageName = savedInstanceState.getString("appPackageName")
+            this.appName = savedInstanceState.getString("appName")
+            this.headerBackgroundColor = savedInstanceState.getInt("headerBackgroundColor")
+            this.headerTextColor = savedInstanceState.getInt("headerTextColor")
+            this.bodyBackgroundColor = savedInstanceState.getInt("bodyBackgroundColor")
+            this.bodyTextColor = savedInstanceState.getInt("bodyTextColor")
+            this.feedbackByEmailEnabled = savedInstanceState.getBoolean("feedbackByEmailEnabled")
+            this.feedbackEmail = savedInstanceState.getString("feedbackEmail")
+            this.showShareButton = savedInstanceState.getBoolean("showShareButton")
+            this.appIconResId = savedInstanceState.getInt("appIconResId")
+            this.lineDividerColor = savedInstanceState.getInt("lineDividerColor")
+            this.rateButtonBackgroundColor = savedInstanceState.getInt("rateButtonBackgroundColor")
+            this.rateButtonTextColor = savedInstanceState.getInt("rateButtonTextColor")
+            this.rateButtonPressedBackgroundColor =
+                savedInstanceState.getInt("rateButtonPressedBackgroundColor")
+            this.defaultStarsSelected = savedInstanceState.getInt("defaultStarsSelected")
+            this.iconCloseColor = savedInstanceState.getInt("iconCloseColor")
+            this.iconShareColor = savedInstanceState.getInt("iconShareColor")
+            this.showOKButtonByDefault = savedInstanceState.getBoolean("showOKButtonByDefault")
+            this.onRatingListener = savedInstanceState.getParcelable("onRatingListener")
         }
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
 
-        outState.putString("appPackageName", appPackageName);
-        outState.putString("appName", appName);
-        outState.putInt("headerBackgroundColor", headerBackgroundColor);
-        outState.putInt("headerTextColor", headerTextColor);
-        outState.putInt("bodyBackgroundColor", bodyBackgroundColor);
-        outState.putInt("bodyTextColor", bodyTextColor);
-        outState.putBoolean("feedbackByEmailEnabled", feedbackByEmailEnabled);
-        outState.putString("feedbackEmail", feedbackEmail);
-        outState.putBoolean("showShareButton", showShareButton);
-        outState.putInt("appIconResId", appIconResId);
-        outState.putInt("lineDividerColor", lineDividerColor);
-        outState.putInt("rateButtonBackgroundColor", rateButtonBackgroundColor);
-        outState.putInt("rateButtonTextColor", rateButtonTextColor);
-        outState.putInt("rateButtonPressedBackgroundColor", rateButtonPressedBackgroundColor);
-        outState.putInt("defaultStarsSelected", defaultStarsSelected);
-        outState.putInt("iconCloseColor", iconCloseColor);
-        outState.putInt("iconShareColor", iconShareColor);
-        outState.putBoolean("showOKButtonByDefault", showOKButtonByDefault);
-        outState.putParcelable("onRatingListener", onRatingListener);
+        outState.putString("appPackageName", appPackageName)
+        outState.putString("appName", appName)
+        outState.putInt("headerBackgroundColor", headerBackgroundColor)
+        outState.putInt("headerTextColor", headerTextColor)
+        outState.putInt("bodyBackgroundColor", bodyBackgroundColor)
+        outState.putInt("bodyTextColor", bodyTextColor)
+        outState.putBoolean("feedbackByEmailEnabled", feedbackByEmailEnabled)
+        outState.putString("feedbackEmail", feedbackEmail)
+        outState.putBoolean("showShareButton", showShareButton)
+        outState.putInt("appIconResId", appIconResId)
+        outState.putInt("lineDividerColor", lineDividerColor)
+        outState.putInt("rateButtonBackgroundColor", rateButtonBackgroundColor)
+        outState.putInt("rateButtonTextColor", rateButtonTextColor)
+        outState.putInt("rateButtonPressedBackgroundColor", rateButtonPressedBackgroundColor)
+        outState.putInt("defaultStarsSelected", defaultStarsSelected)
+        outState.putInt("iconCloseColor", iconCloseColor)
+        outState.putInt("iconShareColor", iconShareColor)
+        outState.putBoolean("showOKButtonByDefault", showOKButtonByDefault)
+        outState.putParcelable("onRatingListener", onRatingListener)
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        final int titleDividerId = getResources().getIdentifier(RESOURCE_NAME, DEFAULT_TYPE_RESOURCE, DEFAULT_PACKAGE);
-        final View titleDivider = getDialog().findViewById(titleDividerId);
-        if (titleDivider != null) {
-            titleDivider.setBackgroundColor(lineDividerColor);
-        }
+    override fun onStart() {
+        super.onStart()
+        val titleDividerId =
+            resources.getIdentifier(RESOURCE_NAME, DEFAULT_TYPE_RESOURCE, DEFAULT_PACKAGE)
+        val titleDivider = dialog!!.findViewById<View>(titleDividerId)
+        titleDivider?.setBackgroundColor(lineDividerColor)
     }
 
-    private void initializeUiFields() {
+    private fun initializeUiFields() {
         // Main Dialog
-        mView = View.inflate(getActivity(), R.layout.rateme__dialog_message, null);
-        tView = View.inflate(getActivity(), R.layout.rateme__dialog_title, null);
-        close = tView.findViewById(R.id.buttonClose);
-        share = tView.findViewById(R.id.buttonShare);
-        TextView txt0 = mView.findViewById(R.id.rating_dialog_message);
-        if (getContext() != null) {
-            Resources res = getContext().getResources();
-            String message = String.format(
-                    res.getString(R.string.rateme__dialog_first_message), res.getString(R.string.app_name));
-            txt0.setText(message);
+        mView = View.inflate(getActivity(), R.layout.rateme__dialog_message, null)
+        tView = View.inflate(getActivity(), R.layout.rateme__dialog_title, null)
+        close = tView.findViewById(R.id.buttonClose)
+        share = tView.findViewById(R.id.buttonShare)
+        val txt0 = mView.findViewById<TextView>(R.id.rating_dialog_message)
+        if (context != null) {
+            val res = requireContext().resources
+            val message = String.format(
+                res.getString(com.walhalla.shared.R.string.rateme__dialog_first_message),
+                res.getString(R.string.app_name)
+            )
+            txt0.text = message
         }
 
-        rateMe = mView.findViewById(R.id.buttonRateMe);
-        noThanks = mView.findViewById(R.id.buttonThanks);
+        rateMe = mView.findViewById(R.id.buttonRateMe)
+        noThanks = mView.findViewById(R.id.buttonThanks)
 
-        ratingBar = mView.findViewById(R.id.ratingBar);
-        stars = (LayerDrawable) ratingBar.getProgressDrawable();
-        mView.setBackgroundColor(bodyBackgroundColor);
-        tView.setBackgroundColor(headerBackgroundColor);
-        ((TextView) tView.findViewById(R.id.dialog_title)).setTextColor(headerTextColor);
-        final View iconImage = mView.findViewById(R.id.app_icon_dialog_rating);
+        ratingBar = mView.findViewById(R.id.ratingBar)
+        stars = ratingBar.getProgressDrawable() as LayerDrawable
+        mView.setBackgroundColor(bodyBackgroundColor)
+        tView.setBackgroundColor(headerBackgroundColor)
+        (tView.findViewById<View>(R.id.dialog_title) as TextView).setTextColor(headerTextColor)
+        val iconImage = mView.findViewById<View>(R.id.app_icon_dialog_rating)
         if (appIconResId == 0) {
-            iconImage.setVisibility(View.GONE);
+            iconImage.visibility = View.GONE
         } else {
-            ((ImageView) iconImage).setImageResource(appIconResId);
-            iconImage.setVisibility(View.VISIBLE);
+            (iconImage as ImageView).setImageResource(appIconResId)
+            iconImage.setVisibility(View.VISIBLE)
         }
-        txt0.setTextColor(bodyTextColor);
+        txt0.setTextColor(bodyTextColor)
 
-        rateMe.setBackgroundColor(rateButtonBackgroundColor);
-        noThanks.setBackgroundColor(rateButtonBackgroundColor);
-        rateMe.setTextColor(rateButtonTextColor);
-        noThanks.setTextColor(rateButtonTextColor);
-
+        rateMe.setBackgroundColor(rateButtonBackgroundColor)
+        noThanks.setBackgroundColor(rateButtonBackgroundColor)
+        rateMe.setTextColor(rateButtonTextColor)
+        noThanks.setTextColor(rateButtonTextColor)
     }
 
-    @Override
-    public void onAttach(@NonNull Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
+    override fun onAttach(activity: Activity) {
+        super.onAttach(activity)
+        this.activity = activity
     }
 
-    private void configureButtons() {
-        rateMe.setOnClickListener(v -> {
-            RateAppModule.appRated(getActivity(), true); //rated
-//            if (new_rate_module) {
+    private fun configureButtons() {
+        rateMe!!.setOnClickListener { v: View? ->
+            RateAppModule.appRated(getActivity(), true) //rated
+            //            if (new_rate_module) {
 //                //ReviewManager manager = ReviewManagerFactory.create(this.getContext());
 //                ReviewManager manager = new FakeReviewManager(activity);
 //
@@ -313,210 +306,223 @@ public class RateMeDialog extends DialogFragment {
 //            } else {
 //                rateApp0();
 //            }
-            onRatingListener.onRating(OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY, ratingBar.getRating());
-            dismiss();
-        });
+            onRatingListener!!.onRating(
+                OnRatingListener.RatingAction.HIGH_RATING_WENT_TO_GOOGLE_PLAY,
+                ratingBar!!.rating
+            )
+            dismiss()
+        }
 
-        noThanks.setOnClickListener(v -> {
-            RateAppModule.appRated(getActivity(), true); //rated
-            dismiss();
+        noThanks!!.setOnClickListener { v: View? ->
+            RateAppModule.appRated(getActivity(), true) //rated
+            dismiss()
 
             if (feedbackByEmailEnabled) {
-                DialogFragment dialogMail = FeedbackDialog.newInstance(feedbackEmail,
-                        appName,
-                        headerBackgroundColor,
-                        bodyBackgroundColor,
-                        headerTextColor,
-                        bodyTextColor,
-                        appIconResId,
-                        lineDividerColor,
-                        rateButtonTextColor,
-                        rateButtonBackgroundColor,
-                        ratingBar.getRating(),
-                        onRatingListener);
+                val dialogMail: DialogFragment = newInstance(
+                    feedbackEmail,
+                    appName,
+                    headerBackgroundColor,
+                    bodyBackgroundColor,
+                    headerTextColor,
+                    bodyTextColor,
+                    appIconResId,
+                    lineDividerColor,
+                    rateButtonTextColor,
+                    rateButtonBackgroundColor,
+                    ratingBar.rating,
+                    onRatingListener
+                )
 
-                if (null != getFragmentManager()) {
-                    dialogMail.show(getFragmentManager(), "feedbackByEmailEnabled");
+                if (null != fragmentManager) {
+                    dialogMail.show(requireFragmentManager(), "feedbackByEmailEnabled")
                 }
-                DLog.d("No: open the feedback dialog");
+                d("No: open the feedback dialog")
             } else {
-                onRatingListener.onRating(OnRatingListener.RatingAction.LOW_RATING, ratingBar.getRating());
+                onRatingListener!!.onRating(
+                    OnRatingListener.RatingAction.LOW_RATING,
+                    ratingBar.rating
+                )
             }
-            RateMeDialogTimer.setOptOut(getActivity(), true);
-        });
+            RateMeDialogTimer.setOptOut(getActivity(), true)
+        }
     }
 
-    private Intent shareApp(String appPackageName) {
-        Intent shareApp = new Intent();
-        shareApp.setAction(Intent.ACTION_SEND);
+    private fun shareApp(appPackageName: String?): Intent {
+        val shareApp = Intent()
+        shareApp.setAction(Intent.ACTION_SEND)
         try {
-            shareApp.putExtra(Intent.EXTRA_TEXT, MARKET_CONSTANT + appPackageName);
-        } catch (android.content.ActivityNotFoundException anfe) {
-            shareApp.putExtra(Intent.EXTRA_TEXT, UConst.GOOGLE_PLAY_CONSTANT + appPackageName);
+            shareApp.putExtra(Intent.EXTRA_TEXT, MARKET_CONSTANT + appPackageName)
+        } catch (anfe: ActivityNotFoundException) {
+            shareApp.putExtra(Intent.EXTRA_TEXT, UConst.GOOGLE_PLAY_CONSTANT + appPackageName)
         }
-        shareApp.setType(MimeType.TEXT_PLAIN);
-        return shareApp;
+        shareApp.setType(MimeType.TEXT_PLAIN)
+        return shareApp
     }
 
-    private void setIconsTitleColor(int colorClose, int colorShare) {
-        ContextCompat.getDrawable(getContext(), android.R.drawable.ic_menu_close_clear_cancel)
-                .setColorFilter(new LightingColorFilter(colorClose, colorClose));
-        ContextCompat.getDrawable(getContext(), android.R.drawable.ic_menu_share)
-                .setColorFilter(new LightingColorFilter(colorShare, colorShare));
+    private fun setIconsTitleColor(colorClose: Int, colorShare: Int) {
+        ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_menu_close_clear_cancel)
+            ?.setColorFilter(LightingColorFilter(colorClose, colorClose))
+        ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_menu_share)
+            ?.setColorFilter(LightingColorFilter(colorShare, colorShare))
     }
 
-    public static class Builder {
-        private static final int LINE_DIVIDER_COLOR_UNSET = -1;
+    class Builder
+    /**
+     * @param appPackageName package name of the application. Available in `Context.getPackageName()`.
+     * @param appName        name of the application. Typically `getResources().getString(R.string.app_name)`.
+     */(private val appPackageName: String, private val appName: String) {
+        private var headerBackgroundColor = C_B
+        private var headerTextColor = C_W
+        private var bodyBackgroundColor = Color.DKGRAY
+        private var bodyTextColor = C_W
+        private var feedbackByEmailEnabled = false
+        private var feedbackEmail: String? = null
+        private var showShareButton = false
+        private var appIconResId = 0
+        private var lineDividerColor = LINE_DIVIDER_COLOR_UNSET
+        private var rateButtonBackgroundColor = C_B
+        private var rateButtonTextColor = C_W
+        private var rateButtonPressedBackgroundColor = Color.GRAY
+        private var defaultStarsSelected = 0
+        private var iconCloseColor = C_W
+        private var iconShareColor = C_W
+        private var showOKButtonByDefault = true
+        private var onRatingListener: OnRatingListener = DefaultOnRatingListener()
 
-        private static final int C_W = 0xFFFFFFFF; //Color white
-        private static final int C_B = 0xFF000000; //black
-
-        private final String appPackageName;
-        private final String appName;
-        private int headerBackgroundColor = C_B;
-        private int headerTextColor = C_W;
-        private int bodyBackgroundColor = Color.DKGRAY;
-        private int bodyTextColor = C_W;
-        private boolean feedbackByEmailEnabled = false;
-        private String feedbackEmail = null;
-        private boolean showShareButton = false;
-        private int appIconResId = 0;
-        private int lineDividerColor = LINE_DIVIDER_COLOR_UNSET;
-        private int rateButtonBackgroundColor = C_B;
-        private int rateButtonTextColor = C_W;
-        private int rateButtonPressedBackgroundColor = Color.GRAY;
-        private int defaultStarsSelected = 0;
-        private int iconCloseColor = C_W;
-        private int iconShareColor = C_W;
-        private boolean showOKButtonByDefault = true;
-        private OnRatingListener onRatingListener = new DefaultOnRatingListener();
-
-        /**
-         * @param appPackageName package name of the application. Available in {@code Context.getPackageName()}.
-         * @param appName        name of the application. Typically {@code getResources().getString(R.string.app_name)}.
-         */
-        public Builder(String appPackageName, String appName) {
-            this.appPackageName = appPackageName;
-            this.appName = appName;
+        fun setHeaderBackgroundColor(headerBackgroundColor: Int): Builder {
+            this.headerBackgroundColor = headerBackgroundColor
+            return this
         }
 
-        public Builder setHeaderBackgroundColor(int headerBackgroundColor) {
-            this.headerBackgroundColor = headerBackgroundColor;
-            return this;
+        fun setHeaderTextColor(headerTextColor: Int): Builder {
+            this.headerTextColor = headerTextColor
+            return this
         }
 
-        public Builder setHeaderTextColor(int headerTextColor) {
-            this.headerTextColor = headerTextColor;
-            return this;
+        fun setBodyBackgroundColor(bodyBackgroundColor: Int): Builder {
+            this.bodyBackgroundColor = bodyBackgroundColor
+            return this
         }
 
-        public Builder setBodyBackgroundColor(int bodyBackgroundColor) {
-            this.bodyBackgroundColor = bodyBackgroundColor;
-            return this;
-        }
-
-        public Builder setBodyTextColor(int bodyTextColor) {
-            this.bodyTextColor = bodyTextColor;
-            return this;
+        fun setBodyTextColor(bodyTextColor: Int): Builder {
+            this.bodyTextColor = bodyTextColor
+            return this
         }
 
         /**
          * Enables a second dialog that opens if the rating is low, from which the user can send
          * an e-mail to the provided e-mail address.
          */
-        public Builder enableFeedbackByEmail(String email) {
-            this.feedbackByEmailEnabled = true;
-            this.feedbackEmail = email;
-            return this;
+        fun enableFeedbackByEmail(email: String?): Builder {
+            this.feedbackByEmailEnabled = true
+            this.feedbackEmail = email
+            return this
         }
 
-        public Builder setShowShareButton(boolean showShareButton) {
-            this.showShareButton = showShareButton;
-            return this;
+        fun setShowShareButton(showShareButton: Boolean): Builder {
+            this.showShareButton = showShareButton
+            return this
         }
 
-        public Builder setLineDividerColor(int lineDividerColor) {
-            this.lineDividerColor = lineDividerColor;
-            return this;
+        fun setLineDividerColor(lineDividerColor: Int): Builder {
+            this.lineDividerColor = lineDividerColor
+            return this
         }
 
         /**
          * Sets an icon to be placed on the left-hand side of the dialog. No icon will show up
          * otherwise.
-         * <p>
+         *
+         *
          * Careful: before 3.0.0, there was a default icon.
          */
-        public Builder showAppIcon(int appIconResId) {
-            this.appIconResId = appIconResId;
-            return this;
+        fun showAppIcon(appIconResId: Int): Builder {
+            this.appIconResId = appIconResId
+            return this
         }
 
-        public Builder setRateButtonBackgroundColor(int rateButtonBackgroundColor) {
-            this.rateButtonBackgroundColor = rateButtonBackgroundColor;
-            return this;
+        fun setRateButtonBackgroundColor(rateButtonBackgroundColor: Int): Builder {
+            this.rateButtonBackgroundColor = rateButtonBackgroundColor
+            return this
         }
 
-        public Builder setRateButtonTextColor(int rateButtonTextColor) {
-            this.rateButtonTextColor = rateButtonTextColor;
-            return this;
+        fun setRateButtonTextColor(rateButtonTextColor: Int): Builder {
+            this.rateButtonTextColor = rateButtonTextColor
+            return this
         }
 
-        public Builder setRateButtonPressedBackgroundColor(int rateButtonPressedBackgroundColor) {
-            this.rateButtonPressedBackgroundColor = rateButtonPressedBackgroundColor;
-            return this;
+        fun setRateButtonPressedBackgroundColor(rateButtonPressedBackgroundColor: Int): Builder {
+            this.rateButtonPressedBackgroundColor = rateButtonPressedBackgroundColor
+            return this
         }
 
-        public Builder setDefaultNumberOfStars(int numStars) {
-            this.defaultStarsSelected = numStars;
-            return this;
+        fun setDefaultNumberOfStars(numStars: Int): Builder {
+            this.defaultStarsSelected = numStars
+            return this
         }
 
-        public Builder setIconCloseColorFilter(int iconColor) {
-            this.iconCloseColor = iconColor;
-            return this;
+        fun setIconCloseColorFilter(iconColor: Int): Builder {
+            this.iconCloseColor = iconColor
+            return this
         }
 
-        public Builder setIconShareColorFilter(int iconColor) {
-            this.iconShareColor = iconColor;
-            return this;
+        fun setIconShareColorFilter(iconColor: Int): Builder {
+            this.iconShareColor = iconColor
+            return this
         }
 
-        public Builder setShowOKButtonByDefault(boolean visible) {
-            this.showOKButtonByDefault = visible;
-            return this;
+        fun setShowOKButtonByDefault(visible: Boolean): Builder {
+            this.showOKButtonByDefault = visible
+            return this
         }
 
         /**
          * @see com.androidsx.rateme.OnRatingListener
          */
-        public Builder setOnRatingListener(OnRatingListener onRatingListener) {
-            this.onRatingListener = onRatingListener;
-            return this;
+        fun setOnRatingListener(onRatingListener: OnRatingListener): Builder {
+            this.onRatingListener = onRatingListener
+            return this
         }
 
-        public RateMeDialog build() {
+        fun build(): RateMeDialog {
             if (lineDividerColor == LINE_DIVIDER_COLOR_UNSET) {
-                lineDividerColor = headerBackgroundColor;
+                lineDividerColor = headerBackgroundColor
             }
-            return new RateMeDialog(appPackageName,
-                    appName,
-                    headerBackgroundColor,
-                    headerTextColor,
-                    bodyBackgroundColor,
-                    bodyTextColor,
-                    feedbackByEmailEnabled,
-                    feedbackEmail,
-                    showShareButton,
-                    appIconResId,
-                    lineDividerColor,
-                    rateButtonBackgroundColor,
-                    rateButtonTextColor,
-                    rateButtonPressedBackgroundColor,
-                    defaultStarsSelected,
-                    iconCloseColor,
-                    iconShareColor,
-                    showOKButtonByDefault,
-                    onRatingListener);
+            return RateMeDialog(
+                appPackageName,
+                appName,
+                headerBackgroundColor,
+                headerTextColor,
+                bodyBackgroundColor,
+                bodyTextColor,
+                feedbackByEmailEnabled,
+                feedbackEmail,
+                showShareButton,
+                appIconResId,
+                lineDividerColor,
+                rateButtonBackgroundColor,
+                rateButtonTextColor,
+                rateButtonPressedBackgroundColor,
+                defaultStarsSelected,
+                iconCloseColor,
+                iconShareColor,
+                showOKButtonByDefault,
+                onRatingListener
+            )
         }
+
+        companion object {
+            private const val LINE_DIVIDER_COLOR_UNSET = -1
+
+            private const val C_W = -0x1 //Color white
+            private const val C_B = -0x1000000 //black
+        }
+    }
+
+    companion object {
+        private const val RESOURCE_NAME = "titleDivider"
+        private const val DEFAULT_TYPE_RESOURCE = "id"
+        private const val DEFAULT_PACKAGE = "android"
+        private const val RATING_LIMIT = 5.0
     }
 }

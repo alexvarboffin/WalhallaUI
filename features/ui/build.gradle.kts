@@ -97,7 +97,7 @@ dependencies {
     //NOT USED=> implementation("com.google.firebase:firebase-ads:$rootProject.gmsAds")
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21"
     //implementation 'androidx.multidex:multidex:2.0.1'
-    implementation(project(":shared"))
+    api(project(":shared"))
 
     //@@@ implementation@@@@@@@@@@@@@@@core:1.10.3'//Google Play In-App Review API
     implementation(libs.app.update)

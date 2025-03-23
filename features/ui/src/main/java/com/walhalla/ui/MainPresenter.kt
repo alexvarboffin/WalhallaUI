@@ -45,7 +45,7 @@ class MainPresenter(main: AppCompatActivity?) {
             }
 
             this.doubleBackToExitPressedOnce = true
-            Toast.makeText(var0, var0.getString(R.string.press_again_to_exit), Toast.LENGTH_SHORT).show()
+            Toast.makeText(var0, var0.getString(com.walhalla.shared.R.string.press_again_to_exit), Toast.LENGTH_SHORT).show()
             Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 1600)
         }
         /*
