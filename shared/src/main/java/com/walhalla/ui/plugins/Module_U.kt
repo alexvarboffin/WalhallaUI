@@ -293,9 +293,8 @@ object Module_U {
         try {
             val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             if (cm != null) {
-                //            NetworkInfo info0 = cm.getActiveNetworkInfo();
+//            NetworkInfo info0 = cm.getActiveNetworkInfo();
 //            boolean c1 = info0 != null && info0.isAvailable() && info0.isConnected();
-
                 val info = cm.allNetworkInfo
                 for (networkInfo in info) {
                     val c0 =
