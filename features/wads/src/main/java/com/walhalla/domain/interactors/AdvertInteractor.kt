@@ -2,9 +2,10 @@ package com.walhalla.domain.interactors
 
 import android.view.View
 import android.view.ViewGroup
-import com.walhalla.boilerplate.domain.interactors.base.Interactor
+//import com.walhalla.boilerplate.domain.interactors.base.Interactor
 
-interface AdvertInteractor : Interactor {
+interface AdvertInteractor //: Interactor
+{
     //Отстyk в главный тред
     interface Callback<T> {
         // TODO: Add interactor callback methods here
