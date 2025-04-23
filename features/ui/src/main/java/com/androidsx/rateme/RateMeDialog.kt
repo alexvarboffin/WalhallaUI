@@ -139,15 +139,15 @@ class RateMeDialog : DialogFragment {
         configureButtons()
 
         try {
-            close!!.setOnClickListener { v: View? ->
+            close.setOnClickListener { v: View? ->
                 RateAppModule.appRated(getActivity(), false) //not rated
                 dismiss()
-                RateMeDialogTimer.clearSharedPreferences(getActivity())
+                RateMeDialogTimer.clearSharedPreferences(requireActivity())
                 d("Clear the shared preferences")
-                RateMeDialogTimer.setOptOut(getActivity(), true)
+                RateMeDialogTimer.setOptOut(requireActivity(), true)
                 onRatingListener!!.onRating(
                     OnRatingListener.RatingAction.DISMISSED_WITH_CROSS,
-                    ratingBar!!.rating
+                    ratingBar.rating
                 )
             }
         } catch (e: Exception) {
@@ -343,7 +343,7 @@ class RateMeDialog : DialogFragment {
                     ratingBar.rating
                 )
             }
-            RateMeDialogTimer.setOptOut(getActivity(), true)
+            RateMeDialogTimer.setOptOut(requireActivity(), true)
         }
     }
 

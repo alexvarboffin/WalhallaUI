@@ -1,108 +1,98 @@
-package com.androidsx.rateme;
+package com.androidsx.rateme
 
-import java.util.Date;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.util.Log;
+import android.content.Context
+import android.os.Bundle
+import android.util.Log
+import java.util.Date
+import androidx.core.content.edit
 
 /**
  * Timer to schedule the rate-me after a number of application launches.
  */
-public class RateMeDialogTimer {
-    private static final String TAG = RateMeDialogTimer.class.getSimpleName();
-    
-    private static final String PREF_NAME = "RateThisApp";
-    private static final String KEY_INSTALL_DATE = "rta_install_date";
-    private static final String KEY_LAUNCH_TIMES = "rta_launch_times";
-    private static final String KEY_OPT_OUT = "rta_opt_out";
+object RateMeDialogTimer {
+    private val TAG: String = RateMeDialogTimer::class.java.simpleName
 
-    private static Date mInstallDate = new Date();
-    private static int mLaunchTimes = 0;
-    private static boolean mOptOut = false;
+    private const val PREF_NAME = "RateThisApp"
+    private const val KEY_INSTALL_DATE = "rta_install_date"
+    private const val KEY_LAUNCH_TIMES = "rta_launch_times"
+    private const val KEY_OPT_OUT = "rta_opt_out"
 
-    /**
-     * Note to pre-1.2 users: installDate and launchTimes are now parameters in
-     * {@link #shouldShowRateDialog}.
-     */
-    public RateMeDialogTimer() {
-        // Intentionally empty. See the javadoc comment
-    }
+    private var mInstallDate = Date()
+    private var mLaunchTimes = 0
+    private var mOptOut = false
 
-    public static void onStart(Context context, Bundle savedInstanceState) {
+    fun onStart(context: Context, savedInstanceState: Bundle?) {
         // Only use FIRST launch of the activity
         if (savedInstanceState != null) {
-            return;
+            return
         }
-        saveInPreferences(context);
+        saveInPreferences(context)
     }
 
-    public static void onStart(Context context) {
-        saveInPreferences(context);
+    fun onStart(context: Context) {
+        saveInPreferences(context)
     }
 
-    private static void saveInPreferences(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        Editor editor = pref.edit();
-        // If it is the first launch, save the date in shared preference.
-        if (pref.getLong(KEY_INSTALL_DATE, 0) == 0L) {
-            Date now = new Date();
-            editor.putLong(KEY_INSTALL_DATE, now.getTime());
-            Log.d(TAG, "First install: " + now.toString());
+    private fun saveInPreferences(context: Context) {
+        val pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        pref.edit {
+            // If it is the first launch, save the date in shared preference.
+            if (pref.getLong(KEY_INSTALL_DATE, 0) == 0L) {
+                val now = Date()
+                putLong(KEY_INSTALL_DATE, now.time)
+                Log.d(TAG, "First install: $now")
+            }
+            // Increment launch times
+            var launchTimes = pref.getInt(KEY_LAUNCH_TIMES, 0)
+            launchTimes++
+            putInt(KEY_LAUNCH_TIMES, launchTimes)
+            Log.d(TAG, "Launch times; $launchTimes")
         }
-        // Increment launch times
-        int launchTimes = pref.getInt(KEY_LAUNCH_TIMES, 0);
-        launchTimes++;
-        editor.putInt(KEY_LAUNCH_TIMES, launchTimes);
-        Log.d(TAG, "Launch times; " + launchTimes);
 
-        editor.apply();
-
-        mInstallDate = new Date(pref.getLong(KEY_INSTALL_DATE, 0));
-        mLaunchTimes = pref.getInt(KEY_LAUNCH_TIMES, 0);
-        mOptOut = pref.getBoolean(KEY_OPT_OUT, false);
+        mInstallDate = Date(pref.getLong(KEY_INSTALL_DATE, 0))
+        mLaunchTimes = pref.getInt(KEY_LAUNCH_TIMES, 0)
+        mOptOut = pref.getBoolean(KEY_OPT_OUT, false)
     }
 
-    public static boolean shouldShowRateDialog(final Context context, int installDays, int launchTimes) {
+    fun shouldShowRateDialog(context: Context, installDays: Int, launchTimes: Int): Boolean {
         if (mOptOut) {
-            return false;
+            return false
         } else {
             if (mLaunchTimes >= launchTimes) {
-                clearSharedPreferences(context);
-                return true;
+                clearSharedPreferences(context)
+                return true
             }
-            final long thresholdMillis = installDays * 24 * 60 * 60 * 1000L;
-            if (new Date().getTime() - mInstallDate.getTime() >= thresholdMillis) {
-                clearSharedPreferences(context);
-                return true;
+            val thresholdMillis = installDays * 24 * 60 * 60 * 1000L
+            if (Date().time - mInstallDate.time >= thresholdMillis) {
+                clearSharedPreferences(context)
+                return true
             } else {
-                return false;
+                return false
             }
         }
     }
 
-    public static void clearSharedPreferences(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        Editor editor = pref.edit();
-        editor.remove(KEY_INSTALL_DATE);
-        editor.remove(KEY_LAUNCH_TIMES);
-        editor.apply();
+    fun clearSharedPreferences(context: Context) {
+        val pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        pref.edit {
+            remove(KEY_INSTALL_DATE)
+            remove(KEY_LAUNCH_TIMES)
+        }
     }
 
     /**
      * Set opt out flag. If it is true, the rate dialog will never shown unless app data is cleared.
      */
-    public static void setOptOut(final Context context, boolean optOut) {
-        SharedPreferences pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        Editor editor = pref.edit();
-        editor.putBoolean(KEY_OPT_OUT, optOut);
-        editor.apply();
+    @JvmStatic
+    fun setOptOut(context: Context, optOut: Boolean) {
+        val pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        pref.edit {
+            putBoolean(KEY_OPT_OUT, optOut)
+        }
     }
 
-    public static boolean wasRated(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        return pref.getBoolean(KEY_OPT_OUT, false);
+    fun wasRated(context: Context): Boolean {
+        val pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        return pref.getBoolean(KEY_OPT_OUT, false)
     }
 }
