@@ -8,6 +8,7 @@ import android.net.Uri
 import android.widget.Toast
 
 object ActivityUtils {
+
     //http://sberpay://invoicing/v2?bankInvoiceId=dce389134f664d90811a1196282ddd47&operationType=Web2App"
     fun openBrowser(context: Context, data: String?) {
         try {

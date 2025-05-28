@@ -1,23 +1,23 @@
-package com.walhalla.webview.account;
+package com.walhalla.webview.account
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.content.Context;
+import android.accounts.Account
+import android.accounts.AccountManager
+import android.content.Context
 
-public class AccountUtils {
-    public static final String ACCOUNT_TYPE = "com.samugg.example";
-    public static final String AUTH_TOKEN_TYPE = "com.samugg.example.aaa";
+object AccountUtils {
+    const val ACCOUNT_TYPE: String = "com.samugg.example"
+    const val AUTH_TOKEN_TYPE: String = "com.samugg.example.aaa"
 
-    public static IServerAuthenticator mServerAuthenticator = new MyServerAuthenticator();
+    var mServerAuthenticator: IServerAuthenticator = MyServerAuthenticator()
 
-    public static Account getAccount(Context context, String accountName) {
-        AccountManager accountManager = AccountManager.get(context);
-        Account[] accounts = accountManager.getAccountsByType(ACCOUNT_TYPE);
-        for (Account account : accounts) {
-            if (account.name.equalsIgnoreCase(accountName)) {
-                return account;
+    fun getAccount(context: Context?, accountName: String?): Account? {
+        val accountManager = AccountManager.get(context)
+        val accounts = accountManager.getAccountsByType(ACCOUNT_TYPE)
+        for (account in accounts) {
+            if (account.name.equals(accountName, ignoreCase = true)) {
+                return account
             }
         }
-        return null;
+        return null
     }
 }
