@@ -27,6 +27,7 @@ import java.security.cert.CertificateException
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
 import java.util.Calendar
+import androidx.core.net.toUri
 
 object Module_U {
     const val PKG_NAME_VENDING: String = "com.android.vending"
@@ -139,11 +140,12 @@ object Module_U {
     /**
      * more_apps_link = "[...](https://play.google.com/store/apps/dev?id=5700313618786177705)"
      */
+    @JvmStatic
     fun moreApp(context: Context) {
         val pub = context.getString(R.string.play_google_pub)
         try {
             context.startActivity(
-                Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:$pub"))
+                Intent(Intent.ACTION_VIEW, "market://search?q=pub:$pub".toUri())
             )
         } catch (anfe: ActivityNotFoundException) {
             Launcher.openBrowser(
@@ -153,7 +155,7 @@ object Module_U {
         }
     }
 
-
+    @JvmStatic
     fun feedback(context: Context) {
         try {
             val packageName = context.packageName
@@ -187,7 +189,7 @@ object Module_U {
     private fun composeEmail(context: Context, addresses: Array<String>, subject: String) {
         try {
             val intent = Intent(Intent.ACTION_SENDTO)
-            intent.setData(Uri.parse("mailto:")) // only email apps should handle this
+            intent.setData("mailto:".toUri()) // only email apps should handle this
             intent.putExtra(Intent.EXTRA_EMAIL, addresses)
             intent.putExtra(Intent.EXTRA_SUBJECT, subject)
             intent.putExtra(Intent.EXTRA_TEXT, "")
@@ -253,6 +255,7 @@ object Module_U {
         }
     }
 
+    @JvmStatic
     @JvmOverloads
     fun shareThisApp(context: Context, message: String? = null) {
         var message = message

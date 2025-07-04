@@ -80,7 +80,7 @@ object DLog {
 
     //    context.getString(R.string.app_name) + " v"
     // + versionName + " (build " + versionCode + ")"
-    fun getAppVersion(context: Context): String {
+    @JvmStatic fun getAppVersion(context: Context): String {
         var tmp: String? = null
         try {
             //            versionCode = context.getPackageManager()

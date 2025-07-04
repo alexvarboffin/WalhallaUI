@@ -36,12 +36,12 @@ android.defaults.buildfeatures.aidl=true
 
 android {
     namespace = "com.walhalla.ui"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    buildToolsVersion = libs.versions.android.buildTools.get()
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
 
         vectorDrawables {
             useSupportLibrary = true

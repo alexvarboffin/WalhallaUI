@@ -25,7 +25,7 @@ import com.walhalla.shared.R as sharedR
 import java.util.Calendar
 
 object DialogAbout {
-
+    @JvmStatic
     fun aboutDialog(context: Context) {
         val calendar = Calendar.getInstance()
         val year = calendar[Calendar.YEAR]

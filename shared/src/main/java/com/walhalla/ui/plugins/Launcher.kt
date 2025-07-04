@@ -6,12 +6,13 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import com.walhalla.ui.UConst
+import androidx.core.net.toUri
 
 object Launcher {
     @JvmStatic
     fun openMarketApp(context: Context, packageName: String) {
         try {
-            val uri = Uri.parse(UConst.MARKET_CONSTANT + packageName)
+            val uri = (UConst.MARKET_CONSTANT + packageName).toUri()
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage(Module_U.PKG_NAME_VENDING)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -20,9 +21,8 @@ object Launcher {
             try {
                 context.startActivity(
                     Intent(
-                        Intent.ACTION_VIEW, Uri.parse(
-                            "http://play.google.com/store/apps/details?id=$packageName"
-                        )
+                        Intent.ACTION_VIEW,
+                        "http://play.google.com/store/apps/details?id=$packageName".toUri()
                     )
                 )
             } catch (a: ActivityNotFoundException) {
@@ -30,15 +30,15 @@ object Launcher {
             }
         }
     }
-
+    @JvmStatic
     fun rateUs(context: Context) {
         val packageName = context.packageName
         openMarketApp(context, packageName)
     }
-
-    fun openBrowser(context: Context, url: String?) {
+    @JvmStatic
+    fun openBrowser(context: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
