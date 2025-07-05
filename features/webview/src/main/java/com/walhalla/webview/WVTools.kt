@@ -30,9 +30,9 @@ object WVTools {
         var reader: BufferedReader? = null
         try {
             reader = BufferedReader(InputStreamReader(inputStream))
-            var line: String
-            while ((reader.readLine().also { line = it }) != null) {
-                blockedDomains.add(line.trim { it <= ' ' })
+            var line: String?
+            while (reader.readLine().also { line = it } != null) {
+                blockedDomains.add(line!!.trim()) // line не null, safe to use
             }
         } catch (ignored: IOException) {
         } finally {

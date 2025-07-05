@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.walhalla.webview.utility
 
 import android.annotation.SuppressLint
@@ -10,13 +12,14 @@ import android.os.Build
 import android.os.Environment
 import com.walhalla.webview.WebViewAppConfig
 import java.util.Locale
+import androidx.core.net.toUri
 
 object DownloadUtility {
     @SuppressLint("ObsoleteSdkInt")
-    fun downloadFile(context: Context, url: String?, fileName: String?) {
+    fun downloadFile(context: Context, url: String, fileName: String?) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
             try {
-                val request = DownloadManager.Request(Uri.parse(url))
+                val request = DownloadManager.Request(url.toUri())
 
                 // set download directory
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
@@ -53,7 +56,7 @@ object DownloadUtility {
         } else {
             try {
                 if (url != null) {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    val intent = Intent(Intent.ACTION_VIEW, url.toUri())
                     context.startActivity(intent)
                 }
             } catch (e: ActivityNotFoundException) {

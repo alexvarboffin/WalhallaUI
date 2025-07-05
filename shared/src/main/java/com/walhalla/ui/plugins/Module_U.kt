@@ -1,5 +1,6 @@
 package com.walhalla.ui.plugins
 
+import android.Manifest
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -18,6 +19,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresPermission
 
 import com.walhalla.shared.R
 import com.walhalla.ui.DLog
@@ -292,10 +294,11 @@ object Module_U {
     //                .setContentOnUpdateNotAvailable(R.string.update_check_later);
     //        updater.start();
     //    }
+    @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
     fun isNetworkAvailable(context: Context): Boolean {
         try {
-            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            if (cm != null) {
+            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE)
+            if (cm is ConnectivityManager) {
 //            NetworkInfo info0 = cm.getActiveNetworkInfo();
 //            boolean c1 = info0 != null && info0.isAvailable() && info0.isConnected();
                 val info = cm.allNetworkInfo
