@@ -21,6 +21,7 @@ import com.walhalla.webview.utility.ActivityUtils
 import com.walhalla.webview.utility.DownloadUtility
 import java.io.ByteArrayInputStream
 import java.util.Locale
+import androidx.core.net.toUri
 
 open class CustomWebViewClient(
     webView: WebView,
@@ -359,7 +360,7 @@ open class CustomWebViewClient(
         } else if (url.startsWith("whatsapp://send?phone=")) {
             val url2 =
                 "https://api.whatsapp.com/send?phone=" + url.replace("whatsapp://send?phone=", "")
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url2))
+            val intent = Intent(Intent.ACTION_VIEW, url2.toUri())
             intent.addFlags(
                 Intent.FLAG_ACTIVITY_FORWARD_RESULT
                         or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
@@ -372,13 +373,13 @@ open class CustomWebViewClient(
                 context.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
+                        "https://play.google.com/store/apps/details?id=com.whatsapp".toUri()
                     )
                 )
             }
             return true
         } else if (url.startsWith("https://api.whatsapp.com/send?phone=") || url.startsWith("https://api.whatsapp.com/send/?phone=")) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             intent.addFlags(
                 Intent.FLAG_ACTIVITY_FORWARD_RESULT
                         or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
@@ -391,13 +392,13 @@ open class CustomWebViewClient(
                 context.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
+                        "https://play.google.com/store/apps/details?id=com.whatsapp".toUri()
                     )
                 )
             }
             return true //bs
         } else if (url.startsWith("whatsapp://send?text=")) {
-            val uri = Uri.parse(url)
+            val uri = url.toUri()
             val msg = uri.getQueryParameter("text")
             val sendIntent = Intent()
             sendIntent.setAction(Intent.ACTION_SEND)
@@ -410,20 +411,20 @@ open class CustomWebViewClient(
                 context.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")
+                        "https://play.google.com/store/apps/details?id=com.whatsapp".toUri()
                     )
                 )
             }
             return true //bs
         } else if (url.startsWith("viber:")) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             try {
                 context.startActivity(intent)
             } catch (e: ActivityNotFoundException) {
                 context.startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=com.viber.voip")
+                        "https://play.google.com/store/apps/details?id=com.viber.voip".toUri()
                     )
                 )
             }
