@@ -3,6 +3,7 @@ package com.walhalla.wads.preference
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import androidx.core.content.edit
 
 class SharedPref private constructor(activity: Context) {
     private val settings: SharedPreferences =
@@ -16,11 +17,11 @@ class SharedPref private constructor(activity: Context) {
         )
 
     fun setBannerShown() {
-        settings.edit().putBoolean(BANNER_SHOWN_KEY, true).apply()
+        settings.edit { putBoolean(BANNER_SHOWN_KEY, true) }
     }
 
     fun resetBannerShown() {
-        settings.edit().putBoolean(BANNER_SHOWN_KEY, false).apply()
+        settings.edit { putBoolean(BANNER_SHOWN_KEY, false) }
     }
 
     var launchCount: Int
@@ -29,17 +30,19 @@ class SharedPref private constructor(activity: Context) {
             0
         )
         set(launchCount) {
-            settings.edit().putInt(
-                LAUNCH_COUNT_KEY,
-                launchCount
-            ).apply()
+            settings.edit {
+                putInt(
+                    LAUNCH_COUNT_KEY,
+                    launchCount
+                )
+            }
         }
 
     private fun incrementLaunchCount() {
         val launchCount = settings.getInt(LAUNCH_COUNT_KEY, 0) + 1
-        val editor = settings.edit()
-        editor.putInt(LAUNCH_COUNT_KEY, launchCount)
-        editor.apply()
+        settings.edit {
+            putInt(LAUNCH_COUNT_KEY, launchCount)
+        }
     }
 
     companion object {

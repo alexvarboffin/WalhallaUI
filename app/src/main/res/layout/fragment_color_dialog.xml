@@ -41,48 +41,48 @@
 <!--            android:textSize="@dimen/rateme__text_size" />-->
     </RelativeLayout>
 
-    <top.defaults.colorpicker.ColorPickerView
-        android:id="@+id/colorPicker"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:enableAlpha="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+<!--    <top.defaults.colorpicker.ColorPickerView-->
+<!--        android:id="@+id/colorPicker"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:enableAlpha="true"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/header" />-->
 
-    <View
-        android:id="@+id/pickedColor"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/colorPicker" />
+<!--    <View-->
+<!--        android:id="@+id/pickedColor"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/colorPicker" />-->
 
-    <top.defaults.view.TextButton
-        android:id="@+id/colorHex"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/pickedColor"
-        app:layout_constraintLeft_toRightOf="@+id/pickedColor"
-        app:layout_constraintTop_toTopOf="@+id/pickedColor"
-        app:underline="true" />
+<!--    <top.defaults.view.TextButton-->
+<!--        android:id="@+id/colorHex"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/pickedColor"-->
+<!--        app:layout_constraintLeft_toRightOf="@+id/pickedColor"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/pickedColor"-->
+<!--        app:underline="true" />-->
 
-    <top.defaults.view.TextButton
-        android:id="@+id/resetColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="reset"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        app:backgroundEffect="ripple"
-        app:layout_constraintBottom_toBottomOf="@+id/pickedColor"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/pickedColor"
-        app:layout_constraintTop_toTopOf="@+id/pickedColor" />
+<!--    <top.defaults.view.TextButton-->
+<!--        android:id="@+id/resetColor"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="reset"-->
+<!--        android:textColor="@color/colorAccent"-->
+<!--        android:textSize="16sp"-->
+<!--        app:backgroundEffect="ripple"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/pickedColor"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toLeftOf="@+id/pickedColor"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/pickedColor" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

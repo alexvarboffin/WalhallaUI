@@ -33,6 +33,7 @@ import com.kworkapp.audiogid.ui.VisualizerContainer
 import com.kworkapp.audiogid.ui.presentation.launcher.pojo.Item
 import com.kworkapp.audiogid.ui.presentation.launcher.pojo.Section
 import com.walhalla.ui.DLog
+import com.walhalla.ui.plugins.DialogAbout.aboutDialog
 import com.walhalla.ui.plugins.Launcher
 import com.walhalla.ui.plugins.Module_U
 import java.util.Locale
@@ -162,7 +163,7 @@ class MainActivity : AppCompatActivity(), SimpleQuest, QCallback,
             val itemId = menuItem.itemId
             val groupId = menuItem.groupId
             if (itemId == R.id.action_about) {
-                Module_U.aboutDialog(this)
+                aboutDialog(this)
                 return@setOnMenuItemClickListener true
             } else if (itemId == R.id.action_privacy_policy) {
                 Launcher.openBrowser(this, getString(R.string.url_privacy_policy))

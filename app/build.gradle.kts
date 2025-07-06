@@ -7,7 +7,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.google.services)
+    //alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.crashlytics)
     id("kotlin-parcelize")
 
@@ -115,8 +115,8 @@ dependencies {
     //implementation("com.chibde:audiovisualizer:2.2.0")
     implementation("io.github.gautamchibde:audiovisualizer:2.2.5")
     implementation(libs.androidx.preference.ktx)
-    implementation("com.github.duanhong169:colorpicker:1.1.6")
-    implementation("com.github.duanhong169:TextButton:1.0.5")
+//    implementation("com.github.duanhong169:colorpicker:1.1.6")
+//    implementation("com.github.duanhong169:TextButton:1.0.5")
     implementation(project(":features:ui"))
 }
 fun versionCodeDate(): Int {
