@@ -11,6 +11,9 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import com.walhalla.library.BuildConfig
+import com.walhalla.library.Const.TEST_REWARDED_VIDEO_ID
+
 import com.walhalla.utils.AManagerI.RewardManagerCallback
 
 class RewardManager private constructor() : AManagerI {
@@ -31,7 +34,7 @@ class RewardManager private constructor() : AManagerI {
         val admobId = adsIds?.admob_reward_ad_id ?: return
 
         val adRequest = AdRequest.Builder().build()
-        RewardedAd.load(context, admobId,
+        RewardedAd.load(context, if (BuildConfig.DEBUG) TEST_REWARDED_VIDEO_ID else admobId,
             adRequest, object : RewardedAdLoadCallback() {
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                     // Handle the error.
@@ -72,10 +75,7 @@ class RewardManager private constructor() : AManagerI {
                         //                        ((VideoPreviewActivity) activity).onResumeVideo();
                         //                    }
 
-                        Log.d(
-                            TAG,
-                            "@@@ Ad dismissed fullscreen content. " + isReward + " " + (callback != null)
-                        )
+                        Log.d(TAG, "@@@ Ad dismissed fullscreen content. " + isReward + " " + (callback != null))
                         if (isReward) {
                             isReward = false
                             callback?.successResult7(position)
@@ -111,9 +111,7 @@ class RewardManager private constructor() : AManagerI {
                         )
                     }
                 }
-            rewardedAd!!.show(
-                activity
-            ) { rewardItem: RewardItem? ->
+            rewardedAd!!.show(activity) { rewardItem: RewardItem? ->
                 isReward = true
             }
         } else {

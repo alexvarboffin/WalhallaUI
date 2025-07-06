@@ -1,27 +1,33 @@
-//package com.walhalla.domain.interactors.impl
-//
-//import android.view.View
-//import android.view.ViewGroup
-////import com.walhalla.boilerplate.domain.executor.Executor
-////import com.walhalla.boilerplate.domain.executor.MainThread
-////import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
-//import com.walhalla.domain.interactors.AdvertInteractor
-//import com.walhalla.domain.repository.AdvertRepository
-//import com.walhalla.library.AdMobCase.interstitialBannerRequest
-//
-///**
-// * AbstractInteractor
-// * запустит все в фоновом потоке...
-// */
-//class AdvertInteractorImpl(
-//    //threadExecutor: Executor, mainThread: MainThread,
-//
-//    threadExecutor: CoroutineScope = CoroutineScope(Dispatchers.IO),
-//    mainThread: CoroutineScope = MainScope()//CoroutineScope(Dispatchers.Main)
-//
-//
-//    private val mAdvertRepository: AdvertRepository
-//) : AbstractInteractor(threadExecutor, mainThread), AdvertInteractor {
+package com.walhalla.domain.interactors.impl
+
+import android.view.View
+import android.view.ViewGroup
+import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
+//import com.walhalla.boilerplate.domain.executor.Executor
+//import com.walhalla.boilerplate.domain.executor.MainThread
+//import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
+import com.walhalla.domain.interactors.AdvertInteractor
+import com.walhalla.domain.repository.AdvertRepository
+import com.walhalla.library.AdMobCase.interstitialBannerRequest
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+
+/**
+ * AbstractInteractor
+ * запустит все в фоновом потоке...
+ */
+class AdvertInteractorImpl(
+    //threadExecutor: Executor, mainThread: MainThread,
+
+    var threadExecutor: CoroutineScope = CoroutineScope(Dispatchers.IO),
+    var mainThread: CoroutineScope = MainScope()//CoroutineScope(Dispatchers.Main)
+
+    , var mAdvertRepository: AdvertRepository
+) :
+/*AbstractInteractor(threadExecutor, mainThread),*/ AdvertInteractor {
+
 //    //Отдаем результат
 //    fun notifyError() {
 //        mMainThread.post {}
@@ -30,28 +36,24 @@
 //    fun postMessage(msg: String) {
 //        mMainThread.post {}
 //    }
-//
-//    override fun selectView(viewGroup: ViewGroup, callback: AdvertInteractor.Callback<View>) {
-//        val runnable = Runnable {
-////            try {
-////                String name = Thread.currentThread().getName();
-////                Log.i(TAG, "Foo " + name);
-////                TimeUnit.SECONDS.sleep(1);
-////                Log.i(TAG, "Bar " + name);
-//            val id = viewGroup.id
-//            val adView = mAdvertRepository.getNewAdsBanner(viewGroup)
-//
-//            if (adView == null) {
-//                callback.onRetrievalFailed("View not found")
-//                return@Runnable
-//            }
-//            mMainThread.post {
-//                callback.onMessageRetrieved(id, adView)
-//                interstitialBannerRequest(adView)
-//            }
-//        }
-//        mThreadExecutor.submit(runnable)
-//    }
-//
-//    override fun run() {}
-//}
+
+    override fun selectView(viewGroup: ViewGroup, callback: AdvertInteractor.Callback<View>) {
+        threadExecutor.launch {
+            val adView = mAdvertRepository.getNewAdsBanner(viewGroup)
+
+            if (adView == null) {
+                mainThread.launch {
+                    callback.onRetrievalFailed("View not found")
+                }
+                return@launch
+            }
+
+            mainThread.launch {
+                callback.onMessageRetrieved(viewGroup.id, adView)
+                interstitialBannerRequest(adView)
+            }
+        }
+    }
+
+    //override fun run() {}
+}
