@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    ok-->
+    <string name="watch_ad">Watch Ad</string>
+    <string name="watch_reward_video_ad_to_unlock">Watch Reward Video Ad to Unlock</string>
+
+    <string name="ad_not_loaded_try_another_time">Ad not loaded, Try another time</string>
+</resources>
