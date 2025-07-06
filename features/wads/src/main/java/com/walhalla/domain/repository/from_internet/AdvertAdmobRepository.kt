@@ -287,7 +287,7 @@ class AdvertAdmobRepository
             }
         }
         try {
-            future.get()
+            future?.get()
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: ExecutionException) {

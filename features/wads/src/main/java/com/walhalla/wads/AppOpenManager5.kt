@@ -175,7 +175,7 @@ class AppOpenManager5(private val myApplication: Application, private val AD_UNI
         loadCallback?.let {
             AppOpenAd.load(
                 myApplication, AD_UNIT_ID, request,
-                AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, it
+                /*AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,*/ it
             )
         }
     }
