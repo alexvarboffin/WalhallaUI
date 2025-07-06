@@ -6,13 +6,14 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.core.net.toUri
 
 object ActivityUtils {
 
     //http://sberpay://invoicing/v2?bankInvoiceId=dce389134f664d90811a1196282ddd47&operationType=Web2App"
-    fun openBrowser(context: Context, data: String?) {
+    fun openBrowser(context: Context, data: String) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data))
+            val intent = Intent(Intent.ACTION_VIEW, data.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -21,11 +22,10 @@ object ActivityUtils {
     }
 
 
-    fun startEmailActivity(activity: Context, email: String?, subject: String?, text: String?) {
+    fun startEmailActivity(activity: Context, email: String, subject: String?, text: String?) {
         try {
             val builder = "mailto:$email"
-
-            val intent = Intent(Intent.ACTION_SENDTO, Uri.parse(builder))
+            val intent = Intent(Intent.ACTION_SENDTO, builder.toUri())
             intent.putExtra(Intent.EXTRA_SUBJECT, subject)
             intent.putExtra(Intent.EXTRA_TEXT, text)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -38,7 +38,7 @@ object ActivityUtils {
 
     fun startCallActivity(activity: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_DIAL, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_DIAL, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -49,7 +49,7 @@ object ActivityUtils {
 
     fun startSmsActivity(activity: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_SENDTO, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_SENDTO, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -60,7 +60,7 @@ object ActivityUtils {
 
     fun startMapSearchActivity(activity: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -70,7 +70,7 @@ object ActivityUtils {
 
     fun startMapYandex(context: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -80,7 +80,7 @@ object ActivityUtils {
 
     fun startyandexnavi(activity: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
@@ -103,7 +103,7 @@ object ActivityUtils {
 
     fun starttg(activity: Context, url: String) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {

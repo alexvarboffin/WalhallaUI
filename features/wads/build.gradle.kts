@@ -42,7 +42,7 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.core.ktx)
-    //implementation(project(":threader"))
+    implementation(project(":threader"))
     implementation(project(":shared"))
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

@@ -100,7 +100,7 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
 
-    implementation("com.google.firebase:firebase-crashlytics:19.4.1")
+    implementation(libs.google.firebase.crashlytics)
 //    implementation("com.github.MoeidHeidari:banner:1.04")
 
 

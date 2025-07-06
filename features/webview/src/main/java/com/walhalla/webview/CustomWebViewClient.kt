@@ -353,7 +353,7 @@ open class CustomWebViewClient(
         } else if (url.startsWith("mailto:")) {
             try {
                 val mailTo = MailTo.parse(url)
-                ActivityUtils.startEmailActivity(context, mailTo.to, mailTo.subject, mailTo.body)
+                ActivityUtils.startEmailActivity(context, mailTo.to?:"", mailTo.subject, mailTo.body)
             } catch (ignored: ParseException) {
             }
             return true

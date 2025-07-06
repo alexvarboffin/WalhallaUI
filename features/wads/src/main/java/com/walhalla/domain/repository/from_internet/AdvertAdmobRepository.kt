@@ -1,6 +1,5 @@
 package com.walhalla.domain.repository.from_internet
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
@@ -19,7 +18,6 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.material.appbar.AppBarLayout
-import com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor
 import com.walhalla.domain.repository.AdvertRepository
 import com.walhalla.library.AdMobCase.attachToBottom
 import com.walhalla.library.AdMobCase.attachToTop
@@ -130,7 +128,7 @@ class AdvertAdmobRepository
     //Fail
     private fun attach(viewGroup: ViewGroup, gravity: Int) {
         val mainHandler = Handler(viewGroup.context.mainLooper)
-        val threadExecutor = ThreadExecutor()
+        val threadExecutor = com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor()
 
         val future = threadExecutor.execute {
             try {
@@ -302,7 +300,7 @@ class AdvertAdmobRepository
     @JvmOverloads
     fun attach(activity: Activity, gravity: Int = Gravity.BOTTOM) {
         val viewGroup = (activity
-            .findViewById<View>(R.id.content) as ViewGroup).getChildAt(0) as ViewGroup //#Empty if not set content
+            .findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0) as ViewGroup //#Empty if not set content
         attach(viewGroup, gravity)
     }
 
@@ -345,7 +343,7 @@ class AdvertAdmobRepository
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun destroy() {
         Log.d(TAG, "destroy: ")
-        //        for (AdView adView : getHashMap().values()) {
+//        for (AdView adView : getHashMap().values()) {
 //            if (adView != null) {
 //                adView.destroy();
 //            }

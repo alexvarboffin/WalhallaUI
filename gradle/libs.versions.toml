@@ -1,6 +1,10 @@
 [versions]
 
-
+android = "3.0.1"
+android-compileSdk = "36"
+android-minSdk = "21"
+android-targetSdk = "36"
+android-buildTools = "36.0.0"
 
 accompanistSwiperefresh = "0.32.0"
 activity-compose = "1.9.3"
@@ -33,6 +37,7 @@ espressoCore = "3.6.1"
 firebase-bom = "33.7.0"
 firebase-crashlytics-gradle = "3.0.2"
 firebaseAds = "23.6.0"
+firebaseCrashlytics = "19.4.4"
 firebaseDatabase = "21.0.0"
 firebaseMessaging = "24.1.0"
 google-services = "4.4.2"
@@ -116,6 +121,7 @@ androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
