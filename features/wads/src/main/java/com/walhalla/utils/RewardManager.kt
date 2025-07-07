@@ -115,7 +115,7 @@ class RewardManager private constructor() : AManagerI {
                 isReward = true
             }
         } else {
-            callback?.errorShowAds()
+            callback?.errorShowAds(position)
         }
     }
 

@@ -7,7 +7,7 @@ interface AManagerI {
     interface RewardManagerCallback {
         fun successResult7(position: Int)
 
-        fun errorShowAds() //void onResumeVideo();
+        fun errorShowAds(position: Int) //void onResumeVideo();
     }
 
     fun loadRewardAd(context: Context)
