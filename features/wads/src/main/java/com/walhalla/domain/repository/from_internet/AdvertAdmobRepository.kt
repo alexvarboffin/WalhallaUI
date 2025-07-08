@@ -26,6 +26,7 @@ import com.walhalla.library.AdMobCase.interstitialBannerRequest
 import com.walhalla.library.BuildConfig
 import java.util.concurrent.ExecutionException
 import kotlin.concurrent.Volatile
+import androidx.core.util.size
 
 /**
  * Created by combo on 18.07.2017.
@@ -36,8 +37,8 @@ import kotlin.concurrent.Volatile
  * demo ads => "ca-app-pub-3940256099942544/6300978111"
  */
 class AdvertAdmobRepository
-@SuppressLint("UseSparseArrays") private constructor(private val config: AdvertConfig) :
-    AdvertRepository, LifecycleObserver {
+@SuppressLint("UseSparseArrays") private constructor(private val config: AdvertConfig) : AdvertRepository, LifecycleObserver {
+
     private val lock = Any()
 
     private val startTime = System.currentTimeMillis()
@@ -106,11 +107,11 @@ class AdvertAdmobRepository
 
         synchronized(lock) {
             position++
-            Log.i(TAG, "[+]: position: " + position)
+            Log.i(TAG, "[+]: position: $position")
             if (hashMap.isEmpty() || hashMap[key] == null) {
                 //Create new banner
 
-                if (position > config.banner_ad_unit_id.size()) {
+                if (position > config.banner_ad_unit_id.size) {
                     position = 0
                 }
                 val mapKey = config.banner_ad_unit_id.keyAt(position)
@@ -175,7 +176,8 @@ class AdvertAdmobRepository
                                 //default:
                                 val child = relativeLayout.getChildAt(count - 1)
                                 //child_lp.addRule(RelativeLayout.ABOVE, mAdView.getId());
-                                val child_lp = child.getLayoutParams() as RelativeLayout.LayoutParams
+                                val child_lp =
+                                    child.getLayoutParams() as RelativeLayout.LayoutParams
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                                     child_lp.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM) //Remove bottom
                                 } else {

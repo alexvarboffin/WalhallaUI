@@ -2,7 +2,6 @@ package com.walhalla.domain.interactors.impl
 
 import android.view.View
 import android.view.ViewGroup
-import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
 //import com.walhalla.boilerplate.domain.executor.Executor
 //import com.walhalla.boilerplate.domain.executor.MainThread
 //import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
