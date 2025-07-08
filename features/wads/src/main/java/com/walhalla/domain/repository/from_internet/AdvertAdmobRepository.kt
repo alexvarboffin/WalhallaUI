@@ -359,6 +359,7 @@ class AdvertAdmobRepository
 
         private var INSTANCE: AdvertAdmobRepository? = null
 
+        @JvmStatic
         fun getInstance(config: AdvertConfig): AdvertAdmobRepository {
             if (INSTANCE == null) {
                 INSTANCE = AdvertAdmobRepository(config)

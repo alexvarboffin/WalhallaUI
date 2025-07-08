@@ -57,6 +57,7 @@ class AdvertConfig {
 
 
     companion object {
+        @JvmStatic
         fun newBuilder(): Builder {
             return AdvertConfig().Builder()
         }
