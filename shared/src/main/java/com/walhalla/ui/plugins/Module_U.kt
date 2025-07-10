@@ -215,6 +215,7 @@ object Module_U {
      * 49199 - ok
      * 97309 - not work, remove intent.putExtra(comPinterestEXTRA_DESCRIPTION, extra);
      */
+    @JvmStatic
     fun shareText(context: Context, extra: String, chooserTitle: String?) {
         var chooserTitle = chooserTitle
         DLog.d("{share} " + extra.length)
@@ -294,6 +295,7 @@ object Module_U {
     //                .setContentOnUpdateNotAvailable(R.string.update_check_later);
     //        updater.start();
     //    }
+    @JvmStatic
     @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
     fun isNetworkAvailable(context: Context): Boolean {
         try {

@@ -39,7 +39,7 @@ object Launcher {
     fun openBrowser(context: Context, url: String) {
         try {
             val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(context, "Browser not found", Toast.LENGTH_SHORT).show()

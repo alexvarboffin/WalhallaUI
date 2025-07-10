@@ -2,6 +2,7 @@ package com.walhalla.domain.interactors.impl
 
 import android.view.View
 import android.view.ViewGroup
+import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
 //import com.walhalla.boilerplate.domain.executor.Executor
 //import com.walhalla.boilerplate.domain.executor.MainThread
 //import com.walhalla.boilerplate.domain.interactors.base.AbstractInteractor
@@ -55,4 +56,39 @@ class AdvertInteractorImpl(
     }
 
     //override fun run() {}
+}
+class AdvertInteractorImplOld(
+    var threadExecutor: com.walhalla.boilerplate.domain.executor.Executor, mainThread: com.walhalla.boilerplate.domain.executor.MainThread
+    , var mAdvertRepository: AdvertRepository
+) :
+AbstractInteractor(threadExecutor, mainThread), AdvertInteractor {
+
+//    //Отдаем результат
+//    fun notifyError() {
+//        mMainThread.post {}
+//    }
+//
+//    fun postMessage(msg: String) {
+//        mMainThread.post {}
+//    }
+
+    override fun selectView(viewGroup: ViewGroup, callback: AdvertInteractor.Callback<View>) {
+        mThreadExecutor?.execute {
+            val adView = mAdvertRepository.getNewAdsBanner(viewGroup)
+
+            if (adView == null) {
+                mMainThread?.post {
+                    callback.onRetrievalFailed("View not found")
+                }
+                return@execute
+            }
+
+            mMainThread?.post {
+                callback.onMessageRetrieved(viewGroup.id, adView)
+                interstitialBannerRequest(adView)
+            }
+        }
+    }
+
+    override fun run() {}
 }

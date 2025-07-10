@@ -17,7 +17,9 @@ import java.io.File
 object Share {
     private const val DEBUG = false
     const val comPinterestEXTRA_DESCRIPTION: String = "com.pinterest.EXTRA_DESCRIPTION"
-    private val email: String = if (DEBUG) "alexvarboffin.abba11@blogger.com" else ""
+
+    @JvmStatic
+    val email: String = if (DEBUG) "alexvarboffin.abba11@blogger.com" else ""
 
     const val KEY_FILE_PROVIDER: String = ".fileprovider"
 
@@ -143,12 +145,13 @@ object Share {
      * Gmail
      * Pinterest
      */
+    @JvmStatic
     fun makeImageShare(content: String?): Intent {
         val intent = Intent(Intent.ACTION_SEND)
         //@@@ intent.setType("*/*");
         //@@@ intent.setType(MIME_TYPE_JPEG);
         //@@@ intent.setType(MimeType.TEXT_PLAIN);
-        intent.setType("image/*")
+        intent.type = "image/*"
         intent.putExtra(Intent.EXTRA_TEXT, content)
 
         intent.putExtra("ru.ok.android.action.SEND_MESSAGE", content)
