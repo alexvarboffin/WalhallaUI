@@ -111,7 +111,7 @@ object Module_U {
         var sigs: Array<Signature?>? = arrayOfNulls(0)
         try {
             sigs = pm.getPackageInfo(pn, PackageManager.GET_SIGNATURES).signatures
-            if (sigs == null || sigs.size <= 0) {
+            if (sigs == null || sigs.isEmpty()) {
             } else {
                 for (signature in sigs) {
                     val x509Certificate =

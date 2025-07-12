@@ -65,6 +65,7 @@ object PackageUtils {
         }
     }
 
+    @JvmStatic
     fun isPackageInstalledForLaunch(context: Context, ruokandroid: String): Boolean {
         return isPackageInstalled(context, ruokandroid)
     }
