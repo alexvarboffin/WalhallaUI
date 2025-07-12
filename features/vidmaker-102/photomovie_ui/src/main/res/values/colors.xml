@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tab_white">#FFFFFF</color>
+    <color name="bg_color">#131220</color>
+
+    <color name="unselected_color">#7d7d7d</color>
+    <color name="bg_purpal">#7456FA</color>
+    <color name="bg_gray">#202021</color>
+    <color name="bg_black">#000000</color>
+    <color name="divider">#7B7456FA</color>
+    <color name="grayy">#1C1C1C</color>
+    <color name="gray">#808080</color>
+
+    <color name="colorAccent">#ff00cbd3</color>
+    <color name="colorBlack">#ff000000</color>
+    <color name="colorPrimary">#ff008577</color>
+    <color name="colorPrimaryDark">#ff00574b</color>
+    <color name="colorWhite">#ffffffff</color>
+
+    <color name="icChecked">#ff00cbd3</color>
+    <color name="ic_back_press">#ff323336</color>
+    <color name="ip_camera_pre">#ff353535</color>
+    <color name="ip_color_accent">#fffde65a</color>
+    <color name="ip_color_press">#ffe0e0e0</color>
+    <color name="ip_color_primary">#ff1c232d</color>
+    <color name="ip_color_primary_dark">#ff303135</color>
+
+    <color name="bottom">#1D1C2D</color>
+
+    <color name="topbar">#F24F00</color>
+    <color name="trtop">#F8A77F</color>
+
+    <color name="nbottom">#FC8B55</color>
+    <color name="muncheck">#5fFC8B55</color>
+    <color name="popup_heading">#F20F05</color>
+    <color name="popup_btn">#323232</color>
+    <color name="popup_bg">#98FFFFFF</color>
+    <color name="trans_black">#41000000</color>
+
+    <color name="test">#ff1c232d</color>
+    <color name="test11">#1C232D</color>
+    <color name="test22">#0E1317</color>
+    <color name="backgroundEditActivity">#ff0e1317</color>
+    <color name="backgroundEditActivitySecondary">#ff1c232d</color>
+    <color name="background_floating_material_dark">@color/material_grey_800</color>
+    <color name="background_floating_material_light">@android:color/white</color>
+    <color name="background_material_dark">@color/material_grey_850</color>
+    <color name="background_material_light">@color/material_grey_50</color>
+    <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
+    <color name="bright_foreground_disabled_material_light">#80000000</color>
+    <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light
+    </color>
+    <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark
+    </color>
+    <color name="bright_foreground_material_dark">@android:color/white</color>
+    <color name="bright_foreground_material_light">@android:color/black</color>
+
+    <color name="button_blue">#ff0193f7</color>
+</resources>

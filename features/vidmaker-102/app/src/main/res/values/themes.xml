@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MSVideoMaker" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bg_color</item>
+        <item name="colorPrimaryVariant">@color/bg_color</item>
+        <item name="colorOnPrimary">@color/bg_color</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/bg_color</item>
+        <item name="colorOnSecondary">@color/bg_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/bg_black</item>
+        <!-- Customize your theme here. -->
+
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:navigationBarColor">@color/bg_color</item>
+<!--        <item name="colorControlHighlight" tools:ignore="PrivateResource">@color/ripple_material_dark</item>-->
+
+        <item name="colorControlHighlight">#33FFFFFF</item><!--#33F24F00-->
+        <item name="fontFamily">@font/myfont</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.NoActionBar" parent="@style/Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+
+</resources>

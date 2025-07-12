@@ -1,0 +1,20 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://jitpack.io' }
+    }
+}
+rootProject.name = "VideoMakerPro"
+include ':app'
+include ':library'
+
+//default
+include ':photomovie_ui'
+project(':photomovie_ui').projectDir = new File("C:\\src\\Android\\vidmaker-102\\photomovie_ui")
+include ':photomovie'
+project(':photomovie').projectDir = new File("C:\\src\\Android\\vidmaker-102\\photomovie")
+
+include ':Photoeditor'

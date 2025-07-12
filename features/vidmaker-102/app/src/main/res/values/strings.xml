@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Video Maker Pro</string>
+
+
+    <string name="policy_url">https://sites.google.com/view/storymaker</string>
+    <string name="email_feedback">qqkilldabeat@gmail.com</string>
+
+
+    <string name="define_roundedimageview" />
+
+
+    <string name="if_you_go_back_you_will_lose_your_movie">This movie will be canceled</string>
+
+
+    <!--admob-->
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_inter_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_native_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="admob_reward_ad_id">ca-app-pub-3940256099942544/5224354917</string>
+
+    <!--maxad-->
+    <string name="max_banner">51d8a9e4e8b888cd</string>
+    <string name="max_interstitial">c27ccdddaa93ad05</string>
+    <string name="max_native">5a4bf196c927e3f4</string>
+    <string name="Max_reword">17e1922aea577670</string>
+</resources>

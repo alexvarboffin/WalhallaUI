@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application android:largeHeap="true">
+        <activity
+            android:name="com.video.maker.activity.VideoPreviewActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.video.maker.activity.ShareActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.video.maker.activity.VideoPlayerActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="nosensor" />
+
+    </application>
+
+</manifest>

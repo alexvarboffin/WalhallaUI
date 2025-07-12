@@ -191,7 +191,7 @@ object Module_U {
     private fun composeEmail(context: Context, addresses: Array<String>, subject: String) {
         try {
             val intent = Intent(Intent.ACTION_SENDTO)
-            intent.setData("mailto:".toUri()) // only email apps should handle this
+            intent.data = "mailto:".toUri() // only email apps should handle this
             intent.putExtra(Intent.EXTRA_EMAIL, addresses)
             intent.putExtra(Intent.EXTRA_SUBJECT, subject)
             intent.putExtra(Intent.EXTRA_TEXT, "")
@@ -224,7 +224,7 @@ object Module_U {
         }
         val intent = Intent(Intent.ACTION_SEND)
         intent.putExtra(Intent.EXTRA_TEXT, extra)
-        intent.setType(MimeType.TEXT_PLAIN)
+        intent.type = MimeType.TEXT_PLAIN
 
 
         //intent.putExtra(Intent.EXTRA_EMAIL, "alexvarboffin@gmail.com");//Work only with intent.setType("*/*");
@@ -270,7 +270,7 @@ object Module_U {
 
 
         val intent = Intent(Intent.ACTION_SEND)
-        intent.setType(MimeType.TEXT_PLAIN)
+        intent.type = MimeType.TEXT_PLAIN
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
         intent.putExtra(Intent.EXTRA_TEXT, message)
         //no need => intent.putExtra("ru.ok.android.action.SEND_MESSAGE", message);
@@ -321,7 +321,7 @@ object Module_U {
     fun actionWirelessSettings(activity: Activity) {
         try {
             val intent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             DLog.handleException(e)

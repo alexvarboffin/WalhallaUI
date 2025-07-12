@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="try_again">Попробуйте снова!</string>
+    <string name="str_done">Готово</string>
+    <string name="str_duration">Продолжительность</string>
+    <string name="str_filter">Фильтр</string>
+    <string name="str_gradient">Затухание</string>
+    <string name="str_leftright">СлеваНаправо</string>
+    <string name="str_music">Музыка</string>
+    <string name="str_new_video">Создать новое</string>
+    <string name="str_random">Случайный</string>
+    <string name="str_ratio">Соотношение</string>
+    <string name="str_saving_video">Пожалуйста, подождите…\nСохранение видео</string>
+    <string name="str_scale">Масштаб</string>
+    <string name="str_thaw">Оттаивание</string>
+    <string name="str_tranlation">Перевод</string>
+    <string name="str_transfer">Переход</string>
+    <string name="str_updown">ВверхВниз</string>
+    <string name="str_window">Окно</string>
+
+    <string name="app_name_string">Создатель Историй</string>
+    <string name="app_not_install">Не удалось найти это приложение, пожалуйста, скачайте и попробуйте снова</string>
+
+    <string name="select_photos">Выберите фотографии</string>
+    <string name="share_this">Поделиться с друзьями</string>
+    <string name="splash_2">Создайте свою историю</string>
+
+    <string name="thank_you_2">Хорошего дня</string>
+    <string name="title_photoeditor">Фоторедактор</string>
+
+    <string name="view">Установить</string>
+    <string name="more_than_3_photos">Требуется больше 3 фотографий</string>
+    <string name="maxtext">Слишком много текста</string>
+
+    <string name="pick_image_from_gallery">ВЫБЕРИТЕ ИЗОБРАЖЕНИЕ ИЗ ГАЛЕРЕИ</string>
+    <string name="text_images">Выбрано %1$d / 30</string>
+    <string name="text_button_done">Готово</string>
+    <string name="text_title_activity_album">Выберите фотографии</string>
+    <string name="text_title_dialog_sort_by_album">Сортировать альбом по</string>
+    <string name="text_title_dialog_sort_by_photo">Сортировать фото по</string>
+    <string name="action_sort">Сортировать</string>
+    <string name="alert_ok_button">ОК</string>
+    <string name="edit_your_photo">Редактировать фото</string>
+
+    <string name="discard">Отменить</string>
+    <string name="discard_movie">Отменить?</string>
+    <string name="doubletap">Двойное нажатие для изменения</string>
+    <string name="drag_drop">Совет: Нажмите и удерживайте изображение, чтобы поменять местами</string>
+
+    <string name="duration_title">Продолжительность для каждого фото</string>
+    <string name="com_facebook_loading">Загрузка…</string>
+    <string name="max_item">Слишком много стикеров</string>
+    <string name="ip_all_images">Все картинки</string>
+    <string name="ip_complete">Готово</string>
+    <string name="ip_folder_image_count">Всего %1$d</string>
+    <string name="ip_origin">Оригинальное изображение</string>
+    <string name="ip_origin_size">Оригинальное изображение (%1$s)</string>
+    <string name="ip_photo_crop">Обрезка фото</string>
+    <string name="ip_preview_image_count">%1$d/%2$d</string>
+    <string name="ip_select_complete">Готово (%1$d/%2$d)</string>
+    <string name="ip_select_limit">Выберите до %1$d картинок</string>
+    <string name="keep">Сохранить</string>
+
+    <string name="my_music">Моя Музыка</string>
+    <string name="btn_next">[Далее]</string>
+
+    <string name="photo_editor_2">Удивительное приложение для скачивания статусов WhatsApp</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+
+    <string name="rate_app">Оцените это приложение</string>
+    <string name="rating_dialog_experience">Мы - команда, которая усердно работает, чтобы предоставить вам лучшие бесплатные приложения.
+    Ваши 5 звезд лучше всего на свете!
+</string>
+    <string name="rating_dialog_feedback_title">Обратная связь</string>
+    <string name="rating_dialog_maybe_later">Возможно, позже</string>
+    <string name="rating_dialog_submit">Отправить</string>
+    <string name="s1">Сохранить изображение</string>
+    <string name="s2">Разрешить объявлению сохранить изображение в галерее?</string>
+    <string name="s3">Принять</string>
+    <string name="s4">Отклонить</string>
+    <string name="s5">Создать событие в календаре</string>
+    <string name="s6">Разрешить объявлению создать событие в календаре?</string>
+    <string name="s7">Тестовое объявление</string>
+    <string name="search_menu_title">Поиск</string>
+    <string name="alert_title_warning">Предупреждение!</string>
+    <string name="alert_delete_description">Вы собираетесь удалить это изображение. Нажмите "Продолжить", чтобы удалить изображение, или "Отмена", чтобы оставить его.</string>
+    <string name="alert_desc_changes_will_be_lost">Все ваши изменения будут потеряны.</string>
+    <string name="alert_subtitle_press_exit_or_cancel">Нажмите "Продолжить", чтобы выйти, или "Отмена", чтобы остаться.</string>
+    <string name="select_font">Выберите шрифт</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+
+    <string name="love">ЛЮБОВЬ</string>
+    <string name="friend">ДРУГ</string>
+    <string name="christmas">РОЖДЕСТВО</string>
+    <string name="positive">ПОЗИТИВ</string>
+    <string name="movie">ФИЛЬМ</string>
+    <string name="beach">ПЛЯЖ</string>
+    <string name="summer">ЛЕТО</string>
+    <string name="travel">ПУТЕШЕСТВИЕ</string>
+    <string name="happy">СЧАСТЬЕ</string>
+
+</resources>
