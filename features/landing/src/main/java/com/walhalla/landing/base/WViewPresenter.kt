@@ -12,7 +12,7 @@ class WViewPresenter(private val activity: WebActivity, private val config: Acti
 
     //    private SwipeRefreshLayout swipe;
     init {
-        dynamicWebView.setCallback(activity)
+        dynamicWebView.callback = (activity)
     }
 
     fun loadUrl(url: String) {
@@ -21,19 +21,19 @@ class WViewPresenter(private val activity: WebActivity, private val config: Acti
 //            binding.progressBar.setIndeterminate(true);
 //        }
         activity.onPageStarted(url)
-        dynamicWebView.getWebView().loadUrl(url)
+        dynamicWebView.webView.loadUrl(url)
     }
 
     fun refreshWV() {
-        dynamicWebView.getWebView().reload()
+        dynamicWebView.webView.reload()
     }
 
     fun canGoBack(): Boolean {
-        return dynamicWebView.getWebView().canGoBack()
+        return dynamicWebView.webView.canGoBack()
     }
 
     fun goBack() {
-        dynamicWebView.webiewV.goBack()
+        dynamicWebView.webView.goBack()
     }
 
 
@@ -47,7 +47,7 @@ class WViewPresenter(private val activity: WebActivity, private val config: Acti
         return dynamicWebView.webView.copyBackForwardList()
     }
 
-    fun generateViews(activity: ChromeView?, contentMain: RelativeLayout?, p: WPresenter?) {
+    fun generateViews(activity: ChromeView?, contentMain: RelativeLayout, p: WPresenter) {
         dynamicWebView.generateViews(activity, contentMain, p)
     }
 }

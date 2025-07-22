@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.walhalla.webview"
-    compileSdk = 35
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     buildFeatures {
         buildConfig = true

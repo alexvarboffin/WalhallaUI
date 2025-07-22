@@ -35,12 +35,12 @@ class DynamicWebView(private val context: Activity, private val config: Activity
     private var swipe: SwipeRefreshLayout? = null
 
 
-    fun setCallback(callback: UWVlayoutCallback?) {
-        this.callback = callback
-        uwVlayout.setUWVCallback(callback)
-    }
-
     var callback: UWVlayoutCallback? = null
+        set(value) {
+            field = value
+            uwVlayout.setUWVCallback(value)
+        }
+
 
     init {
         //        uwVlayout.setOnLongClickListener(v -> {
@@ -70,9 +70,10 @@ class DynamicWebView(private val context: Activity, private val config: Activity
     //    }
 
 
-    fun getWebView(): UWView {
-        return uwVlayout.webView
-    }
+    val webView: UWView
+        get() = uwVlayout.webView
+
+
 
     fun getParent(): UWVlayout {
         return uwVlayout
@@ -98,7 +99,7 @@ class DynamicWebView(private val context: Activity, private val config: Activity
 
         //mWebView.setBackgroundColor(Color.BLACK);
         // register class containing methods to be exposed to JavaScript
-        presenter.a123(chromeView, getWebView())
+        presenter.a123(chromeView, webView)
     }
 
     private fun swipeWebViewRef(swipe: SwipeRefreshLayout, webView: UWView) {
