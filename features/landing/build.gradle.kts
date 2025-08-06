@@ -72,4 +72,6 @@ dependencies {
 
     // Features
     implementation(libs.androidx.core.splashscreen)
+    runtimeOnly(libs.androidx.annotation.experimental)
+    implementation("androidx.activity:activity-ktx:1.11.0-rc01")
 }
