@@ -613,12 +613,10 @@ open class CustomWebViewClient(
 //        }
         val failureUrl = request.url.toString()
 
-        val mainUrl = if ((view.url == null)) "" else view.url
+        val mainUrl = view.url ?: ""
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             println(TAG + "!! @@@ >= 23" + error.errorCode + "\t" + error.description)
-            println(
-                TAG + "!! @@@: $mainUrl {FailUrl} $failureUrl"
-            )
+            println("$TAG!! @@@: $mainUrl {FailUrl} $failureUrl")
 
             if (mainUrl == failureUrl) {
                 println(TAG + "URL: $mainUrl")
@@ -718,7 +716,7 @@ open class CustomWebViewClient(
     //    }
     override fun onScaleChanged(view: WebView, oldScale: Float, newScale: Float) {
         super.onScaleChanged(view, oldScale, newScale)
-        println(TAG + "@@$oldScale@@$newScale")
+        println("$TAG@@$oldScale@@$newScale")
     }
 
     fun setCheckSameDomain() {
@@ -730,7 +728,7 @@ open class CustomWebViewClient(
         const val TAG: String = "@@@"
 
         private const val STATUS_CODE_UNKNOWN = 9999
-        private const val HANDLE_ERROR_CODE = false
+        private const val HANDLE_ERROR_CODE = true
 
         private const val isConnected = true
 

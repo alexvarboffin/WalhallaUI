@@ -76,6 +76,6 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     // https://mvnrepository.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel
     implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:2.9.1")
-    api("org.jetbrains.androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.1")
+    //api("org.jetbrains.androidx.lifecycle:lifecycle-livedata-core:2.9.1")
 
 }
