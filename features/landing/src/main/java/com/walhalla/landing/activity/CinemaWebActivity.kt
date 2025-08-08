@@ -63,9 +63,20 @@ import java.util.concurrent.TimeUnit
 //import MultiplePagination;
 
 
-abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationView.OnNavigationItemSelectedListener,
+sealed class ViewState() {
+    object Loading : ViewState()
+    class Error(val error: String) : ViewState()
+    object Success : ViewState()
+}
+
+
+abstract class CinemaWebActivity : AppCompatActivity(), ChromeView,
+    NavigationView.OnNavigationItemSelectedListener,
     UWVlayout.UWVlayoutCallback,
     ConfirmationDialogFragment.Listener {
+
+
+    val state = ViewState.Loading
 
     //private progressBar progressBar;
     //private AdView mAdView;
@@ -78,7 +89,6 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
 
     protected abstract var url: String
     protected abstract var cfg: Cfg
-
 
 
     //    private final GConfig aaa = new GConfig(
@@ -186,7 +196,7 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
             generateViews(this, binding.contentMain)
             if (!TextUtils.isEmpty(url)) {
                 //Toast.makeText(this, "" + url, Toast.LENGTH_SHORT).show()
-                switchViews(false)
+                switchViews(ViewState.Success)
                 binding.webview.loadUrl(url)
             }
         }
@@ -194,7 +204,6 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
         setUpNavigationView()
 
         //@@@ switchViews(true);
-        switchViews(false)
 
 
         setDrawerEnabled(false)
@@ -209,6 +218,38 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
 //        //@if (!rotated()) {
 //            presenter.init0(this);
 //        //@}
+    }
+
+    override fun webClientError(failure: ReceivedError) {
+        switchViews(ViewState.Error(failure.description))
+    }
+
+    override fun removeErrorPage() {
+    }
+
+    override fun setErrorPage(receivedError: ReceivedError) {
+        if (BuildConfig.DEBUG) {
+            Toast.makeText(this, "${receivedError.errorCode}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun switchViews(viewState: ViewState) {
+
+        when (viewState) {
+            is ViewState.Error -> {
+                binding.contentFake.root.visibility = View.VISIBLE
+                binding.contentMain.visibility = View.GONE
+                binding.contentFake.webViewReloadUrl.text=viewState.error
+                //getSupportActionBar().setTitle("...");
+            }
+
+            ViewState.Loading -> {}
+            ViewState.Success -> {
+                binding.contentFake.root.visibility = View.GONE
+                binding.contentMain.visibility = View.VISIBLE
+                //getSupportActionBar().setTitle(R.string.app_name);
+            }
+        }
     }
 
     fun getActivityConfig(): ActivityConfig {
@@ -256,7 +297,7 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
         binding.navView.setNavigationItemSelectedListener(this)
 
 
-        //        MenuItem item = menu.getItem(0);
+//        MenuItem item = menu.getItem(0);
 //        if (item.hasSubMenu()) {
 //            pagination.setupDrawer(this, item.getSubMenu());
 //        } else {
@@ -317,7 +358,7 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
         if (id == R.id.nav_about) {
             intent = Intent(this@CinemaWebActivity, AboutActivity::class.java)
         } else if (id == R.id.nav_contact) {
- //@@           intent = Intent(this@CinemaWebActivity, ContactActivity::class.java)
+            //@@           intent = Intent(this@CinemaWebActivity, ContactActivity::class.java)
         } else if (id == R.id.nav_share) {
             val shareBody = getString(R.string.app_name) + " " + String.format(
                 Const.url_app_google_play,
@@ -374,16 +415,10 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
     }
 
 
-    override fun removeErrorPage() {
-    }
-
-    override fun setErrorPage(receivedError: ReceivedError) {
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         // Сохраняем состояние WebView
-        binding.webview?.saveState(outState)
+        binding.webview.saveState(outState)
     }
 
     private fun generateViews(context: Context, view: ViewGroup) {
@@ -510,18 +545,6 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
     }
 
 
-    fun switchViews(b: Boolean) {
-        if (b) {
-            binding.contentFake.root.visibility = View.VISIBLE
-            binding.contentMain.visibility = View.GONE
-            //getSupportActionBar().setTitle("...");
-        } else {
-            binding.contentFake.root.visibility = View.GONE
-            binding.contentMain.visibility = View.VISIBLE
-            //getSupportActionBar().setTitle(R.string.app_name);
-        }
-    }
-
     fun setDrawerEnabled(enabled: Boolean) {
         val toggle = ActionBarDrawerToggle(
             this,
@@ -589,15 +612,14 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
         }
     }
 
-    override fun webClientError(failure: ReceivedError) {
-    }
 
     override fun copyToClipboard(url: String) {
         val context: Activity = this
         val clipboard = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("Copied Text", "" + url)
         clipboard.setPrimaryClip(clip)
-        val tmp = String.format(context.getString(com.walhalla.landing.R.string.data_to_clipboard), url)
+        val tmp =
+            String.format(context.getString(com.walhalla.landing.R.string.data_to_clipboard), url)
 
 //        Toasty.custom(context, tmp,
 //                ComV19.getDrawable(context, R.drawable.ic_info),
@@ -619,6 +641,7 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView, NavigationVi
     override fun onConfirmation(allowed: Boolean, resources: Array<String>) {
         presenter0.onConfirmation__(allowed, resources)
     }
+
     //============================== WEBVIEW ===================
     override fun closeApplication() {
         finish()
