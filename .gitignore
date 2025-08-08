@@ -11,5 +11,5 @@
 /app/build/
 /promo/build/
 /features/webview/build/
-!/features/webview/build/
+*/build/
 
