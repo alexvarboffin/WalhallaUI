@@ -30,8 +30,15 @@ open class CustomWebViewClient(
 ) :
     WebViewClient() {
     //RequestInspector
-    private val blockedDomains0: List<String> =
-        WVTools.loadBlockedDomains(context, R.raw.blockedhost)
+    private var blockedDomains0: MutableList<String> = mutableListOf<String>()
+
+
+    init {
+        blockedDomains0 = WVTools.loadBlockedDomains(context, R.raw.blockedhost).toMutableList()
+        if (BuildConfig.DEBUG) {
+            blockedDomains0.add("https://yandex.ru/ads")
+        }
+    }
 
 
     private var receivedError: ReceivedError? = null
@@ -353,7 +360,12 @@ open class CustomWebViewClient(
         } else if (url.startsWith("mailto:")) {
             try {
                 val mailTo = MailTo.parse(url)
-                ActivityUtils.startEmailActivity(context, mailTo.to?:"", mailTo.subject, mailTo.body)
+                ActivityUtils.startEmailActivity(
+                    context,
+                    mailTo.to ?: "",
+                    mailTo.subject,
+                    mailTo.body
+                )
             } catch (ignored: ParseException) {
             }
             return true

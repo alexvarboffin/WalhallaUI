@@ -16,7 +16,7 @@ import android.widget.FrameLayout
 
 /*
 *подскажи почему в WebView в плеере при нажатии фулскрин экран поворачивается он │
-│     весь белый но видео нет
+│     весь белый но видео нет, как работает onShowCustomView
 * */
 
 open class MyWebChromeClient(
@@ -27,6 +27,10 @@ open class MyWebChromeClient(
     private var customView: View? = null
     private var customViewCallback: CustomViewCallback? = null
     private var originalOrientation: Int = activity.requestedOrientation
+
+
+    // Добавляем метод для проверки полноэкранного режима
+    fun isInFullscreen() = customView != null
 
     override fun onShowCustomView(view: View?, callback: CustomViewCallback?) {
 
@@ -62,7 +66,10 @@ open class MyWebChromeClient(
         decor.addView(view)
 
         // Скрываем WebView и системные элементы
+
         webView.visibility = View.GONE
+        //webView.setBackgroundColor(Color.RED)
+
         //setFullscreen(true)
 
         // Фиксируем ориентацию

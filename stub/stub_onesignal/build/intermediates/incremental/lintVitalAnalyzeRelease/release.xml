@@ -7,7 +7,7 @@
     proguardFiles="build\intermediates\default_proguard_files\global\proguard-android-optimize.txt-8.11.1;proguard-rules.pro"
     consumerProguardFiles="consumer-rules_empty_stub.pro;consumer-rules.pro"
     partialResultsDir="build\intermediates\lint_vital_partial_results\release\lintVitalAnalyzeRelease\out"
-    desugaredMethodsFiles="C:\Users\reznichenko.i\.gradle\caches\8.14.3\transforms\cf12ed2464e55f9711a57b293f4e550a\transformed\D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="C:\Users\combo\.gradle\caches\8.14.3\transforms\076e552b59c3c46d1d07e950f6982a98\transformed\D8BackportedDesugaredMethods.txt">
   <buildFeatures
       namespacing="REQUIRED"/>
   <sourceProviders>
@@ -27,6 +27,6 @@
       applicationId="com.google.android.gms.onesignal_stub"
       generatedSourceFolders="build\generated\ap_generated_sources\release\out"
       generatedResourceFolders="build\generated\res\resValues\release"
-      desugaredMethodsFiles="C:\Users\reznichenko.i\.gradle\caches\8.14.3\transforms\cf12ed2464e55f9711a57b293f4e550a\transformed\D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="C:\Users\combo\.gradle\caches\8.14.3\transforms\076e552b59c3c46d1d07e950f6982a98\transformed\D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

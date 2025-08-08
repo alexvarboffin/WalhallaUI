@@ -1,6 +1,6 @@
 <lint-module
     format="1"
-    dir="C:\android\SRC\WalhallaUI\stub\stub_onesignal"
+    dir="C:\src\Synced\WalhallaUI\stub\stub_onesignal"
     name=":stub:stub_onesignal"
     type="LIBRARY"
     maven="Landing.stub:stub_onesignal:unspecified"
