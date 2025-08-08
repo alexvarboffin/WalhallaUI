@@ -32,7 +32,7 @@ abstract class BaseSimpleActivity : WebActivity(), ChromeView {
     protected open var doubleBackToExitPressedOnce: Boolean = false
 
     //private Handler mHandler;
-    protected var binding: ActivityMainBinding? = null
+    protected lateinit var binding: ActivityMainBinding
     protected var presenter: WViewPresenter? = null
     private var activityConfig: ActivityConfig? = null
 
@@ -48,11 +48,13 @@ abstract class BaseSimpleActivity : WebActivity(), ChromeView {
         //Handler handler = new Handler(Looper.getMainLooper());
         //presenter = new WPresenterImpl(handler, this);
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
         //toolbar.setVisibility(View.GONE);
-        setSupportActionBar(binding!!.toolbar)
+        setSupportActionBar(binding.toolbar)
         activityConfig = getActivityConfig()
-        presenter = WViewPresenter(this, activityConfig!!)
+        if (presenter == null) {
+            presenter = WViewPresenter(this, activityConfig!!)
+        }
     }
 
     protected abstract fun getActivityConfig(): ActivityConfig
@@ -136,12 +138,12 @@ abstract class BaseSimpleActivity : WebActivity(), ChromeView {
 
     fun switchViews(b: Boolean) {
         if (b) {
-            binding!!.contentFake.root.visibility = View.VISIBLE
-            binding!!.contentMain.visibility = View.GONE
+            binding.contentFake.root.visibility = View.VISIBLE
+            binding.contentMain.visibility = View.GONE
             //getSupportActionBar().setTitle("...");
         } else {
-            binding!!.contentFake.root.visibility = View.GONE
-            binding!!.contentMain.visibility = View.VISIBLE
+            binding.contentFake.root.visibility = View.GONE
+            binding.contentMain.visibility = View.VISIBLE
             //getSupportActionBar().setTitle(R.string.app_name);
         }
     }
@@ -149,16 +151,16 @@ abstract class BaseSimpleActivity : WebActivity(), ChromeView {
     fun setDrawerEnabled(enabled: Boolean) {
         val toggle = ActionBarDrawerToggle(
             this,
-            binding!!.drawerLayout,
-            binding!!.toolbar,
+            binding.drawerLayout,
+            binding.toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
-        binding!!.drawerLayout.addDrawerListener(toggle)
+        binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         val lockMode =
             if (enabled) DrawerLayout.LOCK_MODE_UNLOCKED else DrawerLayout.LOCK_MODE_LOCKED_CLOSED
-        binding!!.drawerLayout.setDrawerLockMode(lockMode)
+        binding.drawerLayout.setDrawerLockMode(lockMode)
         toggle.isDrawerIndicatorEnabled = enabled
     } //bpt
     //    View coordinatorLayout = findViewById(R.id.coordinatorLayout);

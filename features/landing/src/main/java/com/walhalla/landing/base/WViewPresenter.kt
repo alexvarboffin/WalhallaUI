@@ -1,25 +1,37 @@
 package com.walhalla.landing.base
 
+import android.annotation.SuppressLint
 import android.webkit.WebBackForwardList
 import android.widget.RelativeLayout
 import com.walhalla.landing.activity.WPresenter
 import com.walhalla.landing.activity.WebActivity
 import com.walhalla.webview.ChromeView
 
-class WViewPresenter(private val activity: WebActivity, private val config: ActivityConfig) :
-    AbstractWVPresenter() {
-    var dynamicWebView: DynamicWebView = DynamicWebView(activity, config)
+object DynamicWebViewHolder {
+    @SuppressLint("StaticFieldLeak")
+    private var instance: DynamicWebView? = null
 
-    //    private SwipeRefreshLayout swipe;
-    init {
-        dynamicWebView.callback = (activity)
+    fun getInstance(activity: WebActivity, config: ActivityConfig): DynamicWebView {
+        if (instance == null) {
+            instance = DynamicWebView(activity, config).apply {
+                callback = activity
+            }
+        }
+        return instance!!
     }
 
+    fun reset() {
+        instance = null
+    }
+}
+
+class WViewPresenter(private val activity: WebActivity, private val config: ActivityConfig) :
+    AbstractWVPresenter() {
+
+    val dynamicWebView: DynamicWebView =
+        DynamicWebViewHolder.getInstance(activity, config)
+
     fun loadUrl(url: String) {
-//        if (config.isProgressEnabled()) {
-//            binding.progressBar.setVisibility(View.VISIBLE);
-//            binding.progressBar.setIndeterminate(true);
-//        }
         activity.onPageStarted(url)
         dynamicWebView.webView.loadUrl(url)
     }
@@ -36,10 +48,9 @@ class WViewPresenter(private val activity: WebActivity, private val config: Acti
         dynamicWebView.webView.goBack()
     }
 
-
     fun hideSwipeRefreshing() {
         if (config.isSwipeEnabled) {
-            //swipe.setRefreshing(false);//modify if needed
+            // swipe.setRefreshing(false); // может быть реализовано позже
         }
     }
 
@@ -51,3 +62,4 @@ class WViewPresenter(private val activity: WebActivity, private val config: Acti
         dynamicWebView.generateViews(activity, contentMain, p)
     }
 }
+

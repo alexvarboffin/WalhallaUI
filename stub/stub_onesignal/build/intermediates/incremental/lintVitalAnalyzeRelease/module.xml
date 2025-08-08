@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="C:\android\SRC\WalhallaUI\stub\stub_onesignal"
+    name=":stub:stub_onesignal"
+    type="LIBRARY"
+    maven="Landing.stub:stub_onesignal:unspecified"
+    agpVersion="8.11.1"
+    buildFolder="build"
+    bootClassPath="C:\android\sdk\platforms\android-36\android.jar;C:\android\sdk\build-tools\35.0.0\core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-36"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

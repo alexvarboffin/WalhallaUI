@@ -193,6 +193,6 @@ abstract class WebActivity : AppCompatActivity(), ChromeView, UWVlayoutCallback,
     }
 
     override fun onConfirmation(allowed: Boolean, resources: Array<String>) {
-        presenter0!!.onConfirmation__(allowed, resources)
+        presenter0.onConfirmation__(allowed, resources)
     }
 }

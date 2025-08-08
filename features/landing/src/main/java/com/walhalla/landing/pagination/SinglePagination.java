@@ -17,6 +17,10 @@ public class SinglePagination {
         this.v0 = v0;
     }
 
+    public SinglePagination(String string) {
+        this.v0 = enc0(string);
+    }
+
     public void setupDrawer(Context context, Menu menu) {
         String[] urls = context.getResources().getStringArray(R.array.navigation_url_list);
         String[] titles = context.getResources().getStringArray(R.array.navigation_title_list);
@@ -49,6 +53,19 @@ public class SinglePagination {
         return "";
     }
 
+
+    public int[] enc0(String input) {
+        // 1. Переворачиваем строку обратно
+        String reversed = new StringBuilder(input).reverse().toString();
+
+        // 2. Преобразуем каждый символ в ASCII-код
+        int[] result = new int[reversed.length()];
+        for (int i = 0; i < reversed.length(); i++) {
+            result[i] = (int) reversed.charAt(i);
+        }
+
+        return result;
+    }
 
 
     public String dec0(int[] intArray) {

@@ -30,7 +30,8 @@ class DynamicWebView(private val context: Activity, private val config: Activity
     //        });
     //        popupMenu.show();
     //    }
-    val uwVlayout: UWVlayout = UWVlayout(context)
+
+    private val uwVlayout: UWVlayout = UWVlayout(context)
 
     private var swipe: SwipeRefreshLayout? = null
 
@@ -71,8 +72,7 @@ class DynamicWebView(private val context: Activity, private val config: Activity
 
 
     val webView: UWView
-        get() = uwVlayout.webView
-
+        get() = uwVlayout.customWebviewLayoutBinding.inner00
 
 
     fun getParent(): UWVlayout {
@@ -89,17 +89,19 @@ class DynamicWebView(private val context: Activity, private val config: Activity
         if (config.isSwipeEnabled) {
             swipe = SwipeRefreshLayout(context)
             swipe!!.layoutParams = lp
+            (swipe!!.parent as? ViewGroup)?.removeView(swipe)
             parent.addView(swipe)
             swipe!!.addView(uwVlayout)
             swipe!!.isRefreshing = false
-            swipeWebViewRef(swipe!!, uwVlayout.webView)
+            swipeWebViewRef(swipe!!, uwVlayout.customWebviewLayoutBinding.inner00)
         } else {
+            (uwVlayout.parent as? ViewGroup)?.removeView(uwVlayout)
             parent.addView(uwVlayout)
         }
 
         //mWebView.setBackgroundColor(Color.BLACK);
         // register class containing methods to be exposed to JavaScript
-        presenter.a123(chromeView, webView)
+        presenter.a123(chromeView, uwVlayout.customWebviewLayoutBinding.inner00)
     }
 
     private fun swipeWebViewRef(swipe: SwipeRefreshLayout, webView: UWView) {
