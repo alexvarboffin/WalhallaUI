@@ -5,9 +5,9 @@
 #-repackageclasses ''
 #-allowaccessmodification
 
--include "C:\android\proguard\dagger2.pro"
--include "C:\android\proguard\okhttp3.pro"
--include "C:\android\proguard\admob.pro"
+#-include "C:\android\proguard\dagger2.pro"
+#-include "C:\android\proguard\okhttp3.pro"
+#-include "C:\android\proguard\admob.pro"
 
 # Firebase
 -dontwarn retrofit2.Call

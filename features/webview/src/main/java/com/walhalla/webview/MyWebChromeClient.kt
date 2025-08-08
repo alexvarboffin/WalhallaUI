@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.net.Uri
 import android.view.View
 import android.webkit.GeolocationPermissions
@@ -12,6 +13,11 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.FrameLayout
 
+
+/*
+*подскажи почему в WebView в плеере при нажатии фулскрин экран поворачивается он │
+│     весь белый но видео нет
+* */
 
 open class MyWebChromeClient(
     private val activity: Activity,
@@ -23,31 +29,71 @@ open class MyWebChromeClient(
     private var originalOrientation: Int = activity.requestedOrientation
 
     override fun onShowCustomView(view: View?, callback: CustomViewCallback?) {
+
         if (customView != null) {
             callback?.onCustomViewHidden()
             return
         }
 
+        // Фиксируем текущее состояние
+        originalOrientation = activity.requestedOrientation
+        //originalSystemUiVisibility = activity.window.decorView.systemUiVisibility
+
         // Сохраняем View и Callback
         customView = view
         customViewCallback = callback
 
+        // Настраиваем кастомное View
+        view?.let {
+            it.layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+            )
+
+            // Критически важные настройки
+            it.keepScreenOn = true
+            it.isFocusable = true
+            it.isFocusableInTouchMode = true
+            it.requestFocus()
+        }
+
         // Добавляем View в корневой layout
-        val decorView = activity.window.decorView as FrameLayout
-        decorView.addView(customView, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+        val decor = activity.window.decorView as FrameLayout
+        decor.addView(view)
 
-        // Скрываем WebView
+        // Скрываем WebView и системные элементы
         webView.visibility = View.GONE
+        //setFullscreen(true)
 
-        // Устанавливаем полноэкранный режим
-        activity.window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_FULLSCREEN
-                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                )
+        // Фиксируем ориентацию
+        //activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 
-        // Фиксируем ориентацию экрана
-        activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+//        if (customView != null) {
+//            customView?.setBackgroundColor(Color.BLACK)
+//            callback?.onCustomViewHidden()
+//            return
+//        }
+//
+//        // Сохраняем View и Callback
+//        customView = view
+//        customViewCallback = callback
+//
+//        // Добавляем View в корневой layout
+//        val decorView = activity.window.decorView as FrameLayout
+//        decorView.addView(customView, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+//
+//        // Скрываем WebView
+//        webView.visibility = View.GONE
+//
+//        // Устанавливаем полноэкранный режим
+//        activity.window.decorView.systemUiVisibility = (
+//                View.SYSTEM_UI_FLAG_FULLSCREEN
+//                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//                )
+//
+//        // Фиксируем ориентацию экрана
+//        //activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
     }
 
     override fun onHideCustomView() {
@@ -115,11 +161,8 @@ open class MyWebChromeClient(
     }
 
     // For Lollipop 5.0+ Devices
-    override fun onShowFileChooser(
-        mWebView: WebView,
-        filePathCallback: ValueCallback<Array<Uri>>,
-        fileChooserParams: FileChooserParams
-    ): Boolean {
+    override fun onShowFileChooser(mWebView: WebView, filePathCallback: ValueCallback<Array<Uri>>,
+        fileChooserParams: FileChooserParams): Boolean {
 //        mUploadMessages = filePathCallback;
 //        callback.openImageChooser();
 

@@ -13,14 +13,18 @@ import androidx.appcompat.widget.PopupMenu
 import com.walhalla.landing.BuildConfig
 import com.walhalla.landing.R
 import com.walhalla.landing.databinding.CustomWebviewLayoutBinding
+import androidx.core.graphics.toColorInt
 
 class UWVlayout : RelativeLayout //ChromeView
 {
+
+    lateinit var customWebviewLayoutBinding: CustomWebviewLayoutBinding
+
     fun setUWVCallback(callback: UWVlayoutCallback?) {
         this.callback = callback
     }
-    val webView: UWView
-        get() = customWebviewLayoutBinding!!.inner00
+
+
     var callback: UWVlayoutCallback? = null
 
     interface UWVlayoutCallback {
@@ -32,7 +36,7 @@ class UWVlayout : RelativeLayout //ChromeView
     val buttonMenu: ImageView
         get() = customWebviewLayoutBinding!!.buttonMenu
 
-    private var customWebviewLayoutBinding: CustomWebviewLayoutBinding? = null
+
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -56,7 +60,7 @@ class UWVlayout : RelativeLayout //ChromeView
             inflater,
             this, true
         )
-        customWebviewLayoutBinding!!.buttonMenu.setOnClickListener { v: View ->
+        customWebviewLayoutBinding.buttonMenu.setOnClickListener { v: View ->
             showPopupMenu(
                 context,
                 v
@@ -64,7 +68,7 @@ class UWVlayout : RelativeLayout //ChromeView
         }
 
         if (BuildConfig.DEBUG) {
-            setBackgroundColor(Color.parseColor("#80770000"))
+            setBackgroundColor("#80770000".toColorInt())
         }
     }
 
@@ -74,8 +78,8 @@ class UWVlayout : RelativeLayout //ChromeView
         popupMenu.setOnMenuItemClickListener { item: MenuItem ->
             val itemId = item.itemId
             if (itemId == R.id.action_home) {
-                val homeUrl = webView.originalUrl
-                webView.loadUrl(homeUrl!!)
+                val homeUrl = customWebviewLayoutBinding.inner00.originalUrl
+                customWebviewLayoutBinding.inner00.loadUrl(homeUrl!!)
                 return@setOnMenuItemClickListener true
             } else if (itemId == R.id.action_exit) {
                 if (callback != null) {
@@ -84,7 +88,7 @@ class UWVlayout : RelativeLayout //ChromeView
                 return@setOnMenuItemClickListener true
             } else if (itemId == R.id.action_url_copy) {
                 if (callback != null) {
-                    val url = webView.url
+                    val url = customWebviewLayoutBinding.inner00.url
                     if (url != null) {
                         callback!!.copyToClipboard(url)
                     }
