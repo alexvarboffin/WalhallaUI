@@ -5,10 +5,10 @@
 #-repackageclasses ''
 #-allowaccessmodification
 
--include "C:\android\proguard\dagger2.pro"
--include "C:\android\proguard\okhttp3.pro"
--include "C:\android\proguard\admob.pro"
--include "C:\android\proguard\mytracker.pro"
+#@@@-include "C:\android\proguard\dagger2.pro"
+#@@@-include "C:\android\proguard\okhttp3.pro"
+#@@@-include "C:\android\proguard\admob.pro"
+#@@@-include "C:\android\proguard\mytracker.pro"
 
 # Firebase
 -dontwarn retrofit2.Call
@@ -24,4 +24,4 @@
 #-keepclassmembers class com.google.samples.apps.iosched.model.** { <fields>; }
 #-repackageclasses 'c'
 -repackageclasses ''
--include "C:\android\proguard\bottom.pro"
+#@@@-include "C:\android\proguard\bottom.pro"

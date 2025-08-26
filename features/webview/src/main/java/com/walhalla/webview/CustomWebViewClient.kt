@@ -17,11 +17,11 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.net.MailTo
 import androidx.core.net.ParseException
+import androidx.core.net.toUri
 import com.walhalla.webview.utility.ActivityUtils
 import com.walhalla.webview.utility.DownloadUtility
 import java.io.ByteArrayInputStream
 import java.util.Locale
-import androidx.core.net.toUri
 
 open class CustomWebViewClient(
     webView: WebView,
@@ -56,8 +56,8 @@ open class CustomWebViewClient(
     private var homeDomain9: String? = null
 
 
-    private var isCheckSameDomainEnabled = false
-    private var feature_same_domain_enabled = false
+    private var isCheckSameDomainEnabled = true
+    private var feature_same_domain_enabled = true
 
 
     fun resetAllErrors() {
@@ -341,30 +341,35 @@ open class CustomWebViewClient(
                 if (isCheckSameDomainEnabled) {
                     if (isSameDomain(url, homeDomain9)) {
                         println(
-                            TAG + "NOT_OVERRIDE:isSameDomain: $url"
+                            TAG + "NOT_OVERRIDE:isSameDomain: $homeDomain9 :: $url"
                         )
                         return false
                     } else {
                         println(
                             TAG + "blocked: $url, $homeDomain9"
                         )
+
+                        //var 1
                         //url blocked
+                        try {
+                            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            context.startActivity(intent)
+                        } catch (e: ActivityNotFoundException) {
+                            Toast.makeText(context, "Browser not found", Toast.LENGTH_SHORT).show()
+                        }
                         return true
                     }
                 } else {
                     //@@@ showActionBarProgress(true);
-                    println(TAG + "NOT_OVERRIDE: $url")
+                    println(TAG + "NOT_OVERRIDE: ... $url")
                     return false
                 }
             }
         } else if (url.startsWith("mailto:")) {
             try {
                 val mailTo = MailTo.parse(url)
-                ActivityUtils.startEmailActivity(
-                    context,
-                    mailTo.to ?: "",
-                    mailTo.subject,
-                    mailTo.body
+                ActivityUtils.startEmailActivity(context, mailTo.to ?: "", mailTo.subject, mailTo.body
                 )
             } catch (ignored: ParseException) {
             }
@@ -480,15 +485,21 @@ open class CustomWebViewClient(
     }
 
     private fun isSameDomain(url: String, baseDomain: String?): Boolean {
-//        Uri uri = Uri.parse(url);
-//        String domain = uri.getHost();
-//        if (domain != null && (domain.endsWith("." + baseDomain) || domain.equals(baseDomain))) {
-//            return true;
-//        } else {
-//            return false;
-//        }
+        val uri = url.toUri()
+        val domain = uri.host
+
+        val result =  if (domain != null && (domain.endsWith(".$baseDomain") || domain == baseDomain)) {
+            true
+        } else {
+            false
+        }
+
+
+        println("isSameDomain: $domain $baseDomain $result")
+
+
         //o.php?
-        return true
+        return result
     }
 
     //

@@ -63,7 +63,7 @@ import java.util.concurrent.TimeUnit
 //import MultiplePagination;
 
 
-sealed class ViewState() {
+sealed class ViewState {
     object Loading : ViewState()
     class Error(val error: String) : ViewState()
     object Success : ViewState()
@@ -488,32 +488,41 @@ abstract class CinemaWebActivity : AppCompatActivity(), ChromeView,
     @SuppressLint("NonConstantResourceId")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val itemId = item.itemId
-        if (itemId == R.id.action_about) {
-            aboutDialog(this)
-            return true
-        } else if (itemId == R.id.action_privacy_policy) {
-            openBrowser(this, getString(R.string.url_privacy_policy))
-            return true
-        } else if (itemId == R.id.action_rate_app) {
-            rateUs(this)
-            return true
-        } else if (itemId == R.id.action_share_app) {
-            shareThisApp(this)
-            return true
-        } else if (itemId == R.id.action_discover_more_app) {
-            moreApp(this)
-            return true
-        } else if (itemId == R.id.action_exit) {
-            this.finish()
-            return true
-        } else if (itemId == R.id.action_feedback) {
-            feedback(this)
-            return true
-        } else if (itemId == R.id.action_refresh) {
-            presenter!!.refreshWV()
-            return true
+        when (itemId) {
+            R.id.action_about -> {
+                aboutDialog(this)
+                return true
+            }
+            R.id.action_privacy_policy -> {
+                openBrowser(this, getString(R.string.url_privacy_policy))
+                return true
+            }
+            R.id.action_rate_app -> {
+                rateUs(this)
+                return true
+            }
+            R.id.action_share_app -> {
+                shareThisApp(this)
+                return true
+            }
+            R.id.action_discover_more_app -> {
+                moreApp(this)
+                return true
+            }
+            R.id.action_exit -> {
+                this.finish()
+                return true
+            }
+            R.id.action_feedback -> {
+                feedback(this)
+                return true
+            }
+            R.id.action_refresh -> {
+                presenter!!.refreshWV()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
 

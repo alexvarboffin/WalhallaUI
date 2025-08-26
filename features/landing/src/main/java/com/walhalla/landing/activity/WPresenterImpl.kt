@@ -295,7 +295,14 @@ class WPresenterImpl(
         }
 
 
-        settings.setSupportMultipleWindows(true)
+        //Вариант 1
+        //settings.setSupportMultipleWindows(true)
+
+        //Вариант 2
+        settings.setSupportMultipleWindows(false)//_blank будем override сылок
+
+
+
         settings.javaScriptCanOpenWindowsAutomatically = true
 
 
