@@ -1,23 +1,22 @@
+@file:Suppress("DEPRECATION")
+
 package com.walhalla.ui.plugins
 
 import android.Manifest
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.DialogInterface
+
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.content.pm.Signature
 import android.net.ConnectivityManager
-import android.net.NetworkInfo
+
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+
 import android.widget.Toast
 import androidx.annotation.RequiresPermission
 
@@ -306,7 +305,7 @@ object Module_U {
                 val info = cm.allNetworkInfo
                 for (networkInfo in info) {
                     val c0 =
-                        networkInfo.state == NetworkInfo.State.CONNECTED || networkInfo.isConnected
+                        networkInfo.state == android.net.NetworkInfo.State.CONNECTED || networkInfo.isConnected
                     if (c0) {
                         return true
                     }
