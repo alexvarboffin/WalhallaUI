@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.play.services.ads)
-
+    implementation("androidx.privacysandbox.ads:ads-adservices:1.1.0-beta12")
     implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.core.ktx)
     implementation(project(":threader"))
