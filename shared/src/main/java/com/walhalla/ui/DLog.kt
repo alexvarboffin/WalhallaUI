@@ -16,6 +16,7 @@ object DLog {
     /**
      * Log Level Error
      */
+    @JvmStatic
     fun e(message: String) {
         if (DEBUG) {
             Log.e(TAG, buildLogMsg(message))
@@ -32,6 +33,7 @@ object DLog {
     /**
      * Log Level Information
      */
+    @JvmStatic
     fun i(message: String) {
         if (DEBUG) Log.i(TAG, buildLogMsg(message))
     }
