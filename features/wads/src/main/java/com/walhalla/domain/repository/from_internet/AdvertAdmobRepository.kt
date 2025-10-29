@@ -100,7 +100,7 @@ class AdvertAdmobRepository
 //        }
 
 //        Button message = new Button(viewGroup.getContext());
-//        message.setText("000000000000000000000000000000000");
+//        message.text = "000000000000000000000000000000000";
 
         var adView: AdView?
         val key = viewGroup.id
