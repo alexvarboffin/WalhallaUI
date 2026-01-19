@@ -1,5 +1,4 @@
 extra.apply {
-    set("minSdkVersion", 21)
     set("okHttpVersion", "4.12.0")
     set("ONESIGNAL_APP_ID", "")
     set("APPSFLYER_DEV_KEY", "")
@@ -7,7 +6,6 @@ extra.apply {
     set("MYTRACKER_KEY", "")
     set("APP_METRICA", "")
 }
-
 
 plugins {
     alias(libs.plugins.android.library)
@@ -36,12 +34,12 @@ android.defaults.buildfeatures.aidl=true
 
 android {
     namespace = "com.walhalla.ui"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    buildToolsVersion = libs.versions.android.buildTools.get()
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    buildToolsVersion = libs.versions.buildTools.get()
 
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         vectorDrawables {
             useSupportLibrary = true
