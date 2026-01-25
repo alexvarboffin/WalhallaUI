@@ -179,7 +179,7 @@ private constructor() {
         var adDisplayCounter: Int = 10
 
 
-        private var instance: AdvertManager? = null
+        var instance: AdvertManager? = null
 
         @Synchronized
         fun getInstance0(): AdvertManager {

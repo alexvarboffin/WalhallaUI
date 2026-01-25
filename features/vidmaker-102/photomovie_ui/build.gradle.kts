@@ -37,7 +37,7 @@ dependencies {
 
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(project(":features:wads"))
+    implementation(project(":wads"))
     implementation(libs.androidx.preference.ktx)
     //implementation project(':features:ui')
     testImplementation(libs.junit)
