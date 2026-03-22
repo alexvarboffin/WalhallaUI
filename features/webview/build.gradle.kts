@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.core)
+    implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
 
 //    implementation(libs.androidx.appcompat)
