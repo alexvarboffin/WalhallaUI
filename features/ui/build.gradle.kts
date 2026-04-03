@@ -34,12 +34,12 @@ android.defaults.buildfeatures.aidl=true
 
 android {
     namespace = "com.walhalla.ui"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    buildToolsVersion = libs.versions.android.buildTools.get()
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
 
         vectorDrawables {
             useSupportLibrary = true
@@ -82,8 +82,8 @@ dependencies {
     api(libs.androidx.preference.ktx)
 
     implementation(libs.androidx.swiperefreshlayout)
-
-    implementation(libs.androidx.annotation)
+    implementation("androidx.annotation:annotation:1.9.1")
+    //implementation(libs.androidx.annotation)
     implementation(libs.jsoup)
     //implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     //noinspection GradleDependency
