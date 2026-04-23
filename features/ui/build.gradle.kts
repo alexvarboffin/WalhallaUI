@@ -34,12 +34,12 @@ android.defaults.buildfeatures.aidl=true
 
 android {
     namespace = "com.walhalla.ui"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    buildToolsVersion = libs.versions.buildTools.get()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    buildToolsVersion = libs.versions.android.buildTools.get()
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
 
         vectorDrawables {
             useSupportLibrary = true
@@ -83,7 +83,7 @@ dependencies {
 
     implementation(libs.androidx.swiperefreshlayout)
 
-    implementation(libs.androidx.annotation)
+    //implementation(libs.androidx.annotation)
     implementation(libs.jsoup)
     //implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     //noinspection GradleDependency
@@ -98,9 +98,9 @@ dependencies {
     api(project(":shared"))
 
     //@@@ implementation@@@@@@@@@@@@@@@core:1.10.3'//Google Play In-App Review API
-    implementation(libs.app.update)
+    implementation(libs.play.app.update)
     // For Kotlin users, also add the Kotlin extensions library for Play In-App Update:
-    implementation(libs.app.update.ktx)
+    implementation(libs.play.app.update.ktx)
 
     //Google Play In-App Review API
     implementation(libs.review)
