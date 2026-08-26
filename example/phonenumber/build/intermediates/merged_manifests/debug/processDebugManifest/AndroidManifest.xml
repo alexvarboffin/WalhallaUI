@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="35" />
+        android:targetSdkVersion="37" />
 
     <!-- <uses-feature -->
     <!-- android:name="android.hardware.telephony" -->

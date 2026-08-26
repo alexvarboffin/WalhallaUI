@@ -1,0 +1,632 @@
+[
+  {
+    "id": 0,
+    "url": "free.vpn.unblock.proxy.turbovpn",
+    "title": "Turbo VPN - безопасный ВПН",
+    "rate": "4,6",
+    "count": "100 млн+"
+  },
+  {
+    "id": 1,
+    "url": "free.vpn.unblock.proxy.vpnmaster",
+    "title": "Master VPN - ВПН для Андроид",
+    "rate": "4,4",
+    "count": "50 млн+"
+  },
+  {
+    "id": 2,
+    "url": "com.supervpn.vpn.free.proxy",
+    "title": "VPN Proxy Speed - Super VPN",
+    "rate": "4,5",
+    "count": "10 млн+"
+  },
+  {
+    "id": 3,
+    "url": "com.freevpnplanet",
+    "title": "Бесплатный VPN от Planet VPN",
+    "rate": "4,7",
+    "count": "5 млн+"
+  },
+  {
+    "id": 4,
+    "url": "com.fast.free.unblock.thunder.vpn",
+    "title": "Thunder VPN: Более быстрый VPN",
+    "rate": "4,6",
+    "count": "50 млн+"
+  },
+  {
+    "id": 5,
+    "url": "com.free.vpn.super.hotspot.open",
+    "title": "VPN - Super Unlimited Proxy",
+    "rate": "4,5",
+    "count": "50 млн+"
+  },
+  {
+    "id": 6,
+    "url": "octohide.vpn",
+    "title": "",
+    "rate": "4,0",
+    "count": "1 млн+"
+  },
+  {
+    "id": 7,
+    "url": "free.vpn.unblock.proxy.vpn.master.pro",
+    "title": "VPN Proxy Master: Super Vpn",
+    "rate": "4,6",
+    "count": "50 млн+"
+  },
+  {
+    "id": 8,
+    "url": "free.vpn.proxy.secure",
+    "title": "VPN - быстрый безопасный ВПН",
+    "rate": "4,7",
+    "count": "5 млн+"
+  },
+  {
+    "id": 9,
+    "url": "free.vpn.unblock.proxy.turbovpn.lite",
+    "title": "Turbo VPN Lite - быстрый VPN",
+    "rate": "4,3",
+    "count": "50 млн+"
+  },
+  {
+    "id": 10,
+    "url": "com.nordvpn.android",
+    "title": "NordVPN: VPN без ограничений",
+    "rate": "4,0",
+    "count": "50 млн+"
+  },
+  {
+    "id": 11,
+    "url": "com.cloudflare.onedotonedotonedotone",
+    "title": "1.1.1.1 + WARP: Safer Internet",
+    "rate": "3,3",
+    "count": "100 млн+"
+  },
+  {
+    "id": 12,
+    "url": "com.tunnelbear.android",
+    "title": "",
+    "rate": "4,3",
+    "count": "10 млн+"
+  },
+  {
+    "id": 13,
+    "url": "com.windscribe.vpn",
+    "title": "",
+    "rate": "3,1",
+    "count": "10 млн+"
+  },
+  {
+    "id": 14,
+    "url": "com.expressvpn.vpn",
+    "title": "",
+    "rate": "2,0",
+    "count": "50 млн+"
+  },
+  {
+    "id": 15,
+    "url": "ch.protonvpn.android",
+    "title": "Proton VPN: Private, secure",
+    "rate": "4,1",
+    "count": "10 млн+"
+  },
+  {
+    "id": 16,
+    "url": "com.avast.android.vpn",
+    "title": "Avast SecureLine VPN впн Proxy",
+    "rate": "4,3",
+    "count": "10 млн+"
+  },
+  {
+    "id": 17,
+    "url": "com.privateinternetaccess.android",
+    "title": "Private Internet Access VPN",
+    "rate": "4,5",
+    "count": "5 млн+"
+  },
+  {
+    "id": 18,
+    "url": "con.hotspot.vpn.free.master",
+    "title": "VPN Fast - супер впн россия",
+    "rate": "4,6",
+    "count": "10 млн+"
+  },
+  {
+    "id": 19,
+    "url": "de.mobileconcepts.cyberghost",
+    "title": "CyberGhost VPN: быстрый ВПН",
+    "rate": "4,0",
+    "count": "10 млн+"
+  },
+  {
+    "id": 20,
+    "url": "vpn.ukraine_tap2free",
+    "title": "VPN Украина: VPN IP в Украине",
+    "rate": "4,3",
+    "count": "1 млн+"
+  },
+  {
+    "id": 21,
+    "url": "com.vpn.free.hotspot.secure.vpnify",
+    "title": "",
+    "rate": "4,2",
+    "count": "10 млн+"
+  },
+  {
+    "id": 22,
+    "url": "com.gaditek.purevpnics",
+    "title": "PureVPN: Быстро и безопасно",
+    "rate": "3,8",
+    "count": "1 млн+"
+  },
+  {
+    "id": 23,
+    "url": "com.security.xvpn.z35kb",
+    "title": "X-VPN - Private Browser VPN",
+    "rate": "3,8",
+    "count": "10 млн+"
+  },
+  {
+    "id": 24,
+    "url": "com.fourksoft.openvpn",
+    "title": "",
+    "rate": "4,5",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 25,
+    "url": "com.opera.max.global",
+    "title": "Samsung Max VPN \u0026 Data Saver",
+    "rate": "4,5",
+    "count": "50 млн+"
+  },
+  {
+    "id": 26,
+    "url": "com.browsec.vpn",
+    "title": "Browsec VPN: ВПН, анонимайзер",
+    "rate": "4,6",
+    "count": "5 млн+"
+  },
+  {
+    "id": 27,
+    "url": "com.atlasvpn.free.android.proxy.secure",
+    "title": "Atlas VPN: ВПН для мобильного",
+    "rate": "4,3",
+    "count": "5 млн+"
+  },
+  {
+    "id": 28,
+    "url": "io.privado.android",
+    "title": "PrivadoVPN - безопасный VPN",
+    "rate": "4,5",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 29,
+    "url": "com.ixolit.ipvanish",
+    "title": "IPVanish VPN: The Fastest VPN",
+    "rate": "4,3",
+    "count": "5 млн+"
+  },
+  {
+    "id": 0,
+    "url": "free.vpn.unblock.proxy.turbovpn",
+    "title": "Turbo VPN - безопасный ВПН",
+    "rate": "4,6",
+    "count": "100 млн+"
+  },
+  {
+    "id": 1,
+    "url": "free.vpn.unblock.proxy.vpnmaster",
+    "title": "Master VPN - ВПН для Андроид",
+    "rate": "4,4",
+    "count": "50 млн+"
+  },
+  {
+    "id": 2,
+    "url": "free.vpn.proxy.secure",
+    "title": "VPN - быстрый безопасный ВПН",
+    "rate": "4,7",
+    "count": "5 млн+"
+  },
+  {
+    "id": 3,
+    "url": "com.free.vpn.super.hotspot.open",
+    "title": "VPN - Super Unlimited Proxy",
+    "rate": "4,5",
+    "count": "50 млн+"
+  },
+  {
+    "id": 4,
+    "url": "com.fast.free.unblock.thunder.vpn",
+    "title": "Thunder VPN: Более быстрый VPN",
+    "rate": "4,6",
+    "count": "50 млн+"
+  },
+  {
+    "id": 5,
+    "url": "com.freevpnplanet",
+    "title": "Бесплатный VPN от Planet VPN",
+    "rate": "4,7",
+    "count": "5 млн+"
+  },
+  {
+    "id": 6,
+    "url": "com.supervpn.vpn.free.proxy",
+    "title": "VPN Proxy Speed - Super VPN",
+    "rate": "4,5",
+    "count": "10 млн+"
+  },
+  {
+    "id": 7,
+    "url": "free.vpn.unblock.proxy.vpn.master.pro",
+    "title": "VPN Proxy Master: Super Vpn",
+    "rate": "4,6",
+    "count": "50 млн+"
+  },
+  {
+    "id": 8,
+    "url": "octohide.vpn",
+    "title": "",
+    "rate": "4,0",
+    "count": "1 млн+"
+  },
+  {
+    "id": 9,
+    "url": "ch.protonvpn.android",
+    "title": "Proton VPN: Private, secure",
+    "rate": "4,1",
+    "count": "10 млн+"
+  },
+  {
+    "id": 10,
+    "url": "com.nordvpn.android",
+    "title": "NordVPN: VPN без ограничений",
+    "rate": "4,0",
+    "count": "50 млн+"
+  },
+  {
+    "id": 11,
+    "url": "com.tunnelbear.android",
+    "title": "",
+    "rate": "4,3",
+    "count": "10 млн+"
+  },
+  {
+    "id": 12,
+    "url": "free.vpn.unblock.proxy.turbovpn.lite",
+    "title": "Turbo VPN Lite - быстрый VPN",
+    "rate": "4,3",
+    "count": "50 млн+"
+  },
+  {
+    "id": 13,
+    "url": "com.cloudflare.onedotonedotonedotone",
+    "title": "1.1.1.1 + WARP: Safer Internet",
+    "rate": "3,3",
+    "count": "100 млн+"
+  },
+  {
+    "id": 14,
+    "url": "com.windscribe.vpn",
+    "title": "",
+    "rate": "3,1",
+    "count": "10 млн+"
+  },
+  {
+    "id": 15,
+    "url": "com.opera.browser",
+    "title": "",
+    "rate": "4,7",
+    "count": "100 млн+"
+  },
+  {
+    "id": 16,
+    "url": "com.expressvpn.vpn",
+    "title": "",
+    "rate": "2,0",
+    "count": "50 млн+"
+  },
+  {
+    "id": 17,
+    "url": "com.kms.free",
+    "title": "Kaspersky: Антивирус и защита",
+    "rate": "4,8",
+    "count": "100 млн+"
+  },
+  {
+    "id": 18,
+    "url": "com.avast.android.vpn",
+    "title": "Avast SecureLine VPN впн Proxy",
+    "rate": "4,3",
+    "count": "10 млн+"
+  },
+  {
+    "id": 19,
+    "url": "con.hotspot.vpn.free.master",
+    "title": "VPN Fast - супер впн россия",
+    "rate": "4,6",
+    "count": "10 млн+"
+  },
+  {
+    "id": 20,
+    "url": "de.mobileconcepts.cyberghost",
+    "title": "CyberGhost VPN: быстрый ВПН",
+    "rate": "4,0",
+    "count": "10 млн+"
+  },
+  {
+    "id": 21,
+    "url": "com.browsec.vpn",
+    "title": "Browsec VPN: ВПН, анонимайзер",
+    "rate": "4,6",
+    "count": "5 млн+"
+  },
+  {
+    "id": 22,
+    "url": "com.privateinternetaccess.android",
+    "title": "Private Internet Access VPN",
+    "rate": "4,5",
+    "count": "5 млн+"
+  },
+  {
+    "id": 23,
+    "url": "com.gaditek.purevpnics",
+    "title": "PureVPN: Быстро и безопасно",
+    "rate": "3,8",
+    "count": "1 млн+"
+  },
+  {
+    "id": 24,
+    "url": "com.security.xvpn.z35kb",
+    "title": "X-VPN - Private Browser VPN",
+    "rate": "3,8",
+    "count": "10 млн+"
+  },
+  {
+    "id": 25,
+    "url": "com.fourksoft.openvpn",
+    "title": "",
+    "rate": "4,6",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 26,
+    "url": "com.avg.android.vpn",
+    "title": "AVG Безопасная VPN и прокси",
+    "rate": "4,1",
+    "count": "5 млн+"
+  },
+  {
+    "id": 27,
+    "url": "io.privado.android",
+    "title": "PrivadoVPN - безопасный VPN",
+    "rate": "4,5",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 28,
+    "url": "com.opera.max.global",
+    "title": "Samsung Max VPN \u0026 Data Saver",
+    "rate": "4,5",
+    "count": "50 млн+"
+  },
+  {
+    "id": 29,
+    "url": "com.brocode.uvpn",
+    "title": "Unblock Websites - VPN by uVPN",
+    "rate": "4,4",
+    "count": "100 тыс.+"
+  },
+  {
+    "id": 0,
+    "url": "com.freevpnplanet",
+    "title": "Бесплатный VPN от Planet VPN",
+    "rate": "4,7",
+    "count": "5 млн+"
+  },
+  {
+    "id": 1,
+    "url": "free.vpn.proxy.secure",
+    "title": "VPN - быстрый безопасный ВПН",
+    "rate": "4,7",
+    "count": "5 млн+"
+  },
+  {
+    "id": 2,
+    "url": "free.vpn.unblock.proxy.turbovpn",
+    "title": "Turbo VPN - безопасный ВПН",
+    "rate": "4,6",
+    "count": "100 млн+"
+  },
+  {
+    "id": 3,
+    "url": "com.expressvpn.vpn",
+    "title": "",
+    "rate": "2,0",
+    "count": "50 млн+"
+  },
+  {
+    "id": 4,
+    "url": "com.atlasvpn.free.android.proxy.secure",
+    "title": "Atlas VPN: ВПН для мобильного",
+    "rate": "4,3",
+    "count": "5 млн+"
+  },
+  {
+    "id": 5,
+    "url": "ch.protonvpn.android",
+    "title": "Proton VPN: Private, secure",
+    "rate": "4,1",
+    "count": "10 млн+"
+  },
+  {
+    "id": 6,
+    "url": "com.browsec.vpn",
+    "title": "Browsec VPN: ВПН, анонимайзер",
+    "rate": "4,6",
+    "count": "5 млн+"
+  },
+  {
+    "id": 7,
+    "url": "con.hotspot.vpn.free.master",
+    "title": "VPN Fast - супер впн россия",
+    "rate": "4,6",
+    "count": "10 млн+"
+  },
+  {
+    "id": 8,
+    "url": "octohide.vpn",
+    "title": "",
+    "rate": "4,0",
+    "count": "1 млн+"
+  },
+  {
+    "id": 9,
+    "url": "free.vpn.unblock.proxy.vpnmaster",
+    "title": "Master VPN - ВПН для Андроид",
+    "rate": "4,4",
+    "count": "50 млн+"
+  },
+  {
+    "id": 10,
+    "url": "hideme.android.vpn",
+    "title": "hide.me VPN: Безопасный ВПН",
+    "rate": "4,7",
+    "count": "1 млн+"
+  },
+  {
+    "id": 11,
+    "url": "germany.vpn",
+    "title": "VPN Germany - быстрый VPN",
+    "rate": "4,3",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 12,
+    "url": "vpn.fast.unlimited.free",
+    "title": "ВПН - безлимитный, быстрый VPN",
+    "rate": "4,9",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 13,
+    "url": "com.fast.free.unblock.thunder.vpn",
+    "title": "Thunder VPN: Более быстрый VPN",
+    "rate": "4,6",
+    "count": "50 млн+"
+  },
+  {
+    "id": 14,
+    "url": "io.privado.android",
+    "title": "PrivadoVPN - безопасный VPN",
+    "rate": "4,5",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 15,
+    "url": "com.gaditek.purevpnics",
+    "title": "PureVPN: Быстро и безопасно",
+    "rate": "3,8",
+    "count": "1 млн+"
+  },
+  {
+    "id": 16,
+    "url": "com.rabbit.ladder",
+    "title": "",
+    "rate": "4,6",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 17,
+    "url": "com.vpn99",
+    "title": "VPN99 - анонимность в сети",
+    "rate": "4,1",
+    "count": "500 тыс.+"
+  },
+  {
+    "id": 18,
+    "url": "org.freevpn",
+    "title": "Free VPN by Free VPN .org™",
+    "rate": "4,1",
+    "count": "5 млн+"
+  },
+  {
+    "id": 19,
+    "url": "com.zoogvpn.android",
+    "title": "",
+    "rate": "4,5",
+    "count": "100 тыс.+"
+  },
+  {
+    "id": 20,
+    "url": "com.adguard.vpn",
+    "title": "AdGuard VPN — приватный proxy",
+    "rate": "4,5",
+    "count": "5 млн+"
+  },
+  {
+    "id": 21,
+    "url": "com.free.vpn.super.hotspot.open",
+    "title": "VPN - Super Unlimited Proxy",
+    "rate": "4,5",
+    "count": "50 млн+"
+  },
+  {
+    "id": 22,
+    "url": "com.supervpn.vpn.free.proxy",
+    "title": "VPN Proxy Speed - Super VPN",
+    "rate": "4,5",
+    "count": "10 млн+"
+  },
+  {
+    "id": 23,
+    "url": "com.free.vpn.proxy.master.app",
+    "title": "Super VPN Proxy - Proxy Master",
+    "rate": "4,7",
+    "count": "10 млн+"
+  },
+  {
+    "id": 24,
+    "url": "de.mobileconcepts.cyberghost",
+    "title": "CyberGhost VPN: быстрый ВПН",
+    "rate": "4,0",
+    "count": "10 млн+"
+  },
+  {
+    "id": 25,
+    "url": "free.vpn.unblock.proxy.vpn.master.pro",
+    "title": "VPN Proxy Master: Super Vpn",
+    "rate": "4,6",
+    "count": "50 млн+"
+  },
+  {
+    "id": 26,
+    "url": "com.brocode.uvpn",
+    "title": "Unblock Websites - VPN by uVPN",
+    "rate": "4,4",
+    "count": "100 тыс.+"
+  },
+  {
+    "id": 27,
+    "url": "com.optimizer.booster.fast.speedy.phone.smooth",
+    "title": "",
+    "rate": "4,8",
+    "count": "1 млн+"
+  },
+  {
+    "id": 28,
+    "url": "com.rg.nomadvpn",
+    "title": "",
+    "rate": "3,9",
+    "count": "100 тыс.+"
+  },
+  {
+    "id": 29,
+    "url": "com.mandarin.vpn",
+    "title": "",
+    "rate": "3,4",
+    "count": "10 тыс.+"
+  }
+]

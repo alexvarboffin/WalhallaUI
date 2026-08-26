@@ -29,6 +29,7 @@ object PackageUtils {
         }
     }
 
+    @JvmStatic
     fun isAppInstalled(context: Context, packageName: String): Boolean {
         val pm = context.packageManager
         try {
@@ -39,6 +40,7 @@ object PackageUtils {
         }
     }
 
+    @JvmStatic
     fun getAppVersion(context: Context, packageName: String): String? {
         try {
             val pm = context.packageManager

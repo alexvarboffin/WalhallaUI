@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.walhalla.phonenumber-mergeDebugResources-45:/values-zh/values-zh.xml",
+            "outputFile": "com.walhalla.phonenumber-mergeDebugResources-48:/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "D:\\walhalla\\sdk\\android\\ui\\features\\ui\\build\\intermediates\\packaged_res\\debug\\packageDebugResources\\values-zh\\values-zh.xml",
+                    "source": "C:\\src\\Synced\\WalhallaUI\\shared\\build\\intermediates\\packaged_res\\debug\\packageDebugResources\\values-zh\\values-zh.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

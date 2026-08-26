@@ -39,7 +39,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
 
         vectorDrawables {
             useSupportLibrary = true
@@ -98,9 +97,9 @@ dependencies {
     api(project(":shared"))
 
     //@@@ implementation@@@@@@@@@@@@@@@core:1.10.3'//Google Play In-App Review API
-    implementation(libs.play.app.update)
+    implementation(libs.app.update)
     // For Kotlin users, also add the Kotlin extensions library for Play In-App Update:
-    implementation(libs.play.app.update.ktx)
+    implementation(libs.app.update.ktx)
 
     //Google Play In-App Review API
     implementation(libs.review)

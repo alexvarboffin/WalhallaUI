@@ -1,0 +1,782 @@
+[
+  {
+    "id": 0,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.levelxcode.izinktest",
+    "title": "",
+    "rate": "4.0",
+    "count": "100K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 1,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.rustlestd.temperament.test",
+    "title": "Temperament | test",
+    "rate": "4.3",
+    "count": "50K+",
+    "whatsNew": "Bugfixes"
+  },
+  {
+    "id": 2,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dorg.hvli.virtuous_leadership",
+    "title": "From Temperament To Character",
+    "rate": "",
+    "count": "5K+",
+    "whatsNew": "Fixed some bugs related to specific locales (like ru_US, en), fixed shared picture in bright theme."
+  },
+  {
+    "id": 3,
+    "titleWordsCount": 2,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.nixgames.psycho_tests",
+    "title": "Psychological tests.",
+    "rate": "4.8",
+    "count": "5M+",
+    "whatsNew": "• Added a new psychological test - \"The Luscher color test\".\n• Improved \"Beck\u0027s Depression Inventory\" test.\n\nThanks for your support. Stay tuned ?"
+  },
+  {
+    "id": 4,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.temperament.nearme.gamecenter",
+    "title": "What Is Your Temperament",
+    "rate": "",
+    "count": "10K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 5,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.testometrika.tests",
+    "title": "Psychological tests. IQ. Logic",
+    "rate": "3.6",
+    "count": "100K+",
+    "whatsNew": "Application core changes"
+  },
+  {
+    "id": 6,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.infotex.testpdr.mobile",
+    "title": "Офіційні тести ПДР України",
+    "rate": "4.7",
+    "count": "100K+",
+    "whatsNew": "- Збільшена стабільність роботи на телефонах Samsung;\n- Оновлені тестові питання відповідно до найновіших ПДР України 2023;\n- Покращена швидкість запуску додатку для більш комфортного користування;\n- Збільшена стабільність роботи для безперебійного використання;\n- Додано офіційні маршрути для практичного водіння, за якими складають іспит.\n\nМи робимо наш додаток кращим для вас. Вивчайте ПДР легко та ефективно!"
+  },
+  {
+    "id": 7,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 2,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.psychotests",
+    "title": "Psychotests, personality tests",
+    "rate": "3.7",
+    "count": "10K+",
+    "whatsNew": "- updated design of categories;\n- new category of tests \"Popular\";\n- label \"New\" for newly added tests;\n- more space for content;\n- bugfix."
+  },
+  {
+    "id": 8,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dme.mindspa.app",
+    "title": "Mindspa: The Mental Health App",
+    "rate": "3.8",
+    "count": "500K+",
+    "whatsNew": "Improvements of the diary feature."
+  },
+  {
+    "id": 9,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.muraDev.psychotests",
+    "title": "40+ Psychological Tests",
+    "rate": "4.5",
+    "count": "1M+",
+    "whatsNew": "Portuguese translation"
+  },
+  {
+    "id": 10,
+    "titleWordsCount": 7,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.braintest.psytest.iqtest",
+    "title": "Brain test - psy and iq test",
+    "rate": "4.1",
+    "count": "1M+",
+    "whatsNew": "Bugs fixed"
+  },
+  {
+    "id": 11,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testdm",
+    "title": "Тест з державної мови",
+    "rate": "4.8",
+    "count": "100K+",
+    "whatsNew": "Додано новий монолог в розділ \"Говоріння\" та оновлено статистику важкості питань."
+  },
+  {
+    "id": 12,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testnp",
+    "title": "Тест в Національну поліцію",
+    "rate": "4.8",
+    "count": "10K+",
+    "whatsNew": "Зменшено розмір додатка і пришвидшено завантаження тестів. Оновлено статистику важкості питань."
+  },
+  {
+    "id": 13,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.hunterdevelopers.testRorschach",
+    "title": "Personality Test (Psychology):",
+    "rate": "4.0",
+    "count": "500K+",
+    "whatsNew": "Solved Bugs and added new features"
+  },
+  {
+    "id": 14,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testnp.pp",
+    "title": "Тест профпідготовки Нацполіції",
+    "rate": "4.9",
+    "count": "50K+",
+    "whatsNew": "Увімкнено захист цілісності даних."
+  },
+  {
+    "id": 15,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.Store.ReaderPro",
+    "title": "ReaderPro - Speed reading and",
+    "rate": "4.8",
+    "count": "1M+",
+    "whatsNew": "? Minor bugs fixed\n? Improved stability"
+  },
+  {
+    "id": 16,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testpu",
+    "title": "Тест в прокуратуру",
+    "rate": "4.3",
+    "count": "10K+",
+    "whatsNew": "Реалізовано вивід на сторінці результату тестування кількості правильних відповідей за розділами."
+  },
+  {
+    "id": 17,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.dev.amthaueriqtest",
+    "title": "IQ - Amthauer Test",
+    "rate": "2.8",
+    "count": "5K+",
+    "whatsNew": "Added subtotals for subtests\nAdded ads"
+  },
+  {
+    "id": 18,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.work.realfeel",
+    "title": "Mood Diary and Mental Health",
+    "rate": "4.6",
+    "count": "10K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 19,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.ediagnostics.app",
+    "title": "IQ, EQ Tests - Psychometrica",
+    "rate": "",
+    "count": "10K+",
+    "whatsNew": "Premium account."
+  },
+  {
+    "id": 20,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.dimonnwc3.testframe",
+    "title": "Testframe: Rate Attractiveness",
+    "rate": "4.0",
+    "count": "5K+",
+    "whatsNew": "UX Improvements\nBug fixes"
+  },
+  {
+    "id": 21,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dflashcards.words.words",
+    "title": "",
+    "rate": "4.8",
+    "count": "1M+",
+    "whatsNew": ""
+  },
+  {
+    "id": 22,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testds.free",
+    "title": "Тест на державну службу",
+    "rate": "4.8",
+    "count": "100K+",
+    "whatsNew": "Зменшено розмір додатка і пришвидшено завантаження тестів. Оновлено статистику важкості питань."
+  },
+  {
+    "id": 23,
+    "titleWordsCount": 6,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dio.softry.pollforall",
+    "title": "Poll For All - Create polls",
+    "rate": "3.7",
+    "count": "100K+",
+    "whatsNew": "- Improvements for fraud protection\n- Poll and questionnaire embedding as a new premium feature"
+  },
+  {
+    "id": 24,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.testgames.personalitytest",
+    "title": "Aptitude test Personality test",
+    "rate": "2.3",
+    "count": "1M+",
+    "whatsNew": "Bugs fixed"
+  },
+  {
+    "id": 25,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.seasector.emotionalintelligence",
+    "title": "Sintelly: Psychology \u0026 Emotion",
+    "rate": "4.3",
+    "count": "1M+",
+    "whatsNew": "Bug fixed\nAndroid SDK update"
+  },
+  {
+    "id": 26,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.prostezno",
+    "title": "",
+    "rate": "4.9",
+    "count": "50K+",
+    "whatsNew": "Хелоу, любі друзі!\nЗатіяли в \"Просте ЗНО\" косметичний ремонт, бо плануємо розширяти функціонал якнайшвидше ? Перші зміни можете відчути ВЖЕ. Плюс можете пошукати в застосунку наших нових друзів, вони допоможуть вам з англійською ?"
+  },
+  {
+    "id": 27,
+    "titleWordsCount": 2,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.nixgames.concentration",
+    "title": "Concentration training",
+    "rate": "4.9",
+    "count": "100K+",
+    "whatsNew": "As long as you improve your concentration, we keep improving the app! Therefore, we have prepared an excellent and interesting exercise for concentration training - \"Correct side\". It\u0027s very hard and it\u0027s worth a try!\n\nStay tuned, there are many interesting things ahead ?"
+  },
+  {
+    "id": 28,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.yevhenkrasnoholovets.testsvnp",
+    "title": "Нацполіція Тести для Вступу",
+    "rate": "4.0",
+    "count": "5K+",
+    "whatsNew": "Виправлена проблема із покупками"
+  },
+  {
+    "id": 29,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dnl.pibit.pollie",
+    "title": "Pollie: Create Polls",
+    "rate": "4.3",
+    "count": "1M+",
+    "whatsNew": "We fixed some bugs and made some improvements to make Pollie better for you."
+  },
+  {
+    "id": 30,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003des.levsu.temperamentos",
+    "title": "Test de Temperamento - Conoce",
+    "rate": "",
+    "count": "10K+",
+    "whatsNew": "Lenguajes: Ingles, Espa?ol y Portugu?s"
+  },
+  {
+    "id": 31,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testsn",
+    "title": "Тест на свідоцтво нотаріуса",
+    "rate": "4.9",
+    "count": "1K+",
+    "whatsNew": "Виправлено посилання для приєднання до доброзичливої групи в Telegram."
+  },
+  {
+    "id": 32,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dru.wellapp.psihologicheskie_testyi_v_kartinkah",
+    "title": "Психологический Тест в картинк",
+    "rate": "4.2",
+    "count": "500K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 33,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.egitimyazilimlari.testtime",
+    "title": "Test Time - Online Test",
+    "rate": "",
+    "count": "1K+",
+    "whatsNew": "Newly Added Features\n* Interface updated\n\nFixes\n* Improved data syncs"
+  },
+  {
+    "id": 34,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.liv.tester",
+    "title": "Тесты: тесты на характер",
+    "rate": "4.1",
+    "count": "10K+",
+    "whatsNew": "Большое обновление."
+  },
+  {
+    "id": 35,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testdbr",
+    "title": "Тест в Держбюро розслідувань",
+    "rate": "4.4",
+    "count": "1K+",
+    "whatsNew": "Зменшено розмір додатка і пришвидшено завантаження тестів. Оновлено статистику важкості питань."
+  },
+  {
+    "id": 36,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.dvl.whichprofessionismine",
+    "title": "Test: my profession",
+    "rate": "4.6",
+    "count": "10K+",
+    "whatsNew": "- added new languages;\n- corrected grammatical errors."
+  },
+  {
+    "id": 37,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dorg.abmobile.sonditester",
+    "title": "",
+    "rate": "",
+    "count": "1K+",
+    "whatsNew": "Thank you for using the latest version of the application\n• added Turkish language\n• updated information about sources and materials\n• updated tooltips in interpretations"
+  },
+  {
+    "id": 38,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.furkansoyler.sana_uygun_meslek_testi",
+    "title": "",
+    "rate": "",
+    "count": "10K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 39,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testnabu",
+    "title": "",
+    "rate": "4.5",
+    "count": "5K+",
+    "whatsNew": "Зменшено розмір додатка і пришвидшено завантаження тестів. Оновлено статистику важкості питань."
+  },
+  {
+    "id": 40,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.monolit.pddexamua",
+    "title": "Офiцiйнi Тести ПДР",
+    "rate": "4.9",
+    "count": "1M+",
+    "whatsNew": "- Важливо! Оновлено базу тестових питань\n- Поліпшено стабільність та швидкодію додатку\n- Удосконалено та оптимізовано дизайн"
+  },
+  {
+    "id": 41,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.devup.qcm.maker",
+    "title": "Quiz Maker (Create Quiz /Test)",
+    "rate": "4.4",
+    "count": "500K+",
+    "whatsNew": "- Updating buildTools to version 7.2\n- Fix a major issue that caused crashes while trying to record an audio. I even caused the feature to be not usable at all.\n- Added an embedded Audio recorder (No more need necessarily to install an audio-recorder app)\n- Improving compatibility with quizzes created on QuizMaker professional\n- Reported bug fix and improvement"
+  },
+  {
+    "id": 42,
+    "titleWordsCount": 6,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.sergeyShishkin.android.playground",
+    "title": "Test Maker - Play, Learn, Exam",
+    "rate": "4.0",
+    "count": "10K+",
+    "whatsNew": "Added the ability to make tests paid.\nBy creating a paid test and making it available to everyone, you will earn money when other users buy the test."
+  },
+  {
+    "id": 43,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.Ziddy.IQTest",
+    "title": "IQ Test: intelligence test",
+    "rate": "4.8",
+    "count": "50K+",
+    "whatsNew": "Fixed some minor bug and added new features"
+  },
+  {
+    "id": 44,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.adalbero.app.lebenindeutchland",
+    "title": "Leben In Deutschland Test",
+    "rate": "4.9",
+    "count": "500K+",
+    "whatsNew": "*** Ver 1.10.0\n? Improved integration with Google Translator\n? Fixed some spelling\n? Database version: Q3-2023"
+  },
+  {
+    "id": 45,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.Serbull.TestsYou",
+    "title": "Тесты: Кто ты из?",
+    "rate": "3.7",
+    "count": "1M+",
+    "whatsNew": ""
+  },
+  {
+    "id": 46,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.com.testzz",
+    "title": "Тест на загальні здібності",
+    "rate": "4.6",
+    "count": "5K+",
+    "whatsNew": "Реалізовано підбір параметрів тестування. Зменшено розмір додатка і пришвидшено завантаження тестів."
+  },
+  {
+    "id": 47,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.aadi.personalitytraittest",
+    "title": "Personality Trait Test - Redis",
+    "rate": "3.2",
+    "count": "1M+",
+    "whatsNew": "Welcome to a brand new version of the app, with a complete make-over of UI/UX designs. We have made a ton of improvements to our personality app to make it more consistent, reliable and efficient. Now you can read pdf reports without downloading. App Permissions fixed."
+  },
+  {
+    "id": 48,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.furkansoyler.personality_trait_test",
+    "title": "Personality Trait Test",
+    "rate": "",
+    "count": "1K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 49,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.personalityperfect.app",
+    "title": "PersonalityMatch - Personality",
+    "rate": "3.7",
+    "count": "500K+",
+    "whatsNew": "Performance and stability improvements"
+  },
+  {
+    "id": 50,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dnet.devting.yourpersonality",
+    "title": "",
+    "rate": "",
+    "count": "50K+",
+    "whatsNew": "Improvement of some characteristics."
+  },
+  {
+    "id": 51,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.caracolu.alterego",
+    "title": "",
+    "rate": "4.8",
+    "count": "1M+",
+    "whatsNew": "Fixed a bug on BGM."
+  },
+  {
+    "id": 52,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.eaglekings.personalitytest",
+    "title": "TrueMe - Personality Finder",
+    "rate": "",
+    "count": "1K+",
+    "whatsNew": "Welcome to a brand new version of the app, with a complete make-over of UI/UX designs. We have made a ton of improvements to our personality app to make it more consistent, reliable and efficient. Now you can enjoy the tests much more and non disturbing ads have been implemented and also fixed the bugs."
+  },
+  {
+    "id": 53,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.mi.enneapppro",
+    "title": "",
+    "rate": "",
+    "count": "100K+",
+    "whatsNew": "- Display fixes on \u0027Find Your Type\u0027 screen"
+  },
+  {
+    "id": 54,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 5,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.alison.mobile.psycho.test",
+    "title": "",
+    "rate": "",
+    "count": "5K+",
+    "whatsNew": "A brand new Personal Assessment Test App from Alison\nUpdate 01.08.22:\n- fixed an issue with FB login"
+  },
+  {
+    "id": 55,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 2,
+    "url": "https://play.google.com/store/apps/details?id\u003dpdb.app",
+    "title": "Pdbee: MBTI, Friends, Chat",
+    "rate": "3.9",
+    "count": "500K+",
+    "whatsNew": "Introducing our new identity Pdbee, we\u0027ve bid farewell to pesky bugs and showered our creation with delightful enhancements. Stay hydrated.\n\nLove from Pdbee"
+  },
+  {
+    "id": 56,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dco.intellect.app",
+    "title": "Intellect: Create A Better You",
+    "rate": "4.8",
+    "count": "1M+",
+    "whatsNew": "Download the latest version now to elevate your experience with these new features, fixes, and enhancements.\nDive into the Explore Tab with our Curated Collections to help you find content for your needs.\nOur improved Coach Matching Experience helps you find the perfect coach for an even more personalised and effective journey towards personal growth.\nSay hello to our new chat feature that allows you to open external links directly within the chat messages!\n\nAlways in your corner,\nTeam Intellect"
+  },
+  {
+    "id": 57,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.cct.enneagram",
+    "title": "Enneagram Personality Test",
+    "rate": "",
+    "count": "5K+",
+    "whatsNew": "We bring a lot of new features in this new version. We have added a section where you can consult all the tests you do with us so that you can analyze your results later on. We have also added new flows where you can get some of our products for FREE. We have also fixed a few bugs that were in the previous version. We hope you enjoy it as much as we do."
+  },
+  {
+    "id": 58,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.rvvrgroup.android.disc",
+    "title": "DiSC personality test",
+    "rate": "",
+    "count": "1K+",
+    "whatsNew": "15 (1.2.1)"
+  },
+  {
+    "id": 59,
+    "titleWordsCount": 2,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.developma.personality_type",
+    "title": "Personality types",
+    "rate": "",
+    "count": "50+",
+    "whatsNew": "First release"
+  },
+  {
+    "id": 60,
+    "titleWordsCount": 6,
+    "packageNameWordsCount": 2,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.inspectionapplication",
+    "title": "16 Personality Test - 1:1 Chat",
+    "rate": "",
+    "count": "10K+",
+    "whatsNew": "- Version 59 (1.5.8)\n1. Add MBTI test result log sheet (understanding trend of tendency)\n2. Fix errors when more than 10 user search filters are displayed\n3. Fixed an error that would fail to write if you entered more than 150 characters of a post\n\n- Version 58 (1.5.7)\n1. Supplementing chat room design and convenience\n2. Modify user default profile image\n3. Modify all Dialog designs in the app\n4. Fixing and resolving the element design in the app"
+  },
+  {
+    "id": 61,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.feelgoodcompany.feelgood",
+    "title": "My True Value - Self-Esteem",
+    "rate": "",
+    "count": "50K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 62,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.zabirko.hiddenselfpersonalitytest",
+    "title": "Hidden Self Personality Test",
+    "rate": "4.2",
+    "count": "500K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 63,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dru.harlion.psy",
+    "title": "Emotions Diary and Mindfulness",
+    "rate": "4.6",
+    "count": "50K+",
+    "whatsNew": "Our dear users! With care for you, we\u0027ve added the following features:\n? Breathing Practices: More techniques and expanded access in the free version.\n? Belief Work: In-depth belief analysis for comprehensive understanding."
+  },
+  {
+    "id": 64,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.hrd.motivation",
+    "title": "Motivation - Daily quotes",
+    "rate": "4.9",
+    "count": "5M+",
+    "whatsNew": "- New themes and tons of quotes!\n- Other fixes and improvements.\n\nLove the app? Tell us in the reviews section! We read it all. Have a happy day!"
+  },
+  {
+    "id": 65,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dua.vodiy.lite",
+    "title": "",
+    "rate": "4.8",
+    "count": "500K+",
+    "whatsNew": "Оновлення тестових питань і коментарів експерта."
+  },
+  {
+    "id": 66,
+    "titleWordsCount": 2,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.tellstory.psychologicaltests",
+    "title": "Психология: Тесты",
+    "rate": "3.7",
+    "count": "1M+",
+    "whatsNew": "• 8 новых тестов\n• Индикатор завершения теста (оставшихся вопросов)\n• Возможность изменить предыдущий ответ\n• Информация о тестах, авторах и инструкции\n• Возможность изменить цвет фона\n• Обновлён дизайн\n• Поправлены шрифты\n• Поправлены размеры и расположение кнопок\n• Некоторые результаты стали более прозрачны\n• Вроде бы решил проблему с громким звуком рекламы, напишите, помогло или нет\n+\n• Поправлены некоторые вопросы\n• В тест \"депрессия\" добавлены промежуточные значения"
+  },
+  {
+    "id": 67,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.LSSGAMES.TestYourtypeoffutureprofession",
+    "title": "Test: Your future profession",
+    "rate": "3.2",
+    "count": "50K+",
+    "whatsNew": "Correction of visual errors in the application"
+  },
+  {
+    "id": 68,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dru.mail.aig001.test",
+    "title": "",
+    "rate": "4.6",
+    "count": "1M+",
+    "whatsNew": "Версия 1.6.4\n- внедрена реклама, которая не должна помешать Вам\n- новая иконка приложения\nВерсия 1.6.3\n- отключена вся реклама \u003d)\nВерсия 1.6.1\n- случайное расположение вариантов ответа\n- количество запусков теста (в правом нижнем углу)\nВерсия 1.5.6\n- добавлен 20-минутный таймер\nВерсия 1.5.3\n- добавлена индикация выбранного варианта ответа\n- убраны разрешения на чтение и запись\nВерсия 1.5.2\n- убрана возможность случайного нажатия на клавиши \"меню\" и \"назад\""
+  },
+  {
+    "id": 69,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.testgames.psyhologytests",
+    "title": "Psychological Assessment Test",
+    "rate": "3.7",
+    "count": "1M+",
+    "whatsNew": "Bugs fixed"
+  },
+  {
+    "id": 70,
+    "titleWordsCount": 2,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.do_apps.catalog_321",
+    "title": "Personality traits",
+    "rate": "4.3",
+    "count": "100K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 71,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.hon.urshin",
+    "title": "SECRET personality test",
+    "rate": "2.4",
+    "count": "500K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 72,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.mayur.personalitydevelopment",
+    "title": "Personality Development App",
+    "rate": "4.6",
+    "count": "1M+",
+    "whatsNew": "-Performance improvement\n-Bug Fixes"
+  },
+  {
+    "id": 73,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 4,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.appcharm.www.charm_flutter",
+    "title": "Charma: Personality types",
+    "rate": "",
+    "count": "10K+",
+    "whatsNew": "* We added user name\n* We added mention users in posts and comments"
+  },
+  {
+    "id": 74,
+    "titleWordsCount": 5,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dit.ppndrd.disturbidellapersonalita",
+    "title": "PD Test - Personality Disorder",
+    "rate": "3.9",
+    "count": "100K+",
+    "whatsNew": "Stability improvement."
+  },
+  {
+    "id": 75,
+    "titleWordsCount": 1,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.byronsd.personality_test",
+    "title": "",
+    "rate": "",
+    "count": "50K+",
+    "whatsNew": ""
+  },
+  {
+    "id": 76,
+    "titleWordsCount": 3,
+    "packageNameWordsCount": 3,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.praditus.motus",
+    "title": "Praditus Personality Test",
+    "rate": "4.5",
+    "count": "100K+",
+    "whatsNew": "This release fixes some Vimeo embeds"
+  },
+  {
+    "id": 77,
+    "titleWordsCount": 4,
+    "packageNameWordsCount": 2,
+    "url": "https://play.google.com/store/apps/details?id\u003dcom.mbtiapplication",
+    "title": "16 Personality Test (96Q)",
+    "rate": "",
+    "count": "100K+",
+    "whatsNew": "1. Complement of test sentence (modified questions)\n2. Fix progress bar display error of inspection result\n3. Server stabilization completed"
+  }
+]

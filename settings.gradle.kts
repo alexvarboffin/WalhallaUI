@@ -41,8 +41,9 @@ include(":features:landing")
 include(":features:webview")
 
 include(":stub:stubInjector")
-//include(":example:phonenumber")
-include(":promo")
+include(":example:phonenumber")
+// promo removed in f4b13b65; keep commented until module is restored
+//include(":promo")
 include(":wvcompose")
 
 include(":threader")

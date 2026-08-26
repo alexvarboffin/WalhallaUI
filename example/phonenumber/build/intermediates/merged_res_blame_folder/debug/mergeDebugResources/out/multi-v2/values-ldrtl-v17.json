@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.walhalla.phonenumber-mergeDebugResources-45:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.walhalla.phonenumber-mergeDebugResources-48:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\combo\\.gradle\\caches\\8.9\\transforms\\04ad24b821950bdf89aa8bcb4df2b0dd\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\combo\\.gradle\\caches\\8.14.5\\transforms\\dd82d95dc48573783fe574ebf968b1de\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

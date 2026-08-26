@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.FrameLayout
-import com.walhalla.boilerplate.domain.executor.impl.ThreadExecutor
-import com.walhalla.boilerplate.threading.MainThreadImpl
+
 import com.walhalla.domain.interactors.AdvertInteractor
 import com.walhalla.domain.interactors.impl.AdvertInteractorImpl
 
