@@ -13,8 +13,7 @@ import com.walhalla.ui.plugins.Launcher;
 
 
 public class AppViewHolder
-        extends SortedListAdapter.ViewHolder<AppModel>
-{
+        extends SortedListAdapter.ViewHolder<AppModel> {
 
     public final ItemAppBinding mBinding;
 
@@ -22,7 +21,6 @@ public class AppViewHolder
         super(binding.getRoot());
         binding.setListener(listener);
         mBinding = binding;
-
     }
 
     @Override
@@ -32,11 +30,19 @@ public class AppViewHolder
         String packageName = resolvePackageName(obj.q);
         String displayName = !TextUtils.isEmpty(obj.name) ? obj.name : shortId(obj.q);
         mBinding.fillName.setText(displayName);
-        // Always force package on its own line (visible + selectable)
         mBinding.packageName.setText(packageName);
         mBinding.packageName.setVisibility(View.VISIBLE);
-        // Belt-and-suspenders: also keep package in content description for a11y/debug
-        mBinding.getRoot().setContentDescription(displayName + " " + packageName);
+
+        boolean inRelease = ReleasePackage.contains(packageName);
+        if (inRelease) {
+            mBinding.releaseBadge.setVisibility(View.VISIBLE);
+            mBinding.releaseBadge.setText(ReleasePackage.TAG);
+        } else {
+            mBinding.releaseBadge.setVisibility(View.GONE);
+        }
+        mBinding.getRoot().setBackgroundColor(Color.TRANSPARENT);
+        mBinding.getRoot().setContentDescription(
+                (inRelease ? ReleasePackage.TAG + " " : "") + displayName + " " + packageName);
 
         if (obj.isInstalled) {
             mBinding.installedIcon.setVisibility(View.VISIBLE);
@@ -56,40 +62,36 @@ public class AppViewHolder
         if (!TextUtils.isEmpty(obj.features)) {
             mBinding.features.setVisibility(View.VISIBLE);
             mBinding.features.setText(obj.features);
-
         } else {
             mBinding.features.setVisibility(View.GONE);
         }
 
-//        apk editor pro
-//        apk extractor
-
         if (!TextUtils.isEmpty(obj.privacy_policy)) {
             mBinding.privacyPolicy.setVisibility(View.VISIBLE);
-            mBinding.privacyPolicy.setOnClickListener(v -> {
-                Launcher.openBrowser(v.getContext(), obj.privacy_policy);
-            });
-
+            mBinding.privacyPolicy.setOnClickListener(v ->
+                    Launcher.openBrowser(v.getContext(), obj.privacy_policy));
         } else {
             mBinding.privacyPolicy.setVisibility(View.GONE);
         }
 
         if (!TextUtils.isEmpty(obj.color)) {
-            mBinding.color.setBackgroundColor(Color.parseColor(obj.color));
-        } else {
-            //mBinding.crashlytics.setVisibility(View.GONE);
+            try {
+                mBinding.color.setBackgroundColor(Color.parseColor(obj.color));
+            } catch (IllegalArgumentException ignored) {
+            }
         }
 
         itemView.setOnLongClickListener(v -> {
-            Toast.makeText(v.getContext(), "@", Toast.LENGTH_SHORT).show();
-            return false;
+            Toast.makeText(v.getContext(), packageName, Toast.LENGTH_SHORT).show();
+            return true;
         });
         if (obj.time > 0) {
             mBinding.main.setBackgroundResource(obj.time);
+        } else {
+            mBinding.main.setBackground(null);
         }
     }
 
-    /** Full applicationId: dotted package as-is, else com.walhalla. + short id. */
     private static String resolvePackageName(String q) {
         if (TextUtils.isEmpty(q)) {
             return "";
@@ -107,5 +109,4 @@ public class AppViewHolder
         int last = q.lastIndexOf('.');
         return last >= 0 && last < q.length() - 1 ? q.substring(last + 1) : q;
     }
-
 }
