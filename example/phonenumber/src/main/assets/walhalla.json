@@ -172,7 +172,16 @@
     "_q": "com.christianquotes.inspirefaith",
     "project": "inspirefaith-d938e",
     "color": "#200222",
-    "features": "GDPR"
+    "features": "GDPR",
+    "app_id": "4974332166442020897"
+  },
+  {
+    "_q": "com.christianquotestoinspire.bibleverses.motivation",
+    "name": "Christian Quotes EN",
+    "project": "christianquotesen",
+    "features": "GDPR",
+    "color": "#2962FF",
+    "app_id": "4975878294569238298"
   },
   {
     "_q": "christianquotes",
@@ -187,10 +196,12 @@
     "color": "#2962FF"
   },
   {
-    "_q": "statuses",
+    "_q": "com.walhalla.statuses",
+    "name": "Статусы и Цитаты. Azmmewo",
     "project": "",
     "features": "GDPR",
-    "color": "#2962FF"
+    "color": "#2962FF",
+    "app_id": "4973264433696715483"
   },
   {
     "_q": "flirtynotes",
@@ -198,10 +209,12 @@
     "color": "#2962FF"
   },
   {
-    "_q": "toasts",
+    "_q": "com.walhalla.toasts",
+    "name": "Поздравления и Тосты",
     "project": "",
     "features": "GDPR",
-    "color": "#2962FF"
+    "color": "#2962FF",
+    "app_id": "4975967901119039011"
   },
   {
     "_q": "com.walhalla.compatibility",

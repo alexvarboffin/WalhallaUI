@@ -27,6 +27,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     buildFeatures {
         viewBinding = true
         buildConfig = true
@@ -45,7 +49,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.glide)
-    annotationProcessor(libs.compiler)
+    // annotationProcessor(libs.compiler) — unused (no GlideApp/@GlideModule); breaks AP classpath
 
 
     implementation(libs.advrecyclerview)
