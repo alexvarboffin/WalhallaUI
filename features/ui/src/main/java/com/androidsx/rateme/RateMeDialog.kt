@@ -123,14 +123,14 @@ class RateMeDialog : DialogFragment {
             OnRatingBarChangeListener { ratingBar: RatingBar?, rating: Float, fromUser: Boolean ->
                 //DLog.d("@@@" + rating + " " + fromUser);
                 if (rating >= RATING_LIMIT) {
-                    rateMe!!.visibility = View.VISIBLE
-                    noThanks!!.visibility = View.GONE
+                    rateMe.visibility = View.VISIBLE
+                    noThanks.visibility = View.GONE
                 } else if (rating > 0.0) {
-                    noThanks!!.visibility = View.VISIBLE
-                    rateMe!!.visibility = View.GONE
+                    noThanks.visibility = View.VISIBLE
+                    rateMe.visibility = View.GONE
                 } else {
                     noThanks!!.visibility = View.GONE
-                    rateMe!!.visibility = View.GONE
+                    rateMe.visibility = View.GONE
                 }
                 defaultStarsSelected = rating.toInt()
             }
@@ -140,7 +140,7 @@ class RateMeDialog : DialogFragment {
 
         try {
             close.setOnClickListener { v: View? ->
-                RateAppModule.appRated(getActivity(), false) //not rated
+                RateAppModule.appRated(requireActivity(), false) //not rated
                 dismiss()
                 RateMeDialogTimer.clearSharedPreferences(requireActivity())
                 d("Clear the shared preferences")
@@ -278,7 +278,7 @@ class RateMeDialog : DialogFragment {
 
     private fun configureButtons() {
         rateMe!!.setOnClickListener { v: View? ->
-            RateAppModule.appRated(getActivity(), true) //rated
+            RateAppModule.appRated(requireActivity(), true) //rated
             //            if (new_rate_module) {
 //                //ReviewManager manager = ReviewManagerFactory.create(this.getContext());
 //                ReviewManager manager = new FakeReviewManager(activity);
@@ -313,8 +313,8 @@ class RateMeDialog : DialogFragment {
             dismiss()
         }
 
-        noThanks!!.setOnClickListener { v: View? ->
-            RateAppModule.appRated(getActivity(), true) //rated
+        noThanks.setOnClickListener { v: View? ->
+            RateAppModule.appRated(requireActivity(), true) //rated
             dismiss()
 
             if (feedbackByEmailEnabled) {

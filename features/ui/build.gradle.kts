@@ -1,3 +1,9 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    //alias(libs.plugins.kotlin.ksp)
+}
+
 extra.apply {
     set("okHttpVersion", "4.12.0")
     set("ONESIGNAL_APP_ID", "")
@@ -5,12 +11,6 @@ extra.apply {
     set("FACEBOOK_SDK", "")
     set("MYTRACKER_KEY", "")
     set("APP_METRICA", "")
-}
-
-plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    //alias(libs.plugins.kotlin.ksp)
 }
 //plugins {
 //    alias(libs.plugins.android.application) apply false

@@ -241,5 +241,12 @@
     "_q": "dreambookinterpretation",
     "project": "",
     "features": ""
+  },
+  {
+    "_q": "tv.hdonlinetv.besttvchannels.movies.watchfree",
+    "name": "Ultimate.TV",
+    "project": "fightmagick",
+    "features": "GDPR",
+    "privacy_policy": "https://fightmagick.web.app/en/privacy.html"
   }
 ]
